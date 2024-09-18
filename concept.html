@@ -4,23 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matatu Route Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="content">
-                <h2>Matatu Route Finder</h2>
-                <label for="from">From:</label>
-                <input type="text" id="from" placeholder="Enter starting point">
-                <label for="to">To:</label>
-                <input type="text" id="to" placeholder="Enter destination">
-                <button onclick="findRoute()">Find Route</button>
-                <div id="result"></div>
-            </div>
-        </div>
+    <div class="header-container">
+        <h1>Matatu Route Finder</h1>
     </div>
 
-    <script src="js/findRoute.js"></script>
+    <div class="container row p-2">
+
+        <div id="left-half" class="col-md-4">
+            <div class="column">
+                <div class="">
+                    <div class="left-section">
+                        <div id="locationsContainer">
+                            <label for="from">Origin:</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-circle"></i></span>
+                                </div>
+                                <input type="text" id="origin" class="form-control smallInput">
+                            </div>
+                            <label for="to">Destination:</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                </div>
+                                <input type="text" id="destination" class="form-control smallInput">
+                            </div>
+                        </div>
+
+                        <div id="additionalLocations">
+                            <!-- Additional locations will be dynamically added here -->
+                        </div>
+
+                        <button onclick="addLocation()" class="btn btn-primary">
+                            <i class="fas fa-plus"> Add Location</i>
+                        </button>
+                        <button onclick="calcRoute()" class="btn btn-success">
+                            <i class="fas fa-search"> Find Route </i>
+                        </button>
+                        <button onclick="findMat()" class="btn btn-success">
+                            <i class="fas fa-search"> Find Matatu </i>
+                        </button>
+                        <button onclick="refresh()" class="btn btn-danger">
+                            <i class="fas fa-sync-alt">Refresh </i>
+                        </button>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="right-section">
+                        <div id="result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="right-half" class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--<div>This is the map section</div>-->
+                    <div id="googlemap"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type=module src="js/calcRoute.js"></script>
+    <script type=module src="js/findMat.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/smoothscroll.js"></script>
+    <!-- Google Maps API script -->
+
 </body>
 </html>
