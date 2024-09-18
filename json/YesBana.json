@@ -1,12 +1,12 @@
 [
     {
         "route_number": "1",
-        "pickup_point": "General Post Office(GPO)",
+        "pickup_point": "General Post Office/ GPO",
         "destinations": [
-            "Ngong Road |10 km|",
-            "Citam(NPC Valley road) |20 km|",
-            "The Junction Mall |30 km|",
-            "Dagoretti |40 km|"
+            "Ngong Road",
+            "Citam/NPC Valley road",
+            "The Junction Mall",
+            "Dagoretti"
         ],
         "pickup_latlng": {
             "latitude": -1.2865,
@@ -19,14 +19,14 @@
     },
     {
         "route_number": "10",
-        "pickup_point": "Board at OTC",
+        "pickup_point": "Town",
         "destinations": [
-            "Muthurwa |10 km|",
-            "Shauri Moyo |20 km|"
+            "Muthurwa",
+            "Shauri Moyo"
         ],
         "pickup_latlng": {
-            "latitude": -1.2835,
-            "longitude": 36.8008
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -37,13 +37,13 @@
         "route_number": "100",
         "pickup_point": "Pick the matatu along Ronald Ngala Street all the way to Ring-road Ngara or opp St. peters Clavers Catholic Church",
         "destinations": [
-            "Kiambutown |10 km|",
-            "Kiamburoad |20 km|",
-            "Sharkspalacekiamburoad |30 km|",
-            "CIDcenter |40 km|",
-            "Ridgeways |50 km|",
-            "Rockcitykiamburoad |60 km|",
-            "Muthaigaroundabout |70 km|"
+            "Kiambutown",
+            "Kiamburoad",
+            "Sharkspalacekiamburoad",
+            "CIDcenter",
+            "Ridgeways",
+            "Rockcitykiamburoad",
+            "Muthaigaroundabout"
         ],
         "pickup_latlng": {
             "latitude": -1.1888,
@@ -58,7 +58,7 @@
         "route_number": "101",
         "pickup_point": "Kikuyu",
         "destinations": [
-            "Banana |10 km|"
+            "Banana"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -71,12 +71,12 @@
     },
     {
         "route_number": "102",
-        "pickup_point": "Board from BS or Kencom",
+        "pickup_point": "Board​​ from BS or Kencom",
         "destinations": [
-            "Kikuyutownship |10 km|",
-            "Dagorettie |20 km|",
-            "Ngongroad |30 km|",
-            "Thejunctionmall |40 km|"
+            "Kikuyutownship",
+            "Dagorettie",
+            "Ngongroad",
+            "Thejunctionmall"
         ],
         "pickup_latlng": {
             "latitude": -1.2308,
@@ -91,8 +91,8 @@
         "route_number": "103",
         "pickup_point": "Kawangware",
         "destinations": [
-            "Uthiru |10 km|",
-            "Kangemi |20 km|"
+            "Uthiru" ,
+            " Kangemi"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -107,11 +107,11 @@
         "route_number": "105",
         "pickup_point": "Board the matatu along tom Mboya Street near National Archives or from Railways bus station",
         "destinations": [
-            "Kikuyu(Uhuruhighway) |10 km|",
-            "Westlands |20 km|",
-            "Kangemi |30 km|",
-            "Uthiru |40 km|",
-            "Kinoo |50 km|"
+            "Kikuyu(Uhuruhighway)",
+            "Westlands",
+            "Kangemi",
+            "Uthiru",
+            "Kinoo"
         ],
         "pickup_latlng": {
             "latitude": -1.27,
@@ -124,11 +124,9 @@
     },
     {
         "route_number": "106",
-        "pickup_point": "Koja Mosque\u200b\u200b stage",
+        "pickup_point": "Koja Mosque​​ stage",
         "destinations": [
-            "Banana |10 km|",
-            "Muchatha |20 km|",
-            "villagemarket |30 km|"
+            "Banana,Muchatha,villagemarket"
         ],
         "pickup_latlng": {
             "latitude": -1.2564,
@@ -141,10 +139,10 @@
     },
     {
         "route_number": "107",
-        "pickup_point": "Board at Odeon",
+        "pickup_point": "Town",
         "destinations": [
-            "Ruaka |10 km|",
-            "Ndenderu |20 km|"
+            "Ruaka" ,
+            " Ndenderu"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -157,15 +155,15 @@
     },
     {
         "route_number": "108",
-        "pickup_point": "Board at Koja ",
+        "pickup_point": "City",
         "destinations": [
-            "UN |10 km|",
-            "Gachie |20 km|",
-            "Gichagi |30 km|"
+            "UN",
+            "Gachie" ,
+            "Gichagi"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -176,9 +174,9 @@
         "route_number": "11",
         "pickup_point": "Board the matatu from ODEON bus Station",
         "destinations": [
-            "Aga Khan |10 km|",
-            "Parklands |20 km|",
-            "Highridge |30 km|"
+            "Aga Khan" ,
+            "Parklands" ,
+            "Highridge"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -193,9 +191,9 @@
         "route_number": "110",
         "pickup_point": "Board from Railways station at the entrance of near the railways station",
         "destinations": [
-            "Kitengela |10 km|",
-            "mlonglo |20 km|",
-            "Athisriver |30 km|"
+            "Kitengela",
+            "mlonglo",
+            "Athisriver"
         ],
         "pickup_latlng": {
             "latitude": -1.354,
@@ -210,9 +208,9 @@
         "route_number": "111",
         "pickup_point": "Board from Kencom or Railways bus station",
         "destinations": [
-            "Ngong |10 km|",
-            "Ngongroad |20 km|",
-            "Dagaoretticorner(somtimeskiserian) |30 km|"
+            "Ngong",
+            "Ngongroad",
+            "Dagaoretticorner(somtimeskiserian)"
         ],
         "pickup_latlng": {
             "latitude": -1.2364,
@@ -225,10 +223,10 @@
     },
     {
         "route_number": "112",
-        "pickup_point": "Board at ",
+        "pickup_point": "City",
         "destinations": [
-            "Kikuyu |10 km|",
-            "Gikambura |20 km|"
+            "Kikuyu" ,
+            "Gikambura"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -241,14 +239,14 @@
     },
     {
         "route_number": "114",
-        "pickup_point": "Board at koja Stage",
+        "pickup_point": "City",
         "destinations": [
-            "Kabuku |10 km|",
-            "Limuru |20 km|"
+            "Kabuku" ,
+            "Limuru"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -257,14 +255,14 @@
     },
     {
         "route_number": "115",
-        "pickup_point": "Board at Koja",
+        "pickup_point": "Town",
         "destinations": [
-            "Rironi |10 km|",
-            "Limuru |20 km|"
+            "Rironi", 
+            "Limuru"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -273,14 +271,14 @@
     },
     {
         "route_number": "116",
-        "pickup_point": "Board at Koja",
+        "pickup_point": "Town",
         "destinations": [
-            "Tigoni |10 km|",
-            "Limuru |20 km|"
+            "Tigoni" ,
+            "Limuru"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -289,10 +287,10 @@
     },
     {
         "route_number": "117",
-        "pickup_point": "Board at Bus station",
+        "pickup_point": "City",
         "destinations": [
-            "Syokimau |10 km|",
-            "Katani Road |20 km|"
+            "Syokimau" ,
+            "Katani Road"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -305,14 +303,14 @@
     },
     {
         "route_number": "118",
-        "pickup_point": "Board at Koja Stage",
+        "pickup_point": "Town",
         "destinations": [
-            "Basse Kabete |10 km|",
-            "Wangige |20 km|"
+            "Basse Kabete" ,
+            "Wangige"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -321,14 +319,14 @@
     },
     {
         "route_number": "119",
-        "pickup_point": "Board at Koja",
+        "pickup_point": "Town",
         "destinations": [
-            "Mwimuto |10 km|",
-            "Wangige |20 km|"
+            "Mwimuto" ,
+            "Wangige"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -339,10 +337,10 @@
         "route_number": "11A",
         "pickup_point": "Board the matatu from Railways Bus station",
         "destinations": [
-            "SouthB |10 km|",
-            "Balozi |20 km|",
-            "Hazina |30 km|",
-            "Bellevue |40 km|"
+            "SouthB",
+             "Balozi ",
+             "Hazina",
+              " Bellevue"
         ],
         "pickup_latlng": {
             "latitude": -1.305,
@@ -355,10 +353,10 @@
     },
     {
         "route_number": "11B",
-        "pickup_point": "Board at ODEON",
+        "pickup_point": "City",
         "destinations": [
-            "Ngara |10 km|",
-            "Stima Plaza |20 km|"
+            "Ngara" ,
+            "Stima Plaza"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -371,10 +369,9 @@
     },
     {
         "route_number": "11C",
-        "pickup_point": "Board at ODEON ",
+        "pickup_point": "City",
         "destinations": [
-            "KICD |10 km|",
-            "Pangani |20 km|"
+            "KICD , Pangani"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -387,10 +384,9 @@
     },
     {
         "route_number": "120",
-        "pickup_point": "Board at St Peter's Clavers",
+        "pickup_point": "City",
         "destinations": [
-            "Kiambu |10 km|",
-            "Githunguri |20 km|"
+            "Kiambu , Githunguri"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -403,10 +399,9 @@
     },
     {
         "route_number": "122",
-        "pickup_point": "Board at St Peter's Clavers",
+        "pickup_point": "City",
         "destinations": [
-            "Kiambu |10 km|",
-            "Inagi |20 km|"
+            "Kiambu , Inagi"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -421,19 +416,19 @@
         "route_number": "125/126",
         "pickup_point": "Board from Railways bus station",
         "destinations": [
-            "Ongatarongai |10 km|",
-            "Kiserian |20 km|",
-            "Bonasmsofkenya |30 km|",
-            "Nazareneuniversity |40 km|",
-            "Catholickuniversity |50 km|",
-            "Multimediuniversity |60 km|",
-            "Nairobinationalpark/orphanage |70 km|",
-            "Safariwalk |80 km|",
-            "Langatabarracks |90 km|",
-            "Galleriamall |100 km|",
-            "Brookhouseinternationalschool |110 km|",
-            "Langatapolice station |120 km|",
-            "Langatacementery |130 km|"
+            "Ongatarongai",
+            "Kiserian",
+            "Bonasmsofkenya",
+            "Nazareneuniversity",
+            "Catholickuniversity",
+            "Multimediuniversity",
+            "Nairobinationalpark/orphanage",
+            "Safariwalk",
+            "Langatabarracks",
+            "Galleriamall",
+            "Brookhouseinternationalschool",
+            "Langatapolice station",
+            "Langatacementery"
         ],
         "pickup_latlng": {
             "latitude": -1.3551,
@@ -448,8 +443,7 @@
         "route_number": "129",
         "pickup_point": "Kikuyu",
         "destinations": [
-            "Wangige |10 km|",
-            "Ndenderu |20 km|"
+            "Wangige , Ndenderu"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -462,15 +456,13 @@
     },
     {
         "route_number": "12C",
-        "pickup_point": "Board at Bus station",
+        "pickup_point": "City",
         "destinations": [
-            "South C |10 km|",
-            "Mugoya |20 km|",
-            "Bellevue (Circular) |30 km|"
+            "South C , Mugoya , Bellevue (Circular)"
         ],
         "pickup_latlng": {
-            "latitude": -1.2835,
-            "longitude": 36.8008
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -479,12 +471,9 @@
     },
     {
         "route_number": "12D",
-        "pickup_point": "Board at Bus station",
+        "pickup_point": "City",
         "destinations": [
-            "Mombasa Road |10 km|",
-            "Nextgen |20 km|",
-            "Highway Est. |30 km|",
-            "KPA |40 km|"
+            "Mombasa Road , Nextgen , Highway Est. , KPA"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -497,14 +486,13 @@
     },
     {
         "route_number": "131",
-        "pickup_point": "Board at KOJA stage",
+        "pickup_point": "City",
         "destinations": [
-            "Zambezi |10 km|",
-            "Nderi (KARI) |20 km|"
+            "Zambezi , Nderi (KARI)"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -513,14 +501,13 @@
     },
     {
         "route_number": "132",
-        "pickup_point": "Board at KOJA stage",
+        "pickup_point": "Town",
         "destinations": [
-            "Limuru |10 km|",
-            "Kikuyu |20 km|"
+            "Limuru , Kikuyu"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -529,10 +516,9 @@
     },
     {
         "route_number": "133",
-        "pickup_point": "Board at Ronald Ngala, bus station, kamukunji, muthurwa",
+        "pickup_point": "Town",
         "destinations": [
-            "Kayole |10 km|",
-            "Mihango |20 km|"
+            "Kayole , Mihango"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -545,11 +531,9 @@
     },
     {
         "route_number": "134",
-        "pickup_point": "Board at Railways Stage",
+        "pickup_point": "City",
         "destinations": [
-            "Isinya |10 km|",
-            "Namanga |20 km|",
-            "Oloitoktok |30 km|"
+            "Isinya , Namanga , Oloitoktok"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -562,9 +546,9 @@
     },
     {
         "route_number": "145",
-        "pickup_point": "Board at ODEON ",
+        "pickup_point": "City",
         "destinations": [
-            "Ruiru |10 km|"
+            "Ruiru"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -579,13 +563,7 @@
         "route_number": "146",
         "pickup_point": "Board from Mumbi Lane off Ronald Ngala Street / ODEON",
         "destinations": [
-            "Ruiru |10 km|",
-            "Thika Road |20 km|",
-            "Kahawayendani |30 km|",
-            "Kahawabarracks |40 km|",
-            "Kahawasukari |50 km|",
-            "Kenyattauiversity/ku |60 km|",
-            "Ruirubypass |70 km|"
+            "Ruiru,Thika Road,Kahawayendani,Kahawabarracks,Kahawasukari,Kenyattauiversity/ku,Ruirubypass"
         ],
         "pickup_latlng": {
             "latitude": -1.2151,
@@ -598,9 +576,9 @@
     },
     {
         "route_number": "14A",
-        "pickup_point": "Board at  Ronald Ngala Street",
+        "pickup_point": "Town",
         "destinations": [
-            "Kariobangi North |10 km|"
+            "Kariobangi North"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -615,12 +593,7 @@
         "route_number": "14B",
         "pickup_point": "Board Matatu at BS behind Afya Centre",
         "destinations": [
-            "Langata road upto T-Mall |10 km|",
-            "Nairobi West |20 km|",
-            "Moi Educational Center |30 km|",
-            "TMall |40 km|",
-            "StrathmoreUniversity |50 km|",
-            "NairobiWest |60 km|"
+            "Langata road upto T-Mall,Nairobi West , Moi Educational Center , TMall, StrathmoreUniversity,NairobiWest"
         ],
         "pickup_latlng": {
             "latitude": -1.2835,
@@ -635,18 +608,7 @@
         "route_number": "15",
         "pickup_point": "Board the matatu from Bus Station main stage or further from the main stage at waiting matatus opp afya center.",
         "destinations": [
-            "Nyayo Stadium |10 km|",
-            "Nairobi west & Madaraka (near the road) |20 km|",
-            "Tuskys T-mall |30 km|",
-            "Wilson Airport |40 km|",
-            "Carnivore Simba Saloon |50 km|",
-            "Uhuru Gardens |60 km|",
-            "Langata Shopping Centre |70 km|",
-            "Otiende |80 km|",
-            "Barracks |90 km|",
-            "Langata Cemetery (on the lower side) |100 km|",
-            "Nairobi Safari Walk and Nairobi National Park |110 km|",
-            "Nairobi Animal Orphanage |120 km|"
+            "Nyayo Stadium, Nairobi west & Madaraka (near the road), Tuskys T-mall, Wilson Airport, Carnivore Simba Saloon, Uhuru Gardens,Langata Shopping Centre, Otiende, Barracks, Langata Cemetery (on the lower side), Nairobi Safari Walk and Nairobi National Park,Nairobi Animal Orphanage"
         ],
         "pickup_latlng": {
             "latitude": -1.2835,
@@ -659,11 +621,9 @@
     },
     {
         "route_number": "16",
-        "pickup_point": "Board at Bus Station",
+        "pickup_point": "City",
         "destinations": [
-            "KNH |10 km|",
-            "Nyayo Highrise |20 km|",
-            "Soweto |30 km|"
+            "KNH , Nyayo Highrise , Soweto"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -676,9 +636,9 @@
     },
     {
         "route_number": "160",
-        "pickup_point": "",
+        "pickup_point": "City",
         "destinations": [
-            "Kibichoi |10 km|"
+            "Kibichoi"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -693,9 +653,7 @@
         "route_number": "17A",
         "pickup_point": "Gikomba",
         "destinations": [
-            "Route Juja |10 km|",
-            "Saika |20 km|",
-            "Kayole |30 km|"
+            "Route Juja , Saika , Kayole"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -710,13 +668,7 @@
         "route_number": "17B",
         "pickup_point": "Board the matatu from inside Kenya Bus Station or from outside BS near the St Peter Claviers Catholic Church. For Kasarani, you can also board MSL matatus at Imenti House (along Tom Mboya road)",
         "destinations": [
-            "Thika road |10 km|",
-            "Thika super highway |20 km|",
-            "Roysambu |30 km|",
-            "Kasarani |40 km|",
-            "Santon |50 km|",
-            "Mwiki |60 km|",
-            "St Francis Hospital |70 km|"
+            "Thika road, Thika super highway, Roysambu, Kasarani, Santon, Mwiki, St Francis Hospital"
         ],
         "pickup_latlng": {
             "latitude": -1.201,
@@ -731,9 +683,7 @@
         "route_number": "18-62",
         "pickup_point": "Eastleigh",
         "destinations": [
-            "Saika |10 km|",
-            "Ruai |20 km|",
-            "Joska |30 km|"
+            "Saika , Ruai , Joska"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -748,9 +698,7 @@
         "route_number": "18C",
         "pickup_point": "Eastleigh",
         "destinations": [
-            "Juja Road |10 km|",
-            "Saika |20 km|",
-            "Komarock |30 km|"
+            "Juja Road , Saika , Komarock"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -763,10 +711,9 @@
     },
     {
         "route_number": "19-60",
-        "pickup_point": "board at Bus station/ Muthurwa",
+        "pickup_point": "Town",
         "destinations": [
-            "Manyanja |10 km|",
-            "Kayole |20 km|"
+            "Manyanja , Kayole"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -779,10 +726,9 @@
     },
     {
         "route_number": "19C",
-        "pickup_point": "Board at Bus Station",
+        "pickup_point": "Town",
         "destinations": [
-            "Manyanja |10 km|",
-            "Komarock |20 km|"
+            "Manyanja , Komarock"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -797,11 +743,7 @@
         "route_number": "2",
         "pickup_point": "GPO, KBS stage",
         "destinations": [
-            "Ngong Road |10 km|",
-            "Citam/NPC Valley Rd |20 km|",
-            "The junction Mall |30 km|",
-            "Dagoretti |40 km|",
-            "Kikuyu |50 km|"
+            "Ngong Road, Citam/NPC Valley Rd, The junction Mall, Dagoretti, Kikuyu"
         ],
         "pickup_latlng": {
             "latitude": -1.2865,
@@ -816,9 +758,7 @@
         "route_number": "20",
         "pickup_point": "Roysambu",
         "destinations": [
-            "Mwiki |10 km|",
-            "Kayole Junction |20 km|",
-            "Mama Lucy Hospital |30 km|"
+            "Mwiki , Kayole Junction , Mama Lucy Hospital"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -831,10 +771,9 @@
     },
     {
         "route_number": "201/202",
-        "pickup_point": "Board at afya cente",
+        "pickup_point": "Town",
         "destinations": [
-            "Tala |10 km|",
-            "Kangundo |20 km|"
+            "Tala , Kangundo"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -847,15 +786,13 @@
     },
     {
         "route_number": "22",
-        "pickup_point": "Board at Koja Stage",
+        "pickup_point": "City",
         "destinations": [
-            "Uthiru |10 km|",
-            "UoN Kabete |20 km|",
-            "Ndumbuini |30 km|"
+            "Uthiru , UoN Kabete , Ndumbuini"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -863,15 +800,14 @@
         }
     },
     {
-        "route_number": "23/30",
-        "pickup_point": "board at Koja Stage/ODEON/Archieves ",
+        "route_number": "23-30",
+        "pickup_point": "City",
         "destinations": [
-            "Westlands |10 km|",
-            "Kangemi |20 km|"
+            "Westlands , Kangemi"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -880,11 +816,9 @@
     },
     {
         "route_number": "236",
-        "pickup_point": "Board behind Mr Price Tomboya Street ",
+        "pickup_point": "Town",
         "destinations": [
-            "Road Kenyatta |10 km|",
-            "Juja |20 km|",
-            "JKUAT |30 km|"
+            "Road Kenyatta , Juja , JKUAT"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -897,13 +831,9 @@
     },
     {
         "route_number": "237",
-        "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street, as well as on Race Course Road near the Tuskys Building (formerly OTC).",
+        "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street, as well as on Race Course Road near the Tusky’s Building (formerly OTC).",
         "destinations": [
-            "Thikatown |10 km|",
-            "althikeroad |20 km|",
-            "KahawaraWendani |30 km|",
-            "KahawaSukari |40 km|",
-            "Ruiru |50 km|"
+            "Thikatown,althikeroad,KahawaraWendani,KahawaSukari,Ruiru"
         ],
         "pickup_latlng": {
             "latitude": -1.0281,
@@ -916,10 +846,9 @@
     },
     {
         "route_number": "238",
-        "pickup_point": "Board at Luthuli avenue",
+        "pickup_point": "City",
         "destinations": [
-            "Makongeni |10 km|",
-            "Posta |20 km|"
+            "Makongeni , Posta"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -932,12 +861,9 @@
     },
     {
         "route_number": "23A",
-        "pickup_point": "Board at Gill House",
+        "pickup_point": "City",
         "destinations": [
-            "Jericho |10 km|",
-            "Harambee |20 km|",
-            "Kariobangi South |30 km|",
-            "Civil servant |40 km|"
+            "Jericho , Harambee , Kariobangi South , Civil servant"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -952,12 +878,7 @@
         "route_number": "23B",
         "pickup_point": "Kangemi, Westlands, Uhuru Highway, Kangemi, ABC Place, Safaricom House and Uhuru highway.",
         "destinations": [
-            "Kangemi |10 km|",
-            "Westlands |20 km|",
-            "Uhuru Highway |30 km|",
-            "Kangemi |40 km|",
-            "ABC Place |50 km|",
-            "Safaricom House and Uhuru highway. |60 km|"
+            "Kangemi, Westlands, Uhuru Highway, Kangemi, ABC Place, Safaricom House and Uhuru highway."
         ],
         "pickup_latlng": {
             "latitude": -1.3121,
@@ -970,10 +891,9 @@
     },
     {
         "route_number": "23C",
-        "pickup_point": "Board at Railways Stage",
+        "pickup_point": "Town",
         "destinations": [
-            "Regen |10 km|",
-            "Dagoretti |20 km|"
+            "Regen , Dagoretti"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -988,20 +908,7 @@
         "route_number": "24",
         "pickup_point": "Kenya Bus Station /BS, Mfangano street or main buses at Kencom House Moi Avenue",
         "destinations": [
-            "KarenShoppingCentre |10 km|",
-            "Hardy |20 km|",
-            "Langatardroutes |30 km|",
-            "Bogani |40 km|",
-            "BomasofKenya |50 km|",
-            "GalleriaShoppingMall |60 km|",
-            "CatholicUniversity |70 km|",
-            "KenyaSchoolofLaw |80 km|",
-            "NairobiAcademy |90 km|",
-            "HillcrestInternationalSchool |100 km|",
-            "Animalprotection |110 km|",
-            "Co-opbanktrainingcentre |120 km|",
-            "Giraffecenter |130 km|",
-            "KarenCSchool. |140 km|"
+            "KarenShoppingCentre,Hardy,alLangatardroutes,Bogani,BomasofKenya,GalleriaShoppingMall,CatholicUniversity,KenyaSchoolofLaw,NairobiAcademy,HillcrestInternationalSchool,Animalprotection,Co-opbanktrainingcentre,Giraffecenter,KarenCSchool."
         ],
         "pickup_latlng": {
             "latitude": -1.3454,
@@ -1016,9 +923,7 @@
         "route_number": "25 / 25A",
         "pickup_point": "Board the Matatu from Timboroa Lane",
         "destinations": [
-            "Allsopps |10 km|",
-            "Baba Dogo |20 km|",
-            "Lucky Summer |30 km|"
+            "Allsopps , Baba Dogo , Lucky Summer"
         ],
         "pickup_latlng": {
             "latitude": -1.2258,
@@ -1029,13 +934,11 @@
             "longitude": 36.8146
         }
     },
-    {
+     {
         "route_number": "26",
-        "pickup_point": "Board at DC stage",
+        "pickup_point": "Route Jogoo",
         "destinations": [
-            "Makadara |10 km|",
-            "Jericho |20 km|",
-            "Kariobangi Rounda |30 km|"
+            "Makadara , Jericho , Kariobangi Rounda"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1050,9 +953,7 @@
         "route_number": "28",
         "pickup_point": "Gikomba",
         "destinations": [
-            "Juja Road |10 km|",
-            "Huruma |20 km|",
-            "Kariobangi North |30 km|"
+            "Juja Road , Huruma , Kariobangi North"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1064,11 +965,10 @@
         }
     },
     {
-        "route_number": "29/30",
-        "pickup_point": "Board at  Timboroa Lane",
+        "route_number": "29-30",
+        "pickup_point": "Town",
         "destinations": [
-            "Survey |10 km|",
-            "Mathare North |20 km|"
+            "Survey , Mathare North"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1081,9 +981,9 @@
     },
     {
         "route_number": "2B",
-        "pickup_point": "Board at Railways/ The hub",
+        "pickup_point": "Town",
         "destinations": [
-            "Dagoretti Market |10 km|"
+            "Dagoretti Market"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1096,11 +996,9 @@
     },
     {
         "route_number": "2C",
-        "pickup_point": "Board at Railways /The hub",
+        "pickup_point": "Town",
         "destinations": [
-            "Naivasha Road |10 km|",
-            "Waithaka |20 km|",
-            "Muthama |30 km|"
+            "Naivasha Road , Waithaka , Muthama"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1115,9 +1013,7 @@
         "route_number": "3",
         "pickup_point": "GPO",
         "destinations": [
-            "Ngong Road |10 km|",
-            "Adams Arcade |20 km|",
-            "Dagoretti corner |30 km|"
+            "Ngong Road, Adams Arcade, Dagoretti corner"
         ],
         "pickup_latlng": {
             "latitude": -1.2865,
@@ -1130,15 +1026,13 @@
     },
     {
         "route_number": "30",
-        "pickup_point": "Board at Koja Stage",
+        "pickup_point": "City",
         "destinations": [
-            "Westlands |10 km|",
-            "Kangemi |20 km|",
-            "Regen |30 km|"
+            "Westlands , Kangemi , Regen"
         ],
         "pickup_latlng": {
-            "latitude": -1.2564,
-            "longitude": 36.8066
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -1147,30 +1041,28 @@
     },
     {
         "route_number": "32",
-        "pickup_point": "Board at Kencom/ Railways/ ",
+        "pickup_point": "Town",
         "destinations": [
-            "Ayany |10 km|",
-            "Woodley |20 km|",
-            "Kibera |30 km|"
+            "Ayany , Woodley , Kibera"
         ],
         "pickup_latlng": {
-            "latitude": -1.2308,
-            "longitude": 36.8076
-         },
+            "latitude": null,
+            "longitude": null
+        },
         "destination_latlng": {
             "latitude": null,
             "longitude": null
         }
     },
     {
-        "route_number": "32/42",
-        "pickup_point": "Board at Ronald Ngala, Near OTC",
+        "route_number": "32-42",
+        "pickup_point": "City",
         "destinations": [
-            "Dandora |10 km|"
+            "Dandora"
         ],
         "pickup_latlng": {
-            "latitude": -1.2835,
-            "longitude": 36.8008
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -1179,12 +1071,9 @@
     },
     {
         "route_number": "33",
-        "pickup_point": "Board the matatu from opp St Peter Claver\u2019s\u200b\u200b Catholic church or near OTC /Salvation Army areas",
+        "pickup_point": "Board the matatu from opp St Peter Claver’s​​ Catholic church or near OTC /Salvation Army areas",
         "destinations": [
-            "NgumoEstates |10 km|",
-            "KNH |20 km|",
-            "Mbagathi |30 km|",
-            "Masaimarket |40 km|"
+            "NgumoEstates,KNH,Mbagathi,Masaimarket"
         ],
         "pickup_latlng": {
             "latitude": -1.2865,
@@ -1197,9 +1086,9 @@
     },
     {
         "route_number": "33A",
-        "pickup_point": "Board at Ambasaddor,/Bus Station",
+        "pickup_point": "City",
         "destinations": [
-            "Utawala |10 km|"
+            "Utawala"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1214,16 +1103,7 @@
         "route_number": "33B",
         "pickup_point": "Board the matatu at Muthurwa market or along tom mboya street opp National Archives",
         "destinations": [
-            "Embakasi(through joggo road) |10 km|",
-            "Fedha Gate A |20 km|",
-            "Fedha Gate B |30 km|",
-            "Fedha Gate C |40 km|",
-            "Fedha Gate D |50 km|",
-            "donholm |60 km|",
-            "City Stadium |70 km|",
-            "Pipeline |80 km|",
-            "Tumaini Estate |90 km|",
-            "Avenue Estate |100 km|"
+            "Embakasi(through joggo road),Fedha Gate A ,Fedha Gate B, Fedha Gate C, Fedha Gate D, donholm, City Stadium, Pipeline, Tumaini Estate, Avenue Estate"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1238,12 +1118,7 @@
         "route_number": "34(nissans)",
         "pickup_point": "Board the Matatu from behind St Peters Clavers Church or Opposite OTC",
         "destinations": [
-            "LangataAreathroughMbagathiroad |10 km|",
-            "KNH |20 km|",
-            "TMall |30 km|",
-            "WilsonAirport |40 km|",
-            "Carnivore |50 km|",
-            "LangatashoppingCentre |60 km|"
+            "LangataAreathroughMbagathiroad,KNH,TMall,WilsonAirport,Carnivore,LangatashoppingCentre"
         ],
         "pickup_latlng": {
             "latitude": -1.2835,
@@ -1258,14 +1133,7 @@
         "route_number": "34(buses)",
         "pickup_point": "Board the bus from Kencom or Ambassador stage",
         "destinations": [
-            "JKIA |10 km|",
-            "Jogooroad |20 km|",
-            "Embakasi |30 km|",
-            "Fedha |40 km|",
-            "Donholm |50 km|",
-            "Pipeline |60 km|",
-            "Utawala |70 km|",
-            "(SomethimesMombasaroad) |80 km|"
+            "JKIA,Jogooroad,Embakasi,Fedha,Donholm,Pipeline,Utawala,(SomethimesMombasaroad)"
         ],
         "pickup_latlng": {
             "latitude": -1.2505,
@@ -1278,11 +1146,9 @@
     },
     {
         "route_number": "34A",
-        "pickup_point": "board the bus from Commercial Stage",
+        "pickup_point": "City",
         "destinations": [
-            "Donholm |10 km|",
-            "Pipeline |20 km|",
-            "JKIA |30 km|"
+            "Donholm , Pipeline , JKIA"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1295,11 +1161,9 @@
     },
     {
         "route_number": "34B",
-        "pickup_point": "Board at Commercial",
+        "pickup_point": "City",
         "destinations": [
-            "Donholm |10 km|",
-            "Savannah |20 km|",
-            "Jacaranda |30 km|"
+            "Donholm , Savannah , Jacaranda"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1312,10 +1176,9 @@
     },
     {
         "route_number": "34C",
-        "pickup_point": "Board at Commercial",
+        "pickup_point": "City",
         "destinations": [
-            "Donholm |10 km|",
-            "Greenfields |20 km|"
+            "Donholm , Greenfields"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1330,9 +1193,7 @@
         "route_number": "35/60",
         "pickup_point": "Board bus at Ronald Ngala Street Mfangano street intersect opp Naivas Supermarket",
         "destinations": [
-            "Umojainnercore |10 km|",
-            "UmojaI |20 km|",
-            "UmojaII |30 km|"
+            "Umojainnercore,UmojaI,UmojaII"
         ],
         "pickup_latlng": {
             "latitude": -1.3525,
@@ -1347,9 +1208,7 @@
         "route_number": "36",
         "pickup_point": "City Stadium",
         "destinations": [
-            "Buruburu |10 km|",
-            "Kariobangi Sud |20 km|",
-            "Dandora |30 km|"
+            "Buruburu , Kariobangi Sud , Dandora"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1364,10 +1223,7 @@
         "route_number": "37/38",
         "pickup_point": "Eastleigh",
         "destinations": [
-            "Juja Road |10 km|",
-            "Saika |20 km|",
-            "Njiru |30 km|",
-            "Ruai |40 km|"
+            "Juja Road , Saika , Njiru , Ruai"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1380,14 +1236,9 @@
     },
     {
         "route_number": "39",
-        "pickup_point": "Board at Bus Station ",
+        "pickup_point": "City",
         "destinations": [
-            "Njiru |10 km|",
-            "Ruai |20 km|",
-            "Kamulu |30 km|",
-            "Joska |40 km|",
-            "Malaa |50 km|",
-            "Kantafu |60 km|"
+            "Njiru , Ruai , Kamulu , Joska , Malaa , Kantafu"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1398,29 +1249,27 @@
             "longitude": null
         }
     },
-    {
+     {
         "route_number": "4",
         "pickup_point": "Kencom or GPO",
         "destinations": [
-            "Ngong Road |10 km|",
-            "Adams |20 km|",
-            "Dagoretti |30 km|"
+            "Ngong Road, Adams, Dagoretti"
         ],
         "pickup_latlng": {
-            "latitude": -1.2308,
-            "longitude": 36.8076
-         },
+            "latitude": null,
+            "longitude": null
+        },
         "destination_latlng": {
             "latitude": null,
             "longitude": null
         }
     },
+ 
     {
         "route_number": "40",
-        "pickup_point": "Board at Railways stage",
+        "pickup_point": "City",
         "destinations": [
-            "Mbagathi |10 km|",
-            "Ngummo (yes ditto 33) |20 km|"
+            "Mbagathi , Ngummo (yes ditto 33)"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1435,7 +1284,7 @@
         "route_number": "41",
         "pickup_point": "Gikomba",
         "destinations": [
-            "Kayole |10 km|"
+            "Kayole"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1448,11 +1297,9 @@
     },
     {
         "route_number": "43",
-        "pickup_point": "Board at  ",
+        "pickup_point": "Town",
         "destinations": [
-            "Thika road till Roasters |10 km|",
-            "EABL |20 km|",
-            "Ngumba |30 km|"
+            "Route de Thika , EABL , Ngumba"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1465,14 +1312,9 @@
     },
     {
         "route_number": "44",
-        "pickup_point": "Board bus from Naivas Ronald Ngala Street Postal Office or matatus from the former Tuskys Beba Beba",
+        "pickup_point": "Board bus from Nakumatt Ronald Ngala Street or matatus from the former Tuskys Beba Beba",
         "destinations": [
-            "Kahawa West |10 km|",
-            "KamitiMaximumPrisons |20 km|",
-            "Zimmerman |30 km|",
-            "USIU |40 km|",
-            "FarmersChoice |50 km|",
-            "Nothernbypass |60 km|"
+            "Kahawa West, KamitiMaximumPrisons,Zimmerman,USIU,FarmersChoice,Nothernbypass"
         ],
         "pickup_latlng": {
             "latitude": -1.1705,
@@ -1487,9 +1329,7 @@
         "route_number": "45",
         "pickup_point": "Board the buses from Nakumatt Ronald Ngala street opp Posta R/Ngala",
         "destinations": [
-            "Thika Road |10 km|",
-            "Thika Super highway |20 km|",
-            "Githurai 45 |30 km|"
+            "Thika Road, Thika Super highway, Githurai 45"
         ],
         "pickup_latlng": {
             "latitude": -1.0917,
@@ -1502,11 +1342,9 @@
     },
     {
         "route_number": "45A",
-        "pickup_point": "Board the buses from Nakumatt Ronald Ngala street opp Posta R/Ngala",
+        "pickup_point": "City",
         "destinations": [
-            "Githurai |10 km|",
-            "Kahawa |20 km|",
-            "KU |30 km|"
+            "Githurai , Kahawa , KU"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1519,10 +1357,9 @@
     },
     {
         "route_number": "46",
-        "pickup_point": "Board at Tom Mboya P/Office",
+        "pickup_point": "City",
         "destinations": [
-            "Juja Road |10 km|",
-            "Huruma |20 km|"
+            "Juja Road , Huruma"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1535,16 +1372,14 @@
     },
     {
         "route_number": "46A",
-        "pickup_point": "Board at KENCOM/Ambasaddor/Railways/Bus Station",
+        "pickup_point": "Town",
         "destinations": [
-            "Hurlingham |10 km|",
-            "Lavington |20 km|",
-            "Kawangware |30 km|"
+            "Hurlingham , Lavington , Kawangware"
         ],
         "pickup_latlng": {
-            "latitude": -1.2308,
-            "longitude": 36.8076
-         },
+            "latitude": null,
+            "longitude": null
+        },
         "destination_latlng": {
             "latitude": null,
             "longitude": null
@@ -1552,10 +1387,9 @@
     },
     {
         "route_number": "47A",
-        "pickup_point": "Board at ODEON",
+        "pickup_point": "City",
         "destinations": [
-            "Kahawa Sukari |10 km|",
-            "Mwihoko |20 km|"
+            "Kahawa Sukari , Mwihoko"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1568,10 +1402,9 @@
     },
     {
         "route_number": "48",
-        "pickup_point": "Board at ODEON ",
+        "pickup_point": "Town",
         "destinations": [
-            "Riverside |10 km|",
-            "Kileleshwa |20 km|"
+            "Riverside , Kileleshwa"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1584,10 +1417,9 @@
     },
     {
         "route_number": "48A",
-        "pickup_point": "Board at ODEON",
+        "pickup_point": "Town",
         "destinations": [
-            "Riverside |10 km|",
-            "Lavington Green |20 km|"
+            "Riverside , Lavington Green"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1600,11 +1432,9 @@
     },
     {
         "route_number": "49",
-        "pickup_point": "Board at",
+        "pickup_point": "Town",
         "destinations": [
-            "Thika Road |10 km|",
-            "Kasarani |20 km|",
-            "Clay City (formerly route 45W) |30 km|"
+            "Thika Road , Kasarani , Clay City (formerly route 45W)"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1617,11 +1447,9 @@
     },
     {
         "route_number": "4A",
-        "pickup_point": "Board at Luthuli Avenue/Tomboya P/office",
+        "pickup_point": "Town",
         "destinations": [
-            "Pumwani |10 km|",
-            "Madiwa |20 km|",
-            "Eastleigh Section III |30 km|"
+            "Pumwani , Madiwa , Eastleigh Section III"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1634,11 +1462,9 @@
     },
     {
         "route_number": "4B",
-        "pickup_point": "Board at Railways Stage",
+        "pickup_point": "Ngong Road, Adams, Dagoretti",
         "destinations": [
-            "Ngong Road |10 km|",
-            "Adams |20 km|",
-            "Dagoretti |30 km|"
+            "Ngong Road, Adams, Dagoretti"
         ],
         "pickup_latlng": {
             "latitude": -1.2865,
@@ -1651,11 +1477,9 @@
     },
     {
         "route_number": "4C",
-        "pickup_point": "Board at Railways/The hub/Prestige",
+        "pickup_point": "City",
         "destinations": [
-            "Adams Arcade |10 km|",
-            "Kinyanjui Road |20 km|",
-            "Kabiria |30 km|"
+            "Adams Arcade , Kinyanjui Road , Kabiria"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1668,15 +1492,13 @@
     },
     {
         "route_number": "4W",
-        "pickup_point": "Board at Railways/KENCOM",
+        "pickup_point": "City",
         "destinations": [
-            "Adams Arcade |10 km|",
-            "Wanyee Road |20 km|",
-            "Kabiria |30 km|"
+            "Adams Arcade , Wanyee Road , Kabiria"
         ],
         "pickup_latlng": {
-            "latitude": -1.2308,
-            "longitude": 36.8076
+            "latitude": null,
+            "longitude": null
         },
         "destination_latlng": {
             "latitude": null,
@@ -1685,10 +1507,9 @@
     },
     {
         "route_number": "5 / 5C",
-        "pickup_point": "Board at Railways",
+        "pickup_point": "City",
         "destinations": [
-            "Adams Arcade |10 km|",
-            "Jamhuri |20 km|"
+            "Adams Arcade , Jamhuri"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1701,11 +1522,9 @@
     },
     {
         "route_number": "53",
-        "pickup_point": "Board from ODEON",
+        "pickup_point": "City",
         "destinations": [
-            "Roasters |10 km|",
-            "Thome |20 km|",
-            "Marurui |30 km|"
+            "Roasters , Thome , Marurui"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1718,10 +1537,9 @@
     },
     {
         "route_number": "56",
-        "pickup_point": "Board at Railways",
+        "pickup_point": "City",
         "destinations": [
-            "Kawangware |10 km|",
-            "Macharia Road |20 km|"
+            "Kawangware , Macharia Road"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1736,7 +1554,7 @@
         "route_number": "58",
         "pickup_point": "Board at Tom Mboya Street opp National Archives",
         "destinations": [
-            "BuruBuru |10 km|"
+            "Buru Buru"
         ],
         "pickup_latlng": {
             "latitude": -1.3047,
@@ -1751,10 +1569,7 @@
         "route_number": "6",
         "pickup_point": "Board the Matatu from Accra Rd or  Along Tom Mboya Street. ",
         "destinations": [
-            "Eastleigh Area |10 km|",
-            "Pangani Girls |20 km|",
-            "Pangani Shopping Centre |30 km|",
-            "Kariokor Market |40 km|"
+            "Eastleigh Area/Pangani Girls/Pangani Shopping Centre,Kariokor Market"
         ],
         "pickup_latlng": {
             "latitude": -1.2897,
@@ -1769,7 +1584,7 @@
         "route_number": "61",
         "pickup_point": "City Stadium",
         "destinations": [
-            "Kayole |10 km|"
+            "Kayole"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1782,12 +1597,9 @@
     },
     {
         "route_number": "69/73",
-        "pickup_point": "Board at muthurwa market",
+        "pickup_point": "City",
         "destinations": [
-            "Industrial Zone |10 km|",
-            "GM |20 km|",
-            "Imara Daima |30 km|",
-            "Mukuru Kwa Njenga |40 km|"
+            "Industrial Zone , GM , Imara Daima , Mukuru Kwa Njenga"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1800,10 +1612,9 @@
     },
     {
         "route_number": "7",
-        "pickup_point": "board at Luthuli avenue",
+        "pickup_point": "City",
         "destinations": [
-            "Majengo |10 km|",
-            "Gikomba |20 km|"
+            "Majengo , Gikomba"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1818,9 +1629,7 @@
         "route_number": "70/71",
         "pickup_point": "Muthurwa",
         "destinations": [
-            "Lunga Lunga |10 km|",
-            "Sinai |20 km|",
-            "Donholm |30 km|"
+            "Lunga Lunga , Sinai , Donholm"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1833,16 +1642,14 @@
     },
     {
         "route_number": "7B",
-        "pickup_point": "Board at KENCOM",
+        "pickup_point": "Town",
         "destinations": [
-            "Bunyala Rd |10 km|",
-            "Upper Hill |20 km|",
-            "KNH |30 km|"
+            "Bunyala Rd , Upper Hill , KNH"
         ],
         "pickup_latlng": {
-            "latitude": -1.2308,
-            "longitude": 36.8076
-         },
+            "latitude": null,
+            "longitude": null
+        },
         "destination_latlng": {
             "latitude": null,
             "longitude": null
@@ -1852,11 +1659,7 @@
         "route_number": "7C",
         "pickup_point": "Board the Citi Hoppa or KBS buses at Kencom House opp Hilton Hotel or beside KCB Bank along Moi avenue",
         "destinations": [
-            "Community |10 km|",
-            "UpperhillArea |20 km|",
-            "KenyattaNationalHospital |30 km|",
-            "NairobiHospital |40 km|",
-            "DoctorsPlazaSilverSpringsHotel |50 km|"
+            "Community,UpperhillArea,KenyattaNationalHospital,NairobiHospital,DoctorsPlazaSilverSpringsHotel"
         ],
         "pickup_latlng": {
             "latitude": -1.2795,
@@ -1871,11 +1674,7 @@
         "route_number": "8",
         "pickup_point": "Board the matatu from Railways bus station",
         "destinations": [
-            "Ngongroad |10 km|",
-            "KiberaSlums |20 km|",
-            "Kibra |30 km|",
-            "AdamsArcade |40 km|",
-            "ToiMarket |50 km|"
+            "Ngongroad,KiberaSlums/Kibra,AdamsArcade,ToiMarket"
         ],
         "pickup_latlng": {
             "latitude": -1.2865,
@@ -1888,13 +1687,9 @@
     },
     {
         "route_number": "8B",
-        "pickup_point": "Gikomba",
+        "pickup_point": "City",
         "destinations": [
-            "City Stadium |10 km|",
-            "Bahati |20 km|",
-            "Maringo |30 km|",
-            "Jericho |40 km|",
-            "Buru Ph. 1 |50 km|"
+            "City Stadium , Bahati , Maringo , Jericho , Buru Ph. 1"
         ],
         "pickup_latlng": {
             "latitude": null,
@@ -1909,11 +1704,7 @@
         "route_number": "9",
         "pickup_point": "Board the matatu at Tom Mboya Street or opposite Nairobi County Fire Station",
         "destinations": [
-            "EastleighArea |10 km|",
-            "NgaracivilServantshousingscheme |20 km|",
-            "KIE |30 km|",
-            "Paganiroundabout |40 km|",
-            "FigtreetradeCenterNgara |50 km|"
+            "EastleighArea.NgaracivilServantshousingscheme,KIE,Paganiroundabout.FigtreetradeCenterNgara"
         ],
         "pickup_latlng": {
             "latitude": -1.2932,
@@ -1947,7 +1738,7 @@
             }
         ],
         "destinations": [
-            "in the city of nairobi |10 km|"
+            "in the city of nairobi"
         ]
     }
 ]
