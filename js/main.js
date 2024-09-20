@@ -20,17 +20,21 @@ setInterval(() => {
 }, 5 * 60 * 1000); // Check every 5 minutes
 
 
-// Function to initialize the map and set up markers, directions service, and renderer
-function initMap() {
-    // Define map options
-    var mapOptions = {
-        center: { lat: -1.286389, lng: 36.817223 },
-        zoom: 10,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+document.addEventListener('DOMContentLoaded', function() {
+  initMap();
+});
 
-    // Create the map
-    var map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
+function initMap() {
+  const mapOptions = {
+    center: { lat: 1.2921, lng: 36.8219 },
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+  window.map = map; // Make `map` accessible globally for use in other functions
+}
 
     // Create a DirectionsService object
     var directionsService = new google.maps.DirectionsService();
