@@ -34,7 +34,7 @@ function initMap() {
   const map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
   window.map = map; // Make `map` accessible globally for use in other functions
-}
+
 
     // Create a DirectionsService object
     var directionsService = new google.maps.DirectionsService();
