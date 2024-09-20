@@ -37,7 +37,7 @@ window.calcRoute = async function(map) {
   const request = {
     origin: document.getElementById('origin').value,
     destination: document.getElementById('destination').value,
-    travelMode: google.maps.TravelMode.DRIVING // Default to driving
+    mapTypeId: google.maps.MapTypeId.ROADMAP // Default to driving
   };
 
   // Collect additional locations as waypoints
