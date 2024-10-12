@@ -61,19 +61,19 @@ window.calcRoute = async function(map) {
   // Initialize DirectionsService object
   const directionsService = new google.maps.DirectionsService();
 
-  async function fetchDirections(request) {
-    try {
-      const response = await new Promise((resolve, reject) => {
+async function fetchDirections(request) {
+    return new Promise((resolve, reject) => {
         const directionsService = new google.maps.DirectionsService();
         directionsService.route(request, (response, status) => {
-          if (status === 'OK') {
-            resolve(response);
-          } else {
-            reject(`Directions request failed: ${status}`);
-          }
+            if (status === 'OK') {
+                resolve(response);
+            } else {
+                reject(`Directions request failed: ${status}`);
+            }
         });
-      });
-      return response;
+    });
+}
+   return response;
     } catch (error) {
       console.error('Error fetching directions:', error);
       throw new Error('Failed to fetch directions');
