@@ -19,45 +19,43 @@ setInterval(() => {
     }
 }, 5 * 60 * 1000); // Check every 5 minutes
 
-
 document.addEventListener('DOMContentLoaded', function() {
-  initMap();
+    initMap();
 });
 
-function initMap() {
-  const mapOptions = {
-    center: { lat: 1.2921, lng: 36.8219 },
-    zoom: 12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+async function initMap() {
+    const mapOptions = {
+        center: { lat: 1.2921, lng: 36.8219 },
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-  const map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-  window.map = map; // Make `map` accessible globally for use in other functions
-
+    const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    window.map = map; // Make `map` accessible globally for use in other functions
 
     // Create a DirectionsService object
-    var directionsService = new google.maps.DirectionsService();
-
-    // Create a DirectionsRenderer object
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-
-    // Bind the DirectionsRenderer to the map
-    directionsDisplay.setMap(map);
+    const directionsService = new google.maps.DirectionsService();
+    const directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map); // Bind the DirectionsRenderer to the map
 
     // Optional: Add traffic layer to the map
-    var trafficLayer = new google.maps.TrafficLayer();
+    const trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap(map);
 
     // Fetch origin and destination from the input fields
-    var originInput = document.getElementById("origin").value;
-    var destinationInput = document.getElementById("destination").value;
+    const originInput = document.getElementById("origin").value;
+    const destinationInput = document.getElementById("destination").value;
 
-    // Convert origin and destination strings to LatLng objects
-    geocodeAddress(originInput).then(function(origin) {
-        geocodeAddress(destinationInput).then(function(destination) {
-            // Create a DirectionsRequest object
-            var request = {
+    try {
+        const origin = await geocodeAddress(originInput);
+        const destination = await geocodeAddress(destinationInput);
+
+        // Fetch route details from Dgraph
+        const additionalLocations = await getAdditionalLocations();
+        const routeDetails = await fetchRouteDetails(originInput, destinationInput, additionalLocations);
+
+        if (routeDetails) {
+            const request = {
                 origin: origin,
                 destination: destination,
                 travelMode: google.maps.TravelMode.DRIVING
@@ -68,22 +66,23 @@ function initMap() {
                 if (status === 'OK') {
                     // Display the route on the map
                     directionsDisplay.setDirections(response);
+                    window.response = response; // Save response for ETA checking
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
             });
-        }).catch(function(error) {
-            console.error('Error geocoding destination:', error);
-        });
-    }).catch(function(error) {
-        console.error('Error geocoding origin:', error);
-    });
+        } else {
+            console.error("Failed to fetch route details from Dgraph.");
+        }
+    } catch (error) {
+        console.error('Error geocoding addresses or fetching route:', error);
+    }
 }
 
 // Function to convert address string to LatLng object
 function geocodeAddress(address) {
     return new Promise(function(resolve, reject) {
-        var geocoder = new google.maps.Geocoder();
+        const geocoder = new google.maps.Geocoder();
         geocoder.geocode({ address: address }, function(results, status) {
             if (status === 'OK' && results[0]) {
                 resolve(results[0].geometry.location);
@@ -101,9 +100,41 @@ function loadGoogleMapsAPI(callback) {
     document.head.appendChild(script);
 }
 
+// Function to fetch route details using Dgraph
+async function fetchRouteDetails(origin, destination, additionalLocations) {
+    const query = `
+        query($origin: String!, $destination: String!, $additionalLocations: [String!]) {
+            findRoute(origin: $origin, destination: $destination, additionalLocations: $additionalLocations) {
+                edges {
+                    source
+                    destination
+                    routeNumber
+                }
+            }
+        }
+    `;
+
+    const variables = {
+        origin,
+        destination,
+        additionalLocations
+    };
+
+    const response = await fetch('https://blue-surf-1310330.us-east-1.aws.cloud.dgraph.io/graphql', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query, variables }),
+    });
+
+    const data = await response.json();
+    return data.data.findRoute.edges;
+}
+
 // Function to initialize autocomplete for input fields
 function initializeAutocomplete(input) {
-    var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
+    const autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'] });
 }
 
 class Graph {
@@ -115,7 +146,6 @@ class Graph {
         this.vertexProperties = new Map(); // Map to store additional vertex properties
     }
 
-    // Add a vertex (pickup point or destination) to the graph
     addVertex(vertex) {
         if (!this.containsVertex(vertex)) {
             if (vertex.startsWith("pickup")) {
@@ -127,19 +157,14 @@ class Graph {
         }
     }
 
-    // Add an edge between two vertices
     addEdge(vertex1, vertex2, routeNumber) {
         if (!this.containsVertex(vertex1) || !this.containsVertex(vertex2)) {
             console.error("Vertices not found in the graph.");
             return;
         }
-        // Add vertex2 to the adjacency list of vertex1
         this.adjacencyList.get(vertex1).add({ destination: vertex2, routeNumber });
-        // For an undirected graph, uncomment the line below to add vertex1 to the adjacency list of vertex2
-        // this.adjacencyList.get(vertex2).add({ destination: vertex1, routeNumber });
     }
 
-    // Set vertex properties
     setVertexProperty(vertex, property, value) {
         if (property === 'latlng' && typeof value === 'object' && value !== null) {
             if ('latitude' in value && 'longitude' in value) {
@@ -153,13 +178,8 @@ class Graph {
         }
     }
 
-    // Check if the graph contains a specific vertex
     containsVertex(vertex) {
         return this.pickupPoints.has(vertex) || this.destinations.has(vertex);
-    }
-
-    getVertexProperty(vertex) {
-        return this.vertexProperties.get(vertex) || null;
     }
 
     getAdjacentVertices(vertex) {
@@ -170,21 +190,6 @@ class Graph {
         return this.vertexCoordinates.get(vertex) || null;
     }
 
-    // Function to check if the graph contains a specific edge and retrieve the route number
-    getEdgeRoute(pickupPoint, destination) {
-        const edgeKey = `${pickupPoint}_${destination}`;
-        const edge = this.adjacencyList.get(pickupPoint);
-        if (edge) {
-            for (const { destination: dest, routeNumber } of edge) {
-                if (dest === destination) {
-                    return routeNumber;
-                }
-            }
-        }
-        return null; // Return null if the edge does not exist
-    }
-
-    // Function to get all edges in the graph
     getEdges() {
         const edges = [];
         for (const [vertex, adjList] of this.adjacencyList.entries()) {
@@ -198,110 +203,37 @@ class Graph {
     getVertices() {
         return [...this.pickupPoints.values(), ...this.destinations.values()];
     }
-
-    // Function to check if the graph contains a specific edge (combined with getEdgeRoute)
-    containsEdge(pickupPoint, destination) {
-        const edge = this.adjacencyList.get(pickupPoint);
-        if (edge) {
-            for (const { destination: dest } of edge) {
-                if (dest === destination) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 }
 
-// Instantiate the HashSet class for managing sets
 class HashSet {
-  constructor() {
-    this.map = new Map();
-  }
+    constructor() {
+        this.map = new Map();
+    }
 
-  // Method to add a value to the set
-  add(value) {
-    this.map.set(value, true);
-  }
+    add(value) {
+        this.map.set(value, true);
+    }
 
-  // Method to delete a value from the set
-  delete(value) {
-    this.map.delete(value);
-  }
+    delete(value) {
+        this.map.delete(value);
+    }
 
-  // Method to check if the set contains a value
-  has(value) {
-    return this.map.has(value);
-  }
+    has(value) {
+        return this.map.has(value);
+    }
 
-  // Method to get an array of values in the set
-  values() {
-    return Array.from(this.map.keys());
-  }
+    values() {
+        return Array.from(this.map.keys());
+    }
 
-  // Method to get the size of the set
-  size() {
-    return this.map.size;
-  }
-}
-
-async function loadGraphFromJSON(jsonFile) {
-    try {
-        const response = await fetch(jsonFile);
-        const data = await response.json();
-        const graph = new Graph();
-
-        data.forEach(routeData => {
-            const routeNumber = routeData["route_number"];
-            const pickupPoint = routeData["pickup_point"];
-            const routeDestinations = routeData["destinations"];
-
-            const pickupPoints = pickupPoint.split('/');
-
-            // Add pickup points to the graph
-            pickupPoints.forEach(pickup => {
-                graph.addVertex(pickup.toLowerCase()); // Add pickup point to the graph
-            });
-
-            // Process destinations
-            routeDestinations.forEach(destinationInfo => {
-                const parts = destinationInfo.split('|');
-                const destinationName = parts[0].trim();
-                const distance = parseInt(parts[1].trim());
-
-                graph.addVertex(destinationName); // Add destination to the graph
-                graph.destinations.add(destinationName.toLowerCase()); // Update destinations set
-                graph.setVertexProperty(destinationName, 'heuristic_distance', distance); // Add heuristic distance property
-
-                // Connect each destination to all pickup points
-                pickupPoints.forEach(pickup => {
-                    graph.addEdge(pickup, destinationName, routeNumber);
-                });
-            });
-        });
-
-        return graph;
-    } catch (error) {
-        console.error('Error loading graph from JSON file:', error);
-        return null;
+    size() {
+        return this.map.size;
     }
 }
 
 // Define the main function
 async function main() {
     try {
-        // Load graph data from JSON file
-        const jsonFilePath = '../json/YesBana.json'; // Adjust the file path as needed
-        const graph = await loadGraphFromJSON(jsonFilePath);
-
-        // Check if the graph was successfully loaded
-        if (!graph) {
-            console.log('Failed to load graph from JSON file.');
-            return;
-        }
-
-        console.log('Graph loaded successfully.');
-
         // Get origin and destination locations from user input
         const origin = document.getElementById("origin").value.trim().toLowerCase();
         const destination = document.getElementById("destination").value.trim().toLowerCase();
@@ -313,26 +245,23 @@ async function main() {
         }
 
         // Get additional locations from input fields
-        const additionalLocations = await getAdditionalLocations(); // Assuming there's an asynchronous function to get additional locations
+        const additionalLocations = await getAdditionalLocations();
 
-        // Log all the values retrieved
         console.log("Origin:", origin);
         console.log("Destination:", destination);
         console.log("Additional Locations:", additionalLocations);
-        console.log("graph", graph)
 
         // Call findMat function with necessary parameters
-        window.findMat(origin, destination, additionalLocations, graph);
+        const graph = new Graph(); // Initialize the graph
+        const routeDetails = await fetchRouteDetails(origin, destination, additionalLocations);
 
-        // Wait for the Google Maps API to load before initializing the map and calling other functions
+        if (routeDetails) {
+            window.findMat(origin, destination, additionalLocations, graph);
+        }
+
+        // Load Google Maps API
         loadGoogleMapsAPI(() => {
-            // Initialize the map globally
-            let map;
             initMap();
-
-            if (!origin || !destination || !graph) {
-                console.log('Invalid graph data or missing origin/destination.');
-            }
         });
     } catch (error) {
         console.error('An error occurred:', error);
