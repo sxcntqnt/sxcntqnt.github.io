@@ -1,3 +1,163 @@
+// Function to fetch additional locations from the input fields
+window.getAdditionalLocations = async function() {
+    const additionalLocations = [];
+    const inputs = document.querySelectorAll('#additionalLocations input[type="text"]');
+    inputs.forEach(input => {
+        if (input.value.trim() !== '') {
+            additionalLocations.push(input.value.trim());
+        }
+    });
+    return additionalLocations;
+}
+
+// Class for Union-Find data structure
+class UnionFind {
+    constructor(size) {
+        this.parent = new Array(size).fill(-1);
+    }
+
+    find(x) {
+        if (this.parent[x] === -1) return x;
+        return this.find(this.parent[x]);
+    }
+
+    union(x, y) {
+        let rootX = this.find(x);
+        let rootY = this.find(y);
+        if (rootX !== rootY) {
+            this.parent[rootX] = rootY;
+        }
+    }
+}
+
+// Function to find connected components in a graph
+function findConnectedComponents(graph) {
+    const numVertices = Object.keys(graph).length;
+    const uf = new UnionFind(numVertices);
+
+    // Union all edges in the graph
+    for (const vertex in graph) {
+        const neighbors = graph[vertex];
+        for (const neighbor of neighbors) {
+            uf.union(vertex, neighbor);
+        }
+    }
+
+    // Collect connected components
+    const componentsMap = new Map();
+    for (const vertex in graph) {
+        const root = uf.find(vertex);
+        if (!componentsMap.has(root)) {
+            componentsMap.set(root, []);
+        }
+        componentsMap.get(root).push(vertex);
+    }
+
+    return Array.from(componentsMap.values());
+}
+
+// Fetch route details using Dgraph
+async function fetchRouteDetails(origin, destination, additionalLocations) {
+    const query = `
+        query($origin: String!, $destination: String!, $additionalLocations: [String!]) {
+            findRoute(origin: $origin, destination: $destination, additionalLocations: $additionalLocations) {
+                edges {
+                    source
+                    destination
+                    routeNumber
+                }
+            }
+        }
+    `;
+
+    const variables = {
+        origin,
+        destination,
+        additionalLocations
+    };
+
+    const response = await fetch('https://blue-surf-1310330.us-east-1.aws.cloud.dgraph.io/graphql', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query, variables }),
+    });
+
+    const data = await response.json();
+    return data.data.findRoute.edges;
+}
+
+// Main function to find the route
+window.findMat = async function(origin, destination, additionalLocations, graph) {
+    // Error handling for missing vertices
+    if (!graph.containsVertex(origin) || !graph.containsVertex(destination)) {
+        console.error("Origin or destination vertex not found in the graph.");
+        return null;
+    }
+
+    // Find connected components using Union-Find
+    const connectedComponents = findConnectedComponents(graph);
+
+    // Find the relevant component containing origin, destination, and additional locations
+    let relevantComponent = null;
+    for (const component of connectedComponents) {
+        if (component.includes(origin) && component.includes(destination) && 
+            additionalLocations.every(location => component.includes(location))) {
+            relevantComponent = component;
+            break;
+        }
+    }
+
+    // If relevant component found, fetch edges connected to its vertices
+    if (relevantComponent) {
+        const relevantEdges = await fetchRouteDetails(origin, destination, additionalLocations);
+        return relevantEdges;
+    } else {
+        console.error("No connected component containing origin, destination, and additional locations found.");
+        return null;
+    }
+}
+
+// Function to reconstruct the path from the cameFrom map
+function reconstructPath(cameFrom, current) {
+    const path = [];
+    while (cameFrom.has(current)) {
+        path.unshift(current);
+        current = cameFrom.get(current);
+    }
+    path.unshift(current); // Add the origin vertex
+    console.log('Reconstructed path:', path);
+    return path;
+}
+
+// Display BFS results
+function displayBFSResults(parentMap, from, to) {
+    let currentVertex = to;
+    const path = [];
+
+    while (currentVertex !== from) {
+        path.unshift(currentVertex);
+        currentVertex = parentMap.get(currentVertex);
+    }
+    path.unshift(from);
+
+    console.log('BFS results:', path);
+}
+
+// Function to display results and route details
+function displayResults(parentMap, from, to) {
+    const resultDiv = document.getElementById('result');
+
+    // Display BFS results
+    displayBFSResults(parentMap, from, to);
+
+    // Display route details
+    resultDiv.innerHTML = "<h2>Route Details:</h2>";
+    const htmlContent = `<p><strong>Start Address:</strong> ${from}</p>
+                         <p><strong>End Address:</strong> ${to}</p>`;
+    resultDiv.innerHTML += htmlContent;
+}
 window.getAdditionalLocations = async function() {
     const additionalLocations = [];
     const inputs = document.querySelectorAll('#additionalLocations input[type="text"]');
