@@ -1,69 +1,65 @@
 let additionalLocationsCount = 0;
+const MAX_LOCATIONS = 10;
 
 function addLocation() {
-  if (additionalLocationsCount < 10) {
-    additionalLocationsCount++;
-
-    const inputGroup = createInputGroup();
-    const container = document.getElementById('additionalLocations');
-    container.appendChild(inputGroup);
-  } else {
-    alert('You have reached the maximum limit of additional locations (10).');
-  }
+    if (additionalLocationsCount < MAX_LOCATIONS) {
+        additionalLocationsCount++;
+        const inputGroup = createInputGroup();
+        const container = document.getElementById('additionalLocations');
+        container.appendChild(inputGroup);
+    } else {
+        alert(`You have reached the maximum limit of additional locations (${MAX_LOCATIONS}).`);
+    }
 }
 
 function createInputGroup() {
-  const inputGroup = document.createElement('div');
-  inputGroup.classList.add('input-group', 'mb-3');
+    const inputGroup = document.createElement('div');
+    inputGroup.classList.add('input-group', 'mb-3');
 
-  const input = createInput();
-  const autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
+    const input = createInput();
+    initializeAutocomplete(input);
 
-  inputGroup.appendChild(input);
-  return inputGroup;
+    inputGroup.appendChild(input);
+    return inputGroup;
 }
 
 function createInput() {
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.classList.add('form-control', 'smallInput');
-  input.placeholder = `Location ${additionalLocationsCount}`;
-  return input;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.classList.add('form-control', 'smallInput');
+    input.placeholder = `Location ${additionalLocationsCount}`;
+    return input;
 }
 
-window.calcRoute = async function(map) {
-  // Define request parameters
-  const request = {
-    origin: document.getElementById('origin').value,
-    destination: document.getElementById('destination').value,
-    mapTypeId: google.maps.MapTypeId.ROADMAP // Default to driving
-  };
+function initializeAutocomplete(input) {
+    const autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
+}
 
-  // Collect additional locations as waypoints
-  const additionalLocations = document.querySelectorAll('.smallInput');
-  const waypoints = Array.from(additionalLocations)
-    .map(location => ({
-      location: location.value.trim(),
-      stopover: true // Adjust if intermediate stops are required
-    }))
-    .filter(waypoint => waypoint.location !== ''); // Filter out empty waypoints
+window.getAdditionalLocations = async function() {
+    const additionalLocations = [];
+    const inputs = document.querySelectorAll('#additionalLocations input[type="text"]');
+    inputs.forEach(input => {
+        const value = input.value.trim();
+        if (value) {
+            additionalLocations.push(value);
+        }
+    });
+    return additionalLocations;
+}
 
-  // Check if there are more than one additional locations
-  if (waypoints.length > 1) {
-    // If there are more than one additional locations, use transit
-    request.travelMode = google.maps.TravelMode.TRANSIT;
-  } else if (waypoints.length === 1) {
-    // If there is only one additional location, use driving
-    request.waypoints = waypoints;
-  }
 
-  // Initialize DirectionsService object
-  const directionsService = new google.maps.DirectionsService();
+async function fetchDirections(origin, destination, waypoints) {
+    const request = {
+        origin: origin,
+        destination: destination,
+        travelMode: google.maps.TravelMode.DRIVING, // Default travel mode
+        waypoints: waypoints.length > 0 ? waypoints : undefined,
+    };
 
-async function fetchDirections(request) {
+    const directionsService = new google.maps.DirectionsService();
+
     return new Promise((resolve, reject) => {
-        const directionsService = new google.maps.DirectionsService();
         directionsService.route(request, (response, status) => {
             if (status === 'OK') {
                 resolve(response);
@@ -73,160 +69,66 @@ async function fetchDirections(request) {
         });
     });
 }
-   return response;
-    } catch (error) {
-      console.error('Error fetching directions:', error);
-      throw new Error('Failed to fetch directions');
-    }
-  }
 
-  try {
-    // Fetch directions asynchronously
-    const directionsResponse = await fetchDirections(request);
-
-    // Display route details
-    displayResults(directionsResponse);
-
-    // Initialize DirectionsRenderer object
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-
-    // Set renderer to render directions on the map
-    directionsRenderer.setMap(map);
-
-    // Set additional options for the renderer (customize as needed)
-    directionsRenderer.setOptions({
-      suppressMarkers: false, // Display markers along the route
-      preserveViewport: true // Optionally preserve viewport during rendering
-    });
-
-    // Set the directions for rendering
-    directionsRenderer.setDirections(directionsResponse);
-
-
-  } catch (error) {
-    console.error('Error calculating route:', error.message);
-    alert('Failed to calculate the route. Please try again.');
-  }
-}
-
-// Function to display route details
 function displayResults(response) {
-  console.log(response)
-  const resultDiv = document.getElementById('result');
-  if (response) {
-    resultDiv.innerHTML = "<h2>Route Details:</h2>";
+    const resultDiv = document.getElementById('result');
+    if (response) {
+        resultDiv.innerHTML = "<h2>Route Details:</h2>";
+        const route = response.routes[0];
+        const routeSummary = route.summary;
+        const totalDistance = route.legs.reduce((acc, leg) => acc + leg.distance.value, 0) / 1000; // Convert to km
+        const totalDuration = route.legs.reduce((acc, leg) => acc + leg.duration.value, 0);
 
-    const routeSummary = response.routes[0].summary;
-    const routeLegs = response.routes[0].legs;
-    let startAddress = routeLegs[0].start_address;
-    let endAddress;
+        const formattedDistance = totalDistance.toFixed(2) + ' km';
+        const formattedDuration = formatDuration(totalDuration);
 
-    // If there are additional locations, set the last one as the end address
-    if (routeLegs.length > 1) {
-      endAddress = routeLegs[routeLegs.length - 1].end_address;
+        const htmlContent = `
+            <p><strong>Summary:</strong> ${routeSummary}</p>
+            <p><strong>Total Distance:</strong> ${formattedDistance}</p>
+            <p><strong>Estimated Time:</strong> ${formattedDuration}</p>
+        `;
+        resultDiv.innerHTML = htmlContent;
     } else {
-      // Otherwise, use the destination address
-      endAddress = routeLegs[0].end_address;
+        resultDiv.innerHTML = "<p>No route found for the given locations.</p>";
     }
-
-    const totalDistance = response.routes[0].legs.reduce((acc, leg) => acc + leg.distance.value, 0) / 1000; // Convert to kilometers
-    const totalDuration = response.routes[0].legs.reduce((acc, leg) => acc + leg.duration.value, 0);
-    const formattedDistance = totalDistance.toFixed(2) + ' km';
-    const formattedDuration = formatDuration(totalDuration);
-
-    const htmlContent = `<p><strong>Summary:</strong> ${routeSummary}</p>
-                         <p><strong>Start Address:</strong> ${startAddress}</p>
-                         <p><strong>End Address:</strong> ${endAddress}</p>
-                         <p><strong>Total Distance:</strong> ${formattedDistance}</p>
-                         <p><strong>Estimated Time:</strong> <span id="estimatedTime">${formattedDuration}</span></p>`;
-
-    resultDiv.innerHTML = htmlContent;
-  } else {
-    resultDiv.innerHTML = "<p>No route found for the given locations.</p>";
-  }
 }
 
-// Helper function to format duration
 function formatDuration(durationInSeconds) {
     const hours = Math.floor(durationInSeconds / 3600);
     const minutes = Math.floor((durationInSeconds % 3600) / 60);
-    const seconds = durationInSeconds % 60;
-
-    // Convert UTC time to local time
-    const localTime = new Date(Date.UTC(1970, 0, 1, 0, 0, durationInSeconds * 1000));
-
     let formattedDuration = '';
-    if (hours > 0) {
-        formattedDuration += hours + ' hour' + (hours > 1 ? 's' : '') + ' ';
-    }
-    if (minutes > 0) {
-        formattedDuration += minutes + ' min' + (minutes > 1 ? 's' : '') + ' ';
-    }
-    if (seconds > 0) {
-        formattedDuration += seconds + ' sec' + (seconds > 1 ? 's' : '');
-    }
-
-    return formattedDuration.trim() + ' (' + localTime.toLocaleTimeString() + ')';
+    if (hours > 0) formattedDuration += hours + ' hour' + (hours > 1 ? 's' : '');
+    if (minutes > 0) formattedDuration += (formattedDuration ? ' ' : '') + minutes + ' min';
+    return formattedDuration || '0 min';
 }
 
-// Function to handle distance matrix API calls
-function getDistanceMatrix(distanceMatrixService, leg) {
-    return new Promise((resolve, reject) => {
-        distanceMatrixService.getDistanceMatrix({
-            origins: [leg.start_location],
-            destinations: [leg.end_location],
-            travelMode: 'DRIVING'
-        }, (results, status) => {
-            if (status === 'OK') {
-                resolve(results.rows[0].elements[0]);
-            } else {
-                reject(`Error getting distance matrix: ${status}`);
-            }
-        });
-    });
-}
+export async function calcRoute(directionsService, map) {
+    const origin = document.getElementById('origin').value;
+    const destination = document.getElementById('destination').value;
 
-/*
-async function fetchDirections(request) {
+    const additionalLocations = document.querySelectorAll('.smallInput');
+    const waypoints = Array.from(additionalLocations)
+        .map(location => ({ location: location.value.trim(), stopover: true }))
+        .filter(waypoint => waypoint.location !== '')
+        .slice(0, MAX_LOCATIONS); // Limit to MAX_LOCATIONS
+
+    const request = {
+        origin: origin,
+        destination: destination,
+        waypoints: waypoints,
+        travelMode: google.maps.TravelMode.DRIVING,
+    };
+
     try {
-        const response = await new Promise((resolve, reject) => {
-            const directionsService = new google.maps.DirectionsService();
-            directionsService.route(request, (response, status) => {
-                if (status === 'OK') {
-                    resolve(response);
-                } else {
-                    reject(`Directions request failed: ${status}`);
-                }
-            });
-        });
-        return response;
+        const directionsResponse = await fetchDirections(request, directionsService);
+        response = directionsResponse; // Store the response for ETA checks
+        directionsDisplay.setDirections(directionsResponse);
+        displayResults(directionsResponse); // Call your display results function
     } catch (error) {
-        console.error('Error fetching directions:', error);
-        throw new Error('Failed to fetch directions');
+        console.error('Error calculating route:', error.message);
+        alert('Failed to calculate the route. Please try again.');
     }
 }
-*/
 
-// Function to refresh the page and clear search results
-// Function to refresh the page and clear search results
-window.refresh = async function() {
-    document.getElementById("origin").value = "";
-    document.getElementById("destination").value = "";
-    document.getElementById("result").innerHTML = "";
 
-    const additionalLocationsContainer = document.getElementById("additionalLocations");
-    additionalLocationsContainer.innerHTML = "";
-}
-/*
-  // Assuming you have a function to re-initialize the map
-  if (map) {
-    // Center the map in Nairobi
-    map.setCenter({ lat: 1.2921, lng: 36.8219 }); // Nairobi's coordinates
-    map.setZoom(12); // Set an appropriate zoom level
-  } else {
-    // Call initMap function to re-initialize the map (assuming it exists)
-    initMap();
-  }
-}
-*/
-
+window.calcRoute = calcRoute; // Make calcRoute globally accessible

@@ -7,19 +7,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/calcRoute.js"></script>
+    <script type="module" src="js/findMat.js"></script>
+    
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5TJM9CXN');</script>
-<!-- End Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5TJM9CXN');
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TJM9CXN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TJM9CXN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     <div class="header-container">
         <h1>Matatu Route Finder</h1>
     </div>
@@ -51,13 +57,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Additional locations will be dynamically added here -->
                         </div>
 
-                        <button onclick="addLocation()" class="btn btn-primary">
+                        <button onclick="getAdditionalLocations()" class="btn btn-primary">
                             <i class="fas fa-plus"> Add Location</i>
                         </button>
-                        <button onclick="window.calcRoute()" class="btn btn-success">
+                        <button onclick="calcRoute()" class="btn btn-success">
                             <i class="fas fa-search"> Find Route </i>
                         </button>
-                        <button onclick="window.findMat()" class="btn btn-success">
+                        <button onclick="findMat()" class="btn btn-success">
                             <i class="fas fa-search"> Find Matatu </i>
                         </button>
                         <button onclick="refresh()" class="btn btn-danger">
@@ -87,13 +93,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-    <script type=module src="js/calcRoute.js"></script>
-    <script type=module src="js/findMat.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/smoothscroll.js"></script>
+
     <!-- Google Maps API script -->
-    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4DSvWZU1IwLX3bITVDEGTsRnWu0Vu3U&callback=initMap&libraries=&v=weekly" async defer> </script> 
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JM6SCE6S59"></script>
