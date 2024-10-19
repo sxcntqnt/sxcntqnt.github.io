@@ -3,7 +3,7 @@ const MAX_LOCATIONS = 10;
 const additionalLocations = []; // Initialize an array to hold additional locations
 
 // Initialize the autocomplete for the input element
-async function initializeAutocomplete(input) {
+export async function initializeAutocomplete(input) {
     await google.maps.importLibrary("places");
 
     const autocomplete = new google.maps.places.Autocomplete(input);
@@ -11,33 +11,38 @@ async function initializeAutocomplete(input) {
 }
 
 // Create a new input group for additional locations
-function createInputGroup() {
+export function createInputGroup() {
     const inputGroup = document.createElement('div');
     inputGroup.classList.add('input-group', 'mb-3');
 
-    const input = createInput(additionalLocationsCount); // Pass the current count for accurate placeholder
-    initializeAutocomplete(input);
-
-    inputGroup.appendChild(input);
-    return inputGroup;
-}
-
-// Create a new input element for the specified index
-function createInput(index) {
     const input = document.createElement('input');
     input.type = 'text';
-    input.classList.add('form-control', 'smallInput');
-    input.placeholder = `Location ${index}`; // Use the provided index for accurate labeling
-    return input;
+    input.className = 'form-control smallInput';
+    input.placeholder = 'Additional Location';
+
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.className = 'btn btn-danger';
+    removeButton.innerText = 'Remove';
+    removeButton.onclick = () => inputGroup.remove(); // Remove the input group
+
+    inputGroup.appendChild(input);
+    inputGroup.appendChild(removeButton);
+    return inputGroup;
 }
 
 // Add a new location input if the maximum hasn't been reached
 export async function addLocation() {
     if (additionalLocationsCount < MAX_LOCATIONS) {
         additionalLocationsCount++;
-        const inputGroup = createInputGroup(); // Create a new input group
+        const inputGroup = createInputGroup();
         const container = document.getElementById('additionalLocations');
+
         container.appendChild(inputGroup); // Append it to the container
+
+        // Initialize autocomplete for the newly added input
+        const newInput = inputGroup.querySelector('input[type="text"]');
+        await initializeAutocomplete(newInput);
     } else {
         alert(`You have reached the maximum limit of additional locations (${MAX_LOCATIONS}).`);
     }
@@ -56,9 +61,12 @@ export async function getAdditionalLocations() {
     return additionalLocations; // Return the populated array
 }
 
-function displayResults(response) {
+// Display the results of the directions response
+function displayRouteDetails(response) {
     const resultDiv = document.getElementById('result');
-    if (response) {
+    resultDiv.innerHTML = ""; // Clear previous results
+
+    if (response && response.routes && response.routes.length > 0) {
         resultDiv.innerHTML = "<h2>Route Details:</h2>";
         const route = response.routes[0];
         const routeSummary = route.summary;
@@ -68,10 +76,22 @@ function displayResults(response) {
         const formattedDistance = totalDistance.toFixed(2) + ' km';
         const formattedDuration = formatDuration(totalDuration);
 
+        let legsDetails = route.legs.map((leg, index) => {
+            const legDistance = (leg.distance.value / 1000).toFixed(2); // Convert to km
+            const legDuration = formatDuration(leg.duration.value);
+            const legStart = leg.start_address;
+            const legEnd = leg.end_address;
+
+            return `<p><strong>Leg ${index + 1}:</strong> ${legStart} to ${legEnd}<br>
+                     Distance: ${legDistance} km<br>
+                     Estimated Time: ${legDuration}</p>`;
+        }).join('');
+
         const htmlContent = `
             <p><strong>Summary:</strong> ${routeSummary}</p>
             <p><strong>Total Distance:</strong> ${formattedDistance}</p>
-            <p><strong>Estimated Time:</strong> ${formattedDuration}</p>
+            <p><strong>Total Estimated Time:</strong> ${formattedDuration}</p>
+            ${legsDetails}
         `;
         resultDiv.innerHTML = htmlContent;
     } else {
@@ -79,6 +99,8 @@ function displayResults(response) {
     }
 }
 
+
+// Format duration from seconds to a more readable format
 function formatDuration(durationInSeconds) {
     const hours = Math.floor(durationInSeconds / 3600);
     const minutes = Math.floor((durationInSeconds % 3600) / 60);
@@ -88,17 +110,17 @@ function formatDuration(durationInSeconds) {
     return formattedDuration || '0 min';
 }
 
-
+// Fetch directions from the Google Maps Directions Service
 async function fetchDirections(origin, destination, waypoints) {
     const request = {
         origin: origin,
         destination: destination,
         travelMode: google.maps.TravelMode.DRIVING, // Default travel mode
-    };  
+    };
 
     // Add waypoints only if they exist
     if (waypoints.length > 0) {
-        request.waypoints = waypoints.map(location => ({ location, stopover: true }));
+        request.waypoints = waypoints;
     }
 
     const directionsService = new google.maps.DirectionsService();
@@ -111,24 +133,20 @@ async function fetchDirections(origin, destination, waypoints) {
                 reject(`Directions request failed: ${status}`);
             }
         });
-    }); 
-}
-
-async function drawPath(directionsResponse) {
-    const directionsDisplay = new google.maps.DirectionsRenderer();
-    
-    // Set the map for the directions display
-    const map = new google.maps.Map(document.getElementById('googlemap'), {
-        center: { lat: 1.2921, lng: 36.8219 },
-        zoom: 12,
     });
-    
-    directionsDisplay.setMap(map); // Set the map
-    directionsDisplay.setDirections(directionsResponse);
-    displayResults(directionsResponse); // Call your display results function
 }
 
-export async function calcRoute(directionsService, directionsDisplay) {
+// Locally scoped drawPath function
+async function drawPath(response, map) {
+    const directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map); // Set the map for the new DirectionsRenderer
+
+    directionsDisplay.setDirections(response); // Use the passed response
+    displayRouteDetails(response); // Call to display results
+}
+
+// Calculate the route based on user inputs and fetch directions
+export async function calcRoute(directionsService, map) {
     const origin = document.getElementById('origin').value.trim();
     const destination = document.getElementById('destination').value.trim();
 
@@ -137,17 +155,18 @@ export async function calcRoute(directionsService, directionsDisplay) {
         return;
     }
 
-    const additionalLocations = await getAdditionalLocations(); // Fetch additional locations
-    const waypoints = additionalLocations.map(location => ({ location, stopover: true })); // Format as waypoints
+    // Fetch additional locations as waypoints
+    const additionalLocations = await getAdditionalLocations();
+    const waypoints = additionalLocations.map(location => ({ location, stopover: true }));
 
     try {
         const directionsResponse = await fetchDirections(origin, destination, waypoints);
+        
+        // Call the function to draw the path on the map
+        await drawPath(directionsResponse, map); // Pass the map to drawPath
 
-        // Log the response to the console
-        console.log('Directions Response:', directionsResponse);
-
-        // Call drawPath to handle displaying the directions
-        await drawPath(directionsResponse); // Pass the directionsDisplay
+        // Return the directionsResponse
+        return directionsResponse; 
 
     } catch (error) {
         console.error('Error calculating route:', error.message);
@@ -155,6 +174,9 @@ export async function calcRoute(directionsService, directionsDisplay) {
     }
 }
 
-
-window.calcRoute = calcRoute; // Make calcRoute globally accessible
+// Expose functions to global scope
+window.initializeAutocomplete = initializeAutocomplete;
 window.addLocation = addLocation;
+window.createInputGroup = createInputGroup;
+window.calcRoute = calcRoute; // Make calcRoute globally accessible
+

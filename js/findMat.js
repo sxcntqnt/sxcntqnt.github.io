@@ -1,4 +1,17 @@
+//let directionsResponse; // This should match the global variable name in main.js
 
+
+export function handleDirectionsResponse(directionsResponse) {
+    // Process the directionsResponse here
+    console.log('Received directions response in findMat.js:', directionsResponse);
+
+    // Implement your logic to handle the directions response
+}
+
+window.handleDirectionsResponse = handleDirectionsResponse;
+
+
+/*
 // Class for Union-Find data structure
 class UnionFind {
     constructor(size) {
@@ -222,3 +235,4 @@ function displayResults(parentMap, from, to) {
 
 //const route = routesGraph.findRoute(fromLocation, toLocation, viaVertices);
 //console.log("Route:", route);
+*/
