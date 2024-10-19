@@ -66,18 +66,25 @@ window.initMap = async function() {
     await main(directionsService, directionsDisplay, map); // Pass the map instance
 }
 
-let directionsResponse; // Global variable to store directionsResponse
 
+// Assume directionsService, directionsDisplay, and map are defined earlier in your code
 async function main(directionsService, directionsDisplay, map) {
     document.querySelector('.btn-success').addEventListener('click', async () => {
         try {
-            directionsResponse = await calcRoute(directionsService, map); // Pass the map instance
-            
-            // Pass the directionsResponse to findMat.js function
-            handleDirectionsResponse(directionsResponse); 
+            const directionsResponse = await calcRoute(directionsService, map);
+
+            if (directionsResponse && directionsResponse.status === 'OK') {
+                handleDirectionsResponse(directionsResponse);
+            } else {
+                console.error('No valid directions received:', directionsResponse);
+                alert('No valid directions found. Please check your inputs and try again.');
+            }
 
         } catch (error) {
-            console.error('An error occurred:', error);
+            console.error('An error occurred while fetching directions:', error);
+            alert('An error occurred while calculating the route. Please try again.');
         }
-    });  
+    });
 }
+
+
