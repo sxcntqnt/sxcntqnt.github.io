@@ -10,6 +10,7 @@ export async function initializeAutocomplete(input) {
     autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
 }
 
+// Create a new input group for additional locations
 export function createInputGroup() {
     const inputGroup = document.createElement('div');
     inputGroup.classList.add('input-group', 'mb-3');
@@ -23,45 +24,25 @@ export function createInputGroup() {
     removeButton.type = 'button';
     removeButton.className = 'btn btn-danger';
     removeButton.innerText = 'Remove';
-    removeButton.onclick = () => {
-        inputGroup.remove(); // Remove the input group
-    };
+    removeButton.onclick = () => inputGroup.remove(); // Remove the input group
 
     inputGroup.appendChild(input);
     inputGroup.appendChild(removeButton);
     return inputGroup;
 }
 
-// initialize inputs
-async function initializeInputs() {
-    const additionalLocationsContainer = document.getElementById('additionalLocations');
-    const initialInputGroup = createInputGroup(); // Make sure this returns a valid node
-    
-    // Check if the input group is valid
-    if (initialInputGroup) {
-        additionalLocationsContainer.appendChild(initialInputGroup);
-    } else {
-        console.error('createInputGroup did not return a valid node');
-    }
-
-    // Initialize autocomplete for all relevant inputs
-    await initializeAllAutocompletes();
-}
-
 // Add a new location input if the maximum hasn't been reached
 export async function addLocation() {
     if (additionalLocationsCount < MAX_LOCATIONS) {
         additionalLocationsCount++;
-        const inputGroup = createInputGroup(); // Create a new input group
+        const inputGroup = createInputGroup();
         const container = document.getElementById('additionalLocations');
 
-        if (inputGroup) {
-            container.appendChild(inputGroup); // Append it to the container
-            
-            // Initialize autocomplete for the newly added input
-            const newInput = inputGroup.querySelector('input[type="text"]'); // Adjust selector if needed
-            await initializeAutocomplete(newInput);
-        }
+        container.appendChild(inputGroup); // Append it to the container
+
+        // Initialize autocomplete for the newly added input
+        const newInput = inputGroup.querySelector('input[type="text"]');
+        await initializeAutocomplete(newInput);
     } else {
         alert(`You have reached the maximum limit of additional locations (${MAX_LOCATIONS}).`);
     }
@@ -80,11 +61,10 @@ export async function getAdditionalLocations() {
     return additionalLocations; // Return the populated array
 }
 
-function displayResults(response) {
+// Display the results of the directions response
+function displayRouteDetails(response) {
     const resultDiv = document.getElementById('result');
-    
-    // Clear previous results
-    resultDiv.innerHTML = "";
+    resultDiv.innerHTML = ""; // Clear previous results
 
     if (response && response.routes && response.routes.length > 0) {
         resultDiv.innerHTML = "<h2>Route Details:</h2>";
@@ -96,10 +76,22 @@ function displayResults(response) {
         const formattedDistance = totalDistance.toFixed(2) + ' km';
         const formattedDuration = formatDuration(totalDuration);
 
+        let legsDetails = route.legs.map((leg, index) => {
+            const legDistance = (leg.distance.value / 1000).toFixed(2); // Convert to km
+            const legDuration = formatDuration(leg.duration.value);
+            const legStart = leg.start_address;
+            const legEnd = leg.end_address;
+
+            return `<p><strong>Leg ${index + 1}:</strong> ${legStart} to ${legEnd}<br>
+                     Distance: ${legDistance} km<br>
+                     Estimated Time: ${legDuration}</p>`;
+        }).join('');
+
         const htmlContent = `
             <p><strong>Summary:</strong> ${routeSummary}</p>
             <p><strong>Total Distance:</strong> ${formattedDistance}</p>
-            <p><strong>Estimated Time:</strong> ${formattedDuration}</p>
+            <p><strong>Total Estimated Time:</strong> ${formattedDuration}</p>
+            ${legsDetails}
         `;
         resultDiv.innerHTML = htmlContent;
     } else {
@@ -107,6 +99,8 @@ function displayResults(response) {
     }
 }
 
+
+// Format duration from seconds to a more readable format
 function formatDuration(durationInSeconds) {
     const hours = Math.floor(durationInSeconds / 3600);
     const minutes = Math.floor((durationInSeconds % 3600) / 60);
@@ -116,7 +110,7 @@ function formatDuration(durationInSeconds) {
     return formattedDuration || '0 min';
 }
 
-
+// Fetch directions from the Google Maps Directions Service
 async function fetchDirections(origin, destination, waypoints) {
     const request = {
         origin: origin,
@@ -142,21 +136,17 @@ async function fetchDirections(origin, destination, waypoints) {
     });
 }
 
-async function drawPath(directionsResponse) {
+// Locally scoped drawPath function
+async function drawPath(response, map) {
     const directionsDisplay = new google.maps.DirectionsRenderer();
-    
-    // Set the map for the directions display
-    const map = new google.maps.Map(document.getElementById('googlemap'), {
-        center: { lat: -1.286389, lng: 36.817223 },
-        zoom: 12,
-    });
-    
-    directionsDisplay.setMap(map); // Set the map
-    directionsDisplay.setDirections(directionsResponse);
-    displayResults(directionsResponse); // Call your display results function
+    directionsDisplay.setMap(map); // Set the map for the new DirectionsRenderer
+
+    directionsDisplay.setDirections(response); // Use the passed response
+    displayRouteDetails(response); // Call to display results
 }
 
-export async function calcRoute(directionsService, directionsDisplay) {
+// Calculate the route based on user inputs and fetch directions
+export async function calcRoute(directionsService, map) {
     const origin = document.getElementById('origin').value.trim();
     const destination = document.getElementById('destination').value.trim();
 
@@ -166,14 +156,14 @@ export async function calcRoute(directionsService, directionsDisplay) {
     }
 
     // Fetch additional locations as waypoints
-    const additionalLocations = await getAdditionalLocations(); // This should return an array of strings
+    const additionalLocations = await getAdditionalLocations();
     const waypoints = additionalLocations.map(location => ({ location, stopover: true }));
 
     try {
         const directionsResponse = await fetchDirections(origin, destination, waypoints);
         
         // Call the function to draw the path on the map
-        await drawPath(directionsResponse); // This should use directionsDisplay
+        await drawPath(directionsResponse, map); // Pass the map to drawPath
 
         // Return the directionsResponse
         return directionsResponse; 
@@ -184,8 +174,9 @@ export async function calcRoute(directionsService, directionsDisplay) {
     }
 }
 
-
+// Expose functions to global scope
 window.initializeAutocomplete = initializeAutocomplete;
 window.addLocation = addLocation;
 window.createInputGroup = createInputGroup;
 window.calcRoute = calcRoute; // Make calcRoute globally accessible
+

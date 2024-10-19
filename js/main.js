@@ -17,19 +17,25 @@ setInterval(() => {
 
 // Function to initialize all input fields with autocomplete
 async function initializeAllAutocompletes() {
-    const inputs = ['origin', 'destination', ...Array.from(document.querySelectorAll('.smallInput')).map(input => input.id)];
-    
-    for (const inputId of inputs) {
-        const inputElement = document.getElementById(inputId);
-        if (inputElement) {
-            try {
-                await initializeAutocomplete(inputElement);
-            } catch (error) {
-                console.error(`Failed to initialize autocomplete for ${inputId}:`, error);
-            }
-        } else {
-            console.error(`${inputId} input not found!`);
-        }
+    const originInput = document.getElementById('origin');
+    const destinationInput = document.getElementById('destination');
+
+    if (originInput) {
+        await initializeAutocomplete(originInput);
+    } else {
+        console.error('Origin input not found!');
+    }
+
+    if (destinationInput) {
+        await initializeAutocomplete(destinationInput);
+    } else {
+        console.error('Destination input not found!');
+    }
+
+    // Initialize autocomplete for additional location inputs
+    const additionalLocationInputs = document.querySelectorAll('#additionalLocations input[type="text"]');
+    for (const input of additionalLocationInputs) {
+        await initializeAutocomplete(input);
     }
 }
 
@@ -43,9 +49,7 @@ async function initializeInputs() {
     await initializeAllAutocompletes();
 }
 
-// Call this function to initialize inputs when the page is loaded
-document.addEventListener('DOMContentLoaded', initializeInputs);
-
+//initialize program
 window.initMap = async function() {   
     const directionsService = new google.maps.DirectionsService();
     const mapOptions = {
@@ -57,16 +61,17 @@ window.initMap = async function() {
     const map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
     const directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(map); // Set the map for the directions display
+
     await initializeInputs(); // Initialize inputs here
-    await main(directionsService, directionsDisplay);
+    await main(directionsService, directionsDisplay, map); // Pass the map instance
 }
 
 let directionsResponse; // Global variable to store directionsResponse
 
-async function main(directionsService, directionsDisplay) {
+async function main(directionsService, directionsDisplay, map) {
     document.querySelector('.btn-success').addEventListener('click', async () => {
         try {
-            directionsResponse = await calcRoute(directionsService, directionsDisplay); // Store the response globally
+            directionsResponse = await calcRoute(directionsService, map); // Pass the map instance
             
             // Pass the directionsResponse to findMat.js function
             handleDirectionsResponse(directionsResponse); 
@@ -74,5 +79,5 @@ async function main(directionsService, directionsDisplay) {
         } catch (error) {
             console.error('An error occurred:', error);
         }
-    });
+    });  
 }
