@@ -1,5 +1,3 @@
-//let directionsResponse; // This should match the global variable name in main.js
-
 
 export function handleDirectionsResponse(directionsResponse) {
     // Process the directionsResponse here
