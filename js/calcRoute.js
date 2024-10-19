@@ -1,73 +1,59 @@
 let additionalLocationsCount = 0;
 const MAX_LOCATIONS = 10;
+const additionalLocations = []; // Initialize an array to hold additional locations
 
-function addLocation() {
-    if (additionalLocationsCount < MAX_LOCATIONS) {
-        additionalLocationsCount++;
-        const inputGroup = createInputGroup();
-        const container = document.getElementById('additionalLocations');
-        container.appendChild(inputGroup);
-    } else {
-        alert(`You have reached the maximum limit of additional locations (${MAX_LOCATIONS}).`);
-    }
+// Initialize the autocomplete for the input element
+async function initializeAutocomplete(input) {
+    await google.maps.importLibrary("places");
+
+    const autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
 }
 
+// Create a new input group for additional locations
 function createInputGroup() {
     const inputGroup = document.createElement('div');
     inputGroup.classList.add('input-group', 'mb-3');
 
-    const input = createInput();
+    const input = createInput(additionalLocationsCount); // Pass the current count for accurate placeholder
     initializeAutocomplete(input);
 
     inputGroup.appendChild(input);
     return inputGroup;
 }
 
-function createInput() {
+// Create a new input element for the specified index
+function createInput(index) {
     const input = document.createElement('input');
     input.type = 'text';
     input.classList.add('form-control', 'smallInput');
-    input.placeholder = `Location ${additionalLocationsCount}`;
+    input.placeholder = `Location ${index}`; // Use the provided index for accurate labeling
     return input;
 }
 
-function initializeAutocomplete(input) {
-    const autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
+// Add a new location input if the maximum hasn't been reached
+export async function addLocation() {
+    if (additionalLocationsCount < MAX_LOCATIONS) {
+        additionalLocationsCount++;
+        const inputGroup = createInputGroup(); // Create a new input group
+        const container = document.getElementById('additionalLocations');
+        container.appendChild(inputGroup); // Append it to the container
+    } else {
+        alert(`You have reached the maximum limit of additional locations (${MAX_LOCATIONS}).`);
+    }
 }
 
-window.getAdditionalLocations = async function() {
-    const additionalLocations = [];
+// Get additional locations from the input fields
+export async function getAdditionalLocations() {
+    additionalLocations.length = 0; // Clear previous locations
     const inputs = document.querySelectorAll('#additionalLocations input[type="text"]');
     inputs.forEach(input => {
         const value = input.value.trim();
         if (value) {
-            additionalLocations.push(value);
+            additionalLocations.push(value); // Add non-empty values to the array
         }
     });
-    return additionalLocations;
-}
-
-
-async function fetchDirections(origin, destination, waypoints) {
-    const request = {
-        origin: origin,
-        destination: destination,
-        travelMode: google.maps.TravelMode.DRIVING, // Default travel mode
-        waypoints: waypoints.length > 0 ? waypoints : undefined,
-    };
-
-    const directionsService = new google.maps.DirectionsService();
-
-    return new Promise((resolve, reject) => {
-        directionsService.route(request, (response, status) => {
-            if (status === 'OK') {
-                resolve(response);
-            } else {
-                reject(`Directions request failed: ${status}`);
-            }
-        });
-    });
+    return additionalLocations; // Return the populated array
 }
 
 function displayResults(response) {
@@ -102,28 +88,67 @@ function formatDuration(durationInSeconds) {
     return formattedDuration || '0 min';
 }
 
-export async function calcRoute(directionsService, map) {
-    const origin = document.getElementById('origin').value;
-    const destination = document.getElementById('destination').value;
 
-    const additionalLocations = document.querySelectorAll('.smallInput');
-    const waypoints = Array.from(additionalLocations)
-        .map(location => ({ location: location.value.trim(), stopover: true }))
-        .filter(waypoint => waypoint.location !== '')
-        .slice(0, MAX_LOCATIONS); // Limit to MAX_LOCATIONS
-
+async function fetchDirections(origin, destination, waypoints) {
     const request = {
         origin: origin,
         destination: destination,
-        waypoints: waypoints,
-        travelMode: google.maps.TravelMode.DRIVING,
-    };
+        travelMode: google.maps.TravelMode.DRIVING, // Default travel mode
+    };  
+
+    // Add waypoints only if they exist
+    if (waypoints.length > 0) {
+        request.waypoints = waypoints.map(location => ({ location, stopover: true }));
+    }
+
+    const directionsService = new google.maps.DirectionsService();
+
+    return new Promise((resolve, reject) => {
+        directionsService.route(request, (response, status) => {
+            if (status === 'OK') {
+                resolve(response);
+            } else {
+                reject(`Directions request failed: ${status}`);
+            }
+        });
+    }); 
+}
+
+async function drawPath(directionsResponse) {
+    const directionsDisplay = new google.maps.DirectionsRenderer();
+    
+    // Set the map for the directions display
+    const map = new google.maps.Map(document.getElementById('googlemap'), {
+        center: { lat: 1.2921, lng: 36.8219 },
+        zoom: 12,
+    });
+    
+    directionsDisplay.setMap(map); // Set the map
+    directionsDisplay.setDirections(directionsResponse);
+    displayResults(directionsResponse); // Call your display results function
+}
+
+export async function calcRoute(directionsService, directionsDisplay) {
+    const origin = document.getElementById('origin').value.trim();
+    const destination = document.getElementById('destination').value.trim();
+
+    if (!origin || !destination) {
+        alert('Please provide both origin and destination.');
+        return;
+    }
+
+    const additionalLocations = await getAdditionalLocations(); // Fetch additional locations
+    const waypoints = additionalLocations.map(location => ({ location, stopover: true })); // Format as waypoints
 
     try {
-        const directionsResponse = await fetchDirections(request, directionsService);
-        response = directionsResponse; // Store the response for ETA checks
-        directionsDisplay.setDirections(directionsResponse);
-        displayResults(directionsResponse); // Call your display results function
+        const directionsResponse = await fetchDirections(origin, destination, waypoints);
+
+        // Log the response to the console
+        console.log('Directions Response:', directionsResponse);
+
+        // Call drawPath to handle displaying the directions
+        await drawPath(directionsResponse); // Pass the directionsDisplay
+
     } catch (error) {
         console.error('Error calculating route:', error.message);
         alert('Failed to calculate the route. Please try again.');
@@ -132,3 +157,4 @@ export async function calcRoute(directionsService, map) {
 
 
 window.calcRoute = calcRoute; // Make calcRoute globally accessible
+window.addLocation = addLocation;
