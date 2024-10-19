@@ -1,8 +1,7 @@
-import { calcRoute, addLocation, getAdditionalLocations } from './calcRoute.js';
-import { findMat } from './findMat.js';
+import { initializeAutocomplete, createInputGroup, addLocation, getAdditionalLocations, calcRoute } from './calcRoute.js';
+import { handleDirectionsResponse } from './findMat.js';
 
 let response; // Store response for ETA checks
-window.calcRoute = calcRoute; // Make it globally accessible
 
 // Periodically check ETA based on live traffic conditions
 setInterval(() => {
@@ -15,67 +14,63 @@ setInterval(() => {
         document.getElementById("estimatedTime").innerText = `${etaMinutes} min`;
     }
 }, 5 * 60 * 1000); // Check every 5 minutes
-/*
-window.initMap = async function() {   
-    const directionsService = new google.maps.DirectionsService();
-    const directionsDisplay = new google.maps.DirectionsRenderer()
-    const mapOptions = {
-        center: { lat: 1.2921, lng: 36.8219 },
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
 
-    const map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
-    const directionsDisplay = new google.maps.DirectionsRenderer();
-    directionsDisplay.setMap(map);
-
-    await main(directionsService, directionsDisplay);
-}
-
-// Main function to handle the overall logic
-async function main(directionsService, directionsDisplay) {
-    // Add event listener for the "Find Route" button
-    document.querySelector('.btn-success').addEventListener('click', async () => {
-        try {
-            const origin = document.getElementById("origin").value.trim();
-            const destination = document.getElementById("destination").value.trim();
-
-            if (!origin || !destination) {
-                console.log('Please provide both origin and destination locations.');
-                return;
+// Function to initialize all input fields with autocomplete
+async function initializeAllAutocompletes() {
+    const inputs = ['origin', 'destination', ...Array.from(document.querySelectorAll('.smallInput')).map(input => input.id)];
+    
+    for (const inputId of inputs) {
+        const inputElement = document.getElementById(inputId);
+        if (inputElement) {
+            try {
+                await initializeAutocomplete(inputElement);
+            } catch (error) {
+                console.error(`Failed to initialize autocomplete for ${inputId}:`, error);
             }
-
-            const additionalLocations = await getAdditionalLocations(); // Fetch additional locations
-            response = await calcRoute(directionsService,directionsDisplay, map, origin, destination, additionalLocations);
-            directionsDisplay.setDirections(response); // Ensure directions are displayed
-
-        } catch (error) {
-            console.error('An error occurred:', error);
+        } else {
+            console.error(`${inputId} input not found!`);
         }
-    });
+    }
 }
-*/
+
+// Initialize the inputs on page load
+async function initializeInputs() {
+    const additionalLocationsContainer = document.getElementById('additionalLocations');
+    const initialInputGroup = createInputGroup();
+    additionalLocationsContainer.appendChild(initialInputGroup);
+
+    // Initialize autocomplete for all relevant inputs
+    await initializeAllAutocompletes();
+}
+
+// Call this function to initialize inputs when the page is loaded
+document.addEventListener('DOMContentLoaded', initializeInputs);
+
 window.initMap = async function() {   
     const directionsService = new google.maps.DirectionsService();
     const mapOptions = {
-        center: { lat: 1.2921, lng: 36.8219 },
-        zoom: 12,
+        center: { lat: -1.286389, lng: 36.817223 },
+        zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+    };  
 
     const map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
     const directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(map); // Set the map for the directions display
-
-    await main(directionsService, directionsDisplay); // Pass directionsDisplay to main
+    await initializeInputs(); // Initialize inputs here
+    await main(directionsService, directionsDisplay);
 }
 
-// Main function to handle the overall logic
+let directionsResponse; // Global variable to store directionsResponse
+
 async function main(directionsService, directionsDisplay) {
-    // Add event listener for the "Find Route" button
     document.querySelector('.btn-success').addEventListener('click', async () => {
         try {
-            await calcRoute(directionsService, directionsDisplay); // Call calcRoute with the correct parameters
+            directionsResponse = await calcRoute(directionsService, directionsDisplay); // Store the response globally
+            
+            // Pass the directionsResponse to findMat.js function
+            handleDirectionsResponse(directionsResponse); 
+
         } catch (error) {
             console.error('An error occurred:', error);
         }
