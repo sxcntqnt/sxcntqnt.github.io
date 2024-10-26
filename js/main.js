@@ -72,7 +72,6 @@ async function main(directionsService, directionsDisplay, map) {
     document.querySelector('.btn-success').addEventListener('click', async () => {
         try {
             const directionsResponse = await calcRoute(directionsService, map);
-
             if (directionsResponse && directionsResponse.status === 'OK') {
                 handleDirectionsResponse(directionsResponse);
             } else {

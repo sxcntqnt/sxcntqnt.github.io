@@ -3,7 +3,17 @@ export function handleDirectionsResponse(directionsResponse) {
     // Process the directionsResponse here
     console.log('Received directions response in findMat.js:', directionsResponse);
 
-    // Implement your logic to handle the directions response
+// Convert a lat/lng point to a hexagon index at resolution 7
+const h3Index = h3.latLngToCell(37.3615593, -122.0553238, 7);
+// -> '87283472bffffff'
+console.log(h3Index)
+// Get the center of the hexagon
+const hexCenterCoordinates = h3.cellToLatLng(h3Index);
+// -> [37.35171820183272, -122.05032565263946]
+
+// Get the vertices of the hexagon
+const hexBoundary = h3.cellToBoundary(h3Index);
+// -> [ [37.341099093235684, -122.04156135164334 ], ...]}
 }
 
 window.handleDirectionsResponse = handleDirectionsResponse;
