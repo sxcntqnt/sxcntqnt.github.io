@@ -1,3 +1,20 @@
+function removeEmptyDicts(obj) {
+    if (Array.isArray(obj)) {
+        // If it's an array, recursively clean each item
+        return obj
+            .map(removeEmptyDicts) // Recursively process each item
+            .filter(item => item !== null && item !== undefined && Object.keys(item).length > 0); // Remove empty items
+    } else if (typeof obj === 'object' && obj !== null) {
+        // If it's an object, recursively clean each key-value pair
+        return Object.fromEntries(
+            Object.entries(obj)
+                .map(([key, value]) => [key, removeEmptyDicts(value)]) // Recursively process value
+                .filter(([key, value]) => value !== null && value !== undefined && Object.keys(value).length > 0) // Remove empty entries
+        );
+    }
+    // Return the item as is if it's neither an object nor an array
+    return obj;
+}
 // Function to decode Google Maps encoded polyline string
 function decodePolyline(polylineStr) {
     let index = 0;
@@ -118,13 +135,25 @@ function interpolatePoints(startCoord, endCoord, resolution) {
 export function handleDirectionsResponse(directionsResponse) {
     console.log('Received directions response in findMat.js:', directionsResponse);
 
-    // Extract the polyline from the directionsResponse
-    const polylineStr = directionsResponse.routes[0].overview_polyline.points; // Adjust index if necessary
-    const decodedCoordinates = decodePolyline(polylineStr);
-    console.log('Decoded Coordinates:', decodedCoordinates);
+    // Clean up the directionsResponse
+    const cleanedResponse = removeEmptyDicts(directionsResponse);
+    
+    // Print out the cleaned response as a formatted JSON string
+    console.log('Cleaned Directions Response:', JSON.stringify(cleanedResponse, null, 4));
 
-    // Build the DAG
-    const dag = buildDAG(decodedCoordinates, 7); // Change 7 to your desired resolution
-    console.log('DAG:', dag);
+    // Check if routes exist in the cleaned response
+    if (cleanedResponse.routes && cleanedResponse.routes.length > 0) {
+        // Extract the polyline from the cleaned directionsResponse
+        const polylineStr = cleanedResponse.routes[0].overview_polyline.points; // Adjust index if necessary
+        const decodedCoordinates = decodePolyline(polylineStr);
+        console.log('Decoded Coordinates:', decodedCoordinates);
+
+        // Build the DAG
+        const dag = buildDAG(decodedCoordinates, 7); // Change 7 to your desired resolution
+        console.log('DAG:', dag);
+    } else {
+        console.error('No routes found in the cleaned response.');
+    }
 }
+
 window.handleDirectionsResponse = handleDirectionsResponse;
