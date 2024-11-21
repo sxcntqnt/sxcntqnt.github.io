@@ -1,3 +1,4 @@
+// Function to remove empty dictionaries from an object
 function removeEmptyDicts(obj) {
     if (Array.isArray(obj)) {
         // If it's an array, recursively clean each item
@@ -15,6 +16,7 @@ function removeEmptyDicts(obj) {
     // Return the item as is if it's neither an object nor an array
     return obj;
 }
+
 // Function to decode Google Maps encoded polyline string
 function decodePolyline(polylineStr) {
     let index = 0;
@@ -131,29 +133,120 @@ function interpolatePoints(startCoord, endCoord, resolution) {
     return midPoints;
 }
 
-// Main function to handle the directions response
-export function handleDirectionsResponse(directionsResponse) {
-    console.log('Received directions response in findMat.js:', directionsResponse);
+// Main function to find routes and buses based on directions response
+export async function findMa3(directionsResponse) {
+    try {
+        console.log('Received directions response in findMa3:', directionsResponse);
 
-    // Clean up the directionsResponse
-    const cleanedResponse = removeEmptyDicts(directionsResponse);
-    
-    // Print out the cleaned response as a formatted JSON string
-    console.log('Cleaned Directions Response:', JSON.stringify(cleanedResponse, null, 4));
+        // Clean up the directionsResponse
+        const cleanedResponse = removeEmptyDicts(directionsResponse);
 
-    // Check if routes exist in the cleaned response
-    if (cleanedResponse.routes && cleanedResponse.routes.length > 0) {
-        // Extract the polyline from the cleaned directionsResponse
-        const polylineStr = cleanedResponse.routes[0].overview_polyline.points; // Adjust index if necessary
+        // Print out the cleaned response as a formatted JSON string
+        console.log('Cleaned Directions Response:', JSON.stringify(cleanedResponse, null, 4));
+
+        // Check if routes exist in the cleaned response
+        if (!cleanedResponse.routes || cleanedResponse.routes.length === 0) {
+            console.error('No routes found in the cleaned response.');
+            return;
+        }
+
+        // Extract polyline and decode coordinates
+        const polylineStr = cleanedResponse.routes[0].overview_polyline.points;
         const decodedCoordinates = decodePolyline(polylineStr);
         console.log('Decoded Coordinates:', decodedCoordinates);
 
-        // Build the DAG
-        const dag = buildDAG(decodedCoordinates, 7); // Change 7 to your desired resolution
+        // Build the Directed Acyclic Graph (DAG)
+        const dag = buildDAG(decodedCoordinates, 7);
         console.log('DAG:', dag);
-    } else {
-        console.error('No routes found in the cleaned response.');
+
+        // Display bus routes
+        await handleDirectionsResponse(cleanedResponse);
+
+    } catch (error) {
+        console.error('Error in findMa3:', error);
+        alert('An error occurred while processing directions. Please try again.');
     }
 }
 
-window.handleDirectionsResponse = handleDirectionsResponse;
+// Refactor the bus route fetching and processing into a separate function
+async function handleDirectionsResponse(directionsResponse) {
+    try {
+        console.log('Received directions response in handleDirectionsResponse:', directionsResponse);
+
+        // Extract origin and destination
+        const origin = directionsResponse.routes[0].legs[0].start_address;
+        const destination = directionsResponse.routes[0].legs[0].end_address;
+        console.log(`Origin: ${origin}, Destination: ${destination}`);
+
+        // Fetch and process bus routes
+        const buses = await fetchBusRoutes(origin, destination);
+        displayResults(buses);
+
+    } catch (error) {
+        console.error('Error in handleDirectionsResponse:', error);
+        alert('An error occurred while processing bus routes. Please try again.');
+    }
+}
+
+// Refactor bus route fetching into a separate async function
+async function fetchBusRoutes(origin, destination) {
+    try {
+        const response = await fetch("../json/YesBana.json");
+        const data = await response.json();
+
+        const cleanedData = removeEmptyDicts(data);
+        if (!cleanedData.non_null_objects || cleanedData.non_null_objects.length === 0) {
+            return [];
+        }
+
+        const busesToCBD = [];
+        const busesFromCBD = [];
+
+        cleanedData.non_null_objects.forEach(route => {
+            if (route.pickup_point.toLowerCase().includes(origin.toLowerCase())) {
+                busesToCBD.push(`${route.route_number} (TO CBD)`);
+            }
+
+            route.destinations.forEach(busDestination => {
+                if (busDestination.toLowerCase().includes(destination.toLowerCase())) {
+                    busesFromCBD.push(`${route.route_number} / ${busDestination}`);
+                }
+            });
+        });
+
+        return [...busesToCBD, ...busesFromCBD];
+    } catch (error) {
+        console.error('Error fetching bus routes:', error);
+        return [];
+    }
+}
+
+// Display the bus route results
+function displayResults(routes) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ""; // Clear previous results
+
+    if (routes && routes.length > 0) {
+        resultDiv.innerHTML = "<h2>Bus Routes:</h2>";
+
+        // Grouping the results into "To CBD" and "From CBD" sections
+        const busesToCBD = routes.filter(route => route.includes("TO CBD"));
+        const busesFromCBD = routes.filter(route => route.includes("/"));
+
+        let busesToCBDHTML = busesToCBD.length > 0
+            ? `<h3>Buses to CBD:</h3><ul>${busesToCBD.map(route => `<li>${route}</li>`).join('')}</ul>`
+            : "";
+        
+        let busesFromCBDHTML = busesFromCBD.length > 0
+            ? `<h3>Buses from CBD:</h3><ul>${busesFromCBD.map(route => `<li>${route}</li>`).join('')}</ul>`
+            : "";
+
+        // Combine the sections
+        resultDiv.innerHTML += busesToCBDHTML + busesFromCBDHTML;
+    } else {
+        resultDiv.innerHTML = "<p>No bus routes found for the given locations.</p>";
+    }
+}
+
+// Call findMa3 directly with directions response (you can now invoke this function in the event handler)
+window.findMa3 = findMa3;

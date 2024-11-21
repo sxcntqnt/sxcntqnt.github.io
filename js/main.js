@@ -1,5 +1,5 @@
 import { initializeAutocomplete, createInputGroup, addLocation, getAdditionalLocations, calcRoute } from './calcRoute.js';
-import { handleDirectionsResponse } from './findMat.js';
+import { findMa3 } from './findMat.js';
 
 let response; // Store response for ETA checks
 
@@ -73,7 +73,7 @@ async function main(directionsService, directionsDisplay, map) {
         try {
             const directionsResponse = await calcRoute(directionsService, map);
             if (directionsResponse && directionsResponse.status === 'OK') {
-                handleDirectionsResponse(directionsResponse);
+                findMa3(directionsResponse);
             } else {
                 console.error('No valid directions received:', directionsResponse);
                 alert('No valid directions found. Please check your inputs and try again.');
