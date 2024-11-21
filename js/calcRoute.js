@@ -63,7 +63,7 @@ export async function getAdditionalLocations() {
 
 // Display the results of the directions response
 function displayRouteDetails(response) {
-    const resultDiv = document.getElementById('result');
+    const resultDiv = document.getElementById('route-summary');
     resultDiv.innerHTML = ""; // Clear previous results
 
     if (response && response.routes && response.routes.length > 0) {

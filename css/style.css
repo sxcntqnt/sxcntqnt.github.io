@@ -53,7 +53,36 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Adjust the height of the result section */
+#route-summary, #bus-routes {
+    margin-bottom: 20px;  /* Space between the route summary and bus routes */
+    padding: 5px;
+    background-color: #fff;  /* White background for each section */
+    border: 1px solid #ddd;  /* Border to visually separate sections */
+    border-radius: 8px;  /* Optional: rounded corners */
+}
 
+h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Preserve whitespace (spaces and line breaks) in the content */
+#route-summary, #bus-routes {
+    white-space: pre-wrap;  /* Ensures that spaces and line breaks are preserved */
+    overflow-wrap: break-word; /* Prevents words from overflowing and breaking the layout */
+}
+
+/* Optionally, add some subtle shadow to separate the boxes */
+#route-summary, #bus-routes {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the content fits nicely within the section */
+#route-summary, #bus-routes {
+    overflow-wrap: break-word;
+}
 
 /* Adjust the height of the map */
 #googlemap {
@@ -62,11 +91,6 @@ body {
     margin-bottom: 10px; /* Add space between sections */
 }
 
-/* Adjust the height of the result section */
-#result {
-    height: 300px; /* Set a fixed height or adjust as needed */
-    overflow-y: auto; /* Add scroll if content exceeds the height */
-}
 
 /* Container for additional input fields */
 #additionalLocations .input-group {
