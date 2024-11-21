@@ -57,8 +57,7 @@ function decodePolyline(polylineStr) {
 
     return coordinates;
 }
-
-// Function to build the Directed Acyclic Graph (DAG) from coordinates
+// The buildDAG function uses these decoded coordinates to create a Directed Acyclic Graph (DAG) based on H3 cells.
 function buildDAG(coordinates, resolution) {
     const dag = {};
 
@@ -78,9 +77,8 @@ function buildDAG(coordinates, resolution) {
         if (i > 0) {
             const prevH3Index = h3.latLngToCell(coordinates[i - 1][0], coordinates[i - 1][1], resolution);
 
-            // Check if the current index is adjacent to the previous index
-            const neighbors = h3.h3ToNeighbors(prevH3Index);
-            if (neighbors.includes(h3Index)) {
+            // Check if the current index is adjacent to the previous index using areNeighborCells
+            if (h3.areNeighborCells(prevH3Index, h3Index)) {
                 // Add the current index as a neighbor of the previous index
                 if (!dag[prevH3Index].neighbors.includes(h3Index)) {
                     dag[prevH3Index].neighbors.push(h3Index);
@@ -88,15 +86,14 @@ function buildDAG(coordinates, resolution) {
             } else {
                 console.log(`Hexagons ${prevH3Index} and ${h3Index} are not adjacent. Filling gap...`);
 
-                // Interpolate points between previous and current coordinates
-                const midPoints = interpolatePoints(coordinates[i - 1], coordinates[i], resolution);
-                midPoints.forEach(point => {
-                    const midH3Index = h3.latLngToCell(point[0], point[1], resolution);
-                    // Add midpoint to the DAG
+                // Use gridPathCells to find a path from prevH3Index to h3Index
+                const pathH3Indexes = h3.gridPathCells(prevH3Index, h3Index);
+                pathH3Indexes.forEach(midH3Index => {
+                    // Add each hexagon in the path as a node in the DAG
                     if (!dag[midH3Index]) {
                         dag[midH3Index] = {
                             neighbors: [],
-                            coordinate: point,
+                            coordinate: h3.cellToLatLng(midH3Index),
                         };
                     }
                     // Connect the previous hexagon to the midpoint
@@ -115,23 +112,25 @@ function buildDAG(coordinates, resolution) {
     return dag;
 }
 
-// Function to interpolate points between two coordinates
-function interpolatePoints(startCoord, endCoord, resolution) {
-    const [startLat, startLng] = startCoord;
-    const [endLat, endLng] = endCoord;
-    
-    // Use a simple linear interpolation; you can refine this logic as needed
-    const midPoints = [];
-    const numSteps = Math.max(Math.ceil(h3.distance(startCoord, endCoord) / 100), 1); // Define step size
-
-    for (let j = 1; j < numSteps; j++) {
-        const lat = startLat + (endLat - startLat) * (j / numSteps);
-        const lng = startLng + (endLng - startLng) * (j / numSteps);
-        midPoints.push([lat, lng]);
-    }
-
-    return midPoints;
+// Interpolation: The interpolateH3Grid function leverages h3.gridPathCells to interpolate between two hexagons.
+function interpolateH3Grid(startH3, endH3) {
+    let path = h3.gridPathCells(startH3, endH3);
+    return path;
 }
+
+function interpolatePoints(startCoord, endCoord, resolution) {
+    // Convert the coordinates to H3 cells
+    const startH3 = h3.latLngToCell(startCoord[0], startCoord[1], resolution);
+    const endH3 = h3.latLngToCell(endCoord[0], endCoord[1], resolution);
+
+    // Get the hexagonal path between the two points
+    const path = interpolateH3Grid(startH3, endH3);
+
+    // Convert the path of H3 cells back to coordinates (lat, lng)
+    const coordinates = path.map(h3Index => h3.cellToLatLng(h3Index));
+    return coordinates;
+}
+
 
 // Main function to find routes and buses based on directions response
 export async function findMa3(directionsResponse) {
@@ -140,26 +139,47 @@ export async function findMa3(directionsResponse) {
 
         // Clean up the directionsResponse
         const cleanedResponse = removeEmptyDicts(directionsResponse);
-
-        // Print out the cleaned response as a formatted JSON string
         console.log('Cleaned Directions Response:', JSON.stringify(cleanedResponse, null, 4));
 
-        // Check if routes exist in the cleaned response
         if (!cleanedResponse.routes || cleanedResponse.routes.length === 0) {
             console.error('No routes found in the cleaned response.');
             return;
         }
 
-        // Extract polyline and decode coordinates
-        const polylineStr = cleanedResponse.routes[0].overview_polyline.points;
-        const decodedCoordinates = decodePolyline(polylineStr);
-        console.log('Decoded Coordinates:', decodedCoordinates);
+        for (const routeIndex in cleanedResponse.routes) {
+            const route = cleanedResponse.routes[routeIndex];
+            console.log(`Processing route ${parseInt(routeIndex) + 1}:`);
 
-        // Build the Directed Acyclic Graph (DAG)
-        const dag = buildDAG(decodedCoordinates, 7);
-        console.log('DAG:', dag);
+            if (route.legs && route.legs.length > 0) {
+                for (const legIndex in route.legs) {
+                    const leg = route.legs[legIndex];
+                    console.log(`  Processing leg ${parseInt(legIndex) + 1}:`);
 
-        // Display bus routes
+                    if (leg.steps && leg.steps.length > 0) {
+                        for (const stepIndex in leg.steps) {
+                            const step = leg.steps[stepIndex];
+
+                            // Decode the polyline string into coordinates
+                            const encodedLatLngs = step.encoded_lat_lngs;
+                            if (encodedLatLngs) {
+                                const decodedCoordinates = decodePolyline(encodedLatLngs);
+                                console.log(`    Step ${parseInt(stepIndex) + 1}: Decoded Coordinates:`, decodedCoordinates);
+
+                                // Build the Directed Acyclic Graph (DAG) using the decoded coordinates
+                                const dag = buildDAG(decodedCoordinates, 7);
+                                console.log(`    Step ${parseInt(stepIndex) + 1}: DAG:`, dag);
+                            }
+                        }
+                    } else {
+                        console.error(`  Leg ${parseInt(legIndex) + 1}: No steps found in this leg.`);
+                    }
+                }
+            } else {
+                console.error(`Route ${parseInt(routeIndex) + 1}: No legs found in this route.`);
+            }
+        }
+
+        // Handle bus routes or continue processing
         await handleDirectionsResponse(cleanedResponse);
 
     } catch (error) {
@@ -167,6 +187,7 @@ export async function findMa3(directionsResponse) {
         alert('An error occurred while processing directions. Please try again.');
     }
 }
+
 
 // Refactor the bus route fetching and processing into a separate function
 async function handleDirectionsResponse(directionsResponse) {
