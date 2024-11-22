@@ -12,85 +12,102 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/calcRoute.js"></script>
     <script type="module" src="js/findMat.js"></script>
-    
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5TJM9CXN');
+    <script>
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[]; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5TJM9CXN');
     </script>
     <!-- End Google Tag Manager -->
 </head>
+
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TJM9CXN"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TJM9CXN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <!-- Header Section -->
     <div class="header-container">
         <h1>Matatu Route Finder</h1>
     </div>
 
     <div class="row p-2">
 
+        <!-- Left Section: Inputs and Buttons -->
         <div id="left-half" class="col-md-4">
             <div class="column">
-                <div class="">
-                    <div class="left-section">
-                        <div id="locationsContainer">
-                            <label for="from">Origin:</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-circle"></i></span>
-                                </div>
-                                <input type="text" id="origin" class="form-control smallInput">
+                <div class="left-section">
+                    <div id="locationsContainer">
+                        <!-- Origin Input -->
+                        <label for="origin">Origin:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-circle"></i></span>
                             </div>
-                            <label for="to">Destination:</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                                </div>
-                                <input type="text" id="destination" class="form-control smallInput">
-                            </div>
+                            <input type="text" id="origin" class="form-control smallInput">
                         </div>
 
-                        <div id="additionalLocations">
-                            <!-- Additional locations will be dynamically added here -->
+                        <!-- Destination Input -->
+                        <label for="destination">Destination:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                            </div>
+                            <input type="text" id="destination" class="form-control smallInput">
                         </div>
-
-                        <button onclick="addLocation()" class="btn btn-primary">
-                            <i class="fas fa-plus"> Add Location</i>
-                        </button>
-                        <button onclick="calcRoute()" class="btn btn-success">
-                            <i class="fas fa-search"> Find Route </i>
-                        </button>
-                        <button onclick="handleDirectionsResponse()" class="btn btn-success">
-                            <i class="fas fa-search"> Find Matatu </i>
-                        </button>
-                        <button onclick="refresh()" class="btn btn-danger">
-                            <i class="fas fa-sync-alt">Refresh </i>
-                        </button>
                     </div>
-                </div>
 
-                <div class="">
-                    <div class="right-section">
-                        <div id="result"></div>
-                    </div>
+                    <!-- Additional Locations -->
+                    <div id="additionalLocations"></div>
+
+                    <!-- Action Buttons -->
+                    <button onclick="addLocation()" class="btn btn-primary">
+                        <i class="fas fa-plus"> Add Location</i>
+                    </button>
+                    <button onclick="calcRoute()" class="btn btn-success">
+                        <i class="fas fa-search"> Find Route </i>
+                    </button>
+                    <button onclick="handleDirectionsResponse()" class="btn btn-success">
+                        <i class="fas fa-search"> Find Matatu </i>
+                    </button>
+                    <button onclick="refresh()" class="btn btn-danger">
+                        <i class="fas fa-sync-alt"> Refresh </i>
+                    </button>
                 </div>
             </div>
+    <!-- Display Results Section: Route Summary and Bus Routes -->
+    <div class="col-md-12 mt-3">
+        <div class="right-section">
+            <!-- Route Summary -->
+            <div id="route-summary">
+                <h3>Route Summary</h3>
+                <!-- Route summary content will be populated here -->
+            </div>
+
+            <!-- Bus Routes -->
+            <div id="bus-routes">
+                <h3>Bus Routes</h3>
+                <!-- Bus route content will be populated here -->
+            </div>
+        </div>
+    </div>
+
         </div>
 
+        <!-- Right Section: Google Map -->
         <div id="right-half" class="col-md-8">
             <div class="row">
                 <div class="col-md-12">
-                    <!--<div>This is the map section</div>-->
+                    <!-- Google Map -->
                     <div id="googlemap"></div>
                 </div>
             </div>
@@ -98,23 +115,25 @@
 
     </div>
 
+
+    <!-- External Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/smoothscroll.js"></script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JM6SCE6S59"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google Maps API Script -->
 
-  gtag('config', 'G-JM6SCE6S59');
-</script>
-
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4DSvWZU1IwLX3bITVDEGTsRnWu0Vu3U&callback=initMap&libraries=&v=weekly"> </script>
+    <!-- Google Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JM6SCE6S59"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JM6SCE6S59');
+    </script>
 
 </body>
 </html>

@@ -244,7 +244,7 @@ async function fetchBusRoutes(origin, destination) {
 
 // Display the bus route results
 function displayResults(routes) {
-    const resultDiv = document.getElementById('result');
+    const resultDiv = document.getElementById('bus-routes');
     resultDiv.innerHTML = ""; // Clear previous results
 
     if (routes && routes.length > 0) {
