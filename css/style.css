@@ -53,35 +53,22 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Adjust the height of the result section */
+/* Style for route summary and bus routes */
 #route-summary, #bus-routes {
-    margin-bottom: 20px;  /* Space between the route summary and bus routes */
+    margin-bottom: 20px;           /* Space between sections */
     padding: 5px;
-    background-color: #fff;  /* White background for each section */
-    border: 1px solid #ddd;  /* Border to visually separate sections */
-    border-radius: 8px;  /* Optional: rounded corners */
+    background-color: #fff;       /* White background */
+    border: 1px solid #ddd;       /* Light gray border */
+    border-radius: 8px;           /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    overflow-wrap: break-word;    /* Prevent overflow of words */
 }
 
+/* Style for section headers */
 h3 {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 10px;
-}
-
-/* Preserve whitespace (spaces and line breaks) in the content */
-#route-summary, #bus-routes {
-    white-space: pre-wrap;  /* Ensures that spaces and line breaks are preserved */
-    overflow-wrap: break-word; /* Prevents words from overflowing and breaking the layout */
-}
-
-/* Optionally, add some subtle shadow to separate the boxes */
-#route-summary, #bus-routes {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensure the content fits nicely within the section */
-#route-summary, #bus-routes {
-    overflow-wrap: break-word;
 }
 
 /* Adjust the height of the map */
