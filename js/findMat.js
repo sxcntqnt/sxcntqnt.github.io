@@ -1,3 +1,4 @@
+
 // Function to remove empty dictionaries from an object
 function removeEmptyDicts(obj) {
     if (Array.isArray(obj)) {
@@ -209,29 +210,85 @@ async function handleDirectionsResponse(directionsResponse) {
     }
 }
 
+
 // Refactor bus route fetching into a separate async function
-async function fetchBusRoutes(origin, destination) {
+async function fetchBusRoutes(origin, destination, additionalLocations = []) {
     try {
         const response = await fetch("../json/YesBana.json");
         const data = await response.json();
 
+        // Assuming removeEmptyDicts is a function that cleans the data
         const cleanedData = removeEmptyDicts(data);
         if (!cleanedData.non_null_objects || cleanedData.non_null_objects.length === 0) {
             return [];
         }
 
+        // Create an R-Tree instance
+        const tree = new RBush();
+
+        // Prepare data for R-Tree indexing
+        const indexedRoutes = cleanedData.non_null_objects.map(route => {
+            const pickupLat = route.pickup_point.latitude; // Assuming latitude exists
+            const pickupLng = route.pickup_point.longitude; // Assuming longitude exists
+
+            return {
+                minX: pickupLng, // Longitudes as minX
+                minY: pickupLat, // Latitudes as minY
+                maxX: pickupLng, // Longitudes as maxX (single point)
+                maxY: pickupLat, // Latitudes as maxY (single point)
+                route_number: route.route_number,
+                pickup_point: route.pickup_point.pickup_point,
+                destinations: route.destinations.map(dest => ({
+                    destination: dest.destination,
+                    latitude: dest.latitude, // Assuming latitude exists
+                    longitude: dest.longitude // Assuming longitude exists
+                })),
+            };
+        });
+
+        // Load indexed routes into the R-Tree
+        tree.load(indexedRoutes);
+
         const busesToCBD = [];
         const busesFromCBD = [];
 
-        cleanedData.non_null_objects.forEach(route => {
-            if (route.pickup_point.toLowerCase().includes(origin.toLowerCase())) {
-                busesToCBD.push(`${route.route_number} (TO CBD)`);
-            }
+        // Search for routes using the R-Tree based on origin
+        const originCoords = {
+            minX: origin.longitude, // Use actual longitude for the origin
+            minY: origin.latitude,   // Use actual latitude for the origin
+            maxX: origin.longitude,
+            maxY: origin.latitude
+        };
 
+        const matchingRoutesFromOrigin = tree.search(originCoords);
+
+        matchingRoutesFromOrigin.forEach(route => {
+            busesToCBD.push(`${route.route_number} (TO CBD)`);
             route.destinations.forEach(busDestination => {
-                if (busDestination.toLowerCase().includes(destination.toLowerCase())) {
-                    busesFromCBD.push(`${route.route_number} / ${busDestination}`);
+                if (busDestination.destination.toLowerCase().includes(destination.toLowerCase())) {
+                    busesFromCBD.push(`${route.route_number} / ${busDestination.destination}`);
                 }
+            });
+        });
+
+        // Search for additional locations
+        additionalLocations.forEach(location => {
+            const locationCoords = {
+                minX: location.longitude, // Use actual longitude for the location
+                minY: location.latitude,   // Use actual latitude for the location
+                maxX: location.longitude,
+                maxY: location.latitude
+            };
+
+            const matchingRoutesFromAdditional = tree.search(locationCoords);
+
+            matchingRoutesFromAdditional.forEach(route => {
+                busesToCBD.push(`${route.route_number} (TO CBD)`);
+                route.destinations.forEach(busDestination => {
+                    if (busDestination.destination.toLowerCase().includes(destination.toLowerCase())) {
+                        busesFromCBD.push(`${route.route_number} / ${busDestination.destination}`);
+                    }
+                });
             });
         });
 
