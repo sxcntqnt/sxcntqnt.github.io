@@ -1,5 +1,6 @@
 import { initializeAutocomplete, createInputGroup, addLocation, getAdditionalLocations, calcRoute } from './calcRoute.js';
 import { findMa3 } from './findMat.js';
+import { locateAndMarkUser } from './utils.js';
 
 let response; // Store response for ETA checks
 
@@ -49,6 +50,7 @@ async function initializeInputs() {
     await initializeAllAutocompletes();
 }
 
+
 //initialize program
 window.initMap = async function() {   
     const directionsService = new google.maps.DirectionsService();
@@ -63,6 +65,7 @@ window.initMap = async function() {
     directionsDisplay.setMap(map); // Set the map for the directions display
 
     await initializeInputs(); // Initialize inputs here
+    await locateAndMarkUser(map);
     await main(directionsService, directionsDisplay, map); // Pass the map instance
 }
 
@@ -71,17 +74,31 @@ window.initMap = async function() {
 async function main(directionsService, directionsDisplay, map) {
     document.querySelector('.btn-success').addEventListener('click', async () => {
         try {
+            // Fetch user's location
+            const userLocation = await new Promise((resolve, reject) => {
+                getUserLocation(apiKey, (error, location) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(location);
+                    }
+                });
+            });
+
+            console.log("User's Location:", userLocation);
+
+            // Calculate the route
             const directionsResponse = await calcRoute(directionsService, map);
             if (directionsResponse && directionsResponse.status === 'OK') {
-                findMa3(directionsResponse);
+                // Pass userLocation and directionsResponse to findMa3
+                findMa3({ userLocation, directionsResponse });
             } else {
                 console.error('No valid directions received:', directionsResponse);
                 alert('No valid directions found. Please check your inputs and try again.');
             }
-
         } catch (error) {
-            console.error('An error occurred while fetching directions:', error);
-            alert('An error occurred while calculating the route. Please try again.');
+            console.error('An error occurred:', error);
+            alert('An error occurred. Please try again.');
         }
     });
 }

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matatu Route Finder</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://unpkg.com/h3-js"></script>
 
   <!-- Google Maps API script -->
@@ -12,7 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/utils.js"></script>
     <script type="module" src="js/calcRoute.js"></script>
     <script type="module" src="js/findMat.js"></script>
 
@@ -38,12 +42,22 @@
     <!-- Header Section -->
     <div class="header-container">
         <h1>Matatu Route Finder</h1>
+
+            <a href="login.html" class="btn btn-warning btn-lg dvd-button ">
+                <i class="bi bi-calendar-check"></i> Claim Your Spot
+	    </a>
+
+
+            <a href="#leftSection" class="btn btn-warning btn-lg dvd-button smoothScroll">
+                <i class="bi bi-calendar-check"></i> Feeling Lucky?
+            </a>
+ 
     </div>
 
     <div class="row p-2">
 
         <!-- Left Section: Inputs and Buttons -->
-        <div id="left-half" class="col-md-4">
+        <div id="left-half" class="col-md-4" id="leftSection">
             <div class="column">
                 <div class="left-section">
                     <div id="locationsContainer">
@@ -120,8 +134,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/rbush"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/smoothscroll.js"></script>
+    <!-- Google Maps API Script -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4DSvWZU1IwLX3bITVDEGTsRnWu0Vu3U&callback=initMap&libraries=&v=weekly"> </script>
 
     <!-- Google Tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JM6SCE6S59"></script>

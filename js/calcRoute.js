@@ -138,11 +138,19 @@ async function fetchDirections(origin, destination, waypoints) {
 
 // Locally scoped drawPath function
 async function drawPath(response, map) {
-    const directionsDisplay = new google.maps.DirectionsRenderer();
-    directionsDisplay.setMap(map); // Set the map for the new DirectionsRenderer
-
-    directionsDisplay.setDirections(response); // Use the passed response
-    displayRouteDetails(response); // Call to display results
+    if (!response || !response.routes || response.routes.length === 0) {
+        console.error("Invalid or empty directions response.");
+        alert("Unable to draw path: Invalid directions response.");
+    } else if (!map) {
+        console.error("Map object is undefined.");
+        alert("Unable to draw path: Map object is missing.");
+    } else {
+        // Valid response and map, proceed to draw the path
+        const directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsDisplay.setMap(map); // Set the map for the new DirectionsRenderer
+        directionsDisplay.setDirections(response); // Use the passed response
+        displayRouteDetails(response); // Call to display results
+    }
 }
 
 // Calculate the route based on user inputs and fetch directions

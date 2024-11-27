@@ -1,3 +1,6 @@
+let globalRoutesDAG = null; // Variable to store the global routes DAG
+
+// Function to remove empty dictionaries from an object
 function removeEmptyDicts(obj) {
     if (Array.isArray(obj)) {
         return obj
@@ -137,20 +140,131 @@ export async function findMa3(directionsResponse) {
         if (!cleanedResponse.routes?.length) {
             throw new Error('No routes found.');
         }
-
-        for (const route of cleanedResponse.routes) {
-            if (route.legs?.length) {
-                await processRouteLegs(route);
-            }
+      
+        // Fetch and index bus routes only once
+        if (!globalRoutesDAG) {
+            globalRoutesDAG = await fetchAndIndexBusRoutes("../json/YesBana.json");
         }
 
-        await handleDirectionsResponse(cleanedResponse);
+        for (const routeIndex in cleanedResponse.routes) {
+            const route = cleanedResponse.routes[routeIndex];
+            console.log(`Processing route ${parseInt(routeIndex) + 1}:`);
+
+            if (route.legs && route.legs.length > 0) {
+                for (const legIndex in route.legs) {
+                    const leg = route.legs[legIndex];
+                    console.log(`  Processing leg ${parseInt(legIndex) + 1}:`);
+
+                    if (leg.steps && leg.steps.length > 0) {
+                        for (const stepIndex in leg.steps) {
+                            const step = leg.steps[stepIndex];
+
+                            // Decode the polyline string into coordinates
+                            const encodedLatLngs = step.encoded_lat_lngs;
+                            if (encodedLatLngs) {
+                                const decodedCoordinates = decodePolyline(encodedLatLngs);
+                                console.log(`    Step ${parseInt(stepIndex) + 1}: Decoded Coordinates:`, decodedCoordinates);
+
+                                // Build the DAG from the decoded coordinates
+                                const dag = buildDAG(decodedCoordinates, 7); // Using 7 as an example resolution
+                                console.log(`    Built DAG:`, dag);
+
+                                // Align the polyline with the global routes DAG
+                                const alignedRoute = alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG);
+                                console.log(`    Aligned Route:`, alignedRoute);
+                            }
+                        }
+                    } else {
+                        console.error(`  Leg ${parseInt(legIndex) + 1}: No steps found in this leg.`);
+                    }
+                }
+            } else {
+                console.error(`Route ${parseInt(routeIndex) + 1}: No legs found in this route.`);
+
+            await handleDirectionsResponse(cleanedResponse);
 
     } catch (error) {
         console.error('Error in findMa3:', error);
         alert('An error occurred while processing directions. Please try again.');
     }
 }
+
+// Function to fetch and index bus routes
+async function fetchAndIndexBusRoutes(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch bus routes: ${response.statusText}`);
+        }
+        const data = await response.json();
+
+        // Assuming removeEmptyDicts is a function that cleans the data
+        const cleanedData = removeEmptyDicts(data);
+        if (!cleanedData.non_null_objects || cleanedData.non_null_objects.length === 0) {
+            console.warn('No valid bus routes found.');
+            return new RBush(); // Return an empty R-tree if no routes found
+        }
+
+        // Create an R-Tree instance
+        const tree = new RBush();
+
+        // Prepare data for R-Tree indexing
+        const indexedRoutes = cleanedData.non_null_objects.map(route => {
+            const pickupLat = route.pickup_point.latitude;
+            const pickupLng = route.pickup_point.longitude;
+
+            return {
+                minX: pickupLng,
+                minY: pickupLat,
+                maxX: pickupLng,
+                maxY: pickupLat,
+                route_number: route.route_number,
+                pickup_point: route.pickup_point.pickup_point,
+                destinations: route.destinations.map(dest => ({
+                    destination: dest.destination,
+                    latitude: dest.latitude,
+                    longitude: dest.longitude
+                })),
+            };
+        });
+
+        // Load indexed routes into the R-Tree
+        tree.load(indexedRoutes);
+
+        return tree; // Return the R-tree for later use
+    } catch (error) {
+        console.error('Error fetching bus routes:', error);
+        return new RBush(); // Return an empty R-tree on error
+    }
+}
+
+// Function to align polyline with the global routes DAG
+function alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG) {
+    const alignedRoute = [];
+
+    for (let i = 0; i < decodedCoordinates.length; i++) {
+        const currentPoint = decodedCoordinates[i];
+
+        // Query the spatial index for the closest node
+        const closestNodes = globalRoutesDAG.search({
+            minX: currentPoint.lng,
+            minY: currentPoint.lat,
+            maxX: currentPoint.lng,
+            maxY: currentPoint.lat
+        });
+
+        if (closestNodes.length > 0) {
+            // Assuming we take the first closest node for simplicity
+            const closestNode = closestNodes[0];
+            alignedRoute.push({
+                route_number: closestNode.route_number,
+                pickup_point: closestNode.pickup_point,
+                destinations: closestNode.destinations
+            });
+        }
+    }
+
+    return alignedRoute;
 
 async function processRouteLegs(route) {
     for (const leg of route.legs) {
@@ -171,11 +285,38 @@ async function processStep(step) {
         const dag = buildDAG(decodedCoordinates, 7);
         console.log(`    DAG:`, dag);
     }
+
 }
 
 async function handleDirectionsResponse(directionsResponse) {
     try {
         console.log('Received directions response in handleDirectionsResponse:', directionsResponse);
+
+
+        // Extract origin and destination
+        const origin = directionsResponse.routes[0].legs[0].start_address;
+        const destination = directionsResponse.routes[0].legs[0].end_address;
+        
+        // Decode latitude and longitude from the start location
+        //const startLocation = directionsResponse.routes[0].legs[0].start_location;
+        //const originLat = startLocation.lat;
+        //const originLng = startLocation.lng;
+
+        //console.log(`Origin Latitude: ${originLat}, Longitude: ${originLng}`);
+        console.log(`Origin: ${origin}, Destination: ${destination}`);
+
+        // Define additional locations if needed (e.g., waypoints or other relevant locations)
+        const additionalLocations = []; // Add your additional locations here, if any
+
+        // Fetch and process bus routes using the globalRoutesDAG
+        const { busesToCBD, busesFromCBD, error } = await fetchBusRoutes(origin, destination, additionalLocations);
+
+        if (error) {
+            console.error('Failed to fetch bus routes:', error);
+            alert('An error occurred while fetching bus routes. Please try again.');
+        } else {
+            displayResults(busesToCBD, busesFromCBD);
+        }
 
         const { start_address: origin, end_address: destination } = directionsResponse.routes[0].legs[0];
         console.log(`Origin: ${origin}, Destination: ${destination}`);
@@ -185,11 +326,74 @@ async function handleDirectionsResponse(directionsResponse) {
         const buses = await processRoutes(tree, busesToCBD, busesFromCBD, origin, destination, additionalLocations, resolution, maxDistanceKm);
         displayResults(buses);
 
+
     } catch (error) {
         console.error('Error in handleDirectionsResponse:', error);
         alert('An error occurred while processing bus routes. Please try again.');
     }
 }
+
+
+// Refactor bus route fetching into a separate async function
+async function fetchBusRoutes(origin, destination, additionalLocations = []) {
+    const busesToCBD = [];
+    const busesFromCBD = [];
+
+    try {
+        // Use the already built globalRoutesDAG
+        const originCoords = {
+            minX: origin.longitude,
+            minY: origin.latitude,
+            maxX: origin.longitude,
+            maxY: origin.latitude
+        };
+
+        const matchingRoutesFromOrigin = globalRoutesDAG.search(originCoords);
+        if (matchingRoutesFromOrigin.length === 0) {
+            console.warn('No matching routes found from the origin.');
+            return { busesToCBD, busesFromCBD };
+        }
+
+        matchingRoutesFromOrigin.forEach(route => {
+            busesToCBD.push(`${route.route_number} (TO CBD)`);
+            route.destinations.forEach(busDestination => {
+                if (busDestination.destination.toLowerCase().includes(destination.toLowerCase())) {
+                    busesFromCBD.push(`${route.route_number} / ${busDestination.destination}`);
+                }
+            });
+        });
+
+        // Search for additional locations
+        for (const location of additionalLocations) {
+            const locationCoords = {
+                minX: location.longitude,
+                minY: location.latitude,
+                maxX: location.longitude,
+                maxY: location.latitude
+            };
+
+            const matchingRoutesFromAdditional = globalRoutesDAG.search(locationCoords);
+            if (matchingRoutesFromAdditional.length === 0) {
+                console.warn(`No matching routes found for additional location: ${JSON.stringify(location)}`);
+                continue; // Skip to the next location
+            }
+
+            matchingRoutesFromAdditional.forEach(route => {
+                busesToCBD.push(`${route.route_number} (TO CBD)`);
+                route.destinations.forEach(busDestination => {
+                    if (busDestination.destination.toLowerCase().includes(destination.toLowerCase())) {
+                        busesFromCBD.push(`${route.route_number} / ${busDestination.destination}`);
+                    }
+                });
+            });
+        }
+
+        return { busesToCBD, busesFromCBD };
+
+    } catch (error) {
+        console.error('Error fetching bus routes:', error);
+        // Handle the error gracefully, e.g., return an empty array or a specific error object
+        return { busesToCBD: [], busesFromCBD: [], error: error.message };
 
 async function processRoutes(tree, busesToCBD, busesFromCBD, origin, destination, additionalLocations, resolution, maxDistanceKm) {
     try {
@@ -249,35 +453,30 @@ async function processRoutes(tree, busesToCBD, busesFromCBD, origin, destination
 
     } catch (error) {
         console.error('Error in processRoutes:', error);
+
     }
 }
-
 // Display the bus route results
-function displayResults(routes) {
+function displayResults(busesToCBD, busesFromCBD) {
     const resultDiv = document.getElementById('bus-routes');
     resultDiv.innerHTML = ""; // Clear previous results
 
-    if (routes && routes.length > 0) {
+    // Check if there are any routes to display
+    if (busesToCBD.length > 0 || busesFromCBD.length > 0) {
         resultDiv.innerHTML = "<h2>Bus Routes:</h2>";
 
-        // Grouping the results into "To CBD" and "From CBD" sections
-        const busesToCBD = routes.filter(route => route.includes("TO CBD"));
-        const busesFromCBD = routes.filter(route => route.includes("/"));
+        // Display Buses to CBD
+        if (busesToCBD.length > 0) {
+            resultDiv.innerHTML += `<h3>Buses to CBD:</h3><ul>${busesToCBD.map(route => `<li>${route}</li>`).join('')}</ul>`;
+        }
 
-        let busesToCBDHTML = busesToCBD.length > 0
-            ? `<h3>Buses to CBD:</h3><ul>${busesToCBD.map(route => `<li>${route}</li>`).join('')}</ul>`
-            : "";
-        
-        let busesFromCBDHTML = busesFromCBD.length > 0
-            ? `<h3>Buses from CBD:</h3><ul>${busesFromCBD.map(route => `<li>${route}</li>`).join('')}</ul>`
-            : "";
-
-        // Combine the sections
-        resultDiv.innerHTML += busesToCBDHTML + busesFromCBDHTML;
+        // Display Buses from CBD
+        if (busesFromCBD.length > 0) {
+            resultDiv.innerHTML += `<h3>Buses from CBD:</h3><ul>${busesFromCBD.map(route => `<li>${route}</li>`).join('')}</ul>`;
+        }
     } else {
         resultDiv.innerHTML = "<p>No bus routes found for the given locations.</p>";
     }
 }
-
 // Call findMa3 directly with directions response (you can now invoke this function in the event handler)
 window.findMa3 = findMa3;
