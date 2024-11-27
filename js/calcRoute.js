@@ -140,16 +140,20 @@ async function fetchDirections(origin, destination, waypoints) {
 async function drawPath(response, map) {
     if (!response || !response.routes || response.routes.length === 0) {
         console.error("Invalid or empty directions response.");
-        alert("Unable to draw path: Invalid directions response.");
-    } else if (!map) {
-        console.error("Map object is undefined.");
-        alert("Unable to draw path: Map object is missing.");
-    } else {
-        // Valid response and map, proceed to draw the path
+        console.log("Unable to draw path: Invalid directions response.");
+        return; // Early return to prevent further execution
+    }
+    
+    // Valid response and map, proceed to draw the path
+    try {
         const directionsDisplay = new google.maps.DirectionsRenderer();
         directionsDisplay.setMap(map); // Set the map for the new DirectionsRenderer
         directionsDisplay.setDirections(response); // Use the passed response
         displayRouteDetails(response); // Call to display results
+        console.log("Path drawn successfully.");
+    } catch (error) {
+        console.error("Error drawing path:", error);
+        console.log("An error occurred while drawing the path. Please try again.");
     }
 }
 

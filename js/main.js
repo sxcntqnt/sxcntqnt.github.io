@@ -65,8 +65,8 @@ window.initMap = async function() {
     directionsDisplay.setMap(map); // Set the map for the directions display
 
     await initializeInputs(); // Initialize inputs here
-    await locateAndMarkUser(map);
     await main(directionsService, directionsDisplay, map); // Pass the map instance
+    await locateAndMarkUser(map);
 }
 
 
@@ -74,18 +74,8 @@ window.initMap = async function() {
 async function main(directionsService, directionsDisplay, map) {
     document.querySelector('.btn-success').addEventListener('click', async () => {
         try {
-            // Fetch user's location
-            const userLocation = await new Promise((resolve, reject) => {
-                getUserLocation(apiKey, (error, location) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        resolve(location);
-                    }
-                });
-            });
-
-            console.log("User's Location:", userLocation);
+            // Fetch user's location and mark it on the map
+            const userLocation = await locateAndMarkUser(map);
 
             // Calculate the route
             const directionsResponse = await calcRoute(directionsService, map);
@@ -102,5 +92,4 @@ async function main(directionsService, directionsDisplay, map) {
         }
     });
 }
-
 
