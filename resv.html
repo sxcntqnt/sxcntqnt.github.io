@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matatu Seat Reservation</title>
+    <link rel="stylesheet" href="css/samm.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Matatu Seat Reservation</h1>
+        <form id="reservationForm">
+            <div class="form-group">
+                <label for="matatuType">Choose Matatu Type:</label>
+                <select id="matatuType" name="matatuType" onchange="updateIcon()">
+                    <option value="14" data-icon="img/352314_bus_directions_icon.png">14 Seater</option>
+                    <option value="30" data-icon="img/134180_bus_icon.png">30 Seater</option>
+                    <option value="50" data-icon="img/172577_bus_icon.png">50 Seater</option>
+                </select>
+                <img id="matatuIcon" src="8679573_bus_line_icon.png" alt="Matatu Icon" />
+            </div>
+            <div class="form-group">
+                <label for="seats">Number of Seats:</label>
+                <input type="number" id="seats" name="seats" min="1" required>
+            </div>
+            <button type="submit">Reserve</button>
+        </form>
+        <div id="seatLayout" class="seat-layout"></div>
+        <div id="confirmation" class="confirmation"></div>
+    </div>
+    <script src="js/samm.js"></script>
+</body>
+</html>
