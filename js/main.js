@@ -1,5 +1,8 @@
 import { initializeAutocomplete, createInputGroup, addLocation, getAdditionalLocations, calcRoute } from './calcRoute.js';
 import { findMa3 } from './findMat.js';
+import { locateAndMarkUser } from './utils.js';
+
+let response; // Store response for ETA checks
 
 // Periodically check ETA based on live traffic conditions
 setInterval(() => {
@@ -47,50 +50,7 @@ async function initializeInputs() {
     await initializeAllAutocompletes();
 }
 
-function getUserLocation(apiKey, callback) {
-    // Check if the browser supports Geolocation
-    if (!navigator.geolocation) {
-        console.error("Geolocation is not supported by your browser.");
-        return;
-    }
 
-    // Get the user's current position
-    navigator.geolocation.getCurrentPosition(
-        async (position) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
-            console.log(`User's coordinates: Latitude: ${latitude}, Longitude: ${longitude}`);
-
-            // Call the Google Maps Geocoding API to get the address
-            try {
-                const response = await fetch(
-                    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`
-                );
-                if (!response.ok) {
-                    throw new Error("Failed to fetch location details");
-                }
-
-                const data = await response.json();
-                if (data.status === "OK" && data.results.length > 0) {
-                    const address = data.results[0].formatted_address;
-                    console.log(`User's address: ${address}`);
-                    callback(null, { latitude, longitude, address });
-                } else {
-                    console.error("Unable to retrieve address from coordinates");
-                    callback("Unable to retrieve address", null);
-                }
-            } catch (error) {
-                console.error("Error fetching location details:", error);
-                callback(error, null);
-            }
-        },
-        (error) => {
-            console.error("Error getting user's location:", error);
-            callback(error, null);
-        }
-    );
-}
 //initialize program
 window.initMap = async function() {   
     const directionsService = new google.maps.DirectionsService();
@@ -105,6 +65,7 @@ window.initMap = async function() {
     directionsDisplay.setMap(map); // Set the map for the directions display
 
     await initializeInputs(); // Initialize inputs here
+    await locateAndMarkUser(map);
     await main(directionsService, directionsDisplay, map); // Pass the map instance
 }
 
