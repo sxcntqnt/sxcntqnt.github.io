@@ -285,6 +285,13 @@ async function handleDirectionsResponse(directionsResponse) {
         // Extract origin and destination
         const origin = directionsResponse.routes[0].legs[0].start_address;
         const destination = directionsResponse.routes[0].legs[0].end_address;
+        
+        // Decode latitude and longitude from the start location
+        //const startLocation = directionsResponse.routes[0].legs[0].start_location;
+        //const originLat = startLocation.lat;
+        //const originLng = startLocation.lng;
+
+        //console.log(`Origin Latitude: ${originLat}, Longitude: ${originLng}`);
         console.log(`Origin: ${origin}, Destination: ${destination}`);
 
         // Define additional locations if needed (e.g., waypoints or other relevant locations)
@@ -299,7 +306,7 @@ async function handleDirectionsResponse(directionsResponse) {
         } else {
             displayResults(busesToCBD, busesFromCBD);
         }
-        
+
     } catch (error) {
         console.error('Error in handleDirectionsResponse:', error);
         alert('An error occurred while processing bus routes. Please try again.');
