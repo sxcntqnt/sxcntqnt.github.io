@@ -66,7 +66,6 @@ window.initMap = async function() {
 
     await initializeInputs(); // Initialize inputs here
     await main(directionsService, directionsDisplay, map); // Pass the map instance
-    await locateAndMarkUser(map);
 }
 
 
@@ -76,7 +75,7 @@ async function main(directionsService, directionsDisplay, map) {
         try {
             // Fetch user's location and mark it on the map
             const userLocation = await locateAndMarkUser(map);
-
+	    console.log('user location:', userLocation)
             // Calculate the route
             const directionsResponse = await calcRoute(directionsService, map);
             if (directionsResponse && directionsResponse.status === 'OK') {
@@ -84,7 +83,7 @@ async function main(directionsService, directionsDisplay, map) {
                 findMa3({ userLocation, directionsResponse });
             } else {
                 console.error('No valid directions received:', directionsResponse);
-                alert('No valid directions found. Please check your inputs and try again.');
+                console.error('No valid directions found. Please check your inputs and try again.');
             }
         } catch (error) {
             console.error('An error occurred:', error);
