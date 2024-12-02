@@ -1,6 +1,6 @@
 let globalRoutesDAG = null;
 
-// Utility to remove empty dictionaries
+// Utility to remove empty dictionaries from an object
 function removeEmptyDicts(obj) {
     if (Array.isArray(obj)) {
         return obj.map(removeEmptyDicts).filter(item => item && Object.keys(item).length > 0);
@@ -15,17 +15,22 @@ function removeEmptyDicts(obj) {
     return obj;
 }
 
-// Decode polyline into coordinates
+// Decode a polyline string into an array of coordinates
 function decodePolyline(polylineStr) {
     let index = 0, lat = 0, lng = 0, coordinates = [];
+
     while (index < polylineStr.length) {
         let result = 0, shift = 0, byte;
+        
+        // Decode latitude
         do {
             byte = polylineStr.charCodeAt(index++) - 63;
             result |= (byte & 0x1f) << shift;
             shift += 5;
         } while (byte >= 0x20);
         lat += (result >> 1) ^ (-(result & 1));
+        
+        // Reset result and shift for longitude
         result = shift = 0;
         do {
             byte = polylineStr.charCodeAt(index++) - 63;
@@ -33,19 +38,20 @@ function decodePolyline(polylineStr) {
             shift += 5;
         } while (byte >= 0x20);
         lng += (result >> 1) ^ (-(result & 1));
+        
         coordinates.push([lat / 1E5, lng / 1E5]);
     }
     return coordinates;
 }
 
-// Function to build a DAG from coordinates
+// Build a directed acyclic graph (DAG) from coordinates
 function buildDAG(coordinates, resolution) {
     const dag = {};
+
     coordinates.forEach(([lat, lng], i) => {
         const h3Index = h3.latLngToCell(lat, lng, resolution);
-        if (!dag[h3Index]) {
-            dag[h3Index] = { neighbors: [], coordinate: [lat, lng] };
-        }
+        dag[h3Index] = dag[h3Index] || { neighbors: [], coordinate: [lat, lng] };
+
         if (i > 0) {
             const [prevLat, prevLng] = coordinates[i - 1];
             const prevH3Index = h3.latLngToCell(prevLat, prevLng, resolution);
@@ -55,6 +61,7 @@ function buildDAG(coordinates, resolution) {
     return dag;
 }
 
+// Connect two hexagons in the DAG
 function connectHexagons(dag, prevH3Index, h3Index) {
     if (h3.areNeighborCells(prevH3Index, h3Index)) {
         if (!dag[prevH3Index].neighbors.includes(h3Index)) {
@@ -64,18 +71,18 @@ function connectHexagons(dag, prevH3Index, h3Index) {
         console.log(`Hexagons ${prevH3Index} and ${h3Index} are not adjacent. Filling gap...`);
         const pathH3Indexes = h3.gridPathCells(prevH3Index, h3Index);
         pathH3Indexes.forEach((midH3Index, j) => {
-            if (!dag[midH3Index]) {
-                dag[midH3Index] = {
-                    neighbors: [],
-                    coordinate: h3.cellToLatLng(midH3Index),
-                };
-            }
+            dag[midH3Index] = dag[midH3Index] || {
+                neighbors: [],
+                coordinate: h3.cellToLatLng(midH3Index),
+            };
+
             if (j > 0) {
                 const prevMidH3Index = pathH3Indexes[j - 1];
                 if (!dag[prevMidH3Index].neighbors.includes(midH3Index)) {
                     dag[prevMidH3Index].neighbors.push(midH3Index);
                 }
             }
+
             if (j === pathH3Indexes.length - 1 && !dag[midH3Index].neighbors.includes(h3Index)) {
                 dag[midH3Index].neighbors.push(h3Index);
             }
@@ -83,27 +90,26 @@ function connectHexagons(dag, prevH3Index, h3Index) {
     }
 }
 
+// Interpolate points between two coordinates
 function interpolatePoints(startCoord, endCoord, resolution) {
     const startH3 = h3.latLngToCell(startCoord[0], startCoord[1], resolution);
     const endH3 = h3.latLngToCell(endCoord[0], endCoord[1], resolution);
     return convertH3ToCoordinates(h3.gridPathCells(startH3, endH3));
 }
 
+// Convert H3 indexes to coordinates
 function convertH3ToCoordinates(path) {
     return path.map(h3Index => h3.cellToLatLng(h3Index));
 }
 
-function interpolateH3OnRoutes(jsonData, resolution) {
+// Interpolate H3 on routes based on JSON data
+function interpolateH3OnRoutes(jsonData , resolution) {
     console.log('Starting H3 interpolation on routes...');
 
     jsonData.non_null_objects.forEach(route => {
         const pickupCoords = route.pickup_point.pickup_latlng;
 
-        if (route.route_length < 10) {
-            resolution = 9;
-        } else {
-            resolution = 6;
-        }
+        resolution = route.route_length < 10 ? 9 : 6;
 
         route.destinations.forEach(destination => {
             const pickupH3 = h3.latLngToCell(pickupCoords.latitude, pickupCoords.longitude, resolution);
@@ -118,7 +124,7 @@ function interpolateH3OnRoutes(jsonData, resolution) {
     return jsonData;
 }
 
-// Fetch and process routes
+// Fetch and process bus routes from a given URL
 async function fetchAndIndexBusRoutes(url) {
     try {
         const response = await fetch(url);
@@ -142,10 +148,11 @@ async function fetchAndIndexBusRoutes(url) {
     }
 }
 
+// Main function to find routes based on user location and directions response
 export async function findMa3({ userLocation, directionsResponse }) {
     try {
         console.log('Starting findMa3 function...');
-        console.log('User Location:', userLocation);
+        console.log('User  Location:', userLocation);
 
         const cleanedResponse = cleanDirectionsResponse(directionsResponse);
 
@@ -166,7 +173,7 @@ export async function findMa3({ userLocation, directionsResponse }) {
     }
 }
 
-// Helper function: Clean and validate directions response
+// Clean and validate the directions response
 function cleanDirectionsResponse(directionsResponse) {
     console.log('Cleaning directions response...');
     const cleanedResponse = removeEmptyDicts(directionsResponse);
@@ -174,7 +181,7 @@ function cleanDirectionsResponse(directionsResponse) {
     return cleanedResponse;
 }
 
-// Helper function: Initialize global routes DAG
+// Initialize the global routes DAG
 async function initializeGlobalRoutesDAG() {
     console.log('Initializing Global Routes DAG...');
     const dag = await fetchAndIndexBusRoutes('../json/YesBana.json');
@@ -182,7 +189,7 @@ async function initializeGlobalRoutesDAG() {
     return dag;
 }
 
-// Helper function: Process routes
+// Process all routes
 async function processRoutes(routes, globalRoutesDAG) {
     console.log('Processing all routes...');
     for (const [index, route] of routes.entries()) {
@@ -192,7 +199,7 @@ async function processRoutes(routes, globalRoutesDAG) {
     console.log('All routes processed.');
 }
 
-// Helper function: Process legs within a route
+// Process legs within a route
 async function processRouteLegs(route, globalRoutesDAG) {
     console.log('Processing legs of the route...');
     const busesToCBD = [];
@@ -207,7 +214,7 @@ async function processRouteLegs(route, globalRoutesDAG) {
 
         for (const step of leg.steps) {
             const alignedRoute = await processStep(step, legIndex, globalRoutesDAG);
-            
+
             // Categorize routes for display
             alignedRoute.forEach(({ route_number, destinations }) => {
                 busesToCBD.push(`${route_number} (TO CBD)`); // Example categorization
@@ -222,8 +229,8 @@ async function processRouteLegs(route, globalRoutesDAG) {
     displayResults(busesToCBD, busesFromCBD);
 }
 
-// Helper function: Process individual steps
-async function processStep(step, stepIndex, globalRoutesDAG) {
+// Process individual steps within a leg
+async function processStep(step , stepIndex, globalRoutesDAG) {
     console.log(`Processing Step ${stepIndex + 1}...`);
     const { encoded_lat_lngs: encodedLatLngs } = step;
 
@@ -241,7 +248,7 @@ async function processStep(step, stepIndex, globalRoutesDAG) {
     return alignedRoute; // Return aligned route for further processing
 }
 
-// Helper function: Align polyline with global routes DAG
+// Align polyline with the global routes DAG
 function alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG) {
     return decodedCoordinates.map(point => {
         const { lng, lat } = point;
@@ -266,7 +273,7 @@ function alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG) {
     }).filter(Boolean);
 }
 
-// Optional function: Display results
+// Display the results of the bus routes
 function displayResults(busesToCBD, busesFromCBD) {
     console.log('Displaying results...');
     const resultDiv = document.getElementById('bus-routes');
@@ -278,5 +285,5 @@ function displayResults(busesToCBD, busesFromCBD) {
     console.log('Results displayed successfully.');
 }
 
-// Call findMa3 directly with directions response (you can now invoke this function in the event handler)
+// Expose the findMa3 function to the global window object for external calls
 window.findMa3 = findMa3;
