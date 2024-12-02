@@ -17,31 +17,38 @@ function removeEmptyDicts(obj) {
 
 // Decode a polyline string into an array of coordinates
 function decodePolyline(polylineStr) {
-    let index = 0, lat = 0, lng = 0, coordinates = [];
-
-    while (index < polylineStr.length) {
-        let result = 0, shift = 0, byte;
-        
-        // Decode latitude
-        do {
-            byte = polylineStr.charCodeAt(index++) - 63;
-            result |= (byte & 0x1f) << shift;
-            shift += 5;
-        } while (byte >= 0x20);
-        lat += (result >> 1) ^ (-(result & 1));
-        
-        // Reset result and shift for longitude
-        result = shift = 0;
-        do {
-            byte = polylineStr.charCodeAt(index++) - 63;
-            result |= (byte & 0x1f) << shift;
-            shift += 5;
-        } while (byte >= 0x20);
-        lng += (result >> 1) ^ (-(result & 1));
-        
-        coordinates.push([lat / 1E5, lng / 1E5]);
+    if (!polylineStr) {
+        console.warn('Invalid polyline string provided.');
+        return [];
     }
-    return coordinates;
+    try {
+        let index = 0, lat = 0, lng = 0, coordinates = [];
+        while (index < polylineStr.length) {
+            // Decode latitude
+            let result = 0, shift = 0, byte;
+            do {
+                byte = polylineStr.charCodeAt(index++) - 63;
+                result |= (byte & 0x1f) << shift;
+                shift += 5;
+            } while (byte >= 0x20);
+            lat += (result >> 1) ^ (-(result & 1));
+
+            // Decode longitude
+            result = shift = 0;
+            do {
+                byte = polylineStr.charCodeAt(index++) - 63;
+                result |= (byte & 0x1f) << shift;
+                shift += 5;
+            } while (byte >= 0x20);
+            lng += (result >> 1) ^ (-(result & 1));
+
+            coordinates.push([lat / 1E5, lng / 1E5]);
+        }
+        return coordinates;
+    } catch (error) {
+        console.error('Error decoding polyline:', error);
+        return [];
+    }
 }
 
 // Build a directed acyclic graph (DAG) from coordinates
@@ -63,30 +70,36 @@ function buildDAG(coordinates, resolution) {
 
 // Connect two hexagons in the DAG
 function connectHexagons(dag, prevH3Index, h3Index) {
-    if (h3.areNeighborCells(prevH3Index, h3Index)) {
-        if (!dag[prevH3Index].neighbors.includes(h3Index)) {
-            dag[prevH3Index].neighbors.push(h3Index);
-        }
-    } else {
-        console.log(`Hexagons ${prevH3Index} and ${h3Index} are not adjacent. Filling gap...`);
-        const pathH3Indexes = h3.gridPathCells(prevH3Index, h3Index);
-        pathH3Indexes.forEach((midH3Index, j) => {
-            dag[midH3Index] = dag[midH3Index] || {
-                neighbors: [],
-                coordinate: h3.cellToLatLng(midH3Index),
-            };
-
-            if (j > 0) {
-                const prevMidH3Index = pathH3Indexes[j - 1];
-                if (!dag[prevMidH3Index].neighbors.includes(midH3Index)) {
-                    dag[prevMidH3Index].neighbors.push(midH3Index);
+    try {
+        if (h3.areNeighborCells(prevH3Index, h3Index)) {
+            if (!dag[prevH3Index].neighbors.includes(h3Index)) {
+                dag[prevH3Index].neighbors.push(h3Index);
+            }
+        } else {
+            console.log(`Hexagons ${prevH3Index} and ${h3Index} are not adjacent. Filling gap...`);
+            const pathH3Indexes = h3.gridPathCells(prevH3Index, h3Index);
+            if (!pathH3Indexes || pathH3Indexes.length === 0) {
+                console.warn(`No valid path found between ${prevH3Index} and ${h3Index}.`);
+                return;
+            }
+            pathH3Indexes.forEach((midH3Index, j) => {
+                dag[midH3Index] = dag[midH3Index] || {
+                    neighbors: [],
+                    coordinate: h3.cellToLatLng(midH3Index),
+                };
+                if (j > 0) {
+                    const prevMidH3Index = pathH3Indexes[j - 1];
+                    if (!dag[prevMidH3Index].neighbors.includes(midH3Index)) {
+                        dag[prevMidH3Index].neighbors.push(midH3Index);
+                    }
                 }
-            }
-
-            if (j === pathH3Indexes.length - 1 && !dag[midH3Index].neighbors.includes(h3Index)) {
-                dag[midH3Index].neighbors.push(h3Index);
-            }
-        });
+                if (j === pathH3Indexes.length - 1 && !dag[midH3Index].neighbors.includes(h3Index)) {
+                    dag[midH3Index].neighbors.push(h3Index);
+                }
+            });
+        }
+    } catch (error) {
+        console.error(`Error connecting hexagons ${prevH3Index} and ${h3Index}:`, error);
     }
 }
 
@@ -250,21 +263,26 @@ async function processStep(step , stepIndex, globalRoutesDAG) {
 
 // Align polyline with the global routes DAG
 function alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG) {
+    if (!globalRoutesDAG || globalRoutesDAG.all().length === 0) {
+        console.warn('Global Routes DAG is empty.');
+        return [];
+    }
+    const buffer = 0.0001; // Small buffer for search bounds
     return decodedCoordinates.map(point => {
         const { lng, lat } = point;
         const closestNodes = globalRoutesDAG.search({
-            minX: lng,
-            minY: lat,
-            maxX: lng,
-            maxY: lat,
+            minX: lng - buffer,
+            minY: lat - buffer,
+            maxX: lng + buffer,
+            maxY: lat + buffer,
         });
 
         if (closestNodes.length > 0) {
             const closestNode = closestNodes[0];
             return {
-                route_number: closestNode.route_number,
-                pickup_point: closestNode.pickup_point,
-                destinations: closestNode.destinations,
+                route_number: closestNode.route.route_number,
+                pickup_point: closestNode.route.pickup_point,
+                destinations: closestNode.route.destinations,
             };
         }
 
@@ -277,13 +295,18 @@ function alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG) {
 function displayResults(busesToCBD, busesFromCBD) {
     console.log('Displaying results...');
     const resultDiv = document.getElementById('bus-routes');
-    resultDiv.innerHTML = busesToCBD.length || busesFromCBD.length
-        ? `<h2>Bus Routes:</h2>
-            ${busesToCBD.length ? `<h3>Buses to CBD:</h3><ul>${busesToCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}
-            ${busesFromCBD.length ? `<h3>Buses from CBD:</h3><ul>${busesFromCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}`
-        : '<p>No bus routes found for the given locations.</p>';
-    console.log('Results displayed successfully.');
+    if (!busesToCBD.length && !busesFromCBD.length) {
+        resultDiv.innerHTML = '<p>No bus routes found for the given locations.</p>';
+        return;
+    }
+
+    resultDiv.innerHTML = `
+        <h2>Bus Routes:</h2>
+        ${busesToCBD.length ? `<h3>Buses to CBD:</h3><ul>${busesToCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}
+        ${busesFromCBD.length ? `<h3>Buses from CBD:</h3><ul>${busesFromCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}
+    `;
 }
+
 
 // Expose the findMa3 function to the global window object for external calls
 window.findMa3 = findMa3;
