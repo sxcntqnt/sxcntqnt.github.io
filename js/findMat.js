@@ -142,58 +142,115 @@ async function fetchAndIndexBusRoutes(url) {
     }
 }
 
-export async function findMa3(directionsResponse) {
+export async function findMa3({ userLocation, directionsResponse }) {
     try {
-        console.log('Processing directions response...');
-        const cleanedResponse = removeEmptyDicts(directionsResponse);
+        console.log('Starting findMa3 function...');
+        console.log('User Location:', userLocation);
+
+        const cleanedResponse = cleanDirectionsResponse(directionsResponse);
 
         if (!cleanedResponse.routes?.length) {
-            throw new Error('No routes found.');
+            throw new Error('No routes found in the directions response.');
         }
+        console.log(`Found ${cleanedResponse.routes.length} route(s) to process.`);
 
         if (!globalRoutesDAG) {
-            globalRoutesDAG = await fetchAndIndexBusRoutes('../json/YesBana.json');
+            globalRoutesDAG = await initializeGlobalRoutesDAG();
         }
 
-        for (const [routeIndex, route] of cleanedResponse.routes.entries()) {
-            console.log(`Processing Route ${routeIndex + 1}`);
-            await processRouteLegs(route);
-        }
+        await processRoutes(cleanedResponse.routes, globalRoutesDAG);
+        console.log('findMa3 completed successfully.');
     } catch (error) {
         console.error('Error in findMa3:', error.message);
         alert('An error occurred while processing directions. Please try again.');
     }
 }
 
-// Helper to process route legs
-async function processRouteLegs(route) {
-    for (const leg of route.legs) {
-        if (!leg.steps?.length) {
-            console.warn('No steps found in this leg.');
-            continue;
-        }
-        await Promise.all(leg.steps.map(step => processStep(step)));
-    }
+// Helper function: Clean and validate directions response
+function cleanDirectionsResponse(directionsResponse) {
+    console.log('Cleaning directions response...');
+    const cleanedResponse = removeEmptyDicts(directionsResponse);
+    console.log('Directions response cleaned.');
+    return cleanedResponse;
 }
 
-// Helper to process individual steps
-async function processStep(step) {
+// Helper function: Initialize global routes DAG
+async function initializeGlobalRoutesDAG() {
+    console.log('Initializing Global Routes DAG...');
+    const dag = await fetchAndIndexBusRoutes('../json/YesBana.json');
+    console.log('Global Routes DAG initialized successfully.');
+    return dag;
+}
+
+// Helper function: Process routes
+async function processRoutes(routes, globalRoutesDAG) {
+    console.log('Processing all routes...');
+    for (const [index, route] of routes.entries()) {
+        console.log(`Processing Route ${index + 1}/${routes.length}`);
+        await processRouteLegs(route, globalRoutesDAG);
+    }
+    console.log('All routes processed.');
+}
+
+// Helper function: Process legs within a route
+async function processRouteLegs(route, globalRoutesDAG) {
+    console.log('Processing legs of the route...');
+    const busesToCBD = [];
+    const busesFromCBD = [];
+
+    for (const [legIndex, leg] of route.legs.entries()) {
+        console.log(`Processing Leg ${legIndex + 1}/${route.legs.length}`);
+        if (!leg.steps?.length) {
+            console.warn(`No steps found in Leg ${legIndex + 1}. Skipping...`);
+            continue;
+        }
+
+        for (const step of leg.steps) {
+            const alignedRoute = await processStep(step, legIndex, globalRoutesDAG);
+            
+            // Categorize routes for display
+            alignedRoute.forEach(({ route_number, destinations }) => {
+                busesToCBD.push(`${route_number} (TO CBD)`); // Example categorization
+                destinations.forEach(dest => {
+                    busesFromCBD.push(`${route_number} / ${dest}`);
+                });
+            });
+        }
+    }
+
+    console.log('All legs processed. Displaying results...');
+    displayResults(busesToCBD, busesFromCBD);
+}
+
+// Helper function: Process individual steps
+async function processStep(step, stepIndex, globalRoutesDAG) {
+    console.log(`Processing Step ${stepIndex + 1}...`);
     const { encoded_lat_lngs: encodedLatLngs } = step;
+
     if (!encodedLatLngs) {
-        console.warn('No encoded_lat_lngs in step.');
-        return;
+        console.warn(`No encoded_lat_lngs found in Step ${stepIndex + 1}. Skipping...`);
+        return [];
     }
 
     const decodedCoordinates = decodePolyline(encodedLatLngs);
-    const dag = buildDAG(decodedCoordinates, 7); // Example resolution
-    console.log('Built DAG:', dag);
+    console.log(`Decoded ${decodedCoordinates.length} coordinates for Step ${stepIndex + 1}.`);
+
+    const alignedRoute = alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG);
+    console.log(`Aligned route contains ${alignedRoute.length} points.`);
+
+    return alignedRoute; // Return aligned route for further processing
 }
 
-// Function to align polyline with the global routes DAG
-function alignPolylineWithDAG(decodedCoordinates) {
-    const alignedRoute = decodedCoordinates.map(point => {
+// Helper function: Align polyline with global routes DAG
+function alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG) {
+    return decodedCoordinates.map(point => {
         const { lng, lat } = point;
-        const closestNodes = globalRoutesDAG.search({ minX: lng, minY: lat, maxX: lng, maxY: lat });
+        const closestNodes = globalRoutesDAG.search({
+            minX: lng,
+            minY: lat,
+            maxX: lng,
+            maxY: lat,
+        });
 
         if (closestNodes.length > 0) {
             const closestNode = closestNodes[0];
@@ -204,100 +261,21 @@ function alignPolylineWithDAG(decodedCoordinates) {
             };
         }
 
+        console.warn('No closest nodes found for point:', { lng, lat });
         return null;
     }).filter(Boolean);
-
-    return alignedRoute;
 }
 
-export async function handleDirectionsResponse(directionsResponse) {
-    try {
-        console.log('Processing directions response...');
-        const { start_address: origin, end_address: destination } = directionsResponse.routes[0].legs[0];
-        console.log(`Origin: ${origin}, Destination: ${destination}`);
-
-        const additionalLocations = []; // Add your additional locations here, if any
-
-        const { busesToCBD, busesFromCBD, error } = await fetchBusRoutes(origin, destination, additionalLocations);
-
-        if (error) {
-            console.error('Failed to fetch bus routes:', error);
-            alert('An error occurred while fetching bus routes. Please try again.');
-            return;
-        }
-
-        displayResults(busesToCBD, busesFromCBD);
-    } catch (error) {
-        console.error('Error in handleDirectionsResponse:', error);
-        alert('An error occurred while processing bus routes. Please try again.');
-    }
-}
-
-async function fetchBusRoutes(origin, destination, additionalLocations = []) {
-    const busesToCBD = [];
-    const busesFromCBD = [];
-
-    try {
-        const originCoords = convertToBoundingBox(origin);
-
-        const matchingRoutesFromOrigin = globalRoutesDAG.search(originCoords);
-        processMatchingRoutes(matchingRoutesFromOrigin, destination, busesToCBD, busesFromCBD);
-
-        for (const location of additionalLocations) {
-            const locationCoords = convertToBoundingBox(location);
-            const matchingRoutesFromAdditional = globalRoutesDAG.search(locationCoords);
-            processMatchingRoutes(matchingRoutesFromAdditional, destination, busesToCBD, busesFromCBD);
-        }
-
-        return { busesToCBD, busesFromCBD };
-    } catch (error) {
-        console.error('Error fetching bus routes:', error);
-        return { busesToCBD: [], busesFromCBD: [], error: error.message };
-    }
-}
-
-function convertToBoundingBox(location) {
-    return {
-        minX: location.longitude,
-        minY: location.latitude,
-        maxX: location.longitude,
-        maxY: location.latitude,
-    };
-}
-
-function processMatchingRoutes(routes, destination, busesToCBD, busesFromCBD) {
-    routes.forEach(route => {
-        busesToCBD.push(`${route.route_number} (TO CBD)`);
-        route.destinations.forEach(busDestination => {
-            if (busDestination.destination.toLowerCase().includes(destination.toLowerCase())) {
-                busesFromCBD.push(`${route.route_number} / ${busDestination.destination}`);
-            }
-        });
-    });
-}
-
-async function processRoutes(tree, busesToCBD, busesFromCBD, origin, additionalLocations, resolution, maxDistanceKm) {
-    const allLocations = [{ coords: convertToBoundingBox(origin), label: 'origin' }, 
-        ...additionalLocations.map(location => ({ coords: convertToBoundingBox(location), label: 'additional' }))];
-
-    for (const { coords, label } of allLocations) {
-        console.log(`Searching for routes near ${label}:`, coords);
-
-        const filteredBuses = filterBusesByProximity(busesToCBD, coords.minY, coords.minX, resolution, maxDistanceKm);
-        console.log(`Found ${filteredBuses.length} buses near ${label} within ${maxDistanceKm} km.`);
-
-        const matchingRoutes = tree.search(coords);
-        console.log(`Found ${matchingRoutes.length} matching routes near ${label}.`);
-    }
-}
-
+// Optional function: Display results
 function displayResults(busesToCBD, busesFromCBD) {
+    console.log('Displaying results...');
     const resultDiv = document.getElementById('bus-routes');
     resultDiv.innerHTML = busesToCBD.length || busesFromCBD.length
         ? `<h2>Bus Routes:</h2>
             ${busesToCBD.length ? `<h3>Buses to CBD:</h3><ul>${busesToCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}
             ${busesFromCBD.length ? `<h3>Buses from CBD:</h3><ul>${busesFromCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}`
         : '<p>No bus routes found for the given locations.</p>';
+    console.log('Results displayed successfully.');
 }
 
 // Call findMa3 directly with directions response (you can now invoke this function in the event handler)
