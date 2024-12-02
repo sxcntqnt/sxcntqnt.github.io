@@ -77,12 +77,16 @@ async function main(directionsService, directionsDisplay, map) {
         button.addEventListener('click', async () => {
             try {
                 // Fetch user's location and mark it on the map
-                const userLocation = await getUserLocationAndMark(map);
-                console.log('User location:', userLocation);
+                const { address, coordinates } = await getUserLocationAndMark(map);
+                console.log('User location:', coordinates);
+                console.log('User address:', address);
 
-                // Populate the origin input with the user's location
+                // Populate the origin input with the user's address
                 const originInput = document.getElementById('origin');
-                originInput.value = `${userLocation.lat}, ${userLocation.lng}`;
+                originInput.value = address;  // Set the address into the input field
+
+                // You can now use the coordinates in the `coordinates` variable
+                // for any further processing or API calls.
 
                 // Calculate the route
                 const directionsResponse = await calcRoute(directionsService, map);
@@ -90,7 +94,7 @@ async function main(directionsService, directionsDisplay, map) {
                 if (directionsResponse && directionsResponse.status === 'OK') {
                     // Pass userLocation and directionsResponse to findMa3
                     response = directionsResponse; // Store response for ETA checks
-                    await findMa3({ userLocation, directionsResponse });
+                    await findMa3({ userLocation: coordinates, directionsResponse });
                 } else {
                     console.error('No valid directions received:', directionsResponse);
                     alert('No valid directions found. Please check your inputs and try again.');
@@ -108,12 +112,14 @@ async function main(directionsService, directionsDisplay, map) {
 // Function to get user location and mark it on the map
 async function getUserLocationAndMark(map) {
     try {
-        // Call locateAndMarkUser and await the result (user's location)
-        const userLocation = await locateAndMarkUser(map);
-        if (!userLocation) {
+        // Call locateAndMarkUser and await the result (address and location)
+        const { address, coordinates } = await locateAndMarkUser(map);
+        if (!coordinates) {
             throw new Error('User location could not be determined.');
         }
-        return userLocation;
+
+        // Return both the address and coordinates
+        return { address, coordinates };
     } catch (error) {
         console.error('Error in getUserLocationAndMark:', error);
         throw new Error(`Error locating user: ${error.message}`);
