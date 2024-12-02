@@ -66,6 +66,7 @@ window.initMap = async function() {
 
     await initializeInputs(); // Initialize inputs here
     await main(directionsService, directionsDisplay, map); // Pass the map instance
+    await locateAndMarkUser(map)
 }
 
 
