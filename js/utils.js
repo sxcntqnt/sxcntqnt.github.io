@@ -1,27 +1,31 @@
-export async function locateAndMarkUser (map) {
+export async function locateAndMarkUser(map) {
     try {
         // Await the user's location using a Promise
         const position = await new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(resolve, reject);
         });
 
-        // Use the position to mark the user's location on the map
+        // Use the position to create the user location object
         const userLocation = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         };
 
-        // Example: Mark the user's location on the map
+        // Mark the user's location on the map
         new google.maps.Marker({
             position: userLocation,
             map: map,
             title: "You are here"
         });
 
+        // Return the user's location object
+        return userLocation;
+
     } catch (error) {
         // Handle errors
         console.error("Failed to retrieve the user's location:", error.message);
-        alert("Unable to retrieve your location. Please check your permissions.");
+        console.log("Unable to retrieve your location. Please check your permissions.");
+        throw error; // Re-throw to let the calling function handle it
     }
 }
 

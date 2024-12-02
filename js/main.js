@@ -73,44 +73,42 @@ window.initMap = async function () {
 // Main function to handle user interaction and route calculation
 async function main(directionsService, directionsDisplay, map) {
     const button = document.querySelector('.btn-success');
-    if (!button) {
+    if (button) {
+        button.addEventListener('click', async () => {
+            try {
+                // Fetch user's location and mark it on the map
+                const userLocation = await getUserLocationAndMark(map);
+                console.log('User location:', userLocation);
+
+                // Populate the origin input with the user's location
+                const originInput = document.getElementById('origin');
+                originInput.value = `${userLocation.lat}, ${userLocation.lng}`;
+
+                // Calculate the route
+                const directionsResponse = await calcRoute(directionsService, map);
+
+                if (directionsResponse && directionsResponse.status === 'OK') {
+                    // Pass userLocation and directionsResponse to findMa3
+                    response = directionsResponse; // Store response for ETA checks
+                    await findMa3({ userLocation, directionsResponse });
+                } else {
+                    console.error('No valid directions received:', directionsResponse);
+                    alert('No valid directions found. Please check your inputs and try again.');
+                }
+            } catch (error) {
+                console.error('An error occurred while getting user location:', error);
+                alert('An error occurred while locating you. Please ensure location services are enabled and try again.');
+            }
+        });
+    } else {
         console.error('Button for route calculation not found!');
-        return;
     }
-
-    button.addEventListener('click', async () => {
-        try {
-            // Fetch user's location and mark it on the map, also inject into origin input
-            const userLocation = await getUserLocationAndMark(map);
-            console.log('User location:', userLocation);
-
-            // Inject the user's location into the origin input
-            const originInput = document.getElementById('origin');
-            if (originInput) {
-                originInput.value = `${userLocation.lat}, ${userLocation.lng}`; // Format it as lat, lng
-            } else {
-                console.error('Origin input not found!');
-            }
-
-            // Calculate the route
-            const directionsResponse = await calcRoute(directionsService, map);
-            if (directionsResponse?.status === 'OK') {
-                response = directionsResponse; // Store response for ETA checks
-                await findMa3({ userLocation, directionsResponse });
-            } else {
-                console.error('No valid directions received:', directionsResponse?.status);
-                alert('No valid directions found. Please check your inputs and try again.');
-            }
-        } catch (error) {
-            console.error('Error in main:', error.message);
-            alert('An error occurred. Please check the console for more details.');
-        }
-    });
 }
 
 // Function to get user location and mark it on the map
 async function getUserLocationAndMark(map) {
     try {
+        // Call locateAndMarkUser and await the result (user's location)
         const userLocation = await locateAndMarkUser(map);
         if (!userLocation) {
             throw new Error('User location could not be determined.');
