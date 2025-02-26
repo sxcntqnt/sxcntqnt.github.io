@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '*/20 * * * *' # Restart each 20 minutes
+    - cron: '*/20 * * * *' # Restart every 20 minutes
 
 jobs:
   build:
@@ -17,10 +17,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install sshpass
-        run: sudo apt-get install -y sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
       - name: Connect to SSH and run command
-        # automatic connect ssh from github actions
+        env:
+          SECRET: ${{ secrets.SECRET }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
         run: |
-          sshpass -p "segfault" ssh -o "SetEnv SECRET=YOUR_KEY" -o "StrictHostKeyChecking=no" root@lulz.segfault.net "ls"
-
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o "SetEnv SECRET=${{ secrets.SECRET }}" -o "StrictHostKeyChecking=no" root@${{ secrets.SSH_HOST }} "ls"
