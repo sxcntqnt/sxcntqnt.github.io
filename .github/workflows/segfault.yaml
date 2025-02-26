@@ -1,0 +1,26 @@
+name: SEGFAULT
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '*/20 * * * *' # Restart each 20 minutes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Connect to SSH and run command
+        # automatic connect ssh from github actions
+        run: |
+          sshpass -p "segfault" ssh -o "SetEnv SECRET=YOUR_KEY" -o "StrictHostKeyChecking=no" root@lulz.segfault.net "ls"
+
