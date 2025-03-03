@@ -25,4 +25,5 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o "SetEnv SECRET=${{ secrets.SECRET }}" -o "StrictHostKeyChecking=no" root@${{ secrets.SSH_HOST }} "ls"
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o "SetEnv SECRET=${{ secrets.SECRET }}" -o "StrictHostKeyChecking=no" root@${{ secrets.SSH_HOST }} " cd /sec/root/cconk/js_osr || { echo 'Failed to change directory'; exit 1; } && python3 rieng.py || { echo 'Python script execution failed'; exit 1; } "
+
