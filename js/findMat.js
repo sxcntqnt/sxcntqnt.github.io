@@ -23,6 +23,11 @@ export async function findMa3({ locations, directionsResponse = null }) {
             globalRoutesDAG = await fetchAndIndexBusRoutes('../json/YesBana.json');
         }
 
+        // Check if globalRoutesDAG is empty
+        if (globalRoutesDAG.all().length === 0) {
+            console.warn('No valid routes loaded from YesBana.json. Proceeding with Directions API data only (if provided).');
+        }
+
         // Build helical H3 structure
         let helixStructure;
         if (directionsResponse) {
