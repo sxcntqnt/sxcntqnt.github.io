@@ -68,3 +68,138 @@ buttons.forEach(button => {
 
 
 window.locateAndMarkUser = locateAndMarkUser
+
+// utils.js
+export function removeEmptyDicts(obj) {
+    if (Array.isArray(obj)) {
+        return obj.map(removeEmptyDicts).filter(item => item && Object.keys(item).length > 0);
+    }
+    if (typeof obj === 'object' && obj !== null) {
+        return Object.fromEntries(
+            Object.entries(obj)
+                .map(([key, value]) => [key, removeEmptyDicts(value)])
+                .filter(([_, value]) => value && Object.keys(value).length > 0)
+        );
+    }
+    return obj;
+}
+
+export function decodePolyline(polylineStr) {
+    if (!polylineStr) {
+        console.warn('Invalid polyline string provided.');
+        return [];
+    }
+    try {
+        let index = 0, lat = 0, lng = 0, coordinates = [];
+        while (index < polylineStr.length) {
+            let result = 0, shift = 0, byte;
+            do {
+                byte = polylineStr.charCodeAt(index++) - 63;
+                result |= (byte & 0x1f) << shift;
+                shift += 5;
+            } while (byte >= 0x20);
+            lat += (result >> 1) ^ (-(result & 1));
+
+            result = shift = 0;
+            do {
+                byte = polylineStr.charCodeAt(index++) - 63;
+                result |= (byte & 0x1f) << shift;
+                shift += 5;
+            } while (byte >= 0x20);
+            lng += (result >> 1) ^ (-(result & 1));
+
+            coordinates.push([lat / 1E5, lng / 1E5]);
+        }
+        return coordinates;
+    } catch (error) {
+        console.error('Error decoding polyline:', error);
+        return [];
+    }
+}
+
+export function buildDAG(coordinates, resolution) {
+    const dag = {};
+    coordinates.forEach(([lat, lng], i) => {
+        const h3Index = h3.latLngToCell(lat, lng, resolution);
+        dag[h3Index] = dag[h3Index] || { neighbors: [], coordinate: [lat, lng] };
+        if (i > 0) {
+            const [prevLat, prevLng] = coordinates[i - 1];
+            const prevH3Index = h3.latLngToCell(prevLat, prevLng, resolution);
+            connectHexagons(dag, prevH3Index, h3Index);
+        }
+    });
+    return dag;
+}
+
+export function removeEmptyDicts(obj) {
+    if (Array.isArray(obj)) {
+        return obj.map(removeEmptyDicts).filter(item => item && Object.keys(item).length > 0);
+    }
+    if (typeof obj === 'object' && obj !== null) {
+        return Object.fromEntries(
+            Object.entries(obj)
+                .map(([key, value]) => [key, removeEmptyDicts(value)])
+                .filter(([_, value]) => value && Object.keys(value).length > 0)
+        );
+    }
+    return obj;
+}
+
+export async function fetchAndIndexBusRoutes(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to fetch routes: ${response.statusText}`);
+        const data = await response.json();
+        const cleanedData = removeEmptyDicts(data);
+        if (!cleanedData.non_null_objects?.length) return new RBush();
+
+        const tree = new RBush();
+        const items = [];
+
+        cleanedData.non_null_objects.forEach(route => {
+            // Index pickup point
+            items.push({
+                minX: route.pickup_point.pickup_latlng.longitude,
+                minY: route.pickup_point.pickup_latlng.latitude,
+                maxX: route.pickup_point.pickup_latlng.longitude,
+                maxY: route.pickup_point.pickup_latlng.latitude,
+                route
+            });
+
+            // Index each destination
+            route.destinations.forEach(dest => {
+                items.push({
+                    minX: dest.destination_latlng.longitude,
+                    minY: dest.destination_latlng.latitude,
+                    maxX: dest.destination_latlng.longitude,
+                    maxY: dest.destination_latlng.latitude,
+                    route
+                });
+            });
+        });
+
+        tree.load(items);
+        return tree;
+    } catch (error) {
+        console.error('Error fetching bus routes:', error);
+        return new RBush();
+    }
+}
+
+export function getNearbyRoutes(lat, lng, globalRoutesDAG, buffer = 0.01) {
+    if (!globalRoutesDAG || globalRoutesDAG.all().length === 0) return [];
+
+    const nearbyNodes = globalRoutesDAG.search({
+        minX: lng - buffer,
+        minY: lat - buffer,
+        maxX: lng + buffer,
+        maxY: lat + buffer,
+    });
+
+    const uniqueRoutes = new Map();
+    nearbyNodes.forEach(node => {
+        uniqueRoutes.set(node.route.route_number, node.route);
+    });
+
+    return Array.from(uniqueRoutes.values());
+}

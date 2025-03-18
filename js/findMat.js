@@ -1,312 +1,218 @@
+import { removeEmptyDicts, decodePolyline, fetchAndIndexBusRoutes, getNearbyRoutes } from './utils.js';
+
 let globalRoutesDAG = null;
 
-// Utility to remove empty dictionaries from an object
-function removeEmptyDicts(obj) {
-    if (Array.isArray(obj)) {
-        return obj.map(removeEmptyDicts).filter(item => item && Object.keys(item).length > 0);
-    }
-    if (typeof obj === 'object' && obj !== null) {
-        return Object.fromEntries(
-            Object.entries(obj)
-                .map(([key, value]) => [key, removeEmptyDicts(value)])
-                .filter(([_, value]) => value && Object.keys(value).length > 0)
-        );
-    }
-    return obj;
-}
-
-// Decode a polyline string into an array of coordinates
-function decodePolyline(polylineStr) {
-    if (!polylineStr) {
-        console.warn('Invalid polyline string provided.');
-        return [];
-    }
-    try {
-        let index = 0, lat = 0, lng = 0, coordinates = [];
-        while (index < polylineStr.length) {
-            // Decode latitude
-            let result = 0, shift = 0, byte;
-            do {
-                byte = polylineStr.charCodeAt(index++) - 63;
-                result |= (byte & 0x1f) << shift;
-                shift += 5;
-            } while (byte >= 0x20);
-            lat += (result >> 1) ^ (-(result & 1));
-
-            // Decode longitude
-            result = shift = 0;
-            do {
-                byte = polylineStr.charCodeAt(index++) - 63;
-                result |= (byte & 0x1f) << shift;
-                shift += 5;
-            } while (byte >= 0x20);
-            lng += (result >> 1) ^ (-(result & 1));
-
-            coordinates.push([lat / 1E5, lng / 1E5]);
-        }
-        return coordinates;
-    } catch (error) {
-        console.error('Error decoding polyline:', error);
-        return [];
-    }
-}
-
-// Build a directed acyclic graph (DAG) from coordinates
-function buildDAG(coordinates, resolution) {
-    const dag = {};
-
-    coordinates.forEach(([lat, lng], i) => {
-        const h3Index = h3.latLngToCell(lat, lng, resolution);
-        dag[h3Index] = dag[h3Index] || { neighbors: [], coordinate: [lat, lng] };
-
-        if (i > 0) {
-            const [prevLat, prevLng] = coordinates[i - 1];
-            const prevH3Index = h3.latLngToCell(prevLat, prevLng, resolution);
-            connectHexagons(dag, prevH3Index, h3Index);
-        }
-    });
-    return dag;
-}
-
-// Connect two hexagons in the DAG
-function connectHexagons(dag, prevH3Index, h3Index) {
-    try {
-        if (h3.areNeighborCells(prevH3Index, h3Index)) {
-            if (!dag[prevH3Index].neighbors.includes(h3Index)) {
-                dag[prevH3Index].neighbors.push(h3Index);
-            }
-        } else {
-            console.log(`Hexagons ${prevH3Index} and ${h3Index} are not adjacent. Filling gap...`);
-            const pathH3Indexes = h3.gridPathCells(prevH3Index, h3Index);
-            if (!pathH3Indexes || pathH3Indexes.length === 0) {
-                console.warn(`No valid path found between ${prevH3Index} and ${h3Index}.`);
-                return;
-            }
-            pathH3Indexes.forEach((midH3Index, j) => {
-                dag[midH3Index] = dag[midH3Index] || {
-                    neighbors: [],
-                    coordinate: h3.cellToLatLng(midH3Index),
-                };
-                if (j > 0) {
-                    const prevMidH3Index = pathH3Indexes[j - 1];
-                    if (!dag[prevMidH3Index].neighbors.includes(midH3Index)) {
-                        dag[prevMidH3Index].neighbors.push(midH3Index);
-                    }
-                }
-                if (j === pathH3Indexes.length - 1 && !dag[midH3Index].neighbors.includes(h3Index)) {
-                    dag[midH3Index].neighbors.push(h3Index);
-                }
-            });
-        }
-    } catch (error) {
-        console.error(`Error connecting hexagons ${prevH3Index} and ${h3Index}:`, error);
-    }
-}
-
-// Interpolate points between two coordinates
-function interpolatePoints(startCoord, endCoord, resolution) {
-    const startH3 = h3.latLngToCell(startCoord[0], startCoord[1], resolution);
-    const endH3 = h3.latLngToCell(endCoord[0], endCoord[1], resolution);
-    return convertH3ToCoordinates(h3.gridPathCells(startH3, endH3));
-}
-
-// Convert H3 indexes to coordinates
-function convertH3ToCoordinates(path) {
-    return path.map(h3Index => h3.cellToLatLng(h3Index));
-}
-
-// Interpolate H3 on routes based on JSON data
-function interpolateH3OnRoutes(jsonData , resolution) {
-    console.log('Starting H3 interpolation on routes...');
-
-    jsonData.non_null_objects.forEach(route => {
-        const pickupCoords = route.pickup_point.pickup_latlng;
-
-        resolution = route.route_length < 10 ? 9 : 6;
-
-        route.destinations.forEach(destination => {
-            const pickupH3 = h3.latLngToCell(pickupCoords.latitude, pickupCoords.longitude, resolution);
-            const destH3 = h3.latLngToCell(destination.destination_latlng.latitude, destination.destination_latlng.longitude, resolution);
-            const h3Path = h3.gridPathCells(pickupH3, destH3);
-            const pathCoordinates = h3Path.map(h3Index => h3.cellToLatLng(h3Index));
-            destination.interpolated_path = pathCoordinates;
-        });
-    });
-
-    console.log('Completed H3 interpolation on all routes.');
-    return jsonData;
-}
-
-// Fetch and process bus routes from a given URL
-async function fetchAndIndexBusRoutes(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`Failed to fetch routes: ${response.statusText}`);
-        const data = await response.json();
-        const cleanedData = removeEmptyDicts(data);
-        if (!cleanedData.nonNullObjects?.length) return new RBush();
-
-        const tree = new RBush();
-        tree.load(cleanedData.nonNullObjects.map(route => ({
-            minX: route.pickupPoint.longitude,
-            minY: route.pickupPoint.latitude,
-            maxX: route.pickupPoint.longitude,
-            maxY: route.pickupPoint.latitude,
-            route
-        })));
-        return tree;
-    } catch (error) {
-        console.error('Error fetching bus routes:', error);
-        return new RBush();
-    }
-}
-
-// Main function to find routes based on user location and directions response
-export async function findMa3({ userLocation, directionsResponse }) {
+export async function findMa3({ locations, directionsResponse = null }) {
     try {
         console.log('Starting findMa3 function...');
-        console.log('User  Location:', userLocation);
+        console.log('Locations:', locations);
+        if (directionsResponse) console.log('Directions Response:', directionsResponse);
 
-        const cleanedResponse = cleanDirectionsResponse(directionsResponse);
-
-        if (!cleanedResponse.routes?.length) {
-            throw new Error('No routes found in the directions response.');
+        // Validate input
+        if (!locations || !Array.isArray(locations) || locations.length < 2) {
+            throw new Error('At least two locations (origin and destination) are required.');
         }
-        console.log(`Found ${cleanedResponse.routes.length} route(s) to process.`);
+        for (const loc of locations) {
+            if (!loc.lat || !loc.lng) {
+                throw new Error('Each location must have lat and lng properties.');
+            }
+        }
 
+        // Initialize global DAG if not already done
         if (!globalRoutesDAG) {
-            globalRoutesDAG = await initializeGlobalRoutesDAG();
+            globalRoutesDAG = await fetchAndIndexBusRoutes('../json/YesBana.json');
         }
 
-        await processRoutes(cleanedResponse.routes, globalRoutesDAG);
-        console.log('findMa3 completed successfully.');
+        // Build helical H3 structure
+        let helixStructure;
+        if (directionsResponse) {
+            const cleanedResponse = removeEmptyDicts(directionsResponse);
+            if (!cleanedResponse.routes?.length) {
+                throw new Error('No routes found in the directions response.');
+            }
+            helixStructure = buildHelixStructureFromDirections(cleanedResponse);
+        } else {
+            helixStructure = buildHelixStructureFromLocations(locations);
+        }
+
+        // Find bus route numbers with part-of relationship
+        const busRouteNumbers = await findRoutesWithPartOfRelationship(locations, helixStructure, globalRoutesDAG, directionsResponse);
+
+        console.log('Bus Route Numbers:', busRouteNumbers);
+        displayResults(busRouteNumbers, helixStructure);
+        return busRouteNumbers;
     } catch (error) {
         console.error('Error in findMa3:', error.message);
-        alert('An error occurred while processing directions. Please try again.');
+        alert('An error occurred while finding bus routes. Please try again.');
+        return [];
     }
 }
 
-// Clean and validate the directions response
-function cleanDirectionsResponse(directionsResponse) {
-    console.log('Cleaning directions response...');
-    const cleanedResponse = removeEmptyDicts(directionsResponse);
-    console.log('Directions response cleaned.');
-    return cleanedResponse;
+function buildHelixStructureFromLocations(locations) {
+    const radiusIncrement = 0.1;
+    const heightIncrement = 0.05;
+    const angleIncrement = Math.PI / 8;
+    const h3Resolution = 9;
+
+    const helix = {
+        points: [],
+        center: { lat: 0, lng: 0 },
+        h3Center: null,
+        maxRadius: 0,
+        totalHeight: 0,
+        resolution: h3Resolution
+    };
+
+    let currentAngle = 0;
+    let currentHeight = 0;
+    let currentRadius = 0;
+
+    const avgLat = locations.reduce((sum, loc) => sum + loc.lat, 0) / locations.length;
+    const avgLng = locations.reduce((sum, loc) => sum + loc.lng, 0) / locations.length;
+    helix.center = { lat: avgLat, lng: avgLng };
+    helix.h3Center = h3.latLngToCell(helix.center.lat, helix.center.lng, h3Resolution);
+
+    locations.forEach((loc, index) => {
+        const h3Index = h3.latLngToCell(loc.lat, loc.lng, h3Resolution);
+        const point = {
+            lat: loc.lat,
+            lng: loc.lng,
+            h3Index,
+            helixX: Math.cos(currentAngle) * currentRadius,
+            helixY: Math.sin(currentAngle) * currentRadius,
+            helixZ: currentHeight,
+            index
+        };
+        helix.points.push(point);
+        currentAngle += angleIncrement;
+        currentHeight += heightIncrement;
+        currentRadius += radiusIncrement;
+        helix.maxRadius = Math.max(helix.maxRadius, currentRadius);
+    });
+
+    helix.totalHeight = currentHeight;
+    return helix;
 }
 
-// Initialize the global routes DAG
-async function initializeGlobalRoutesDAG() {
-    console.log('Initializing Global Routes DAG...');
-    const dag = await fetchAndIndexBusRoutes('../json/YesBana.json');
-    console.log('Global Routes DAG initialized successfully.');
-    return dag;
-}
+function buildHelixStructureFromDirections(directionsResponse) {
+    const legs = directionsResponse.routes[0].legs;
+    const radiusIncrement = 0.1;
+    const heightIncrement = 0.05;
+    const angleIncrement = Math.PI / 8;
+    const h3Resolution = 9;
 
-// Process all routes
-async function processRoutes(routes, globalRoutesDAG) {
-    console.log('Processing all routes...');
-    for (const [index, route] of routes.entries()) {
-        console.log(`Processing Route ${index + 1}/${routes.length}`);
-        await processRouteLegs(route, globalRoutesDAG);
-    }
-    console.log('All routes processed.');
-}
+    const helix = {
+        points: [],
+        center: { lat: 0, lng: 0 },
+        h3Center: null,
+        maxRadius: 0,
+        totalHeight: 0,
+        resolution: h3Resolution
+    };
 
-// Process legs within a route
-async function processRouteLegs(route, globalRoutesDAG) {
-    console.log('Processing legs of the route...');
-    const busesToCBD = [];
-    const busesFromCBD = [];
+    let currentAngle = 0;
+    let currentHeight = 0;
+    let currentRadius = 0;
 
-    for (const [legIndex, leg] of route.legs.entries()) {
-        console.log(`Processing Leg ${legIndex + 1}/${route.legs.length}`);
-        if (!leg.steps?.length) {
-            console.warn(`No steps found in Leg ${legIndex + 1}. Skipping...`);
-            continue;
-        }
+    const start = legs[0].start_location;
+    const end = legs[legs.length - 1].end_location;
+    helix.center = { lat: (start.lat + end.lat) / 2, lng: (start.lng + end.lng) / 2 };
+    helix.h3Center = h3.latLngToCell(helix.center.lat, helix.center.lng, h3Resolution);
 
-        for (const step of leg.steps) {
-            const alignedRoute = await processStep(step, legIndex, globalRoutesDAG);
-
-            // Categorize routes for display
-            alignedRoute.forEach(({ route_number, destinations }) => {
-                busesToCBD.push(`${route_number} (TO CBD)`); // Example categorization
-                destinations.forEach(dest => {
-                    busesFromCBD.push(`${route_number} / ${dest}`);
-                });
+    legs.forEach((leg, legIndex) => {
+        leg.steps.forEach((step, stepIndex) => {
+            const decodedCoords = decodePolyline(step.polyline?.points || step.encoded_lat_lngs || '');
+            decodedCoords.forEach(([lat, lng]) => {
+                const h3Index = h3.latLngToCell(lat, lng, h3Resolution);
+                const point = {
+                    lat, lng,
+                    h3Index,
+                    helixX: Math.cos(currentAngle) * currentRadius,
+                    helixY: Math.sin(currentAngle) * currentRadius,
+                    helixZ: currentHeight,
+                    legIndex,
+                    stepIndex,
+                    instructions: step.instructions
+                };
+                helix.points.push(point);
+                currentAngle += angleIncrement;
+                currentHeight += heightIncrement;
+                currentRadius += radiusIncrement;
+                helix.maxRadius = Math.max(helix.maxRadius, currentRadius);
             });
-        }
-    }
-
-    console.log('All legs processed. Displaying results...');
-    displayResults(busesToCBD, busesFromCBD);
-}
-
-// Process individual steps within a leg
-async function processStep(step , stepIndex, globalRoutesDAG) {
-    console.log(`Processing Step ${stepIndex + 1}...`);
-    const { encoded_lat_lngs: encodedLatLngs } = step;
-
-    if (!encodedLatLngs) {
-        console.warn(`No encoded_lat_lngs found in Step ${stepIndex + 1}. Skipping...`);
-        return [];
-    }
-
-    const decodedCoordinates = decodePolyline(encodedLatLngs);
-    console.log(`Decoded ${decodedCoordinates.length} coordinates for Step ${stepIndex + 1}.`);
-
-    const alignedRoute = alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG);
-    console.log(`Aligned route contains ${alignedRoute.length} points.`);
-
-    return alignedRoute; // Return aligned route for further processing
-}
-
-// Align polyline with the global routes DAG
-function alignPolylineWithDAG(decodedCoordinates, globalRoutesDAG) {
-    if (!globalRoutesDAG || globalRoutesDAG.all().length === 0) {
-        console.warn('Global Routes DAG is empty.');
-        return [];
-    }
-    const buffer = 0.0001; // Small buffer for search bounds
-    return decodedCoordinates.map(point => {
-        const { lng, lat } = point;
-        const closestNodes = globalRoutesDAG.search({
-            minX: lng - buffer,
-            minY: lat - buffer,
-            maxX: lng + buffer,
-            maxY: lat + buffer,
         });
+    });
 
-        if (closestNodes.length > 0) {
-            const closestNode = closestNodes[0];
-            return {
-                route_number: closestNode.route.route_number,
-                pickup_point: closestNode.route.pickup_point,
-                destinations: closestNode.route.destinations,
-            };
-        }
-
-        console.warn('No closest nodes found for point:', { lng, lat });
-        return null;
-    }).filter(Boolean);
+    helix.totalHeight = currentHeight;
+    return helix;
 }
 
-// Display the results of the bus routes
-function displayResults(busesToCBD, busesFromCBD) {
-    console.log('Displaying results...');
+async function findRoutesWithPartOfRelationship(locations, helixStructure, globalRoutesDAG, directionsResponse) {
+    const busRouteNumbers = new Set();
+    const userHexes = new Set(helixStructure.points.map(p => p.h3Index));
+
+    // Expand user hexes with a 1-ring buffer
+    const expandedUserHexes = new Set();
+    userHexes.forEach(hex => {
+        const neighbors = h3.gridDisk(hex, 1);
+        neighbors.forEach(n => expandedUserHexes.add(n));
+    });
+
+    // Process YesBana.json routes
+    const allRoutes = globalRoutesDAG.all().map(node => node.route);
+    const uniqueRoutes = new Map();
+    allRoutes.forEach(route => uniqueRoutes.set(route.route_number, route));
+
+    uniqueRoutes.forEach((route, routeNumber) => {
+        const pickupHex = route.pickup_point.pickup_hexid;
+        const destinationHexes = new Set(route.destinations.map(d => d.destination_hexid));
+
+        const intersects = expandedUserHexes.has(pickupHex) || 
+                          Array.from(destinationHexes).some(destHex => expandedUserHexes.has(destHex));
+        if (intersects) {
+            busRouteNumbers.add(routeNumber);
+        }
+    });
+
+    // If Directions API data is provided, decode polylines and align with YesBana.json
+    if (directionsResponse) {
+        for (const route of directionsResponse.routes) {
+            for (const leg of route.legs) {
+                for (const step of leg.steps) {
+                    if (step.travel_mode === 'TRANSIT' && step.transit_details?.vehicle?.type === 'BUS') {
+                        const busLine = step.transit_details.line.short_name;
+                        if (busLine) busRouteNumbers.add(busLine);
+                    }
+                    if (step.polyline?.points || step.encoded_lat_lngs) {
+                        const decodedCoords = decodePolyline(step.polyline?.points || step.encoded_lat_lngs);
+                        decodedCoords.forEach(([lat, lng]) => {
+                            const h3Index = h3.latLngToCell(lat, lng, helixStructure.resolution);
+                            if (expandedUserHexes.has(h3Index)) {
+                                const nearbyRoutes = getNearbyRoutes(lat, lng, globalRoutesDAG);
+                                nearbyRoutes.forEach(route => busRouteNumbers.add(route.route_number));
+                            }
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+    return Array.from(busRouteNumbers);
+}
+
+function displayResults(busRouteNumbers, helixStructure) {
     const resultDiv = document.getElementById('bus-routes');
-    if (!busesToCBD.length && !busesFromCBD.length) {
+    if (!busRouteNumbers.length) {
         resultDiv.innerHTML = '<p>No bus routes found for the given locations.</p>';
         return;
     }
 
     resultDiv.innerHTML = `
-        <h2>Bus Routes:</h2>
-        ${busesToCBD.length ? `<h3>Buses to CBD:</h3><ul>${busesToCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}
-        ${busesFromCBD.length ? `<h3>Buses from CBD:</h3><ul>${busesFromCBD.map(route => `<li>${route}</li>`).join('')}</ul>` : ''}
+        <h2>Bus Route Numbers (Helix: Height ${helixStructure.totalHeight.toFixed(2)}, Radius ${helixStructure.maxRadius.toFixed(2)})</h2>
+        <p>H3 Center: ${helixStructure.h3Center}</p>
+        <ul>${busRouteNumbers.map(route => `<li>${route}</li>`).join('')}</ul>
     `;
 }
 
-
-// Expose the findMa3 function to the global window object for external calls
 window.findMa3 = findMa3;

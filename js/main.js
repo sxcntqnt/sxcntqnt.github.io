@@ -1,6 +1,6 @@
 import { initializeAutocomplete, createInputGroup, addLocation, getAdditionalLocations, calcRoute } from './calcRoute.js';
 import { findMa3 } from './findMat.js';
-import { locateAndMarkUser } from './utils.js';
+//import { locateAndMarkUser } from './utils.js';
 
 let response; // Store response for ETA checks
 
@@ -77,9 +77,9 @@ async function main(directionsService, directionsDisplay, map) {
         button.addEventListener('click', async () => {
             try {
                 // Fetch user's location and mark it on the map
-                const { address, coordinates } = await getUserLocationAndMark(map);
-                console.log('User location:', coordinates);
-                console.log('User address:', address);
+                //const { address, coordinates } = await getUserLocationAndMark(map);
+                // console.log('User location:', coordinates);
+                //console.log('User address:', address);
 
                 // Populate the origin input with the user's address
                 const originInput = document.getElementById('origin');
