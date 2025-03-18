@@ -76,52 +76,74 @@ async function main(directionsService, directionsDisplay, map) {
     if (button) {
         button.addEventListener('click', async () => {
             try {
-                // Fetch user's location and mark it on the map
-                //const { address, coordinates } = await getUserLocationAndMark(map);
-                // console.log('User location:', coordinates);
-                //console.log('User address:', address);
-
-                // Populate the origin input with the user's address
+                // Get origin, destination, and additional locations from input fields
                 const originInput = document.getElementById('origin');
-                originInput.value = address;  // Set the address into the input field
+                const destinationInput = document.getElementById('destination');
+                const additionalLocationsInput = document.getElementById('additional-locations'); // Optional field for extra points
 
-                // You can now use the coordinates in the `coordinates` variable
-                // for any further processing or API calls.
+                if (!originInput || !destinationInput) {
+                    throw new Error('Origin or destination input field not found.');
+                }
 
-                // Calculate the route
+                const origin = originInput.value.trim();
+                const destination = destinationInput.value.trim();
+                let additionalLocations = additionalLocationsInput && additionalLocationsInput.value.trim() 
+                    ? additionalLocationsInput.value.split(',').map(loc => loc.trim()) 
+                    : [];
+
+                if (!origin || !destination) {
+                    throw new Error('Please enter both origin and destination.');
+                }
+
+                console.log('Origin:', origin);
+                console.log('Destination:', destination);
+                console.log('Additional Locations:', additionalLocations);
+
+                // Calculate the route using existing calcRoute function
                 const directionsResponse = await calcRoute(directionsService, map);
 
                 if (directionsResponse && directionsResponse.status === 'OK') {
-                    // Pass userLocation and directionsResponse to findMa3
-                    response = directionsResponse; // Store response for ETA checks
-                    await findMa3({ userLocation: coordinates, directionsResponse });
+                    // Extract locations from inputs and Directions API
+                    const locations = [
+                        { lat: directionsResponse.routes[0].legs[0].start_location.lat, lng: directionsResponse.routes[0].legs[0].start_location.lng }
+                    ];
+
+                    // Add any additional locations (assuming they need geocoding or manual lat/lng input)
+                    if (additionalLocations.length > 0) {
+                        // For simplicity, assume additionalLocations are lat,lng strings (e.g., "-1.2932,36.8128")
+                        additionalLocations.forEach(loc => {
+                            const [lat, lng] = loc.split(',').map(Number);
+                            if (!isNaN(lat) && !isNaN(lng)) {
+                                locations.push({ lat, lng });
+                            } else {
+                                console.warn(`Invalid lat/lng format for additional location: ${loc}`);
+                            }
+                        });
+                    }
+
+                    // Add destination from Directions API
+                    locations.push({
+                        lat: directionsResponse.routes[0].legs[0].end_location.lat,
+                        lng: directionsResponse.routes[0].legs[0].end_location.lng
+                    });
+
+                    console.log('Processed Locations:', locations);
+
+                    // Store response for ETA checks (assuming response is global)
+                    response = directionsResponse;
+
+                    // Pass locations and directionsResponse to findMa3
+                    await findMa3({ locations, directionsResponse });
                 } else {
                     console.error('No valid directions received:', directionsResponse);
                     alert('No valid directions found. Please check your inputs and try again.');
                 }
             } catch (error) {
-                console.error('An error occurred while getting user location:', error);
-                alert('An error occurred while locating you. Please ensure location services are enabled and try again.');
+                console.error('An error occurred while calculating the route:', error.message);
+                alert('An error occurred: ' + error.message);
             }
         });
     } else {
         console.error('Button for route calculation not found!');
-    }
-}
-
-// Function to get user location and mark it on the map
-async function getUserLocationAndMark(map) {
-    try {
-        // Call locateAndMarkUser and await the result (address and location)
-        const { address, coordinates } = await locateAndMarkUser(map);
-        if (!coordinates) {
-            throw new Error('User location could not be determined.');
-        }
-
-        // Return both the address and coordinates
-        return { address, coordinates };
-    } catch (error) {
-        console.error('Error in getUserLocationAndMark:', error);
-        throw new Error(`Error locating user: ${error.message}`);
     }
 }
