@@ -147,7 +147,6 @@ async function drawPath(response, map) {
     try {
         const directionsDisplay = new google.maps.DirectionsRenderer({
             map: map,
-            suppressMarkers: true, // Suppress default markers
         });
         directionsDisplay.setDirections(response);
         console.log("Path drawn successfully.");
