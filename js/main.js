@@ -63,23 +63,19 @@ window.initMap = async function () {
     };
 
     const map = new google.maps.Map(document.getElementById('googlemap'), mapOptions);
-    const directionsDisplay = new google.maps.DirectionsRenderer();
-    directionsDisplay.setMap(map); // Set the map for the directions display
-
-    await initializeInputs(); // Initialize inputs here
-    await main(directionsService, directionsDisplay, map); // Pass the map instance
-}
+    await initializeInputs(); // Initialize inputs
+    await main(directionsService, map); // Pass the map instance, no pre-set DirectionsRenderer
+};
 
 // Main function to handle user interaction and route calculation
-async function main(directionsService, directionsDisplay, map) {
+async function main(directionsService, map) {
     const button = document.querySelector('.btn-success');
     if (button) {
         button.addEventListener('click', async () => {
             try {
-                // Get origin, destination, and additional locations from input fields
                 const originInput = document.getElementById('origin');
                 const destinationInput = document.getElementById('destination');
-                const additionalLocationsInput = document.getElementById('additional-locations'); // Optional field for extra points
+                const additionalLocationsInput = document.getElementById('additional-locations');
 
                 if (!originInput || !destinationInput) {
                     throw new Error('Origin or destination input field not found.');
@@ -87,8 +83,8 @@ async function main(directionsService, directionsDisplay, map) {
 
                 const origin = originInput.value.trim();
                 const destination = destinationInput.value.trim();
-                let additionalLocations = additionalLocationsInput && additionalLocationsInput.value.trim() 
-                    ? additionalLocationsInput.value.split(',').map(loc => loc.trim()) 
+                let additionalLocations = additionalLocationsInput && additionalLocationsInput.value.trim()
+                    ? additionalLocationsInput.value.split(',').map(loc => loc.trim())
                     : [];
 
                 if (!origin || !destination) {
@@ -99,38 +95,38 @@ async function main(directionsService, directionsDisplay, map) {
                 console.log('Destination:', destination);
                 console.log('Additional Locations:', additionalLocations);
 
-                // Calculate the route using existing calcRoute function
+                // Calculate the route
                 const directionsResponse = await calcRoute(directionsService, map);
 
                 if (directionsResponse && directionsResponse.status === 'OK') {
-                    // Extract locations from inputs and Directions API
-                    const locations = [
-                        { lat: directionsResponse.routes[0].legs[0].start_location.lat, lng: directionsResponse.routes[0].legs[0].start_location.lng }
-                    ];
+                    // Extract all locations from the Directions API response
+                    const locations = [];
+                    const legs = directionsResponse.routes[0].legs;
 
-                    // Add any additional locations (assuming they need geocoding or manual lat/lng input)
-                    if (additionalLocations.length > 0) {
-                        // For simplicity, assume additionalLocations are lat,lng strings (e.g., "-1.2932,36.8128")
-                        additionalLocations.forEach(loc => {
-                            const [lat, lng] = loc.split(',').map(Number);
-                            if (!isNaN(lat) && !isNaN(lng)) {
-                                locations.push({ lat, lng });
-                            } else {
-                                console.warn(`Invalid lat/lng format for additional location: ${loc}`);
-                            }
+                    // Add origin (start of first leg)
+                    locations.push({
+                        lat: legs[0].start_location.lat(),
+                        lng: legs[0].start_location.lng()
+                    });
+
+                    // Add waypoints (end of each leg except the last)
+                    for (let i = 0; i < legs.length - 1; i++) {
+                        locations.push({
+                            lat: legs[i].end_location.lat(),
+                            lng: legs[i].end_location.lng()
                         });
                     }
 
-                    // Add destination from Directions API
+                    // Add destination (end of last leg)
                     locations.push({
-                        lat: directionsResponse.routes[0].legs[0].end_location.lat,
-                        lng: directionsResponse.routes[0].legs[0].end_location.lng
+                        lat: legs[legs.length - 1].end_location.lat(),
+                        lng: legs[legs.length - 1].end_location.lng()
                     });
 
                     console.log('Processed Locations:', locations);
 
                     // Store response for ETA checks (assuming response is global)
-                    response = directionsResponse;
+                    window.response = directionsResponse;
 
                     // Pass locations and directionsResponse to findMa3
                     await findMa3({ locations, directionsResponse });

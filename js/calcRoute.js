@@ -141,15 +141,15 @@ async function drawPath(response, map) {
     if (!response || !response.routes || response.routes.length === 0) {
         console.error("Invalid or empty directions response.");
         console.log("Unable to draw path: Invalid directions response.");
-        return; // Early return to prevent further execution
+        return;
     }
-    
-    // Valid response and map, proceed to draw the path
+
     try {
-        const directionsDisplay = new google.maps.DirectionsRenderer();
-        directionsDisplay.setMap(map); // Set the map for the new DirectionsRenderer
-        directionsDisplay.setDirections(response); // Use the passed response
-        displayRouteDetails(response); // Call to display results
+        const directionsDisplay = new google.maps.DirectionsRenderer({
+            map: map,
+            suppressMarkers: true, // Suppress default markers
+        });
+        directionsDisplay.setDirections(response);
         console.log("Path drawn successfully.");
     } catch (error) {
         console.error("Error drawing path:", error);
