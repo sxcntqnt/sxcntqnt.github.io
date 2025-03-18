@@ -70,20 +70,6 @@ buttons.forEach(button => {
 window.locateAndMarkUser = locateAndMarkUser
 
 // utils.js
-export function removeEmptyDicts(obj) {
-    if (Array.isArray(obj)) {
-        return obj.map(removeEmptyDicts).filter(item => item && Object.keys(item).length > 0);
-    }
-    if (typeof obj === 'object' && obj !== null) {
-        return Object.fromEntries(
-            Object.entries(obj)
-                .map(([key, value]) => [key, removeEmptyDicts(value)])
-                .filter(([_, value]) => value && Object.keys(value).length > 0)
-        );
-    }
-    return obj;
-}
-
 export function decodePolyline(polylineStr) {
     if (!polylineStr) {
         console.warn('Invalid polyline string provided.');
