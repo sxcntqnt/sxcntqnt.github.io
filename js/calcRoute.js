@@ -143,7 +143,7 @@ async function drawPath(response, map) {
     try {
         const directionsDisplay = new google.maps.DirectionsRenderer({
             map: map,
-            suppressMarkers: true, // Suppress default markers
+            suppressMarkers: False, // Suppress default markers
         });
         directionsDisplay.setDirections(response);
         console.log("Path drawn:", response.routes[0].legs.map(leg => `${leg.start_address} → ${leg.end_address}`));
