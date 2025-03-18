@@ -99,7 +99,6 @@ function displayRouteDetails(response) {
     }
 }
 
-
 // Format duration from seconds to a more readable format
 function formatDuration(durationInSeconds) {
     const hours = Math.floor(durationInSeconds / 3600);
@@ -115,19 +114,16 @@ async function fetchDirections(origin, destination, waypoints) {
     const request = {
         origin: origin,
         destination: destination,
+        waypoints: waypoints.length > 0 ? waypoints : undefined, // Ensure waypoints are only included if present
         travelMode: google.maps.TravelMode.DRIVING, // Default travel mode
     };
-
-    // Add waypoints only if they exist
-    if (waypoints.length > 0) {
-        request.waypoints = waypoints;
-    }
 
     const directionsService = new google.maps.DirectionsService();
 
     return new Promise((resolve, reject) => {
         directionsService.route(request, (response, status) => {
             if (status === 'OK') {
+                console.log("API Response Legs:", response.routes[0].legs.map(leg => `${leg.start_address} → ${leg.end_address}`));
                 resolve(response);
             } else {
                 reject(`Directions request failed: ${status}`);
@@ -147,9 +143,11 @@ async function drawPath(response, map) {
     try {
         const directionsDisplay = new google.maps.DirectionsRenderer({
             map: map,
+            suppressMarkers: true, // Suppress default markers
         });
         directionsDisplay.setDirections(response);
-        console.log("Path drawn successfully.");
+        console.log("Path drawn:", response.routes[0].legs.map(leg => `${leg.start_address} → ${leg.end_address}`));
+        displayRouteDetails(response); // Display route details after drawing
     } catch (error) {
         console.error("Error drawing path:", error);
         console.log("An error occurred while drawing the path. Please try again.");
@@ -169,6 +167,7 @@ export async function calcRoute(directionsService, map) {
     // Fetch additional locations as waypoints
     const additionalLocations = await getAdditionalLocations();
     const waypoints = additionalLocations.map(location => ({ location, stopover: true }));
+    console.log("Waypoints Order:", waypoints.map(wp => wp.location));
 
     try {
         const directionsResponse = await fetchDirections(origin, destination, waypoints);
@@ -190,4 +189,3 @@ window.initializeAutocomplete = initializeAutocomplete;
 window.addLocation = addLocation;
 window.createInputGroup = createInputGroup;
 window.calcRoute = calcRoute; // Make calcRoute globally accessible
-
