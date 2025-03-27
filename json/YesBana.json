@@ -167,7 +167,7 @@
         {
             "route_number": "102",
             "pickup_point": {
-                "pickup_point": "Board\u200b\u200b from BS or Kencom",
+                "pickup_point": "Board​​ from BS or Kencom",
                 "pickup_latlng": {
                     "latitude": -1.2308,
                     "longitude": 36.8076
@@ -2023,7 +2023,7 @@
         {
             "route_number": "237",
             "pickup_point": {
-                "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street, as well as on Race Course Road near the Tusky\u2019s Building (formerly OTC).",
+                "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street, as well as on Race Course Road near the Tusky’s Building (formerly OTC).",
                 "pickup_latlng": {
                     "latitude": -1.0281,
                     "longitude": 36.9805
@@ -2703,7 +2703,7 @@
         {
             "route_number": "33",
             "pickup_point": {
-                "pickup_point": "Board the matatu from opp St Peter Claver\u2019s\u200b\u200b Catholic church or near OTC /Salvation Army areas",
+                "pickup_point": "Board the matatu from opp St Peter Claver’s​​ Catholic church or near OTC /Salvation Army areas",
                 "pickup_latlng": {
                     "latitude": -1.2865,
                     "longitude": 36.815
@@ -4408,6 +4408,43 @@
                         "longitude": 36.8097
                     },
                     "destination_hexid": "877a6e42dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "0",
+            "pickup_point": {
+                "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street",
+                "pickup_latlng": {
+                    "latitude": -1.28333,
+                    "longitude": 36.81667
+                },
+                "pickup_hexid": "877a6e414ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Tom Mboya Street opp National Archives",
+                    "destination_latlng": {
+                        "latitude": -1.283,
+                        "longitude": 36.823
+                    },
+                    "destination_hexid": "877a6e414ffffff"
+                },
+                {
+                    "destination": "Railways bus station",
+                    "destination_latlng": {
+                        "latitude": -1.2905,
+                        "longitude": 36.826
+                    },
+                    "destination_hexid": "877a6e415ffffff"
+                },
+                {
+                    "destination": "General Post Office/ GPO",
+                    "destination_latlng": {
+                        "latitude": -1.286,
+                        "longitude": 36.815
+                    },
+                    "destination_hexid": "877a6e414ffffff"
                 }
             ]
         }
