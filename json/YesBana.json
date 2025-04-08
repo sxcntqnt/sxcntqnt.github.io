@@ -1,0 +1,4452 @@
+{
+    "non_null_objects": [
+        {
+            "route_number": "1",
+            "pickup_point": {
+                "pickup_point": "General Post Office/ GPO",
+                "pickup_latlng": {
+                    "latitude": -1.2865,
+                    "longitude": 36.815
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngong Road",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8082
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Citam/NPC Valley road",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8082
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "The Junction Mall",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8082
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Dagoretti",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8082
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "10",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.936106,
+                    "longitude": 36.713801
+                },
+                "pickup_hexid": "877a45b40ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Muthurwa",
+                    "destination_latlng": {
+                        "latitude": 1.778514,
+                        "longitude": 36.837177
+                    },
+                    "destination_hexid": "877a5d932ffffff"
+                },
+                {
+                    "destination": "Shauri Moyo",
+                    "destination_latlng": {
+                        "latitude": 1.778514,
+                        "longitude": 36.837177
+                    },
+                    "destination_hexid": "877a5d932ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "100",
+            "pickup_point": {
+                "pickup_point": "Pick the matatu along Ronald Ngala Street all the way to Ring-road Ngara or opp St. peters Clavers Catholic Church",
+                "pickup_latlng": {
+                    "latitude": -1.1888,
+                    "longitude": 36.7909
+                },
+                "pickup_hexid": "877a6e40bffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kiambutown",
+                    "destination_latlng": {
+                        "latitude": -1.2334,
+                        "longitude": 36.8065
+                    },
+                    "destination_hexid": "877a6e42bffffff"
+                },
+                {
+                    "destination": "Kiamburoad",
+                    "destination_latlng": {
+                        "latitude": -1.2334,
+                        "longitude": 36.8065
+                    },
+                    "destination_hexid": "877a6e42bffffff"
+                },
+                {
+                    "destination": "Sharkspalacekiamburoad",
+                    "destination_latlng": {
+                        "latitude": -1.2334,
+                        "longitude": 36.8065
+                    },
+                    "destination_hexid": "877a6e42bffffff"
+                },
+                {
+                    "destination": "CIDcenter",
+                    "destination_latlng": {
+                        "latitude": -1.2334,
+                        "longitude": 36.8065
+                    },
+                    "destination_hexid": "877a6e42bffffff"
+                },
+                {
+                    "destination": "Ridgeways",
+                    "destination_latlng": {
+                        "latitude": -1.2334,
+                        "longitude": 36.8065
+                    },
+                    "destination_hexid": "877a6e42bffffff"
+                },
+                {
+                    "destination": "Rockcitykiamburoad",
+                    "destination_latlng": {
+                        "latitude": -1.2334,
+                        "longitude": 36.8065
+                    },
+                    "destination_hexid": "877a6e42bffffff"
+                },
+                {
+                    "destination": "Muthaigaroundabout",
+                    "destination_latlng": {
+                        "latitude": -1.2334,
+                        "longitude": 36.8065
+                    },
+                    "destination_hexid": "877a6e42bffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "101",
+            "pickup_point": {
+                "pickup_point": "Kikuyu",
+                "pickup_latlng": {
+                    "latitude": 0.377431,
+                    "longitude": 36.57035
+                },
+                "pickup_hexid": "877a41021ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Banana",
+                    "destination_latlng": {
+                        "latitude": -1.64788,
+                        "longitude": 37.871512
+                    },
+                    "destination_hexid": "877a63c4affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "102",
+            "pickup_point": {
+                "pickup_point": "Board​​ from BS or Kencom",
+                "pickup_latlng": {
+                    "latitude": -1.2308,
+                    "longitude": 36.8076
+                },
+                "pickup_hexid": "877a6e40cffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kikuyutownship",
+                    "destination_latlng": {
+                        "latitude": -1.2842,
+                        "longitude": 36.7489
+                    },
+                    "destination_hexid": "877a6e55bffffff"
+                },
+                {
+                    "destination": "Dagorettie",
+                    "destination_latlng": {
+                        "latitude": -1.2842,
+                        "longitude": 36.7489
+                    },
+                    "destination_hexid": "877a6e55bffffff"
+                },
+                {
+                    "destination": "Ngongroad",
+                    "destination_latlng": {
+                        "latitude": -1.2842,
+                        "longitude": 36.7489
+                    },
+                    "destination_hexid": "877a6e55bffffff"
+                },
+                {
+                    "destination": "Thejunctionmall",
+                    "destination_latlng": {
+                        "latitude": -1.2842,
+                        "longitude": 36.7489
+                    },
+                    "destination_hexid": "877a6e55bffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "103",
+            "pickup_point": {
+                "pickup_point": "Kawangware",
+                "pickup_latlng": {
+                    "latitude": 1.915596,
+                    "longitude": 37.919461
+                },
+                "pickup_hexid": "877a5c8a4ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Uthiru",
+                    "destination_latlng": {
+                        "latitude": 1.080581,
+                        "longitude": 37.827907
+                    },
+                    "destination_hexid": "877a42a55ffffff"
+                },
+                {
+                    "destination": "Kangemi",
+                    "destination_latlng": {
+                        "latitude": 1.080581,
+                        "longitude": 37.827907
+                    },
+                    "destination_hexid": "877a42a55ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "105",
+            "pickup_point": {
+                "pickup_point": "Board the matatu along tom Mboya Street near National Archives or from Railways bus station",
+                "pickup_latlng": {
+                    "latitude": -1.27,
+                    "longitude": 36.81
+                },
+                "pickup_hexid": "877a6e428ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kikuyu(Uhuruhighway)",
+                    "destination_latlng": {
+                        "latitude": -1.252,
+                        "longitude": 36.7072
+                    },
+                    "destination_hexid": "877a6e463ffffff"
+                },
+                {
+                    "destination": "Westlands",
+                    "destination_latlng": {
+                        "latitude": -1.252,
+                        "longitude": 36.7072
+                    },
+                    "destination_hexid": "877a6e463ffffff"
+                },
+                {
+                    "destination": "Kangemi",
+                    "destination_latlng": {
+                        "latitude": -1.252,
+                        "longitude": 36.7072
+                    },
+                    "destination_hexid": "877a6e463ffffff"
+                },
+                {
+                    "destination": "Uthiru",
+                    "destination_latlng": {
+                        "latitude": -1.252,
+                        "longitude": 36.7072
+                    },
+                    "destination_hexid": "877a6e463ffffff"
+                },
+                {
+                    "destination": "Kinoo",
+                    "destination_latlng": {
+                        "latitude": -1.252,
+                        "longitude": 36.7072
+                    },
+                    "destination_hexid": "877a6e463ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "106",
+            "pickup_point": {
+                "pickup_point": "Koja Mosque stage",
+                "pickup_latlng": {
+                    "latitude": -1.2564,
+                    "longitude": 36.8066
+                },
+                "pickup_hexid": "877a6e42bffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Banana",
+                    "destination_latlng": {
+                        "latitude": -1.2917,
+                        "longitude": 36.771
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                },
+                {
+                    "destination": "Muchatha",
+                    "destination_latlng": {
+                        "latitude": -1.2917,
+                        "longitude": 36.771
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                },
+                {
+                    "destination": "villagemarket",
+                    "destination_latlng": {
+                        "latitude": -1.2917,
+                        "longitude": 36.771
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "107",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 1.094482,
+                    "longitude": 36.986644
+                },
+                "pickup_hexid": "877a43b80ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ruaka",
+                    "destination_latlng": {
+                        "latitude": -1.708651,
+                        "longitude": 37.876369
+                    },
+                    "destination_hexid": "877a63c6affffff"
+                },
+                {
+                    "destination": "Ndenderu",
+                    "destination_latlng": {
+                        "latitude": -1.708651,
+                        "longitude": 37.876369
+                    },
+                    "destination_hexid": "877a63c6affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "108",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.608918,
+                    "longitude": 36.902089
+                },
+                "pickup_hexid": "877a4506dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "UN",
+                    "destination_latlng": {
+                        "latitude": -0.09373,
+                        "longitude": 37.161554
+                    },
+                    "destination_hexid": "877a4578affffff"
+                },
+                {
+                    "destination": "Gachie",
+                    "destination_latlng": {
+                        "latitude": -0.09373,
+                        "longitude": 37.161554
+                    },
+                    "destination_hexid": "877a4578affffff"
+                },
+                {
+                    "destination": "Gichagi",
+                    "destination_latlng": {
+                        "latitude": -0.09373,
+                        "longitude": 37.161554
+                    },
+                    "destination_hexid": "877a4578affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "11",
+            "pickup_point": {
+                "pickup_point": "Board the matatu from ODEON bus Station",
+                "pickup_latlng": {
+                    "latitude": 0.080567,
+                    "longitude": 37.562127
+                },
+                "pickup_hexid": "877a40ba2ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Aga Khan",
+                    "destination_latlng": {
+                        "latitude": 1.540122,
+                        "longitude": 36.569638
+                    },
+                    "destination_hexid": "877a4324effffff"
+                },
+                {
+                    "destination": "Parklands",
+                    "destination_latlng": {
+                        "latitude": 1.540122,
+                        "longitude": 36.569638
+                    },
+                    "destination_hexid": "877a4324effffff"
+                },
+                {
+                    "destination": "Highridge",
+                    "destination_latlng": {
+                        "latitude": 1.540122,
+                        "longitude": 36.569638
+                    },
+                    "destination_hexid": "877a4324effffff"
+                }
+            ]
+        },
+        {
+            "route_number": "110",
+            "pickup_point": {
+                "pickup_point": "Board from Railways station at the entrance of near the railways station",
+                "pickup_latlng": {
+                    "latitude": -1.354,
+                    "longitude": 36.883
+                },
+                "pickup_hexid": "877a6e508ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kitengela",
+                    "destination_latlng": {
+                        "latitude": -1.3789,
+                        "longitude": 36.9365
+                    },
+                    "destination_hexid": "877a6e500ffffff"
+                },
+                {
+                    "destination": "mlonglo",
+                    "destination_latlng": {
+                        "latitude": -1.3789,
+                        "longitude": 36.9365
+                    },
+                    "destination_hexid": "877a6e500ffffff"
+                },
+                {
+                    "destination": "Athisriver",
+                    "destination_latlng": {
+                        "latitude": -1.3789,
+                        "longitude": 36.9365
+                    },
+                    "destination_hexid": "877a6e500ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "111",
+            "pickup_point": {
+                "pickup_point": "Board from Kencom or Railways bus station",
+                "pickup_latlng": {
+                    "latitude": -1.2364,
+                    "longitude": 36.787
+                },
+                "pickup_hexid": "877a6e476ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngong",
+                    "destination_latlng": {
+                        "latitude": -1.2578,
+                        "longitude": 36.7478
+                    },
+                    "destination_hexid": "877a6e475ffffff"
+                },
+                {
+                    "destination": "Ngongroad",
+                    "destination_latlng": {
+                        "latitude": -1.2578,
+                        "longitude": 36.7478
+                    },
+                    "destination_hexid": "877a6e475ffffff"
+                },
+                {
+                    "destination": "Dagaoretticorner(somtimeskiserian)",
+                    "destination_latlng": {
+                        "latitude": -1.2578,
+                        "longitude": 36.7478
+                    },
+                    "destination_hexid": "877a6e475ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "112",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.91049,
+                    "longitude": 37.074637
+                },
+                "pickup_hexid": "877a61683ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kikuyu",
+                    "destination_latlng": {
+                        "latitude": 1.613162,
+                        "longitude": 37.393782
+                    },
+                    "destination_hexid": "877a43472ffffff"
+                },
+                {
+                    "destination": "Gikambura",
+                    "destination_latlng": {
+                        "latitude": 1.613162,
+                        "longitude": 37.393782
+                    },
+                    "destination_hexid": "877a43472ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "114",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.872151,
+                    "longitude": 36.442741
+                },
+                "pickup_hexid": "877a6e6d2ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kabuku",
+                    "destination_latlng": {
+                        "latitude": 1.531111,
+                        "longitude": 37.243122
+                    },
+                    "destination_hexid": "877a4309cffffff"
+                },
+                {
+                    "destination": "Limuru",
+                    "destination_latlng": {
+                        "latitude": 1.531111,
+                        "longitude": 37.243122
+                    },
+                    "destination_hexid": "877a4309cffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "115",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 0.959674,
+                    "longitude": 36.349464
+                },
+                "pickup_hexid": "877a416e9ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Rironi",
+                    "destination_latlng": {
+                        "latitude": -1.29304,
+                        "longitude": 36.471938
+                    },
+                    "destination_hexid": "877a6e0deffffff"
+                },
+                {
+                    "destination": "Limuru",
+                    "destination_latlng": {
+                        "latitude": -1.29304,
+                        "longitude": 36.471938
+                    },
+                    "destination_hexid": "877a6e0deffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "116",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -1.737459,
+                    "longitude": 36.994096
+                },
+                "pickup_hexid": "877a6ed1dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Tigoni",
+                    "destination_latlng": {
+                        "latitude": -0.997654,
+                        "longitude": 36.345052
+                    },
+                    "destination_hexid": "877a6e653ffffff"
+                },
+                {
+                    "destination": "Limuru",
+                    "destination_latlng": {
+                        "latitude": -0.997654,
+                        "longitude": 36.345052
+                    },
+                    "destination_hexid": "877a6e653ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "117",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.928875,
+                    "longitude": 36.0473
+                },
+                "pickup_hexid": "877a6a805ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Syokimau",
+                    "destination_latlng": {
+                        "latitude": -0.851447,
+                        "longitude": 36.58802
+                    },
+                    "destination_hexid": "877a45a6cffffff"
+                },
+                {
+                    "destination": "Katani Road",
+                    "destination_latlng": {
+                        "latitude": -0.851447,
+                        "longitude": 36.58802
+                    },
+                    "destination_hexid": "877a45a6cffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "118",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 0.623659,
+                    "longitude": 36.397516
+                },
+                "pickup_hexid": "877a41396ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Basse Kabete",
+                    "destination_latlng": {
+                        "latitude": -0.223445,
+                        "longitude": 36.390374
+                    },
+                    "destination_hexid": "877a6a589ffffff"
+                },
+                {
+                    "destination": "Wangige",
+                    "destination_latlng": {
+                        "latitude": -0.223445,
+                        "longitude": 36.390374
+                    },
+                    "destination_hexid": "877a6a589ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "119",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 0.603985,
+                    "longitude": 37.171417
+                },
+                "pickup_hexid": "877a40253ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Mwimuto",
+                    "destination_latlng": {
+                        "latitude": 0.729844,
+                        "longitude": 36.298324
+                    },
+                    "destination_hexid": "877a412b3ffffff"
+                },
+                {
+                    "destination": "Wangige",
+                    "destination_latlng": {
+                        "latitude": 0.729844,
+                        "longitude": 36.298324
+                    },
+                    "destination_hexid": "877a412b3ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "11A",
+            "pickup_point": {
+                "pickup_point": "Board the matatu from Railways Bus station",
+                "pickup_latlng": {
+                    "latitude": -1.305,
+                    "longitude": 36.805
+                },
+                "pickup_hexid": "877a6e553ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "SouthB",
+                    "destination_latlng": {
+                        "latitude": -1.3007,
+                        "longitude": 36.8018
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Balozi",
+                    "destination_latlng": {
+                        "latitude": -1.3007,
+                        "longitude": 36.8018
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Hazina",
+                    "destination_latlng": {
+                        "latitude": -1.3007,
+                        "longitude": 36.8018
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Bellevue",
+                    "destination_latlng": {
+                        "latitude": -1.3007,
+                        "longitude": 36.8018
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                }
+            ]
+        },
+        {
+            "route_number": "11B",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 1.447524,
+                    "longitude": 37.987169
+                },
+                "pickup_hexid": "877a4238cffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngara",
+                    "destination_latlng": {
+                        "latitude": 1.111303,
+                        "longitude": 37.587183
+                    },
+                    "destination_hexid": "877a43d0affffff"
+                },
+                {
+                    "destination": "Stima Plaza",
+                    "destination_latlng": {
+                        "latitude": 1.111303,
+                        "longitude": 37.587183
+                    },
+                    "destination_hexid": "877a43d0affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "11C",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.550274,
+                    "longitude": 37.937632
+                },
+                "pickup_hexid": "877a63cccffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "KICD",
+                    "destination_latlng": {
+                        "latitude": -1.485723,
+                        "longitude": 37.685344
+                    },
+                    "destination_hexid": "877a6301effffff"
+                },
+                {
+                    "destination": "Pangani",
+                    "destination_latlng": {
+                        "latitude": -1.485723,
+                        "longitude": 37.685344
+                    },
+                    "destination_hexid": "877a6301effffff"
+                }
+            ]
+        },
+        {
+            "route_number": "120",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.422561,
+                    "longitude": 36.929647
+                },
+                "pickup_hexid": "877a453b0ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kiambu",
+                    "destination_latlng": {
+                        "latitude": 0.440563,
+                        "longitude": 36.153289
+                    },
+                    "destination_hexid": "877a41370ffffff"
+                },
+                {
+                    "destination": "Githunguri",
+                    "destination_latlng": {
+                        "latitude": 0.440563,
+                        "longitude": 36.153289
+                    },
+                    "destination_hexid": "877a41370ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "122",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 1.905833,
+                    "longitude": 36.249672
+                },
+                "pickup_hexid": "877a5db75ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kiambu",
+                    "destination_latlng": {
+                        "latitude": -0.099866,
+                        "longitude": 37.178448
+                    },
+                    "destination_hexid": "877a4579dffffff"
+                },
+                {
+                    "destination": "Inagi",
+                    "destination_latlng": {
+                        "latitude": -0.099866,
+                        "longitude": 37.178448
+                    },
+                    "destination_hexid": "877a4579dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "125/126",
+            "pickup_point": {
+                "pickup_point": "Board from Railways bus station",
+                "pickup_latlng": {
+                    "latitude": -1.3551,
+                    "longitude": 36.77
+                },
+                "pickup_hexid": "877a6e540ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ongatarongai",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Kiserian",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Bonasmsofkenya",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Nazareneuniversity",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Catholickuniversity",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Multimediuniversity",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Nairobinationalpark/orphanage",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Safariwalk",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Langatabarracks",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Galleriamall",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Brookhouseinternationalschool",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Langatapolice station",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                },
+                {
+                    "destination": "Langatacementery",
+                    "destination_latlng": {
+                        "latitude": -1.3201,
+                        "longitude": 36.7463
+                    },
+                    "destination_hexid": "877a6e54affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "129",
+            "pickup_point": {
+                "pickup_point": "Kikuyu",
+                "pickup_latlng": {
+                    "latitude": 0.295265,
+                    "longitude": 37.819123
+                },
+                "pickup_hexid": "877a40113ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Wangige",
+                    "destination_latlng": {
+                        "latitude": 1.540344,
+                        "longitude": 37.531188
+                    },
+                    "destination_hexid": "877a43519ffffff"
+                },
+                {
+                    "destination": "Ndenderu",
+                    "destination_latlng": {
+                        "latitude": 1.540344,
+                        "longitude": 37.531188
+                    },
+                    "destination_hexid": "877a43519ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "12C",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.130594,
+                    "longitude": 37.763115
+                },
+                "pickup_hexid": "877a40956ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "South C",
+                    "destination_latlng": {
+                        "latitude": 1.059468,
+                        "longitude": 36.328968
+                    },
+                    "destination_hexid": "877a4e992ffffff"
+                },
+                {
+                    "destination": "Mugoya",
+                    "destination_latlng": {
+                        "latitude": 1.059468,
+                        "longitude": 36.328968
+                    },
+                    "destination_hexid": "877a4e992ffffff"
+                },
+                {
+                    "destination": "Bellevue (Circular)",
+                    "destination_latlng": {
+                        "latitude": 1.059468,
+                        "longitude": 36.328968
+                    },
+                    "destination_hexid": "877a4e992ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "12D",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.431462,
+                    "longitude": 36.031117
+                },
+                "pickup_hexid": "877a6a013ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Mombasa Road",
+                    "destination_latlng": {
+                        "latitude": 1.929392,
+                        "longitude": 36.231339
+                    },
+                    "destination_hexid": "877a5db71ffffff"
+                },
+                {
+                    "destination": "Nextgen",
+                    "destination_latlng": {
+                        "latitude": 1.929392,
+                        "longitude": 36.231339
+                    },
+                    "destination_hexid": "877a5db71ffffff"
+                },
+                {
+                    "destination": "Highway Est.",
+                    "destination_latlng": {
+                        "latitude": 1.929392,
+                        "longitude": 36.231339
+                    },
+                    "destination_hexid": "877a5db71ffffff"
+                },
+                {
+                    "destination": "KPA",
+                    "destination_latlng": {
+                        "latitude": 1.929392,
+                        "longitude": 36.231339
+                    },
+                    "destination_hexid": "877a5db71ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "131",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.573461,
+                    "longitude": 36.673121
+                },
+                "pickup_hexid": "877a45375ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Zambezi",
+                    "destination_latlng": {
+                        "latitude": -0.317377,
+                        "longitude": 36.743262
+                    },
+                    "destination_hexid": "877a452adffffff"
+                },
+                {
+                    "destination": "Nderi (KARI)",
+                    "destination_latlng": {
+                        "latitude": -0.317377,
+                        "longitude": 36.743262
+                    },
+                    "destination_hexid": "877a452adffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "132",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 0.258241,
+                    "longitude": 37.191717
+                },
+                "pickup_hexid": "877a41db0ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Limuru",
+                    "destination_latlng": {
+                        "latitude": -1.161976,
+                        "longitude": 37.016656
+                    },
+                    "destination_hexid": "877a6e59affffff"
+                },
+                {
+                    "destination": "Kikuyu",
+                    "destination_latlng": {
+                        "latitude": -1.161976,
+                        "longitude": 37.016656
+                    },
+                    "destination_hexid": "877a6e59affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "133",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 1.747034,
+                    "longitude": 36.935427
+                },
+                "pickup_hexid": "877a43663ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kayole",
+                    "destination_latlng": {
+                        "latitude": -1.105028,
+                        "longitude": 36.658014
+                    },
+                    "destination_hexid": "877a6e7b1ffffff"
+                },
+                {
+                    "destination": "Mihango",
+                    "destination_latlng": {
+                        "latitude": -1.105028,
+                        "longitude": 36.658014
+                    },
+                    "destination_hexid": "877a6e7b1ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "134",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.115299,
+                    "longitude": 37.579763
+                },
+                "pickup_hexid": "877a45490ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Isinya",
+                    "destination_latlng": {
+                        "latitude": 1.974408,
+                        "longitude": 37.752364
+                    },
+                    "destination_hexid": "877a5c8e2ffffff"
+                },
+                {
+                    "destination": "Namanga",
+                    "destination_latlng": {
+                        "latitude": 1.974408,
+                        "longitude": 37.752364
+                    },
+                    "destination_hexid": "877a5c8e2ffffff"
+                },
+                {
+                    "destination": "Oloitoktok",
+                    "destination_latlng": {
+                        "latitude": 1.974408,
+                        "longitude": 37.752364
+                    },
+                    "destination_hexid": "877a5c8e2ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "145",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 0.872606,
+                    "longitude": 36.3271
+                },
+                "pickup_hexid": "877a41643ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ruiru",
+                    "destination_latlng": {
+                        "latitude": 0.922183,
+                        "longitude": 37.093277
+                    },
+                    "destination_hexid": "877a43862ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "146",
+            "pickup_point": {
+                "pickup_point": "Board from Mumbi Lane off Ronald Ngala Street / ODEON",
+                "pickup_latlng": {
+                    "latitude": -1.2151,
+                    "longitude": 36.8854
+                },
+                "pickup_hexid": "877a6e402ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ruiru",
+                    "destination_latlng": {
+                        "latitude": -1.1925,
+                        "longitude": 36.9338
+                    },
+                    "destination_hexid": "877a6e416ffffff"
+                },
+                {
+                    "destination": "Thika Road",
+                    "destination_latlng": {
+                        "latitude": -1.1925,
+                        "longitude": 36.9338
+                    },
+                    "destination_hexid": "877a6e416ffffff"
+                },
+                {
+                    "destination": "Kahawayendani",
+                    "destination_latlng": {
+                        "latitude": -1.1925,
+                        "longitude": 36.9338
+                    },
+                    "destination_hexid": "877a6e416ffffff"
+                },
+                {
+                    "destination": "Kahawabarracks",
+                    "destination_latlng": {
+                        "latitude": -1.1925,
+                        "longitude": 36.9338
+                    },
+                    "destination_hexid": "877a6e416ffffff"
+                },
+                {
+                    "destination": "Kahawasukari",
+                    "destination_latlng": {
+                        "latitude": -1.1925,
+                        "longitude": 36.9338
+                    },
+                    "destination_hexid": "877a6e416ffffff"
+                },
+                {
+                    "destination": "Kenyattauiversity/ku",
+                    "destination_latlng": {
+                        "latitude": -1.1925,
+                        "longitude": 36.9338
+                    },
+                    "destination_hexid": "877a6e416ffffff"
+                },
+                {
+                    "destination": "Ruirubypass",
+                    "destination_latlng": {
+                        "latitude": -1.1925,
+                        "longitude": 36.9338
+                    },
+                    "destination_hexid": "877a6e416ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "14A",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.24069,
+                    "longitude": 36.492774
+                },
+                "pickup_hexid": "877a6a586ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kariobangi North",
+                    "destination_latlng": {
+                        "latitude": -1.504132,
+                        "longitude": 37.924429
+                    },
+                    "destination_hexid": "877a63ccbffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "14B",
+            "pickup_point": {
+                "pickup_point": "Board Matatu at BS behind Afya Centre",
+                "pickup_latlng": {
+                    "latitude": -1.2835,
+                    "longitude": 36.8008
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Langata road upto T-Mall",
+                    "destination_latlng": {
+                        "latitude": -1.3012,
+                        "longitude": 36.7701
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                },
+                {
+                    "destination": "Nairobi West",
+                    "destination_latlng": {
+                        "latitude": -1.3012,
+                        "longitude": 36.7701
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                },
+                {
+                    "destination": "Moi Educational Center",
+                    "destination_latlng": {
+                        "latitude": -1.3012,
+                        "longitude": 36.7701
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                },
+                {
+                    "destination": "TMall",
+                    "destination_latlng": {
+                        "latitude": -1.3012,
+                        "longitude": 36.7701
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                },
+                {
+                    "destination": "StrathmoreUniversity",
+                    "destination_latlng": {
+                        "latitude": -1.3012,
+                        "longitude": 36.7701
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                },
+                {
+                    "destination": "NairobiWest",
+                    "destination_latlng": {
+                        "latitude": -1.3012,
+                        "longitude": 36.7701
+                    },
+                    "destination_hexid": "877a6e558ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "15",
+            "pickup_point": {
+                "pickup_point": "Board the matatu from Bus Station main stage or further from the main stage at waiting matatus opp afya center.",
+                "pickup_latlng": {
+                    "latitude": -1.2835,
+                    "longitude": 36.8008
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Nyayo Stadium",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Nairobi west & Madaraka (near the road)",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Tuskys T-mall",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Wilson Airport",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Carnivore Simba Saloon",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Uhuru Gardens",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Langata Shopping Centre",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Otiende",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Barracks",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Langata Cemetery (on the lower side)",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Nairobi Safari Walk and Nairobi National Park",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Nairobi Animal Orphanage",
+                    "destination_latlng": {
+                        "latitude": -1.2978,
+                        "longitude": 36.7894
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                }
+            ]
+        },
+        {
+            "route_number": "16",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 0.488446,
+                    "longitude": 37.537317
+                },
+                "pickup_hexid": "877a403b4ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "KNH",
+                    "destination_latlng": {
+                        "latitude": 0.228158,
+                        "longitude": 36.929124
+                    },
+                    "destination_hexid": "877a41c2cffffff"
+                },
+                {
+                    "destination": "Nyayo Highrise",
+                    "destination_latlng": {
+                        "latitude": 0.228158,
+                        "longitude": 36.929124
+                    },
+                    "destination_hexid": "877a41c2cffffff"
+                },
+                {
+                    "destination": "Soweto",
+                    "destination_latlng": {
+                        "latitude": 0.228158,
+                        "longitude": 36.929124
+                    },
+                    "destination_hexid": "877a41c2cffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "160",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.836539,
+                    "longitude": 36.950135
+                },
+                "pickup_hexid": "877a45b85ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kibichoi",
+                    "destination_latlng": {
+                        "latitude": 1.511657,
+                        "longitude": 37.914618
+                    },
+                    "destination_hexid": "877a42213ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "17A",
+            "pickup_point": {
+                "pickup_point": "Gikomba",
+                "pickup_latlng": {
+                    "latitude": -0.092713,
+                    "longitude": 37.689343
+                },
+                "pickup_hexid": "877a4095affffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Route Juja",
+                    "destination_latlng": {
+                        "latitude": 1.639668,
+                        "longitude": 36.063291
+                    },
+                    "destination_hexid": "877a4e722ffffff"
+                },
+                {
+                    "destination": "Saika",
+                    "destination_latlng": {
+                        "latitude": 1.639668,
+                        "longitude": 36.063291
+                    },
+                    "destination_hexid": "877a4e722ffffff"
+                },
+                {
+                    "destination": "Kayole",
+                    "destination_latlng": {
+                        "latitude": 1.639668,
+                        "longitude": 36.063291
+                    },
+                    "destination_hexid": "877a4e722ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "17B",
+            "pickup_point": {
+                "pickup_point": "Board the matatu from inside Kenya Bus Station or from outside BS near the St Peter Claviers Catholic Church. For Kasarani, you can also board MSL matatus at Imenti House (along Tom Mboya road)",
+                "pickup_latlng": {
+                    "latitude": -1.201,
+                    "longitude": 36.8366
+                },
+                "pickup_hexid": "877a6e40effffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Thika road",
+                    "destination_latlng": {
+                        "latitude": -1.2435,
+                        "longitude": 36.9002
+                    },
+                    "destination_hexid": "877a6e431ffffff"
+                },
+                {
+                    "destination": "Thika super highway",
+                    "destination_latlng": {
+                        "latitude": -1.2435,
+                        "longitude": 36.9002
+                    },
+                    "destination_hexid": "877a6e431ffffff"
+                },
+                {
+                    "destination": "Roysambu",
+                    "destination_latlng": {
+                        "latitude": -1.2435,
+                        "longitude": 36.9002
+                    },
+                    "destination_hexid": "877a6e431ffffff"
+                },
+                {
+                    "destination": "Kasarani",
+                    "destination_latlng": {
+                        "latitude": -1.2435,
+                        "longitude": 36.9002
+                    },
+                    "destination_hexid": "877a6e431ffffff"
+                },
+                {
+                    "destination": "Santon",
+                    "destination_latlng": {
+                        "latitude": -1.2435,
+                        "longitude": 36.9002
+                    },
+                    "destination_hexid": "877a6e431ffffff"
+                },
+                {
+                    "destination": "Mwiki",
+                    "destination_latlng": {
+                        "latitude": -1.2435,
+                        "longitude": 36.9002
+                    },
+                    "destination_hexid": "877a6e431ffffff"
+                },
+                {
+                    "destination": "St Francis Hospital",
+                    "destination_latlng": {
+                        "latitude": -1.2435,
+                        "longitude": 36.9002
+                    },
+                    "destination_hexid": "877a6e431ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "18-62",
+            "pickup_point": {
+                "pickup_point": "Eastleigh",
+                "pickup_latlng": {
+                    "latitude": -1.613647,
+                    "longitude": 37.9451
+                },
+                "pickup_hexid": "877a63cecffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Saika",
+                    "destination_latlng": {
+                        "latitude": 1.877245,
+                        "longitude": 37.088502
+                    },
+                    "destination_hexid": "877a436f6ffffff"
+                },
+                {
+                    "destination": "Ruai",
+                    "destination_latlng": {
+                        "latitude": 1.877245,
+                        "longitude": 37.088502
+                    },
+                    "destination_hexid": "877a436f6ffffff"
+                },
+                {
+                    "destination": "Joska",
+                    "destination_latlng": {
+                        "latitude": 1.877245,
+                        "longitude": 37.088502
+                    },
+                    "destination_hexid": "877a436f6ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "18C",
+            "pickup_point": {
+                "pickup_point": "Eastleigh",
+                "pickup_latlng": {
+                    "latitude": -1.252571,
+                    "longitude": 36.182925
+                },
+                "pickup_hexid": "877a6e2acffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Juja Road",
+                    "destination_latlng": {
+                        "latitude": -0.497699,
+                        "longitude": 37.814792
+                    },
+                    "destination_hexid": "877a4422cffffff"
+                },
+                {
+                    "destination": "Saika",
+                    "destination_latlng": {
+                        "latitude": -0.497699,
+                        "longitude": 37.814792
+                    },
+                    "destination_hexid": "877a4422cffffff"
+                },
+                {
+                    "destination": "Komarock",
+                    "destination_latlng": {
+                        "latitude": -0.497699,
+                        "longitude": 37.814792
+                    },
+                    "destination_hexid": "877a4422cffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "19-60",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 0.441973,
+                    "longitude": 37.48828
+                },
+                "pickup_hexid": "877a403a4ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Manyanja",
+                    "destination_latlng": {
+                        "latitude": -1.03066,
+                        "longitude": 37.637953
+                    },
+                    "destination_hexid": "877a636a8ffffff"
+                },
+                {
+                    "destination": "Kayole",
+                    "destination_latlng": {
+                        "latitude": -1.03066,
+                        "longitude": 37.637953
+                    },
+                    "destination_hexid": "877a636a8ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "19C",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.309572,
+                    "longitude": 36.555504
+                },
+                "pickup_hexid": "877a4525affffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Manyanja",
+                    "destination_latlng": {
+                        "latitude": 0.522214,
+                        "longitude": 37.263677
+                    },
+                    "destination_hexid": "877a4022affffff"
+                },
+                {
+                    "destination": "Komarock",
+                    "destination_latlng": {
+                        "latitude": 0.522214,
+                        "longitude": 37.263677
+                    },
+                    "destination_hexid": "877a4022affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "2",
+            "pickup_point": {
+                "pickup_point": "GPO, KBS stage",
+                "pickup_latlng": {
+                    "latitude": -1.2865,
+                    "longitude": 36.815
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngong Road",
+                    "destination_latlng": {
+                        "latitude": -1.2881,
+                        "longitude": 36.8034
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Citam/NPC Valley Rd",
+                    "destination_latlng": {
+                        "latitude": -1.2881,
+                        "longitude": 36.8034
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "The junction Mall",
+                    "destination_latlng": {
+                        "latitude": -1.2881,
+                        "longitude": 36.8034
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Dagoretti",
+                    "destination_latlng": {
+                        "latitude": -1.2881,
+                        "longitude": 36.8034
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Kikuyu",
+                    "destination_latlng": {
+                        "latitude": -1.2881,
+                        "longitude": 36.8034
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "20",
+            "pickup_point": {
+                "pickup_point": "Roysambu",
+                "pickup_latlng": {
+                    "latitude": -1.312934,
+                    "longitude": 37.545076
+                },
+                "pickup_hexid": "877a63766ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Mwiki",
+                    "destination_latlng": {
+                        "latitude": 0.807673,
+                        "longitude": 36.942606
+                    },
+                    "destination_hexid": "877a414aaffffff"
+                },
+                {
+                    "destination": "Kayole Junction",
+                    "destination_latlng": {
+                        "latitude": 0.807673,
+                        "longitude": 36.942606
+                    },
+                    "destination_hexid": "877a414aaffffff"
+                },
+                {
+                    "destination": "Mama Lucy Hospital",
+                    "destination_latlng": {
+                        "latitude": 0.807673,
+                        "longitude": 36.942606
+                    },
+                    "destination_hexid": "877a414aaffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "201/202",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -1.7702,
+                    "longitude": 37.410084
+                },
+                "pickup_hexid": "877a63a16ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Tala",
+                    "destination_latlng": {
+                        "latitude": -1.369857,
+                        "longitude": 36.725454
+                    },
+                    "destination_hexid": "877a6e56bffffff"
+                },
+                {
+                    "destination": "Kangundo",
+                    "destination_latlng": {
+                        "latitude": -1.369857,
+                        "longitude": 36.725454
+                    },
+                    "destination_hexid": "877a6e56bffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "22",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 1.844829,
+                    "longitude": 37.517022
+                },
+                "pickup_hexid": "877a5cb22ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Uthiru",
+                    "destination_latlng": {
+                        "latitude": 1.66642,
+                        "longitude": 36.183527
+                    },
+                    "destination_hexid": "877a4e445ffffff"
+                },
+                {
+                    "destination": "UoN Kabete",
+                    "destination_latlng": {
+                        "latitude": 1.66642,
+                        "longitude": 36.183527
+                    },
+                    "destination_hexid": "877a4e445ffffff"
+                },
+                {
+                    "destination": "Ndumbuini",
+                    "destination_latlng": {
+                        "latitude": 1.66642,
+                        "longitude": 36.183527
+                    },
+                    "destination_hexid": "877a4e445ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "23-30",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 0.546315,
+                    "longitude": 37.248021
+                },
+                "pickup_hexid": "877a4020cffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Westlands",
+                    "destination_latlng": {
+                        "latitude": 1.679638,
+                        "longitude": 36.234459
+                    },
+                    "destination_hexid": "877a4e446ffffff"
+                },
+                {
+                    "destination": "Kangemi",
+                    "destination_latlng": {
+                        "latitude": 1.679638,
+                        "longitude": 36.234459
+                    },
+                    "destination_hexid": "877a4e446ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "236",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 1.612586,
+                    "longitude": 36.246783
+                },
+                "pickup_hexid": "877a4e559ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Road Kenyatta",
+                    "destination_latlng": {
+                        "latitude": 0.069387,
+                        "longitude": 37.908538
+                    },
+                    "destination_hexid": "877a408b0ffffff"
+                },
+                {
+                    "destination": "Juja",
+                    "destination_latlng": {
+                        "latitude": 0.069387,
+                        "longitude": 37.908538
+                    },
+                    "destination_hexid": "877a408b0ffffff"
+                },
+                {
+                    "destination": "JKUAT",
+                    "destination_latlng": {
+                        "latitude": 0.069387,
+                        "longitude": 37.908538
+                    },
+                    "destination_hexid": "877a408b0ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "237",
+            "pickup_point": {
+                "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street, as well as on Race Course Road near the Tusky’s Building (formerly OTC).",
+                "pickup_latlng": {
+                    "latitude": -1.0281,
+                    "longitude": 36.9805
+                },
+                "pickup_hexid": "877a6e493ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Thikatown",
+                    "destination_latlng": {
+                        "latitude": -1.0473,
+                        "longitude": 36.9274
+                    },
+                    "destination_hexid": "877a6e49dffffff"
+                },
+                {
+                    "destination": "allthikaroad",
+                    "destination_latlng": {
+                        "latitude": -1.0473,
+                        "longitude": 36.9274
+                    },
+                    "destination_hexid": "877a6e49dffffff"
+                },
+                {
+                    "destination": "KahawaraWendani",
+                    "destination_latlng": {
+                        "latitude": -1.0473,
+                        "longitude": 36.9274
+                    },
+                    "destination_hexid": "877a6e49dffffff"
+                },
+                {
+                    "destination": "KahawaSukari",
+                    "destination_latlng": {
+                        "latitude": -1.0473,
+                        "longitude": 36.9274
+                    },
+                    "destination_hexid": "877a6e49dffffff"
+                },
+                {
+                    "destination": "Ruiru",
+                    "destination_latlng": {
+                        "latitude": -1.0473,
+                        "longitude": 36.9274
+                    },
+                    "destination_hexid": "877a6e49dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "238",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.626901,
+                    "longitude": 36.476848
+                },
+                "pickup_hexid": "877a6ad89ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Makongeni",
+                    "destination_latlng": {
+                        "latitude": -0.334728,
+                        "longitude": 37.129452
+                    },
+                    "destination_hexid": "877a45720ffffff"
+                },
+                {
+                    "destination": "Posta",
+                    "destination_latlng": {
+                        "latitude": -0.334728,
+                        "longitude": 37.129452
+                    },
+                    "destination_hexid": "877a45720ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "23A",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 1.577394,
+                    "longitude": 37.359931
+                },
+                "pickup_hexid": "877a43475ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Jericho",
+                    "destination_latlng": {
+                        "latitude": 1.762089,
+                        "longitude": 36.736749
+                    },
+                    "destination_hexid": "877a5d92affffff"
+                },
+                {
+                    "destination": "Harambee",
+                    "destination_latlng": {
+                        "latitude": 1.762089,
+                        "longitude": 36.736749
+                    },
+                    "destination_hexid": "877a5d92affffff"
+                },
+                {
+                    "destination": "Kariobangi South",
+                    "destination_latlng": {
+                        "latitude": 1.762089,
+                        "longitude": 36.736749
+                    },
+                    "destination_hexid": "877a5d92affffff"
+                },
+                {
+                    "destination": "Civil servant",
+                    "destination_latlng": {
+                        "latitude": 1.762089,
+                        "longitude": 36.736749
+                    },
+                    "destination_hexid": "877a5d92affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "23B",
+            "pickup_point": {
+                "pickup_point": "Kangemi, Westlands, Uhuru Highway, Kangemi, ABC Place, Safaricom House and Uhuru highway.",
+                "pickup_latlng": {
+                    "latitude": -1.3121,
+                    "longitude": 36.7949
+                },
+                "pickup_hexid": "877a6e55effffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kangemi",
+                    "destination_latlng": {
+                        "latitude": -1.2924,
+                        "longitude": 36.8249
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Westlands",
+                    "destination_latlng": {
+                        "latitude": -1.2924,
+                        "longitude": 36.8249
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Uhuru Highway",
+                    "destination_latlng": {
+                        "latitude": -1.2924,
+                        "longitude": 36.8249
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Kangemi",
+                    "destination_latlng": {
+                        "latitude": -1.2924,
+                        "longitude": 36.8249
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "ABC Place",
+                    "destination_latlng": {
+                        "latitude": -1.2924,
+                        "longitude": 36.8249
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Safaricom House",
+                    "destination_latlng": {
+                        "latitude": -1.2924,
+                        "longitude": 36.8249
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Uhuru highway.",
+                    "destination_latlng": {
+                        "latitude": -1.2924,
+                        "longitude": 36.8249
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "23C",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 1.285533,
+                    "longitude": 37.248461
+                },
+                "pickup_hexid": "877a4311effffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Regen",
+                    "destination_latlng": {
+                        "latitude": -1.421594,
+                        "longitude": 37.803531
+                    },
+                    "destination_hexid": "877a630b0ffffff"
+                },
+                {
+                    "destination": "Dagoretti",
+                    "destination_latlng": {
+                        "latitude": -1.421594,
+                        "longitude": 37.803531
+                    },
+                    "destination_hexid": "877a630b0ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "24",
+            "pickup_point": {
+                "pickup_point": "Kenya Bus Station /BS, Mfangano street or main buses at Kencom House Moi Avenue",
+                "pickup_latlng": {
+                    "latitude": -1.3454,
+                    "longitude": 36.7833
+                },
+                "pickup_hexid": "877a6e542ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "KarenShoppingCentre",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "Hardy",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "allLangatardroutes",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "Bogani",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "BomasofKenya",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "GalleriaShoppingMall",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "CatholicUniversity",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "KenyaSchoolofLaw",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "NairobiAcademy",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "HillcrestInternationalSchool",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "Animalprotection",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "Co-opbanktrainingcentre",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "Giraffecenter",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                },
+                {
+                    "destination": "KarenCSchool.",
+                    "destination_latlng": {
+                        "latitude": -1.3582,
+                        "longitude": 36.772
+                    },
+                    "destination_hexid": "877a6e540ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "25 / 25A",
+            "pickup_point": {
+                "pickup_point": "Board the Matatu from Timboroa Lane",
+                "pickup_latlng": {
+                    "latitude": -1.2258,
+                    "longitude": 36.8274
+                },
+                "pickup_hexid": "877a6e40cffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Allsopps",
+                    "destination_latlng": {
+                        "latitude": -1.2123,
+                        "longitude": 36.8146
+                    },
+                    "destination_hexid": "877a6e408ffffff"
+                },
+                {
+                    "destination": "Baba Dogo",
+                    "destination_latlng": {
+                        "latitude": -1.2123,
+                        "longitude": 36.8146
+                    },
+                    "destination_hexid": "877a6e408ffffff"
+                },
+                {
+                    "destination": "Lucky Summer",
+                    "destination_latlng": {
+                        "latitude": -1.2123,
+                        "longitude": 36.8146
+                    },
+                    "destination_hexid": "877a6e408ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "26",
+            "pickup_point": {
+                "pickup_point": "Route Jogoo",
+                "pickup_latlng": {
+                    "latitude": 1.350125,
+                    "longitude": 37.733841
+                },
+                "pickup_hexid": "877a42348ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Makadara",
+                    "destination_latlng": {
+                        "latitude": 1.249956,
+                        "longitude": 36.73774
+                    },
+                    "destination_hexid": "877a43ac1ffffff"
+                },
+                {
+                    "destination": "Jericho",
+                    "destination_latlng": {
+                        "latitude": 1.249956,
+                        "longitude": 36.73774
+                    },
+                    "destination_hexid": "877a43ac1ffffff"
+                },
+                {
+                    "destination": "Kariobangi Rounda",
+                    "destination_latlng": {
+                        "latitude": 1.249956,
+                        "longitude": 36.73774
+                    },
+                    "destination_hexid": "877a43ac1ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "28",
+            "pickup_point": {
+                "pickup_point": "Gikomba",
+                "pickup_latlng": {
+                    "latitude": 0.098705,
+                    "longitude": 36.986892
+                },
+                "pickup_hexid": "877a41d29ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Juja Road",
+                    "destination_latlng": {
+                        "latitude": 1.594692,
+                        "longitude": 37.531171
+                    },
+                    "destination_hexid": "877a43430ffffff"
+                },
+                {
+                    "destination": "Huruma",
+                    "destination_latlng": {
+                        "latitude": 1.594692,
+                        "longitude": 37.531171
+                    },
+                    "destination_hexid": "877a43430ffffff"
+                },
+                {
+                    "destination": "Kariobangi North",
+                    "destination_latlng": {
+                        "latitude": 1.594692,
+                        "longitude": 37.531171
+                    },
+                    "destination_hexid": "877a43430ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "29-30",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.204646,
+                    "longitude": 36.755314
+                },
+                "pickup_hexid": "877a41924ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Survey",
+                    "destination_latlng": {
+                        "latitude": -0.346202,
+                        "longitude": 37.604478
+                    },
+                    "destination_hexid": "877a455a3ffffff"
+                },
+                {
+                    "destination": "Mathare North",
+                    "destination_latlng": {
+                        "latitude": -0.346202,
+                        "longitude": 37.604478
+                    },
+                    "destination_hexid": "877a455a3ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "2B",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 1.099134,
+                    "longitude": 36.184548
+                },
+                "pickup_hexid": "877a4e8a3ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Dagoretti Market",
+                    "destination_latlng": {
+                        "latitude": 1.462808,
+                        "longitude": 37.590134
+                    },
+                    "destination_hexid": "877a43531ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "2C",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.789696,
+                    "longitude": 36.575505
+                },
+                "pickup_hexid": "877a45a48ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Naivasha Road",
+                    "destination_latlng": {
+                        "latitude": -0.179347,
+                        "longitude": 36.634608
+                    },
+                    "destination_hexid": "877a452daffffff"
+                },
+                {
+                    "destination": "Waithaka",
+                    "destination_latlng": {
+                        "latitude": -0.179347,
+                        "longitude": 36.634608
+                    },
+                    "destination_hexid": "877a452daffffff"
+                },
+                {
+                    "destination": "Muthama",
+                    "destination_latlng": {
+                        "latitude": -0.179347,
+                        "longitude": 36.634608
+                    },
+                    "destination_hexid": "877a452daffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "3",
+            "pickup_point": {
+                "pickup_point": "GPO",
+                "pickup_latlng": {
+                    "latitude": -1.2865,
+                    "longitude": 36.815
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngong Road",
+                    "destination_latlng": {
+                        "latitude": -1.29,
+                        "longitude": 36.7979
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Adams Arcade",
+                    "destination_latlng": {
+                        "latitude": -1.29,
+                        "longitude": 36.7979
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Dagoretti corner",
+                    "destination_latlng": {
+                        "latitude": -1.29,
+                        "longitude": 36.7979
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "30",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.300072,
+                    "longitude": 36.568922
+                },
+                "pickup_hexid": "877a4525affffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Westlands",
+                    "destination_latlng": {
+                        "latitude": 0.679359,
+                        "longitude": 37.203679
+                    },
+                    "destination_hexid": "877a402c1ffffff"
+                },
+                {
+                    "destination": "Kangemi",
+                    "destination_latlng": {
+                        "latitude": 0.679359,
+                        "longitude": 37.203679
+                    },
+                    "destination_hexid": "877a402c1ffffff"
+                },
+                {
+                    "destination": "Regen",
+                    "destination_latlng": {
+                        "latitude": 0.679359,
+                        "longitude": 37.203679
+                    },
+                    "destination_hexid": "877a402c1ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "32",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 0.494541,
+                    "longitude": 36.337189
+                },
+                "pickup_hexid": "877a4104bffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ayany",
+                    "destination_latlng": {
+                        "latitude": -0.736819,
+                        "longitude": 37.278319
+                    },
+                    "destination_hexid": "877a45134ffffff"
+                },
+                {
+                    "destination": "Woodley",
+                    "destination_latlng": {
+                        "latitude": -0.736819,
+                        "longitude": 37.278319
+                    },
+                    "destination_hexid": "877a45134ffffff"
+                },
+                {
+                    "destination": "Kibera",
+                    "destination_latlng": {
+                        "latitude": -0.736819,
+                        "longitude": 37.278319
+                    },
+                    "destination_hexid": "877a45134ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "32-42",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.879307,
+                    "longitude": 36.371803
+                },
+                "pickup_hexid": "877a6e6d8ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Dandora",
+                    "destination_latlng": {
+                        "latitude": -0.018488,
+                        "longitude": 37.962691
+                    },
+                    "destination_hexid": "877a40995ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "33",
+            "pickup_point": {
+                "pickup_point": "Board the matatu from opp St Peter Claver’s​​ Catholic church or near OTC /Salvation Army areas",
+                "pickup_latlng": {
+                    "latitude": -1.2865,
+                    "longitude": 36.815
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "NgumoEstates",
+                    "destination_latlng": {
+                        "latitude": -1.3089,
+                        "longitude": 36.7912
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "KNH",
+                    "destination_latlng": {
+                        "latitude": -1.3089,
+                        "longitude": 36.7912
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Mbagathi",
+                    "destination_latlng": {
+                        "latitude": -1.3089,
+                        "longitude": 36.7912
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Maasaimarket",
+                    "destination_latlng": {
+                        "latitude": -1.3089,
+                        "longitude": 36.7912
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                }
+            ]
+        },
+        {
+            "route_number": "33A",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 0.33516,
+                    "longitude": 36.282806
+                },
+                "pickup_hexid": "877a41a88ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Utawala",
+                    "destination_latlng": {
+                        "latitude": 0.322293,
+                        "longitude": 37.797298
+                    },
+                    "destination_hexid": "877a401adffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "33B",
+            "pickup_point": {
+                "pickup_point": "Board the matatu at Muthurwa market or along tom mboya street opp National Archives",
+                "pickup_latlng": {
+                    "latitude": 1.373833,
+                    "longitude": 37.470668
+                },
+                "pickup_hexid": "877a43cc3ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Embakasi(through joggo road)",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "Fedha Gate A",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "Fedha Gate B",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "Fedha Gate C",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "Fedha Gate D",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "donholm",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "City Stadium",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "Pipeline",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "Tumaini Estate",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                },
+                {
+                    "destination": "Avenue Estate",
+                    "destination_latlng": {
+                        "latitude": 1.661447,
+                        "longitude": 37.679166
+                    },
+                    "destination_hexid": "877a43593ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "34(buses)",
+            "pickup_point": {
+                "pickup_point": "Board the bus from Kencom or Ambassador stage",
+                "pickup_latlng": {
+                    "latitude": -1.2505,
+                    "longitude": 36.8555
+                },
+                "pickup_hexid": "877a6e405ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "JKIA",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                },
+                {
+                    "destination": "Jogooroad",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                },
+                {
+                    "destination": "Embakasi",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                },
+                {
+                    "destination": "Fedha",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                },
+                {
+                    "destination": "Donholm",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                },
+                {
+                    "destination": "Pipeline",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                },
+                {
+                    "destination": "Utawala",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                },
+                {
+                    "destination": "(SomethimesMombasaroad)",
+                    "destination_latlng": {
+                        "latitude": -1.3001,
+                        "longitude": 36.9014
+                    },
+                    "destination_hexid": "877a6e426ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "34(nissans)",
+            "pickup_point": {
+                "pickup_point": "Board the Matatu from behind St Peters Clavers Church or Opposite OTC",
+                "pickup_latlng": {
+                    "latitude": -1.2835,
+                    "longitude": 36.8008
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "LangataAreathroughMbagathiroad",
+                    "destination_latlng": {
+                        "latitude": -1.3137,
+                        "longitude": 36.8101
+                    },
+                    "destination_hexid": "877a6e553ffffff"
+                },
+                {
+                    "destination": "KNH",
+                    "destination_latlng": {
+                        "latitude": -1.3137,
+                        "longitude": 36.8101
+                    },
+                    "destination_hexid": "877a6e553ffffff"
+                },
+                {
+                    "destination": "TMall",
+                    "destination_latlng": {
+                        "latitude": -1.3137,
+                        "longitude": 36.8101
+                    },
+                    "destination_hexid": "877a6e553ffffff"
+                },
+                {
+                    "destination": "WilsonAirport",
+                    "destination_latlng": {
+                        "latitude": -1.3137,
+                        "longitude": 36.8101
+                    },
+                    "destination_hexid": "877a6e553ffffff"
+                },
+                {
+                    "destination": "Carnivore",
+                    "destination_latlng": {
+                        "latitude": -1.3137,
+                        "longitude": 36.8101
+                    },
+                    "destination_hexid": "877a6e553ffffff"
+                },
+                {
+                    "destination": "LangatashoppingCentre",
+                    "destination_latlng": {
+                        "latitude": -1.3137,
+                        "longitude": 36.8101
+                    },
+                    "destination_hexid": "877a6e553ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "34A",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 0.312214,
+                    "longitude": 37.077187
+                },
+                "pickup_hexid": "877a41d8bffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Donholm",
+                    "destination_latlng": {
+                        "latitude": -0.328437,
+                        "longitude": 36.849691
+                    },
+                    "destination_hexid": "877a45399ffffff"
+                },
+                {
+                    "destination": "Pipeline",
+                    "destination_latlng": {
+                        "latitude": -0.328437,
+                        "longitude": 36.849691
+                    },
+                    "destination_hexid": "877a45399ffffff"
+                },
+                {
+                    "destination": "JKIA",
+                    "destination_latlng": {
+                        "latitude": -0.328437,
+                        "longitude": 36.849691
+                    },
+                    "destination_hexid": "877a45399ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "34B",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.384152,
+                    "longitude": 37.892242
+                },
+                "pickup_hexid": "877a6355dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Donholm",
+                    "destination_latlng": {
+                        "latitude": -1.010343,
+                        "longitude": 37.996957
+                    },
+                    "destination_hexid": "877a44b00ffffff"
+                },
+                {
+                    "destination": "Savannah",
+                    "destination_latlng": {
+                        "latitude": -1.010343,
+                        "longitude": 37.996957
+                    },
+                    "destination_hexid": "877a44b00ffffff"
+                },
+                {
+                    "destination": "Jacaranda",
+                    "destination_latlng": {
+                        "latitude": -1.010343,
+                        "longitude": 37.996957
+                    },
+                    "destination_hexid": "877a44b00ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "34C",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 1.89449,
+                    "longitude": 37.051693
+                },
+                "pickup_hexid": "877a436f1ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Donholm",
+                    "destination_latlng": {
+                        "latitude": -1.108607,
+                        "longitude": 37.608645
+                    },
+                    "destination_hexid": "877a63602ffffff"
+                },
+                {
+                    "destination": "Greenfields",
+                    "destination_latlng": {
+                        "latitude": -1.108607,
+                        "longitude": 37.608645
+                    },
+                    "destination_hexid": "877a63602ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "35/60",
+            "pickup_point": {
+                "pickup_point": "Board bus at Ronald Ngala Street Mfangano street intersect opp Naivas Supermarket",
+                "pickup_latlng": {
+                    "latitude": -1.3525,
+                    "longitude": 36.8555
+                },
+                "pickup_hexid": "877a6e509ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Umojainnercore",
+                    "destination_latlng": {
+                        "latitude": -1.3163,
+                        "longitude": 36.8802
+                    },
+                    "destination_hexid": "877a6e424ffffff"
+                },
+                {
+                    "destination": "UmojaI",
+                    "destination_latlng": {
+                        "latitude": -1.3163,
+                        "longitude": 36.8802
+                    },
+                    "destination_hexid": "877a6e424ffffff"
+                },
+                {
+                    "destination": "UmojaII",
+                    "destination_latlng": {
+                        "latitude": -1.3163,
+                        "longitude": 36.8802
+                    },
+                    "destination_hexid": "877a6e424ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "36",
+            "pickup_point": {
+                "pickup_point": "City Stadium",
+                "pickup_latlng": {
+                    "latitude": 1.561914,
+                    "longitude": 37.214851
+                },
+                "pickup_hexid": "877a4309bffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Buruburu",
+                    "destination_latlng": {
+                        "latitude": -1.137327,
+                        "longitude": 37.551436
+                    },
+                    "destination_hexid": "877a6362affffff"
+                },
+                {
+                    "destination": "Kariobangi South",
+                    "destination_latlng": {
+                        "latitude": -1.137327,
+                        "longitude": 37.551436
+                    },
+                    "destination_hexid": "877a6362affffff"
+                },
+                {
+                    "destination": "Dandora",
+                    "destination_latlng": {
+                        "latitude": -1.137327,
+                        "longitude": 37.551436
+                    },
+                    "destination_hexid": "877a6362affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "37/38",
+            "pickup_point": {
+                "pickup_point": "Eastleigh",
+                "pickup_latlng": {
+                    "latitude": 1.016213,
+                    "longitude": 37.18602
+                },
+                "pickup_hexid": "877a43819ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Juja Road",
+                    "destination_latlng": {
+                        "latitude": 1.805521,
+                        "longitude": 37.752701
+                    },
+                    "destination_hexid": "877a5c82dffffff"
+                },
+                {
+                    "destination": "Saika",
+                    "destination_latlng": {
+                        "latitude": 1.805521,
+                        "longitude": 37.752701
+                    },
+                    "destination_hexid": "877a5c82dffffff"
+                },
+                {
+                    "destination": "Njiru",
+                    "destination_latlng": {
+                        "latitude": 1.805521,
+                        "longitude": 37.752701
+                    },
+                    "destination_hexid": "877a5c82dffffff"
+                },
+                {
+                    "destination": "Ruai",
+                    "destination_latlng": {
+                        "latitude": 1.805521,
+                        "longitude": 37.752701
+                    },
+                    "destination_hexid": "877a5c82dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "39",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.012347,
+                    "longitude": 37.250666
+                },
+                "pickup_hexid": "877a45835ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Njiru",
+                    "destination_latlng": {
+                        "latitude": 1.156107,
+                        "longitude": 37.906992
+                    },
+                    "destination_hexid": "877a42af1ffffff"
+                },
+                {
+                    "destination": "Ruai",
+                    "destination_latlng": {
+                        "latitude": 1.156107,
+                        "longitude": 37.906992
+                    },
+                    "destination_hexid": "877a42af1ffffff"
+                },
+                {
+                    "destination": "Kamulu",
+                    "destination_latlng": {
+                        "latitude": 1.156107,
+                        "longitude": 37.906992
+                    },
+                    "destination_hexid": "877a42af1ffffff"
+                },
+                {
+                    "destination": "Joska",
+                    "destination_latlng": {
+                        "latitude": 1.156107,
+                        "longitude": 37.906992
+                    },
+                    "destination_hexid": "877a42af1ffffff"
+                },
+                {
+                    "destination": "Malaa",
+                    "destination_latlng": {
+                        "latitude": 1.156107,
+                        "longitude": 37.906992
+                    },
+                    "destination_hexid": "877a42af1ffffff"
+                },
+                {
+                    "destination": "Kantafu",
+                    "destination_latlng": {
+                        "latitude": 1.156107,
+                        "longitude": 37.906992
+                    },
+                    "destination_hexid": "877a42af1ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "4",
+            "pickup_point": {
+                "pickup_point": "Kencom or GPO",
+                "pickup_latlng": {
+                    "latitude": 1.64049,
+                    "longitude": 37.92082
+                },
+                "pickup_hexid": "877a42299ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngong Road",
+                    "destination_latlng": {
+                        "latitude": 0.976014,
+                        "longitude": 37.867094
+                    },
+                    "destination_hexid": "877a42b58ffffff"
+                },
+                {
+                    "destination": "Adams",
+                    "destination_latlng": {
+                        "latitude": 0.976014,
+                        "longitude": 37.867094
+                    },
+                    "destination_hexid": "877a42b58ffffff"
+                },
+                {
+                    "destination": "Dagoretti",
+                    "destination_latlng": {
+                        "latitude": 0.976014,
+                        "longitude": 37.867094
+                    },
+                    "destination_hexid": "877a42b58ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "40",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.223513,
+                    "longitude": 36.386239
+                },
+                "pickup_hexid": "877a6a414ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Mbagathi",
+                    "destination_latlng": {
+                        "latitude": -0.777385,
+                        "longitude": 37.801046
+                    },
+                    "destination_hexid": "877a44aecffffff"
+                },
+                {
+                    "destination": "Ngummo (yes ditto 33)",
+                    "destination_latlng": {
+                        "latitude": -0.777385,
+                        "longitude": 37.801046
+                    },
+                    "destination_hexid": "877a44aecffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "41",
+            "pickup_point": {
+                "pickup_point": "Gikomba",
+                "pickup_latlng": {
+                    "latitude": 0.318845,
+                    "longitude": 37.187164
+                },
+                "pickup_hexid": "877a41d90ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kayole",
+                    "destination_latlng": {
+                        "latitude": 0.575281,
+                        "longitude": 37.746111
+                    },
+                    "destination_hexid": "877a40099ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "43",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.532485,
+                    "longitude": 37.632114
+                },
+                "pickup_hexid": "877a45c91ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Route de Thika",
+                    "destination_latlng": {
+                        "latitude": 0.821889,
+                        "longitude": 36.098742
+                    },
+                    "destination_hexid": "877a412daffffff"
+                },
+                {
+                    "destination": "EABL",
+                    "destination_latlng": {
+                        "latitude": 0.821889,
+                        "longitude": 36.098742
+                    },
+                    "destination_hexid": "877a412daffffff"
+                },
+                {
+                    "destination": "Ngumba",
+                    "destination_latlng": {
+                        "latitude": 0.821889,
+                        "longitude": 36.098742
+                    },
+                    "destination_hexid": "877a412daffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "44",
+            "pickup_point": {
+                "pickup_point": "Board bus from Nakumatt Ronald Ngala Street or matatus from the former Tuskys Beba Beba",
+                "pickup_latlng": {
+                    "latitude": -1.1705,
+                    "longitude": 36.8474
+                },
+                "pickup_hexid": "877a6e418ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kahawa West",
+                    "destination_latlng": {
+                        "latitude": -1.1996,
+                        "longitude": 36.8865
+                    },
+                    "destination_hexid": "877a6e411ffffff"
+                },
+                {
+                    "destination": "KamitiMaximumPrisons",
+                    "destination_latlng": {
+                        "latitude": -1.1996,
+                        "longitude": 36.8865
+                    },
+                    "destination_hexid": "877a6e411ffffff"
+                },
+                {
+                    "destination": "Zimmerman",
+                    "destination_latlng": {
+                        "latitude": -1.1996,
+                        "longitude": 36.8865
+                    },
+                    "destination_hexid": "877a6e411ffffff"
+                },
+                {
+                    "destination": "USIU",
+                    "destination_latlng": {
+                        "latitude": -1.1996,
+                        "longitude": 36.8865
+                    },
+                    "destination_hexid": "877a6e411ffffff"
+                },
+                {
+                    "destination": "FarmersChoice",
+                    "destination_latlng": {
+                        "latitude": -1.1996,
+                        "longitude": 36.8865
+                    },
+                    "destination_hexid": "877a6e411ffffff"
+                },
+                {
+                    "destination": "Nothernbypass",
+                    "destination_latlng": {
+                        "latitude": -1.1996,
+                        "longitude": 36.8865
+                    },
+                    "destination_hexid": "877a6e411ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "45",
+            "pickup_point": {
+                "pickup_point": "Board the buses from Nakumatt Ronald Ngala street opp Posta R/Ngala",
+                "pickup_latlng": {
+                    "latitude": -1.0917,
+                    "longitude": 36.8408
+                },
+                "pickup_hexid": "877a6e4f3ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Thika Road",
+                    "destination_latlng": {
+                        "latitude": -1.1452,
+                        "longitude": 36.8653
+                    },
+                    "destination_hexid": "877a6e41affffff"
+                },
+                {
+                    "destination": "Thika Super highway",
+                    "destination_latlng": {
+                        "latitude": -1.1452,
+                        "longitude": 36.8653
+                    },
+                    "destination_hexid": "877a6e41affffff"
+                },
+                {
+                    "destination": "Githurai 45",
+                    "destination_latlng": {
+                        "latitude": -1.1452,
+                        "longitude": 36.8653
+                    },
+                    "destination_hexid": "877a6e41affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "45A",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.39391,
+                    "longitude": 36.35179
+                },
+                "pickup_hexid": "877a6e05bffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Githurai",
+                    "destination_latlng": {
+                        "latitude": -1.407689,
+                        "longitude": 37.408312
+                    },
+                    "destination_hexid": "877a63385ffffff"
+                },
+                {
+                    "destination": "Kahawa",
+                    "destination_latlng": {
+                        "latitude": -1.407689,
+                        "longitude": 37.408312
+                    },
+                    "destination_hexid": "877a63385ffffff"
+                },
+                {
+                    "destination": "KU",
+                    "destination_latlng": {
+                        "latitude": -1.407689,
+                        "longitude": 37.408312
+                    },
+                    "destination_hexid": "877a63385ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "46",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.087817,
+                    "longitude": 37.355142
+                },
+                "pickup_hexid": "877a63649ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Juja Road",
+                    "destination_latlng": {
+                        "latitude": -0.620995,
+                        "longitude": 36.153165
+                    },
+                    "destination_hexid": "877a6ac49ffffff"
+                },
+                {
+                    "destination": "Huruma",
+                    "destination_latlng": {
+                        "latitude": -0.620995,
+                        "longitude": 36.153165
+                    },
+                    "destination_hexid": "877a6ac49ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "46A",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -1.122365,
+                    "longitude": 36.942878
+                },
+                "pickup_hexid": "877a6e485ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Hurlingham",
+                    "destination_latlng": {
+                        "latitude": 0.784877,
+                        "longitude": 37.935245
+                    },
+                    "destination_hexid": "877a404c3ffffff"
+                },
+                {
+                    "destination": "Lavington",
+                    "destination_latlng": {
+                        "latitude": 0.784877,
+                        "longitude": 37.935245
+                    },
+                    "destination_hexid": "877a404c3ffffff"
+                },
+                {
+                    "destination": "Kawangware",
+                    "destination_latlng": {
+                        "latitude": 0.784877,
+                        "longitude": 37.935245
+                    },
+                    "destination_hexid": "877a404c3ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "47A",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.179517,
+                    "longitude": 36.896155
+                },
+                "pickup_hexid": "877a6e413ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kahawa Sukari",
+                    "destination_latlng": {
+                        "latitude": 1.213616,
+                        "longitude": 36.491542
+                    },
+                    "destination_hexid": "877a4ed1bffffff"
+                },
+                {
+                    "destination": "Mwihoko",
+                    "destination_latlng": {
+                        "latitude": 1.213616,
+                        "longitude": 36.491542
+                    },
+                    "destination_hexid": "877a4ed1bffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "48",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -1.842877,
+                    "longitude": 36.810364
+                },
+                "pickup_hexid": "877a6ed6cffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Riverside",
+                    "destination_latlng": {
+                        "latitude": 0.980419,
+                        "longitude": 37.992753
+                    },
+                    "destination_hexid": "877a42a26ffffff"
+                },
+                {
+                    "destination": "Kileleshwa",
+                    "destination_latlng": {
+                        "latitude": 0.980419,
+                        "longitude": 37.992753
+                    },
+                    "destination_hexid": "877a42a26ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "48A",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.56554,
+                    "longitude": 37.44348
+                },
+                "pickup_hexid": "877a45cc0ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Riverside",
+                    "destination_latlng": {
+                        "latitude": -0.810392,
+                        "longitude": 37.451116
+                    },
+                    "destination_hexid": "877a45d42ffffff"
+                },
+                {
+                    "destination": "Lavington Green",
+                    "destination_latlng": {
+                        "latitude": -0.810392,
+                        "longitude": 37.451116
+                    },
+                    "destination_hexid": "877a45d42ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "49",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": 0.242133,
+                    "longitude": 36.556433
+                },
+                "pickup_hexid": "877a418dbffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Thika Road",
+                    "destination_latlng": {
+                        "latitude": -1.382512,
+                        "longitude": 37.373207
+                    },
+                    "destination_hexid": "877a63388ffffff"
+                },
+                {
+                    "destination": "Kasarani",
+                    "destination_latlng": {
+                        "latitude": -1.382512,
+                        "longitude": 37.373207
+                    },
+                    "destination_hexid": "877a63388ffffff"
+                },
+                {
+                    "destination": "Clay City (formerly route 45W)",
+                    "destination_latlng": {
+                        "latitude": -1.382512,
+                        "longitude": 37.373207
+                    },
+                    "destination_hexid": "877a63388ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "4A",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -0.203731,
+                    "longitude": 36.766135
+                },
+                "pickup_hexid": "877a45299ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Pumwani",
+                    "destination_latlng": {
+                        "latitude": -1.471898,
+                        "longitude": 37.509538
+                    },
+                    "destination_hexid": "877a6305effffff"
+                },
+                {
+                    "destination": "Madiwa",
+                    "destination_latlng": {
+                        "latitude": -1.471898,
+                        "longitude": 37.509538
+                    },
+                    "destination_hexid": "877a6305effffff"
+                },
+                {
+                    "destination": "Eastleigh Section III",
+                    "destination_latlng": {
+                        "latitude": -1.471898,
+                        "longitude": 37.509538
+                    },
+                    "destination_hexid": "877a6305effffff"
+                }
+            ]
+        },
+        {
+            "route_number": "4B",
+            "pickup_point": {
+                "pickup_point": "Ngong Road, Adams, Dagoretti",
+                "pickup_latlng": {
+                    "latitude": -1.2865,
+                    "longitude": 36.815
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngong Road",
+                    "destination_latlng": {
+                        "latitude": -1.2944,
+                        "longitude": 36.7892
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Adams",
+                    "destination_latlng": {
+                        "latitude": -1.2944,
+                        "longitude": 36.7892
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                },
+                {
+                    "destination": "Dagoretti",
+                    "destination_latlng": {
+                        "latitude": -1.2944,
+                        "longitude": 36.7892
+                    },
+                    "destination_hexid": "877a6e55effffff"
+                }
+            ]
+        },
+        {
+            "route_number": "4C",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -1.567632,
+                    "longitude": 37.490933
+                },
+                "pickup_hexid": "877a6306effffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Adams Arcade",
+                    "destination_latlng": {
+                        "latitude": -0.917088,
+                        "longitude": 37.046465
+                    },
+                    "destination_hexid": "877a45851ffffff"
+                },
+                {
+                    "destination": "Kinyanjui Road",
+                    "destination_latlng": {
+                        "latitude": -0.917088,
+                        "longitude": 37.046465
+                    },
+                    "destination_hexid": "877a45851ffffff"
+                },
+                {
+                    "destination": "Kabiria",
+                    "destination_latlng": {
+                        "latitude": -0.917088,
+                        "longitude": 37.046465
+                    },
+                    "destination_hexid": "877a45851ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "4W",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 0.509215,
+                    "longitude": 37.495529
+                },
+                "pickup_hexid": "877a403b1ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Adams Arcade",
+                    "destination_latlng": {
+                        "latitude": 1.840667,
+                        "longitude": 36.218862
+                    },
+                    "destination_hexid": "877a4e4c8ffffff"
+                },
+                {
+                    "destination": "Wanyee Road",
+                    "destination_latlng": {
+                        "latitude": 1.840667,
+                        "longitude": 36.218862
+                    },
+                    "destination_hexid": "877a4e4c8ffffff"
+                },
+                {
+                    "destination": "Kabiria",
+                    "destination_latlng": {
+                        "latitude": 1.840667,
+                        "longitude": 36.218862
+                    },
+                    "destination_hexid": "877a4e4c8ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "5 / 5C",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.359787,
+                    "longitude": 36.098855
+                },
+                "pickup_hexid": "877a6a086ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Adams Arcade",
+                    "destination_latlng": {
+                        "latitude": 0.76154,
+                        "longitude": 36.305301
+                    },
+                    "destination_hexid": "877a41290ffffff"
+                },
+                {
+                    "destination": "Jamhuri",
+                    "destination_latlng": {
+                        "latitude": 0.76154,
+                        "longitude": 36.305301
+                    },
+                    "destination_hexid": "877a41290ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "53",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.419538,
+                    "longitude": 37.489751
+                },
+                "pickup_hexid": "877a4550effffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Roasters",
+                    "destination_latlng": {
+                        "latitude": 0.302847,
+                        "longitude": 37.092737
+                    },
+                    "destination_hexid": "877a41d8affffff"
+                },
+                {
+                    "destination": "Thome",
+                    "destination_latlng": {
+                        "latitude": 0.302847,
+                        "longitude": 37.092737
+                    },
+                    "destination_hexid": "877a41d8affffff"
+                },
+                {
+                    "destination": "Marurui",
+                    "destination_latlng": {
+                        "latitude": 0.302847,
+                        "longitude": 37.092737
+                    },
+                    "destination_hexid": "877a41d8affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "56",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 1.369638,
+                    "longitude": 36.352408
+                },
+                "pickup_hexid": "877a4ece3ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kawangware",
+                    "destination_latlng": {
+                        "latitude": -0.066595,
+                        "longitude": 36.510411
+                    },
+                    "destination_hexid": "877a4194affffff"
+                },
+                {
+                    "destination": "Macharia Road",
+                    "destination_latlng": {
+                        "latitude": -0.066595,
+                        "longitude": 36.510411
+                    },
+                    "destination_hexid": "877a4194affffff"
+                }
+            ]
+        },
+        {
+            "route_number": "58",
+            "pickup_point": {
+                "pickup_point": "Board at Tom Mboya Street opp National Archives",
+                "pickup_latlng": {
+                    "latitude": -1.3047,
+                    "longitude": 36.8188
+                },
+                "pickup_hexid": "877a6e553ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Buru Buru",
+                    "destination_latlng": {
+                        "latitude": -1.2857,
+                        "longitude": 36.8562
+                    },
+                    "destination_hexid": "877a6e421ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "6",
+            "pickup_point": {
+                "pickup_point": "Board the Matatu from Accra Rd or  Along Tom Mboya Street. ",
+                "pickup_latlng": {
+                    "latitude": -1.2897,
+                    "longitude": 36.8236
+                },
+                "pickup_hexid": "877a6e42cffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Eastleigh Area",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8274
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Pangani Girls",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8274
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Pangani Shopping Centre",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8274
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                },
+                {
+                    "destination": "Kariokor Market",
+                    "destination_latlng": {
+                        "latitude": -1.2867,
+                        "longitude": 36.8274
+                    },
+                    "destination_hexid": "877a6e42cffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "61",
+            "pickup_point": {
+                "pickup_point": "City Stadium",
+                "pickup_latlng": {
+                    "latitude": -1.390699,
+                    "longitude": 36.46508
+                },
+                "pickup_hexid": "877a6e0e3ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Kayole",
+                    "destination_latlng": {
+                        "latitude": 1.031751,
+                        "longitude": 37.350402
+                    },
+                    "destination_hexid": "877a438a6ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "69/73",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.96799,
+                    "longitude": 36.950514
+                },
+                "pickup_hexid": "877a45b36ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Industrial Zone",
+                    "destination_latlng": {
+                        "latitude": 0.385774,
+                        "longitude": 37.38113
+                    },
+                    "destination_hexid": "877a40300ffffff"
+                },
+                {
+                    "destination": "GM",
+                    "destination_latlng": {
+                        "latitude": 0.385774,
+                        "longitude": 37.38113
+                    },
+                    "destination_hexid": "877a40300ffffff"
+                },
+                {
+                    "destination": "Imara Daima",
+                    "destination_latlng": {
+                        "latitude": 0.385774,
+                        "longitude": 37.38113
+                    },
+                    "destination_hexid": "877a40300ffffff"
+                },
+                {
+                    "destination": "Mukuru Kwa Njenga",
+                    "destination_latlng": {
+                        "latitude": 0.385774,
+                        "longitude": 37.38113
+                    },
+                    "destination_hexid": "877a40300ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "7",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": -0.467695,
+                    "longitude": 36.020391
+                },
+                "pickup_hexid": "877a6a015ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Majengo",
+                    "destination_latlng": {
+                        "latitude": 1.327984,
+                        "longitude": 36.235881
+                    },
+                    "destination_hexid": "877a4ec59ffffff"
+                },
+                {
+                    "destination": "Gikomba",
+                    "destination_latlng": {
+                        "latitude": 1.327984,
+                        "longitude": 36.235881
+                    },
+                    "destination_hexid": "877a4ec59ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "70/71",
+            "pickup_point": {
+                "pickup_point": "Muthurwa",
+                "pickup_latlng": {
+                    "latitude": 0.832744,
+                    "longitude": 36.452959
+                },
+                "pickup_hexid": "877a4162bffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Lunga Lunga",
+                    "destination_latlng": {
+                        "latitude": 0.87353,
+                        "longitude": 36.741839
+                    },
+                    "destination_hexid": "877a41796ffffff"
+                },
+                {
+                    "destination": "Sinai",
+                    "destination_latlng": {
+                        "latitude": 0.87353,
+                        "longitude": 36.741839
+                    },
+                    "destination_hexid": "877a41796ffffff"
+                },
+                {
+                    "destination": "Donholm",
+                    "destination_latlng": {
+                        "latitude": 0.87353,
+                        "longitude": 36.741839
+                    },
+                    "destination_hexid": "877a41796ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "7B",
+            "pickup_point": {
+                "pickup_point": "Town",
+                "pickup_latlng": {
+                    "latitude": -1.515007,
+                    "longitude": 36.150482
+                },
+                "pickup_hexid": "877a6e328ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Bunyala Rd",
+                    "destination_latlng": {
+                        "latitude": -1.057989,
+                        "longitude": 36.21761
+                    },
+                    "destination_hexid": "877a6a932ffffff"
+                },
+                {
+                    "destination": "Upper Hill",
+                    "destination_latlng": {
+                        "latitude": -1.057989,
+                        "longitude": 36.21761
+                    },
+                    "destination_hexid": "877a6a932ffffff"
+                },
+                {
+                    "destination": "KNH",
+                    "destination_latlng": {
+                        "latitude": -1.057989,
+                        "longitude": 36.21761
+                    },
+                    "destination_hexid": "877a6a932ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "7C",
+            "pickup_point": {
+                "pickup_point": "Board the Citi Hoppa or KBS buses at Kencom House opp Hilton Hotel or beside KCB Bank along Moi avenue",
+                "pickup_latlng": {
+                    "latitude": -1.2795,
+                    "longitude": 36.8065
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Community",
+                    "destination_latlng": {
+                        "latitude": -1.2801,
+                        "longitude": 36.8021
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "UpperhillArea",
+                    "destination_latlng": {
+                        "latitude": -1.2801,
+                        "longitude": 36.8021
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "KenyattaNationalHospital",
+                    "destination_latlng": {
+                        "latitude": -1.2801,
+                        "longitude": 36.8021
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "NairobiHospital",
+                    "destination_latlng": {
+                        "latitude": -1.2801,
+                        "longitude": 36.8021
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "DoctorsPlazaSilverSpringsHotel",
+                    "destination_latlng": {
+                        "latitude": -1.2801,
+                        "longitude": 36.8021
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "8",
+            "pickup_point": {
+                "pickup_point": "Board the matatu from Railways bus station",
+                "pickup_latlng": {
+                    "latitude": -1.2865,
+                    "longitude": 36.815
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Ngongroad",
+                    "destination_latlng": {
+                        "latitude": -1.2812,
+                        "longitude": 36.8013
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "KiberaSlums/Kibra",
+                    "destination_latlng": {
+                        "latitude": -1.2812,
+                        "longitude": 36.8013
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "AdamsArcade",
+                    "destination_latlng": {
+                        "latitude": -1.2812,
+                        "longitude": 36.8013
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "ToiMarket",
+                    "destination_latlng": {
+                        "latitude": -1.2812,
+                        "longitude": 36.8013
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "8B",
+            "pickup_point": {
+                "pickup_point": "City",
+                "pickup_latlng": {
+                    "latitude": 0.181573,
+                    "longitude": 36.892986
+                },
+                "pickup_hexid": "877a41d5cffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "City Stadium",
+                    "destination_latlng": {
+                        "latitude": -0.156061,
+                        "longitude": 36.842862
+                    },
+                    "destination_hexid": "877a45668ffffff"
+                },
+                {
+                    "destination": "Bahati",
+                    "destination_latlng": {
+                        "latitude": -0.156061,
+                        "longitude": 36.842862
+                    },
+                    "destination_hexid": "877a45668ffffff"
+                },
+                {
+                    "destination": "Maringo",
+                    "destination_latlng": {
+                        "latitude": -0.156061,
+                        "longitude": 36.842862
+                    },
+                    "destination_hexid": "877a45668ffffff"
+                },
+                {
+                    "destination": "Jericho",
+                    "destination_latlng": {
+                        "latitude": -0.156061,
+                        "longitude": 36.842862
+                    },
+                    "destination_hexid": "877a45668ffffff"
+                },
+                {
+                    "destination": "Buru Ph. 1",
+                    "destination_latlng": {
+                        "latitude": -0.156061,
+                        "longitude": 36.842862
+                    },
+                    "destination_hexid": "877a45668ffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "9",
+            "pickup_point": {
+                "pickup_point": "Board the matatu at Tom Mboya Street or opposite Nairobi County Fire Station",
+                "pickup_latlng": {
+                    "latitude": -1.2932,
+                    "longitude": 36.8128
+                },
+                "pickup_hexid": "877a6e42dffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "EastleighArea",
+                    "destination_latlng": {
+                        "latitude": -1.2918,
+                        "longitude": 36.8097
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "NgaracivilServantshousingscheme",
+                    "destination_latlng": {
+                        "latitude": -1.2918,
+                        "longitude": 36.8097
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "KIE",
+                    "destination_latlng": {
+                        "latitude": -1.2918,
+                        "longitude": 36.8097
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "Paganiroundabout",
+                    "destination_latlng": {
+                        "latitude": -1.2918,
+                        "longitude": 36.8097
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                },
+                {
+                    "destination": "FigtreetradeCenterNgara",
+                    "destination_latlng": {
+                        "latitude": -1.2918,
+                        "longitude": 36.8097
+                    },
+                    "destination_hexid": "877a6e42dffffff"
+                }
+            ]
+        },
+        {
+            "route_number": "0",
+            "pickup_point": {
+                "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street",
+                "pickup_latlng": {
+                    "latitude": -1.28333,
+                    "longitude": 36.81667
+                },
+                "pickup_hexid": "877a6e414ffffff"
+            },
+            "destinations": [
+                {
+                    "destination": "Tom Mboya Street opp National Archives",
+                    "destination_latlng": {
+                        "latitude": -1.283,
+                        "longitude": 36.823
+                    },
+                    "destination_hexid": "877a6e414ffffff"
+                },
+                {
+                    "destination": "Railways bus station",
+                    "destination_latlng": {
+                        "latitude": -1.2905,
+                        "longitude": 36.826
+                    },
+                    "destination_hexid": "877a6e415ffffff"
+                },
+                {
+                    "destination": "General Post Office/ GPO",
+                    "destination_latlng": {
+                        "latitude": -1.286,
+                        "longitude": 36.815
+                    },
+                    "destination_hexid": "877a6e414ffffff"
+                }
+            ]
+        }
+    ]
+}

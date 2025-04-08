@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matatu Route Finder</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://unpkg.com/h3-js"></script>
+    <script src="https://unpkg.com/rbush-3d@0.0.4/dist/rbush3d.min.js"></script>
+    <script src="https://unpkg.com/supercluster@8.0.0/dist/supercluster.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4DSvWZU1IwLX3bITVDEGTsRnWu0Vu3U&callback=initMap&libraries=&v=weekly" async defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Load module scripts -->
+    <script type="module" src="main.js"></script>
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="calcRoute.js"></script>
+    <script type="module" src="findMat.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[]; w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5TJM9CXN');
+    </script>
+</head>
+<body>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TJM9CXN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <h1>Matatu Route Finder</h1>
+    <div class="input-group">
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" placeholder="e.g., General Post Office, Nairobi">
+    </div>
+    <div class="input-group">
+        <label for="additional-locations">Additional Locations (comma-separated):</label>
+        <input type="text" id="additional-locations" placeholder="e.g., Ngong Road">
+    </div>
+    <div class="input-group">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" placeholder="e.g., Kikuyu Township">
+    </div>
+    <button class="btn btn-success">Find Matatu Routes</button>
+    <div id="bus-routes"></div>
+
+    <script>
+        window.initMap = function() {
+            if (!window.google || !window.google.maps) {
+                console.error('Google Maps API not loaded yet. Retrying in 100ms...');
+                setTimeout(window.initMap, 100);
+                return;
+            }
+
+            const directionsService = new google.maps.DirectionsService();
+            // Import and initialize main.js with DirectionsService
+            import('./main.js')
+                .then(module => {
+                    module.main(directionsService);
+                })
+                .catch(err => {
+                    console.error('Failed to load main.js:', err);
+                });
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        input {
+            width: 300px;
+            padding: 5px;
+        }
+        button.btn-success {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button.btn-success:hover {
+            background-color: #218838;
+        }
+        #bus-routes {
+            margin-top: 20px;
+        }
+    </style>
+</body>
+</html>
