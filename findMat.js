@@ -1,6 +1,27 @@
 // findMa3.js (Hierarchical greedy clustering with integrated route graph)
 import { removeEmptyDicts, decodePolyline, buildHelixStructure } from './utils.js';
 
+const DEFAULT_CONFIG = {
+  maxDistanceKm: 1.0,
+  ringSize: 1,
+  minClusters: 10,
+  h3Resolution: 9,
+  similarityThreshold: 0.75
+};
+
+const ErrorSeverity = {
+  WARNING: 'warning',
+  ERROR: 'error',
+  CRITICAL: 'critical'
+};
+
+function handleError(message, severity, context = {}) {
+  if (severity === ErrorSeverity.CRITICAL) {
+    alerts.push(message);
+  }
+  console[severity === ErrorSeverity.WARNING ? 'warn' : 'error'](message, context);
+}
+
 const h3 = window.h3 || { latLngToCell: () => { throw new Error('H3 library not loaded'); } };
 
 let RBush3D = window.RBush3D?.RBush3D;
