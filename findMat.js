@@ -1,4 +1,3 @@
-// findMa3.js (Hierarchical greedy clustering with integrated route graph)
 import { removeEmptyDicts, decodePolyline, buildHelixStructure } from './utils.js';
 
 const DEFAULT_CONFIG = {
@@ -28,6 +27,97 @@ let RBush3D = window.RBush3D?.RBush3D;
 if (!RBush3D) {
     console.warn('RBush3D not yet loaded from CDN; falling back to basic RBush if available');
     RBush3D = window.RBush || function () { throw new Error('No RBush-3D available'); };
+}
+
+// RNP configuration (adapted from original context)
+const RNP_CONFIG = {
+    confidenceLevels: { standard: 0.95, high: 0.999, critical: 0.99999 },
+    regionalFactors: { urban: 0.8, suburban: 1.0, rural: 1.5 },
+    verticalRnp: { enabled: false, defaultValue: 10, multiplier: 0.3 },
+    errorBudget: { pickup: 0.15, transfer: 0.25, destination: 0.15, enroute: 0.45 },
+    zScores: { 0.95: 1.96, 0.99: 2.576, 0.999: 3.29, 0.9999: 3.89, 0.99999: 4.417 }
+};
+
+// RnpManager class (adapted from original context)
+class RnpManager {
+    constructor(baseRnpValue, options = {}) {
+        this.baseRnpValue = baseRnpValue;
+        this.confidenceLevel = options.confidenceLevel || RNP_CONFIG.confidenceLevels.standard;
+        this.region = options.region || 'suburban';
+        this.enableVertical = options.enableVertical || RNP_CONFIG.verticalRnp.enabled;
+        this.verticalRnpValue = options.verticalRnpValue || RNP_CONFIG.verticalRnp.defaultValue;
+        this.usedBudget = 0;
+        this.segmentErrors = [];
+        this.regionalFactor = RNP_CONFIG.regionalFactors[this.region] || 1.0;
+        this.zScore = this._getZScore(this.confidenceLevel);
+    }
+
+    _getZScore(confidenceLevel) {
+        const exactScore = RNP_CONFIG.zScores[confidenceLevel];
+        if (exactScore) return exactScore;
+        const levels = Object.keys(RNP_CONFIG.zScores).map(Number).sort();
+        const closestLevel = levels.reduce((prev, curr) => 
+            Math.abs(curr - confidenceLevel) < Math.abs(prev - confidenceLevel) ? curr : prev
+        );
+        return RNP_CONFIG.zScores[closestLevel];
+    }
+
+    getHorizontalToleranceKm(segmentType = 'enroute') {
+        const budgetAllocation = RNP_CONFIG.errorBudget[segmentType] || RNP_CONFIG.errorBudget.enroute;
+        const adjustedRnp = this.baseRnpValue * this.regionalFactor * (this.zScore / 1.96);
+        return adjustedRnp * 1.852 * budgetAllocation;
+    }
+
+    getVerticalToleranceMeters() {
+        if (!this.enableVertical) return Infinity;
+        return this.verticalRnpValue * this.zScore;
+    }
+
+    isWithinTolerance(actualDistance, segmentType = 'enroute') {
+        const tolerance = this.getHorizontalToleranceKm(segmentType);
+        const budgetRequired = actualDistance / (this.baseRnpValue * 1.852);
+        if (this.usedBudget + budgetRequired > 1.0) return false;
+        const result = actualDistance <= tolerance;
+        if (result) {
+            this.usedBudget += budgetRequired;
+            this.segmentErrors.push({ segmentType, distanceKm: actualDistance, toleranceKm: tolerance, budgetUsed: budgetRequired });
+        }
+        return result;
+    }
+
+    isWithinVerticalTolerance(heightDifference) {
+        if (!this.enableVertical) return true;
+        return Math.abs(heightDifference) <= this.getVerticalToleranceMeters();
+    }
+
+    getRemainingBudgetPercent() {
+        return (1 - this.usedBudget) * 100;
+    }
+
+    getDeviationStatistics() {
+        if (!this.segmentErrors.length) return null;
+        return {
+            maxDeviation: Math.max(...this.segmentErrors.map(e => e.distanceKm)),
+            avgDeviation: this.segmentErrors.reduce((sum, e) => sum + e.distanceKm, 0) / this.segmentErrors.length,
+            budgetUsedPercent: this.usedBudget * 100,
+            segmentCounts: this.segmentErrors.reduce((acc, err) => {
+                acc[err.segmentType] = (acc[err.segmentType] || 0) + 1;
+                return acc;
+            }, {})
+        };
+    }
+
+    resetBudget() {
+        this.usedBudget = 0;
+        this.segmentErrors = [];
+    }
+
+    static determineRegionType(points, areaInSqKm) {
+        const density = points.length / areaInSqKm;
+        if (density > 50) return 'urban';
+        if (density > 10) return 'suburban';
+        return 'rural';
+    }
 }
 
 // Utility function for robust coordinate refinement
@@ -138,10 +228,8 @@ function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm 
 
     const clusterIndex = new RBush3D();
     const clusterItems = [];
-    
-    // Create index mapping from cluster to its index item
     const clusterToItem = new Map();
-    
+
     clusters.forEach((cluster, idx) => {
         const item = {
             minX: cluster.centroid.lat,
@@ -151,17 +239,17 @@ function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm 
             maxY: cluster.centroid.lng,
             maxZ: idx,
             clusterRef: cluster,
-            id: idx // Adding unique ID to track items
+            id: idx
         };
         clusterItems.push(item);
         clusterToItem.set(cluster, item);
     });
-    
+
     clusterIndex.load(clusterItems);
 
     const activeClusters = new Set(clusters);
-    let nextId = clusters.length; // For creating unique IDs for new clusters
-    
+    let nextId = clusters.length;
+
     while (activeClusters.size > minClusters) {
         let minDist = Infinity;
         let mergePair = null;
@@ -175,7 +263,7 @@ function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm 
                 minZ: 0,
                 maxX: c1.centroid.lat + maxDistanceKm / 110.574,
                 maxY: c1.centroid.lng + maxDistanceKm / (111.32 * Math.cos(c1.centroid.lat * Math.PI / 180)),
-                maxZ: nextId // Use the next ID as the upper bound
+                maxZ: nextId
             };
             const nearbyItems = clusterIndex.search(searchBox);
             for (const item of nearbyItems) {
@@ -203,20 +291,18 @@ function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm 
         };
         newCluster.centroid = updateCentroid(newCluster, h3Resolution);
 
-        // Remove the old clusters from the RBush index
         if (clusterToItem.has(c1)) {
             const item1 = clusterToItem.get(c1);
             clusterIndex.remove(item1);
             clusterToItem.delete(c1);
         }
-        
+
         if (clusterToItem.has(c2)) {
             const item2 = clusterToItem.get(c2);
             clusterIndex.remove(item2);
             clusterToItem.delete(c2);
         }
 
-        // Add the new cluster to RBush index
         const newItem = {
             minX: newCluster.centroid.lat,
             minY: newCluster.centroid.lng,
@@ -227,12 +313,11 @@ function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm 
             clusterRef: newCluster,
             id: nextId
         };
-        
+
         clusterIndex.insert(newItem);
         clusterToItem.set(newCluster, newItem);
         nextId++;
 
-        // Update active clusters
         activeClusters.delete(c1);
         activeClusters.delete(c2);
         activeClusters.add(newCluster);
@@ -242,6 +327,7 @@ function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm 
     console.log(`Clustered ${routePoints.length} points into ${finalClusters.length} hierarchical clusters with ${ringSize}-ring H3 hexes (max distance: ${maxDistanceKm} km)`);
     return finalClusters;
 }
+
 // Function to format latitude and longitude into DMS
 function formatLatLng(lat, lng) {
     const toDMS = (decimal) => {
@@ -254,7 +340,120 @@ function formatLatLng(lat, lng) {
     return `${toDMS(lat)} ${lat >= 0 ? 'N' : 'S'}, ${toDMS(lng)} ${lng >= 0 ? 'E' : 'W'}`;
 }
 
-// Function to find overlapping routes using cluster and 3D index information
+// Hierholzer’s algorithm for Eulerian Path
+function findEulerianPath(graph) {
+    if (!graph.size) return [];
+
+    // Count degrees and find start vertex
+    const degrees = new Map();
+    graph.forEach((neighbors, vertex) => {
+        degrees.set(vertex, neighbors.size);
+    });
+
+    const oddDegrees = Array.from(degrees.entries()).filter(([_, deg]) => deg % 2 !== 0);
+    if (oddDegrees.length > 2) {
+        console.warn('Graph is not Eulerian; using greedy approximation');
+        return approximateEulerianPath(graph);
+    }
+
+    const startVertex = oddDegrees.length ? oddDegrees[0][0] : graph.keys().next().value;
+    const path = [];
+    const stack = [startVertex];
+    const tempGraph = new Map(graph.entries().map(([k, v]) => [k, new Set(v)]));
+
+    while (stack.length) {
+        const current = stack[stack.length - 1];
+        const neighbors = tempGraph.get(current);
+
+        if (neighbors && neighbors.size) {
+            const nextVertex = neighbors.values().next().value;
+            neighbors.delete(nextVertex);
+            tempGraph.get(nextVertex).delete(current);
+            stack.push(nextVertex);
+        } else {
+            path.push(stack.pop());
+        }
+    }
+
+    // Reverse path to get correct order
+    return path.reverse();
+}
+
+// Greedy approximation for non-Eulerian graphs
+function approximateEulerianPath(graph) {
+    const path = [];
+    const visitedEdges = new Set();
+    const tempGraph = new Map(graph.entries().map(([k, v]) => [k, new Set(v)]));
+    let current = graph.keys().next().value;
+
+    while (tempGraph.size) {
+        path.push(current);
+        const neighbors = tempGraph.get(current);
+        if (!neighbors || !neighbors.size) {
+            tempGraph.delete(current);
+            if (path.length > 1) {
+                current = path[path.length - 2];
+            } else if (tempGraph.size) {
+                current = tempGraph.keys().next().value;
+            }
+            continue;
+        }
+
+        let nextVertex = null;
+        let minDist = Infinity;
+        for (const neighbor of neighbors) {
+            const edgeKey = `${Math.min(current, neighbor)}-${Math.max(current, neighbor)}`;
+            if (!visitedEdges.has(edgeKey)) {
+                minDist = 0; // Prioritize unvisited edges
+                nextVertex = neighbor;
+                break;
+            }
+        }
+
+        if (!nextVertex) {
+            nextVertex = neighbors.values().next().value;
+        }
+
+        const edgeKey = `${Math.min(current, nextVertex)}-${Math.max(current, nextVertex)}`;
+        visitedEdges.add(edgeKey);
+        neighbors.delete(nextVertex);
+        tempGraph.get(nextVertex).delete(current);
+        current = nextVertex;
+    }
+
+    return path;
+}
+
+// Find transfer points between two routes
+function findTransferPoints(fromRoute, toRoute, routePointsIndex, rnpManager, toleranceKm) {
+    const fromPoints = routePointsIndex.search({
+        minX: -90, minY: -180, minZ: 0,
+        maxX: 90, maxY: 180, maxZ: Infinity
+    }).filter(item => item.routeNumber === fromRoute);
+
+    const toPoints = routePointsIndex.search({
+        minX: -90, minY: -180, minZ: 0,
+        maxX: 90, maxY: 180, maxZ: Infinity
+    }).filter(item => item.routeNumber === toRoute);
+
+    const transferPoints = [];
+    for (const fromPoint of fromPoints) {
+        for (const toPoint of toPoints) {
+            const dist = h3.greatCircleDistance([fromPoint.lat, fromPoint.lng], [toPoint.lat, toPoint.lng], 'km');
+            if (rnpManager.isWithinTolerance(dist, 'transfer')) {
+                transferPoints.push({
+                    from: { lat: fromPoint.lat, lng: fromPoint.lng, name: fromPoint.label || 'Transfer Point' },
+                    to: { lat: toPoint.lat, lng: toPoint.lng, name: toPoint.label || 'Transfer Point' },
+                    distanceKm: dist
+                });
+            }
+        }
+    }
+
+    return transferPoints.sort((a, b) => a.distanceKm - b.distanceKm)[0] || null;
+}
+
+// Enhanced findOverlappingRoutes with Eulerian Path
 function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, route3DIndex) {
     if (!globalRoutesDAG || !routeClusters || !route3DIndex) {
         console.error("Missing globalRoutesDAG, routeClusters, or route3DIndex");
@@ -262,16 +461,30 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     }
 
     const userPoints = helixStructure.points;
-    const toleranceKm = helixStructure.rnpValue * 1.852;
+    const alerts = [];
+
+    // Initialize RnpManager
+    const pointsPerSqKm = userPoints.length / (Math.PI * Math.pow(helixStructure.rnpValue * 1.852, 2));
+    const regionType = RnpManager.determineRegionType(
+        globalRoutesDAG.non_null_objects.flatMap(r => [r.pickup_point, ...r.destinations]),
+        100
+    );
+    const rnpManager = new RnpManager(helixStructure.rnpValue, {
+        confidenceLevel: RNP_CONFIG.confidenceLevels.standard,
+        region: regionType,
+        enableVertical: RNP_CONFIG.verticalRnp.enabled,
+        verticalRnpValue: RNP_CONFIG.verticalRnp.defaultValue
+    });
+
+    const toleranceKm = rnpManager.getHorizontalToleranceKm('enroute');
     const lngDelta = toleranceKm / (111.32 * Math.cos(userPoints[0].lat * Math.PI / 180));
     const latDelta = toleranceKm / 110.574;
-    const alerts = [];
 
     userPoints.forEach(point => {
         if (isNaN(point.lat) || isNaN(point.lng)) {
             alerts.push(`Integrity alert: Invalid coordinates for ${point.label}`);
         }
-        if (!point.h3Index || !h3.isValidCell(point.h3Index)) {
+ if (!point.h3Index || !h3.isValidCell(point.h3Index)) {
             alerts.push(`Integrity alert: Invalid H3 index for ${point.label}`);
         }
     });
@@ -305,9 +518,10 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
 
     const routeCandidates = new Set();
     refinedUserPoints.forEach(point => {
+        const pickupToleranceKm = rnpManager.getHorizontalToleranceKm('pickup');
         const nearbyClusters = routeClusters.filter(cluster => {
             const dist = h3.greatCircleDistance([point.lat, point.lng], [cluster.centroid.lat, cluster.centroid.lng], 'km');
-            return dist <= toleranceKm;
+            return dist <= pickupToleranceKm;
         });
         nearbyClusters.forEach(cluster => cluster.points.forEach(p => routeCandidates.add(p.routeNumber)));
     });
@@ -315,6 +529,9 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
 
     const routeCandidates3D = new Set();
     refinedUserPoints.forEach(point => {
+        const pickupToleranceKm = rnpManager.getHorizontalToleranceKm('pickup');
+        const lngDelta = pickupToleranceKm / (111.32 * Math.cos(point.lat * Math.PI / 180));
+        const latDelta = pickupToleranceKm / 110.574;
         const searchBox = {
             minX: point.lat - latDelta,
             minY: point.lng - lngDelta,
@@ -337,15 +554,16 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     const routePointsIndex = new RBush3D();
     routePointsIndex.load(allRoutes.flatMap(route => {
         const points = [
-            { lat: route.pickup_point.pickup_latlng.latitude, lng: route.pickup_point.pickup_latlng.longitude, routeNumber: route.route_number },
-            ...route.destinations.map(d => ({ lat: d.destination_latlng.latitude, lng: d.destination_latlng.longitude, routeNumber: route.route_number }))
+            { lat: route.pickup_point.pickup_latlng.latitude, lng: route.pickup_point.pickup_latlng.longitude, routeNumber: route.route_number, label: route.pickup_point.name },
+            ...route.destinations.map(d => ({ lat: d.destination_latlng.latitude, lng: d.destination_latlng.longitude, routeNumber: route.route_number, label: d.name }))
         ];
         return points.map(p => ({
             minX: p.lat, minY: p.lng, minZ: 0,
             maxX: p.lat, maxY: p.lng, maxZ: 0,
             routeNumber: p.routeNumber,
             lat: p.lat,
-            lng: p.lng
+            lng: p.lng,
+            label: p.label
         }));
     }));
 
@@ -357,25 +575,51 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
         }).filter(item => item.routeNumber === route.route_number);
 
         routePoints.forEach(p => {
+            const enrouteToleranceKm = rnpManager.getHorizontalToleranceKm('enroute');
             const searchBox = {
-                minX: p.lat - toleranceKm / 110.574,
-                minY: p.lng - toleranceKm / (111.32 * Math.cos(p.lat * Math.PI / 180)),
+                minX: p.lat - enrouteToleranceKm / 110.574,
+                minY: p.lng - enrouteToleranceKm / (111.32 * Math.cos(p.lat * Math.PI / 180)),
                 minZ: 0,
-                maxX: p.lat + toleranceKm / 110.574,
-                maxY: p.lng + toleranceKm / (111.32 * Math.cos(p.lat * Math.PI / 180)),
+                maxX: p.lat + enrouteToleranceKm / 110.574,
+                maxY: p.lng + enrouteToleranceKm / (111.32 * Math.cos(p.lat * Math.PI / 180)),
                 maxZ: Infinity
             };
             const nearbyPoints = routePointsIndex.search(searchBox);
             nearbyPoints.forEach(np => {
-                if (np.routeNumber !== route.route_number &&
-                    h3.greatCircleDistance([p.lat, p.lng], [np.lat, np.lng], 'km') < toleranceKm) {
-                    routeGraph.get(route.route_number).add(np.routeNumber);
-                    routeGraph.get(np.routeNumber).add(route.route_number);
+                if (np.routeNumber !== route.route_number) {
+                    const dist = h3.greatCircleDistance([p.lat, p.lng], [np.lat, np.lng], 'km');
+                    if (rnpManager.isWithinTolerance(dist, 'transfer')) {
+                        routeGraph.get(route.route_number).add(np.routeNumber);
+                        routeGraph.get(np.routeNumber).add(route.route_number);
+                    }
                 }
             });
         });
     });
     console.log('Route Graph:', Array.from(routeGraph.entries()).map(([r, neighbors]) => `${r}: ${Array.from(neighbors)}`));
+
+    // Compute Eulerian Path for transfer optimization
+    const eulerianPath = findEulerianPath(routeGraph);
+    console.log('Eulerian Path for Transfers:', eulerianPath);
+
+    // Generate transfer sequence from Eulerian Path
+    const transferSequence = [];
+    for (let i = 0; i < eulerianPath.length - 1; i++) {
+        const fromRoute = eulerianPath[i];
+        const toRoute = eulerianPath[i + 1];
+        const transfer = findTransferPoints(fromRoute, toRoute, routePointsIndex, rnpManager, toleranceKm);
+        if (transfer) {
+            transferSequence.push({
+                fromRoute,
+                toRoute,
+                transferPoint: transfer.from.name,
+                distanceKm: transfer.distanceKm,
+                from: transfer.from,
+                to: transfer.to
+            });
+        }
+    }
+    console.log('Transfer Sequence:', transferSequence);
 
     const finalRouteCandidates = new Set([...routeCandidates].filter(x => routeCandidates3D.has(x)));
     const expandedCandidates = new Set(finalRouteCandidates);
@@ -437,7 +681,7 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
 
             if (startMatch && endMatch) {
                 const actualDistance = h3.greatCircleDistance([startPoint.lat, startPoint.lng], [startMatch.lat, startMatch.lng], 'km');
-                if (actualDistance > fallbackToleranceKm) {
+                if (!rnpManager.isWithinTolerance(actualDistance, 'enroute')) {
                     alerts.push(`Integrity alert: Route ${route.route_number} exceeds tolerance (${actualDistance.toFixed(2)} km > ${fallbackToleranceKm} km)`);
                 }
             }
@@ -486,7 +730,7 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
                     endRoute.stops.forEach(endStop => {
                         const distance = h3.greatCircleDistance([startStop.lat, startStop.lng], [endStop.lat, endStop.lng], 'km');
                         const h3Distance = h3.gridDistance(startStop.h3Index, endStop.h3Index);
-                        if (distance < toleranceKm && h3Distance <= 1 && startStop.name !== endStop.name) {
+                        if (rnpManager.isWithinTolerance(distance, 'transfer') && h3Distance <= 1 && startStop.name !== endStop.name) {
                             transferCandidates.push({
                                 startRoute: { ...startRoute, end: startStop.name, segment: `${startPoint.label} to ${startStop.name}` },
                                 endRoute: { ...endRoute, start: endStop.name, segment: `${endStop.name} to ${endPoint.label}` },
@@ -527,6 +771,7 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     const busRoutes = [];
     let lastEndPoint = null;
 
+    // Use Eulerian Path for multi-segment journey planning
     for (let i = 0; i < refinedUserPoints.length - 1; i++) {
         const startPoint = refinedUserPoints[i];
         const endPoint = refinedUserPoints[i + 1];
@@ -542,6 +787,31 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
             lastEndPoint = endPoint;
             continue;
         }
+
+        // Check Eulerian Path for transfer sequence
+        let found = false;
+        for (let j = 0; j < transferSequence.length; j++) {
+            const transfer = transferSequence[j];
+            const startRoute = allRoutes.find(r => r.route_number === transfer.fromRoute);
+            const endRoute = allRoutes.find(r => r.route_number === transfer.toRoute);
+
+            if (!startRoute || !endRoute) continue;
+
+            const startMatch = findRouteSegment(startPoint, { label: transfer.transferPoint, lat: transfer.from.lat, lng: transfer.from.lng, h3Index: h3.latLngToCell(transfer.from.lat, transfer.from.lng, helixStructure.h3Resolution) }, allRoutes);
+            const endMatch = findRouteSegment({ label: transfer.transferPoint, lat: transfer.to.lat, lng: transfer.to.lng, h3Index: h3.latLngToCell(transfer.to.lat, transfer.to.lng, helixStructure.h3Resolution) }, endPoint, allRoutes);
+
+            if (startMatch.length && endMatch.length) {
+                busRoutes.push(
+                    { ...startMatch[0], note: `Transfer at ${transfer.transferPoint}` },
+                    { ...endMatch[0], note: `Board after transfer from ${transfer.transferPoint}` }
+                );
+                lastEndPoint = endPoint;
+                found = true;
+                break;
+            }
+        }
+
+        if (found) continue;
 
         const transfer = findTransferRoutes(startPoint, endPoint, allRoutes);
         if (transfer) {
@@ -566,14 +836,13 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
         }
 
         console.warn(`No simple route for ${startPoint.label} to ${endPoint.label}; trying multi-step`);
-        let found = false;
         for (const route of allRoutes) {
             const stops = [
                 { name: route.pickup_point.name, ...refineCoordinates(route.pickup_point.pickup_latlng), h3Index: h3.latLngToCell(route.pickup_point.pickup_latlng.latitude, route.pickup_point.pickup_latlng.longitude, helixStructure.h3Resolution) },
                 ...route.destinations.map(d => ({ name: d.name, ...refineCoordinates(d.destination_latlng), h3Index: h3.latLngToCell(d.destination_latlng.latitude, d.destination_latlng.longitude, helixStructure.h3Resolution) }))
             ];
             for (const stop of stops) {
-                const toIntermediate = findRouteSegment(startPoint, { label: stop.name, lat: stop.lat, lng: stop.lng, h3Index: stop.h3Index }, allRoutes);
+                const toIntermediate = findRouteSegment(startPoint, { label: stop.name, lat: stop.lat, lng: stop.lat, h3Index: stop.h3Index }, allRoutes);
                 const fromIntermediate = findRouteSegment({ label: stop.name, lat: stop.lat, lng: stop.lng, h3Index: stop.h3Index }, endPoint, allRoutes);
                 if (toIntermediate.length && fromIntermediate.length) {
                     busRoutes.push(
@@ -594,11 +863,11 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     }
 
     console.log('Found bus routes:', busRoutes);
-    return { routes: busRoutes, userPoints: refinedUserPoints, alerts };
+    return { routes: busRoutes, userPoints: refinedUserPoints, alerts, transferSequence };
 }
 
 // Generate the display results using the routes, userPoints, and alerts
-function displayResults({ routes: busRoutes, userPoints, alerts }, helixStructure) {
+function displayResults({ routes: busRoutes, userPoints, alerts, transferSequence }, helixStructure) {
     const resultDiv = document.getElementById('bus-routes');
     if (!resultDiv) {
         console.warn('No #bus-routes element found in DOM');
@@ -627,6 +896,12 @@ function displayResults({ routes: busRoutes, userPoints, alerts }, helixStructur
 
     if (alerts.length) {
         html += `<p><strong>Alerts:</strong> ${alerts.join('; ')}</p>`;
+    }
+
+    if (transferSequence.length) {
+        html += `<p><strong>Optimized Transfer Sequence:</strong> ${transferSequence.map(t =>
+            `Route ${t.fromRoute} to Route ${t.toRoute} at ${t.transferPoint} (${t.distanceKm.toFixed(2)} km)`
+        ).join('; ')}</p>`;
     }
 
     if (!busRoutes.length) {
