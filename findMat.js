@@ -1,4 +1,4 @@
-import { removeEmptyDicts, decodePolyline, buildHelixStructure } from './utils.js';
+import { removeEmptyDicts, decodePolyline, buildHelixStructure, refineCoordinates } from './utils.js';
 
 const DEFAULT_CONFIG = {
   maxDistanceKm: 1.0,
@@ -29,7 +29,6 @@ if (!RBush3D) {
     RBush3D = window.RBush || function () { throw new Error('No RBush-3D available'); };
 }
 
-// RNP configuration (adapted from original context)
 const RNP_CONFIG = {
     confidenceLevels: { standard: 0.95, high: 0.999, critical: 0.99999 },
     regionalFactors: { urban: 0.8, suburban: 1.0, rural: 1.5 },
@@ -38,7 +37,6 @@ const RNP_CONFIG = {
     zScores: { 0.95: 1.96, 0.99: 2.576, 0.999: 3.29, 0.9999: 3.89, 0.99999: 4.417 }
 };
 
-// RnpManager class (adapted from original context)
 class RnpManager {
     constructor(baseRnpValue, options = {}) {
         this.baseRnpValue = baseRnpValue;
@@ -56,7 +54,7 @@ class RnpManager {
         const exactScore = RNP_CONFIG.zScores[confidenceLevel];
         if (exactScore) return exactScore;
         const levels = Object.keys(RNP_CONFIG.zScores).map(Number).sort();
-        const closestLevel = levels.reduce((prev, curr) => 
+        const closestLevel = levels.reduce((prev, curr) =>
             Math.abs(curr - confidenceLevel) < Math.abs(prev - confidenceLevel) ? curr : prev
         );
         return RNP_CONFIG.zScores[closestLevel];
@@ -120,62 +118,81 @@ class RnpManager {
     }
 }
 
-// Utility function for robust coordinate refinement
-function refineCoordinates(latLng) {
-    if (!latLng) return { lat: NaN, lng: NaN };
-    const lat = typeof latLng.latitude === 'function' ? latLng.latitude() : latLng.latitude ?? NaN;
-    const lng = typeof latLng.longitude === 'function' ? latLng.longitude() : latLng.longitude ?? NaN;
-    return { lat, lng };
-}
-
-// Function to index routes using RBush3D
 function indexRoutesWithRBush3D(routes) {
+    console.log(`indexRoutesWithRBush3D: Processing ${routes.length} routes`);
     const route3DIndex = new RBush3D();
     const items = routes.flatMap(route => {
+        console.log(`Indexing route ${route.route_number}: pickup=${JSON.stringify(route.pickup_point?.pickup_latlng)}, destinations=${route.destinations?.length}`);
+        const pickupLat = route.pickup_point?.pickup_latlng?.lat ?? route.pickup_point?.pickup_latlng?.latitude;
+        const pickupLng = route.pickup_point?.pickup_latlng?.lng ?? route.pickup_point?.pickup_latlng?.longitude;
         const pickupItems = route.pickup_point?.pickup_latlng && route.pickup_point?.pickup_hexid ? [{
-            minX: route.pickup_point.pickup_latlng.latitude,
-            minY: route.pickup_point.pickup_latlng.longitude,
+            minX: pickupLat,
+            minY: pickupLng,
             minZ: route.pickup_point.pickup_hexid,
-            maxX: route.pickup_point.pickup_latlng.latitude,
-            maxY: route.pickup_point.pickup_latlng.longitude,
+            maxX: pickupLat,
+            maxY: pickupLng,
             maxZ: route.pickup_point.pickup_hexid,
             routeNumber: route.route_number,
-            label: route.pickup_point.name || 'Unknown',
-            lat: route.pickup_point.pickup_latlng.latitude,
-            lng: route.pickup_point.pickup_latlng.longitude
-        }] : [];
-
-        const destItems = (route.destinations || []).filter(dest => {
-            if (!dest.destination_latlng || !dest.destination_hexid) {
-                console.warn(`Excluding destination in route ${route.route_number}: Missing or invalid coordinates/hexid`);
+            label: route.pickup_point.pickup_point || 'Unknown',
+            lat: pickupLat,
+            lng: pickupLng
+        }].filter(item => {
+            const isValid = !isNaN(item.lat) && !isNaN(item.lng) && item.lat >= -90 && item.lat <= 90 && item.lng >= -180 && item.lng <= 180;
+            if (!isValid) {
+                console.warn(`Route ${route.route_number}: Skipped pickup due to invalid coordinates: lat=${item.lat}, lng=${item.lng}`);
+                return false;
+            }
+            if (!h3.isValidCell(item.minZ)) {
+                console.warn(`Route ${route.route_number}: Skipped pickup due to invalid H3 index: ${item.minZ}`);
                 return false;
             }
             return true;
-        }).map(dest => ({
-            minX: dest.destination_latlng.latitude,
-            minY: dest.destination_latlng.longitude,
-            minZ: dest.destination_hexid,
-            maxX: dest.destination_latlng.latitude,
-            maxY: dest.destination_latlng.longitude,
-            maxZ: dest.destination_hexid,
-            routeNumber: route.route_number,
-            label: dest.name || 'Unknown',
-            lat: dest.destination_latlng.latitude,
-            lng: dest.destination_latlng.longitude
-        }));
-
+        }) : [];
+        if (!pickupItems.length) {
+            console.warn(`Route ${route.route_number}: Skipped pickup due to missing coordinates or H3 index`);
+        }
+        const destItems = (route.destinations || []).filter(dest => {
+            const destLat = dest.destination_latlng?.lat ?? dest.destination_latlng?.latitude;
+            const destLng = dest.destination_latlng?.lng ?? dest.destination_latlng?.longitude;
+            if (!dest.destination_latlng || !dest.destination_hexid) {
+                console.warn(`Route ${route.route_number}: Skipped destination ${dest.destination || 'Unknown'} due to missing coordinates or H3 index`);
+                return false;
+            }
+            if (isNaN(destLat) || isNaN(destLng) || destLat < -90 || destLat > 90 || destLng < -180 || destLng > 180) {
+                console.warn(`Route ${route.route_number}: Skipped destination ${dest.destination || 'Unknown'} due to invalid coordinates: lat=${destLat}, lng=${destLng}`);
+                return false;
+            }
+            if (!h3.isValidCell(dest.destination_hexid)) {
+                console.warn(`Route ${route.route_number}: Skipped destination ${dest.destination || 'Unknown'} due to invalid H3 index: ${dest.destination_hexid}`);
+                return false;
+            }
+            return true;
+        }).map(dest => {
+            const destLat = dest.destination_latlng.lat ?? dest.destination_latlng.latitude;
+            const destLng = dest.destination_latlng.lng ?? dest.destination_latlng.longitude;
+            return {
+                minX: destLat,
+                minY: destLng,
+                minZ: dest.destination_hexid,
+                maxX: destLat,
+                maxY: destLng,
+                maxZ: dest.destination_hexid,
+                routeNumber: route.route_number,
+                label: dest.destination || 'Unknown',
+                lat: destLat,
+                lng: destLng
+            };
+        });
         return [...pickupItems, ...destItems];
     });
-
     route3DIndex.load(items);
     console.log(`Indexed ${items.length} points into RBush-3D`);
     return route3DIndex;
 }
 
-// Function to calculate the Haversine distance between two points
 function haversineDistance(lat1, lng1, lat2, lng2) {
     if (isNaN(lat1) || isNaN(lng1) || isNaN(lat2) || isNaN(lng2)) return Infinity;
-    const R = 6371; // Earth's radius in km
+    const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLng = (lng2 - lng1) * Math.PI / 180;
     const a = Math.sin(dLat / 2) ** 2 +
@@ -183,7 +200,6 @@ function haversineDistance(lat1, lng1, lat2, lng2) {
     return 2 * R * Math.asin(Math.sqrt(a));
 }
 
-// Function to update the centroid of a cluster
 function updateCentroid(cluster, h3Resolution) {
     const lats = cluster.points.map(p => p.lat);
     const lngs = cluster.points.map(p => p.lng);
@@ -196,34 +212,57 @@ function updateCentroid(cluster, h3Resolution) {
     };
 }
 
-// Hierarchical greedy clustering function
 function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm = 1.0, ringSize = 1, minClusters = 10) {
-    if (!route3DIndex || typeof h3.latLngToCell !== 'function') return null;
+    console.log('hierarchicalGreedyClustering: Starting with route3DIndex=', route3DIndex ? 'defined' : 'undefined');
+    if (!route3DIndex || typeof h3.latLngToCell !== 'function') {
+        console.error('Invalid route3DIndex or H3 library');
+        return [];
+    }
 
     const routePoints = route3DIndex.all();
+    console.log(`Route points for clustering: ${routePoints.length}`);
     if (!routePoints.length) {
         console.warn('No route points available for clustering');
-        return null;
+        return [];
     }
 
     const clusters = routePoints.flatMap(point => {
-        const hexRing = h3.gridDisk(point.minZ, ringSize);
-        return hexRing.map(hex => {
-            const [lat, lng] = h3.cellToLatLng(hex);
-            return {
-                points: [{ lat, lng, h3Index: hex, routeNumber: point.routeNumber, label: point.label }],
-                centroid: { lat, lng, h3Index: hex },
-                h3Indexes: [hex]
-            };
-        });
+        if (!h3.isValidCell(point.minZ)) {
+            console.warn(`Invalid H3 index for point ${point.label}: ${point.minZ}`);
+            return [];
+        }
+        try {
+            const hexRing = h3.gridDisk(point.minZ, ringSize);
+            return hexRing.map(hex => {
+                try {
+                    const [lat, lng] = h3.cellToLatLng(hex);
+                    return {
+                        points: [{ lat, lng, h3Index: hex, routeNumber: point.routeNumber, label: point.label }],
+                        centroid: { lat, lng, h3Index: hex },
+                        h3Indexes: [hex]
+                    };
+                } catch (error) {
+                    console.warn(`Error generating hex ring for ${point.label}: ${error.message}`);
+                    return null;
+                }
+            }).filter(Boolean);
+        } catch (error) {
+            console.warn(`Error generating grid disk for ${point.label}: ${error.message}`);
+            return [];
+        }
     }).filter(cluster => {
         const { lat, lng } = cluster.centroid;
-        return !isNaN(lat) && !isNaN(lng) && lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
+        const valid = !isNaN(lat) && !isNaN(lng) && lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
+        if (!valid) {
+            console.warn(`Invalid cluster centroid: lat=${lat}, lng=${lng}`);
+        }
+        return valid;
     });
 
+    console.log(`Generated ${clusters.length} initial clusters`);
     if (!clusters.length) {
         console.warn('No valid hex rings generated for clustering');
-        return null;
+        return [];
     }
 
     const clusterIndex = new RBush3D();
@@ -328,7 +367,6 @@ function hierarchicalGreedyClustering(route3DIndex, h3Resolution, maxDistanceKm 
     return finalClusters;
 }
 
-// Function to format latitude and longitude into DMS
 function formatLatLng(lat, lng) {
     const toDMS = (decimal) => {
         const abs = Math.abs(decimal);
@@ -340,11 +378,9 @@ function formatLatLng(lat, lng) {
     return `${toDMS(lat)} ${lat >= 0 ? 'N' : 'S'}, ${toDMS(lng)} ${lng >= 0 ? 'E' : 'W'}`;
 }
 
-// Hierholzer’s algorithm for Eulerian Path
 function findEulerianPath(graph) {
     if (!graph.size) return [];
 
-    // Count degrees and find start vertex
     const degrees = new Map();
     graph.forEach((neighbors, vertex) => {
         degrees.set(vertex, neighbors.size);
@@ -375,11 +411,9 @@ function findEulerianPath(graph) {
         }
     }
 
-    // Reverse path to get correct order
     return path.reverse();
 }
 
-// Greedy approximation for non-Eulerian graphs
 function approximateEulerianPath(graph) {
     const path = [];
     const visitedEdges = new Set();
@@ -404,7 +438,7 @@ function approximateEulerianPath(graph) {
         for (const neighbor of neighbors) {
             const edgeKey = `${Math.min(current, neighbor)}-${Math.max(current, neighbor)}`;
             if (!visitedEdges.has(edgeKey)) {
-                minDist = 0; // Prioritize unvisited edges
+                minDist = 0;
                 nextVertex = neighbor;
                 break;
             }
@@ -424,7 +458,6 @@ function approximateEulerianPath(graph) {
     return path;
 }
 
-// Find transfer points between two routes
 function findTransferPoints(fromRoute, toRoute, routePointsIndex, rnpManager, toleranceKm) {
     const fromPoints = routePointsIndex.search({
         minX: -90, minY: -180, minZ: 0,
@@ -453,17 +486,21 @@ function findTransferPoints(fromRoute, toRoute, routePointsIndex, rnpManager, to
     return transferPoints.sort((a, b) => a.distanceKm - b.distanceKm)[0] || null;
 }
 
-// Enhanced findOverlappingRoutes with Eulerian Path
 function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, route3DIndex) {
-    if (!globalRoutesDAG || !routeClusters || !route3DIndex) {
-        console.error("Missing globalRoutesDAG, routeClusters, or route3DIndex");
+    console.log('findOverlappingRoutes: globalRoutesDAG=', globalRoutesDAG ? 'defined' : 'undefined', 'routeClusters=', routeClusters ? `${routeClusters.length} clusters` : 'undefined', 'route3DIndex=', route3DIndex ? 'defined' : 'undefined');
+    if (!globalRoutesDAG || !globalRoutesDAG.non_null_objects || !routeClusters || !route3DIndex) {
+        console.error("Missing globalRoutesDAG, routeClusters, or route3DIndex", {
+            globalRoutesDAG: !!globalRoutesDAG,
+            non_null_objects: globalRoutesDAG?.non_null_objects?.length,
+            routeClusters: !!routeClusters,
+            route3DIndex: !!route3DIndex
+        });
         return { routes: [], userPoints: [], alerts: ["System integrity failure: Missing route data or indexes"] };
     }
 
     const userPoints = helixStructure.points;
     const alerts = [];
 
-    // Initialize RnpManager
     const pointsPerSqKm = userPoints.length / (Math.PI * Math.pow(helixStructure.rnpValue * 1.852, 2));
     const regionType = RnpManager.determineRegionType(
         globalRoutesDAG.non_null_objects.flatMap(r => [r.pickup_point, ...r.destinations]),
@@ -484,37 +521,53 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
         if (isNaN(point.lat) || isNaN(point.lng)) {
             alerts.push(`Integrity alert: Invalid coordinates for ${point.label}`);
         }
- if (!point.h3Index || !h3.isValidCell(point.h3Index)) {
+        if (!point.h3Index || !h3.isValidCell(point.h3Index)) {
             alerts.push(`Integrity alert: Invalid H3 index for ${point.label}`);
         }
     });
 
     const refinedUserPoints = userPoints.map(point => {
         const refined = refineCoordinates({ lat: point.lat, lng: point.lng });
-        return {
-            ...point,
-            lat: refined.lat,
-            lng: refined.lng,
-            h3Index: h3.latLngToCell(refined.lat, refined.lng, helixStructure.h3Resolution)
-        };
-    });
+        if (!refined || isNaN(refined.lat) || isNaN(refined.lng)) {
+            console.warn(`Skipping point ${point.label}: Invalid coordinates after refinement`);
+            return null;
+        }
+        try {
+            return {
+                ...point,
+                lat: refined.lat,
+                lng: refined.lng,
+                h3Index: h3.latLngToCell(refined.lat, refined.lng, helixStructure.h3Resolution)
+            };
+        } catch (error) {
+            console.warn(`H3 error for point ${point.label}: ${error.message}`);
+            return null;
+        }
+    }).filter(Boolean);
+    if (!refinedUserPoints.length) {
+        console.error('No valid user points after refinement');
+        return { routes: [], userPoints: [], alerts: ['No valid user points after coordinate refinement'] };
+    }
 
     const segmentCache = new Map();
 
-    const cbdRoute = globalRoutesDAG.non_null_objects.find(r => r.route_number === "0");
-    const cbdStops = cbdRoute ? [
+    const cbdRoute = globalRoutesDAG.non_null_objects.find(r => r.route_number === "0") || {
+        pickup_point: { pickup_point: "CBD", pickup_latlng: { lat: -1.2833, lng: 36.8167 } },
+        destinations: []
+    };
+    const cbdStops = [
         {
-            name: cbdRoute.pickup_point.name,
+            name: cbdRoute.pickup_point.pickup_point,
             ...refineCoordinates(cbdRoute.pickup_point.pickup_latlng),
-            h3Index: h3.latLngToCell(cbdRoute.pickup_point.pickup_latlng.latitude, cbdRoute.pickup_point.pickup_latlng.longitude, helixStructure.h3Resolution)
+            h3Index: h3.latLngToCell(cbdRoute.pickup_point.pickup_latlng.lat, cbdRoute.pickup_point.pickup_latlng.lng, helixStructure.h3Resolution)
         },
         ...cbdRoute.destinations.map(d => ({
-            name: d.name,
+            name: d.destination,
             ...refineCoordinates(d.destination_latlng),
-            h3Index: h3.latLngToCell(d.destination_latlng.latitude, d.destination_latlng.longitude, helixStructure.h3Resolution)
+            h3Index: h3.latLngToCell(d.destination_latlng.lat, d.destination_latlng.lng, helixStructure.h3Resolution)
         }))
-    ] : [];
-    if (!cbdStops.length) console.warn("No CBD stops found in Route 0.");
+    ];
+    if (!cbdStops.length) console.warn("No CBD stops found; using default CBD coordinates.");
 
     const routeCandidates = new Set();
     refinedUserPoints.forEach(point => {
@@ -554,8 +607,8 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     const routePointsIndex = new RBush3D();
     routePointsIndex.load(allRoutes.flatMap(route => {
         const points = [
-            { lat: route.pickup_point.pickup_latlng.latitude, lng: route.pickup_point.pickup_latlng.longitude, routeNumber: route.route_number, label: route.pickup_point.name },
-            ...route.destinations.map(d => ({ lat: d.destination_latlng.latitude, lng: d.destination_latlng.longitude, routeNumber: route.route_number, label: d.name }))
+            { lat: route.pickup_point.pickup_latlng.lat ?? route.pickup_point.pickup_latlng.latitude, lng: route.pickup_point.pickup_latlng.lng ?? route.pickup_point.pickup_latlng.longitude, routeNumber: route.route_number, label: route.pickup_point.pickup_point },
+            ...route.destinations.map(d => ({ lat: d.destination_latlng.lat ?? d.destination_latlng.latitude, lng: d.destination_latlng.lng ?? d.destination_latlng.longitude, routeNumber: route.route_number, label: d.destination }))
         ];
         return points.map(p => ({
             minX: p.lat, minY: p.lng, minZ: 0,
@@ -598,11 +651,9 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     });
     console.log('Route Graph:', Array.from(routeGraph.entries()).map(([r, neighbors]) => `${r}: ${Array.from(neighbors)}`));
 
-    // Compute Eulerian Path for transfer optimization
     const eulerianPath = findEulerianPath(routeGraph);
     console.log('Eulerian Path for Transfers:', eulerianPath);
 
-    // Generate transfer sequence from Eulerian Path
     const transferSequence = [];
     for (let i = 0; i < eulerianPath.length - 1; i++) {
         const fromRoute = eulerianPath[i];
@@ -628,9 +679,10 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     });
     console.log('Final Route Candidates (Clusters ∩ 3D + Graph):', [...expandedCandidates]);
 
-    const stringSimilarity = (s1, s2, threshold = 0.75) => {
+    const stringSimilarity = (s1, s2, threshold = 0.5) => {
         s1 = (s1 || '').toLowerCase().trim();
         s2 = (s2 || '').toLowerCase().trim();
+        if (s1.includes(s2) || s2.includes(s1)) return 1.0;
         const longer = s1.length > s2.length ? s1 : s2;
         const shorter = s1.length > s2.length ? s2 : s1;
         const longerLength = longer.length;
@@ -660,27 +712,29 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
 
             const pickup = route.pickup_point;
             const destinations = Array.isArray(route.destinations) ? route.destinations : [];
-            if (!pickup?.name || !destinations.length) {
+            if (!pickup?.pickup_point && !destinations.length) {
                 alerts.push(`Integrity alert: Incomplete data for route ${route.route_number}`);
                 return;
             }
 
             const allPoints = [
-                { name: pickup.name, ...refineCoordinates(pickup.pickup_latlng), h3Index: h3.latLngToCell(pickup.pickup_latlng.latitude, pickup.pickup_latlng.longitude, helixStructure.h3Resolution) },
-                ...destinations.map(d => ({ name: d.name, ...refineCoordinates(d.destination_latlng), h3Index: h3.latLngToCell(d.destination_latlng.latitude, d.destination_latlng.longitude, helixStructure.h3Resolution) }))
+                ...(pickup?.pickup_point ? [{ name: pickup.pickup_point, lat: pickup.pickup_latlng.lat ?? pickup.pickup_latlng.latitude, lng: pickup.pickup_latlng.lng ?? pickup.pickup_latlng.longitude, h3Index: h3.latLngToCell(pickup.pickup_latlng.lat ?? pickup.pickup_latlng.latitude, pickup.pickup_latlng.lng ?? pickup.pickup_latlng.longitude, helixStructure.h3Resolution) }] : []),
+                ...destinations.map(d => ({ name: d.destination, lat: d.destination_latlng.lat ?? d.destination_latlng.latitude, lng: d.destination_latlng.lng ?? d.destination_latlng.longitude, h3Index: h3.latLngToCell(d.destination_latlng.lat ?? d.destination_latlng.latitude, d.destination_latlng.lng ?? d.destination_latlng.longitude, helixStructure.h3Resolution) }))
             ];
 
             const startMatch = allPoints.find(p => stringSimilarity(startPoint.label, p.name) &&
-                h3.greatCircleDistance([startPoint.lat, startPoint.lng], [p.lat, p.lng], 'km') < fallbackToleranceKm &&
+                (haversineDistance(startPoint.lat, startPoint.lng, p.lat, p.lng) < fallbackToleranceKm ||
+                 allPoints.every(ap => ap.lat === p.lat && ap.lng === p.lng)) &&
                 h3.gridDistance(startPoint.h3Index, p.h3Index) <= 1);
             if (!startMatch) return;
 
             const endMatch = requireEndMatch ? allPoints.find(p => stringSimilarity(endPoint.label, p.name) &&
-                h3.greatCircleDistance([endPoint.lat, endPoint.lng], [p.lat, p.lng], 'km') < fallbackToleranceKm &&
+                (haversineDistance(endPoint.lat, endPoint.lng, p.lat, p.lng) < fallbackToleranceKm ||
+                 allPoints.every(ap => ap.lat === p.lat && ap.lng === p.lng)) &&
                 h3.gridDistance(endPoint.h3Index, p.h3Index) <= 1) : null;
 
             if (startMatch && endMatch) {
-                const actualDistance = h3.greatCircleDistance([startPoint.lat, startPoint.lng], [startMatch.lat, startMatch.lng], 'km');
+                const actualDistance = haversineDistance(startPoint.lat, startPoint.lng, startMatch.lat, startMatch.lng);
                 if (!rnpManager.isWithinTolerance(actualDistance, 'enroute')) {
                     alerts.push(`Integrity alert: Route ${route.route_number} exceeds tolerance (${actualDistance.toFixed(2)} km > ${fallbackToleranceKm} km)`);
                 }
@@ -771,7 +825,6 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     const busRoutes = [];
     let lastEndPoint = null;
 
-    // Use Eulerian Path for multi-segment journey planning
     for (let i = 0; i < refinedUserPoints.length - 1; i++) {
         const startPoint = refinedUserPoints[i];
         const endPoint = refinedUserPoints[i + 1];
@@ -788,7 +841,6 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
             continue;
         }
 
-        // Check Eulerian Path for transfer sequence
         let found = false;
         for (let j = 0; j < transferSequence.length; j++) {
             const transfer = transferSequence[j];
@@ -838,12 +890,12 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
         console.warn(`No simple route for ${startPoint.label} to ${endPoint.label}; trying multi-step`);
         for (const route of allRoutes) {
             const stops = [
-                { name: route.pickup_point.name, ...refineCoordinates(route.pickup_point.pickup_latlng), h3Index: h3.latLngToCell(route.pickup_point.pickup_latlng.latitude, route.pickup_point.pickup_latlng.longitude, helixStructure.h3Resolution) },
-                ...route.destinations.map(d => ({ name: d.name, ...refineCoordinates(d.destination_latlng), h3Index: h3.latLngToCell(d.destination_latlng.latitude, d.destination_latlng.longitude, helixStructure.h3Resolution) }))
+                ...(route.pickup_point.pickup_point ? [{ name: route.pickup_point.pickup_point, lat: route.pickup_point.pickup_latlng.lat ?? route.pickup_point.pickup_latlng.latitude, lng: route.pickup_point.pickup_latlng.lng ?? route.pickup_point.pickup_latlng.longitude, h3Index: h3.latLngToCell(route.pickup_point.pickup_latlng.lat ?? route.pickup_point.pickup_latlng.latitude, route.pickup_point.pickup_latlng.lng ?? route.pickup_point.pickup_latlng.longitude, helixStructure.h3Resolution) }] : []),
+                ...route.destinations.map(d => ({ name: d.destination, lat: d.destination_latlng.lat ?? d.destination_latlng.latitude, lng: d.destination_latlng.lng ?? d.destination_latlng.longitude, h3Index: h3.latLngToCell(d.destination_latlng.lat ?? d.destination_latlng.latitude, d.destination_latlng.lng ?? d.destination_latlng.longitude, helixStructure.h3Resolution) }))
             ];
             for (const stop of stops) {
-                const toIntermediate = findRouteSegment(startPoint, { label: stop.name, lat: stop.lat, lng: stop.lat, h3Index: stop.h3Index }, allRoutes);
-                const fromIntermediate = findRouteSegment({ label: stop.name, lat: stop.lat, lng: stop.lng, h3Index: stop.h3Index }, endPoint, allRoutes);
+                const toIntermediate = findRouteSegment(startPoint, { label: stop.name, lat: stop.lat, lng: stop.h3Index }, allRoutes);
+                const fromIntermediate = findRouteSegment({ label: stop.name, lat: stop.lat, lng: stop.h3Index }, endPoint, allRoutes);
                 if (toIntermediate.length && fromIntermediate.length) {
                     busRoutes.push(
                         { ...toIntermediate[0], segment: `${startPoint.label} to ${stop.name}`, note: `Transfer at ${stop.name}` },
@@ -866,7 +918,6 @@ function findOverlappingRoutes(helixStructure, globalRoutesDAG, routeClusters, r
     return { routes: busRoutes, userPoints: refinedUserPoints, alerts, transferSequence };
 }
 
-// Generate the display results using the routes, userPoints, and alerts
 function displayResults({ routes: busRoutes, userPoints, alerts, transferSequence }, helixStructure) {
     const resultDiv = document.getElementById('bus-routes');
     if (!resultDiv) {
@@ -961,35 +1012,34 @@ function displayResults({ routes: busRoutes, userPoints, alerts, transferSequenc
     resultDiv.innerHTML = html;
 }
 
-// Main function to orchestrate route finding
 async function findMa3(helixStructure, globalRoutesDAG) {
-    if (!globalRoutesDAG) {
-        console.error('globalRoutesDAG not loaded');
-        return { routes: [], userPoints: [], alerts: ["System integrity failure: globalRoutesDAG not loaded"] };
+    console.log('findMa3: helixStructure=', helixStructure ? 'defined' : 'undefined');
+    console.log('findMa3: globalRoutesDAG=', globalRoutesDAG ? `Contains ${globalRoutesDAG.non_null_objects?.length} routes` : 'undefined');
+
+    if (!globalRoutesDAG || !globalRoutesDAG.non_null_objects || !globalRoutesDAG.non_null_objects.length) {
+        console.error('globalRoutesDAG is missing or empty');
+        return { routes: [], userPoints: [], alerts: ["System integrity failure: globalRoutesDAG not loaded or empty"] };
     }
 
-    const refinedRoutes = globalRoutesDAG.non_null_objects.map(route => ({
-        ...route,
-        pickup_point: {
-            ...route.pickup_point,
-            pickup_latlng: refineCoordinates(route.pickup_point.pickup_latlng)
-        },
-        destinations: route.destinations.map(d => ({
-            ...d,
-            destination_latlng: refineCoordinates(d.destination_latlng)
-        }))
-    }));
+    // Use pre-built RBush-3D index if provided, otherwise build it
+    const route3DIndex = globalRoutesDAG.prebuiltRoute3DIndex || indexRoutesWithRBush3D(globalRoutesDAG.non_null_objects);
+    if (!route3DIndex.all().length) {
+        console.error('No points in route3DIndex');
+        return { routes: [], userPoints: [], alerts: ["System integrity failure: No points indexed for route matching"] };
+    }
 
-    const route3DIndex = indexRoutesWithRBush3D(refinedRoutes);
     const routeClusters = hierarchicalGreedyClustering(
         route3DIndex,
-        helixStructure.h3Resolution,
+        helixStructure.h3Resolution || 9,
         helixStructure.maxDistanceKm || 1.0,
         helixStructure.ringSize || 1,
         10
-    );
+    ) || [];
 
-    return findOverlappingRoutes(helixStructure, { non_null_objects: refinedRoutes }, routeClusters, route3DIndex);
+    console.log(`route3DIndex: ${route3DIndex.all().length} points`);
+    console.log(`routeClusters: ${routeClusters.length} clusters`);
+
+    return findOverlappingRoutes(helixStructure, { non_null_objects: globalRoutesDAG.non_null_objects }, routeClusters, route3DIndex);
 }
 
 export { findMa3, hierarchicalGreedyClustering, indexRoutesWithRBush3D, displayResults };

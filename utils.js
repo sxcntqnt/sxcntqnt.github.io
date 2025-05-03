@@ -233,3 +233,14 @@ export function extractLocationsFromDirections(directionsResponse, origin, waypo
     return uniqueLocations;
 }
 
+
+export function refineCoordinates(latLng) {
+    if (!latLng) return null;
+    const lat = typeof latLng.latitude === 'function' ? latLng.latitude() : parseFloat(latLng.latitude);
+    const lng = typeof latLng.longitude === 'function' ? latLng.longitude() : parseFloat(latLng.longitude);
+    if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+        console.warn(`Invalid coordinates: lat ${lat}, lng ${lng}`);
+        return null;
+    }
+    return { lat, lng };
+}

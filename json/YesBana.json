@@ -8,7 +8,7 @@
                     "latitude": -1.2865,
                     "longitude": 36.815
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42dcbffff"
             },
             "destinations": [
                 {
@@ -17,7 +17,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8082
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d13ffff"
                 },
                 {
                     "destination": "Citam/NPC Valley road",
@@ -25,7 +25,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8082
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d13ffff"
                 },
                 {
                     "destination": "The Junction Mall",
@@ -33,7 +33,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8082
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d13ffff"
                 },
                 {
                     "destination": "Dagoretti",
@@ -41,7 +41,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8082
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d13ffff"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                     "latitude": -0.936106,
                     "longitude": 36.713801
                 },
-                "pickup_hexid": "877a45b40ffffff"
+                "pickup_hexid": "897a45b404fffff"
             },
             "destinations": [
                 {
@@ -62,7 +62,7 @@
                         "latitude": 1.778514,
                         "longitude": 36.837177
                     },
-                    "destination_hexid": "877a5d932ffffff"
+                    "destination_hexid": "897a5d9328bffff"
                 },
                 {
                     "destination": "Shauri Moyo",
@@ -70,7 +70,7 @@
                         "latitude": 1.778514,
                         "longitude": 36.837177
                     },
-                    "destination_hexid": "877a5d932ffffff"
+                    "destination_hexid": "897a5d9328bffff"
                 }
             ]
         },
@@ -82,7 +82,7 @@
                     "latitude": -1.1888,
                     "longitude": 36.7909
                 },
-                "pickup_hexid": "877a6e40bffffff"
+                "pickup_hexid": "897a6e40babffff"
             },
             "destinations": [
                 {
@@ -91,7 +91,7 @@
                         "latitude": -1.2334,
                         "longitude": 36.8065
                     },
-                    "destination_hexid": "877a6e42bffffff"
+                    "destination_hexid": "897a6e42b6bffff"
                 },
                 {
                     "destination": "Kiamburoad",
@@ -99,7 +99,7 @@
                         "latitude": -1.2334,
                         "longitude": 36.8065
                     },
-                    "destination_hexid": "877a6e42bffffff"
+                    "destination_hexid": "897a6e42b6bffff"
                 },
                 {
                     "destination": "Sharkspalacekiamburoad",
@@ -107,7 +107,7 @@
                         "latitude": -1.2334,
                         "longitude": 36.8065
                     },
-                    "destination_hexid": "877a6e42bffffff"
+                    "destination_hexid": "897a6e42b6bffff"
                 },
                 {
                     "destination": "CIDcenter",
@@ -115,7 +115,7 @@
                         "latitude": -1.2334,
                         "longitude": 36.8065
                     },
-                    "destination_hexid": "877a6e42bffffff"
+                    "destination_hexid": "897a6e42b6bffff"
                 },
                 {
                     "destination": "Ridgeways",
@@ -123,7 +123,7 @@
                         "latitude": -1.2334,
                         "longitude": 36.8065
                     },
-                    "destination_hexid": "877a6e42bffffff"
+                    "destination_hexid": "897a6e42b6bffff"
                 },
                 {
                     "destination": "Rockcitykiamburoad",
@@ -131,7 +131,7 @@
                         "latitude": -1.2334,
                         "longitude": 36.8065
                     },
-                    "destination_hexid": "877a6e42bffffff"
+                    "destination_hexid": "897a6e42b6bffff"
                 },
                 {
                     "destination": "Muthaigaroundabout",
@@ -139,7 +139,7 @@
                         "latitude": -1.2334,
                         "longitude": 36.8065
                     },
-                    "destination_hexid": "877a6e42bffffff"
+                    "destination_hexid": "897a6e42b6bffff"
                 }
             ]
         },
@@ -151,7 +151,7 @@
                     "latitude": 0.377431,
                     "longitude": 36.57035
                 },
-                "pickup_hexid": "877a41021ffffff"
+                "pickup_hexid": "897a41021c3ffff"
             },
             "destinations": [
                 {
@@ -160,19 +160,19 @@
                         "latitude": -1.64788,
                         "longitude": 37.871512
                     },
-                    "destination_hexid": "877a63c4affffff"
+                    "destination_hexid": "897a63c4a53ffff"
                 }
             ]
         },
         {
             "route_number": "102",
             "pickup_point": {
-                "pickup_point": "Board​​ from BS or Kencom",
+                "pickup_point": "Board\u200b\u200b from BS or Kencom",
                 "pickup_latlng": {
                     "latitude": -1.2308,
                     "longitude": 36.8076
                 },
-                "pickup_hexid": "877a6e40cffffff"
+                "pickup_hexid": "897a6e40ca7ffff"
             },
             "destinations": [
                 {
@@ -181,7 +181,7 @@
                         "latitude": -1.2842,
                         "longitude": 36.7489
                     },
-                    "destination_hexid": "877a6e55bffffff"
+                    "destination_hexid": "897a6e466dbffff"
                 },
                 {
                     "destination": "Dagorettie",
@@ -189,7 +189,7 @@
                         "latitude": -1.2842,
                         "longitude": 36.7489
                     },
-                    "destination_hexid": "877a6e55bffffff"
+                    "destination_hexid": "897a6e466dbffff"
                 },
                 {
                     "destination": "Ngongroad",
@@ -197,7 +197,7 @@
                         "latitude": -1.2842,
                         "longitude": 36.7489
                     },
-                    "destination_hexid": "877a6e55bffffff"
+                    "destination_hexid": "897a6e466dbffff"
                 },
                 {
                     "destination": "Thejunctionmall",
@@ -205,7 +205,7 @@
                         "latitude": -1.2842,
                         "longitude": 36.7489
                     },
-                    "destination_hexid": "877a6e55bffffff"
+                    "destination_hexid": "897a6e466dbffff"
                 }
             ]
         },
@@ -217,7 +217,7 @@
                     "latitude": 1.915596,
                     "longitude": 37.919461
                 },
-                "pickup_hexid": "877a5c8a4ffffff"
+                "pickup_hexid": "897a5c8a4cbffff"
             },
             "destinations": [
                 {
@@ -226,7 +226,7 @@
                         "latitude": 1.080581,
                         "longitude": 37.827907
                     },
-                    "destination_hexid": "877a42a55ffffff"
+                    "destination_hexid": "897a42a5563ffff"
                 },
                 {
                     "destination": "Kangemi",
@@ -234,7 +234,7 @@
                         "latitude": 1.080581,
                         "longitude": 37.827907
                     },
-                    "destination_hexid": "877a42a55ffffff"
+                    "destination_hexid": "897a42a5563ffff"
                 }
             ]
         },
@@ -246,7 +246,7 @@
                     "latitude": -1.27,
                     "longitude": 36.81
                 },
-                "pickup_hexid": "877a6e428ffffff"
+                "pickup_hexid": "897a6e428a3ffff"
             },
             "destinations": [
                 {
@@ -255,7 +255,7 @@
                         "latitude": -1.252,
                         "longitude": 36.7072
                     },
-                    "destination_hexid": "877a6e463ffffff"
+                    "destination_hexid": "897a6e4634fffff"
                 },
                 {
                     "destination": "Westlands",
@@ -263,7 +263,7 @@
                         "latitude": -1.252,
                         "longitude": 36.7072
                     },
-                    "destination_hexid": "877a6e463ffffff"
+                    "destination_hexid": "897a6e4634fffff"
                 },
                 {
                     "destination": "Kangemi",
@@ -271,7 +271,7 @@
                         "latitude": -1.252,
                         "longitude": 36.7072
                     },
-                    "destination_hexid": "877a6e463ffffff"
+                    "destination_hexid": "897a6e4634fffff"
                 },
                 {
                     "destination": "Uthiru",
@@ -279,7 +279,7 @@
                         "latitude": -1.252,
                         "longitude": 36.7072
                     },
-                    "destination_hexid": "877a6e463ffffff"
+                    "destination_hexid": "897a6e4634fffff"
                 },
                 {
                     "destination": "Kinoo",
@@ -287,7 +287,7 @@
                         "latitude": -1.252,
                         "longitude": 36.7072
                     },
-                    "destination_hexid": "877a6e463ffffff"
+                    "destination_hexid": "897a6e4634fffff"
                 }
             ]
         },
@@ -299,7 +299,7 @@
                     "latitude": -1.2564,
                     "longitude": 36.8066
                 },
-                "pickup_hexid": "877a6e42bffffff"
+                "pickup_hexid": "897a6e42b97ffff"
             },
             "destinations": [
                 {
@@ -308,7 +308,7 @@
                         "latitude": -1.2917,
                         "longitude": 36.771
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e5586bffff"
                 },
                 {
                     "destination": "Muchatha",
@@ -316,7 +316,7 @@
                         "latitude": -1.2917,
                         "longitude": 36.771
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e5586bffff"
                 },
                 {
                     "destination": "villagemarket",
@@ -324,7 +324,7 @@
                         "latitude": -1.2917,
                         "longitude": 36.771
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e5586bffff"
                 }
             ]
         },
@@ -336,7 +336,7 @@
                     "latitude": 1.094482,
                     "longitude": 36.986644
                 },
-                "pickup_hexid": "877a43b80ffffff"
+                "pickup_hexid": "897a43b80a3ffff"
             },
             "destinations": [
                 {
@@ -345,7 +345,7 @@
                         "latitude": -1.708651,
                         "longitude": 37.876369
                     },
-                    "destination_hexid": "877a63c6affffff"
+                    "destination_hexid": "897a63c6a0bffff"
                 },
                 {
                     "destination": "Ndenderu",
@@ -353,7 +353,7 @@
                         "latitude": -1.708651,
                         "longitude": 37.876369
                     },
-                    "destination_hexid": "877a63c6affffff"
+                    "destination_hexid": "897a63c6a0bffff"
                 }
             ]
         },
@@ -365,7 +365,7 @@
                     "latitude": -0.608918,
                     "longitude": 36.902089
                 },
-                "pickup_hexid": "877a4506dffffff"
+                "pickup_hexid": "897a4506d93ffff"
             },
             "destinations": [
                 {
@@ -374,7 +374,7 @@
                         "latitude": -0.09373,
                         "longitude": 37.161554
                     },
-                    "destination_hexid": "877a4578affffff"
+                    "destination_hexid": "897a4578a77ffff"
                 },
                 {
                     "destination": "Gachie",
@@ -382,7 +382,7 @@
                         "latitude": -0.09373,
                         "longitude": 37.161554
                     },
-                    "destination_hexid": "877a4578affffff"
+                    "destination_hexid": "897a4578a77ffff"
                 },
                 {
                     "destination": "Gichagi",
@@ -390,7 +390,7 @@
                         "latitude": -0.09373,
                         "longitude": 37.161554
                     },
-                    "destination_hexid": "877a4578affffff"
+                    "destination_hexid": "897a4578a77ffff"
                 }
             ]
         },
@@ -402,7 +402,7 @@
                     "latitude": 0.080567,
                     "longitude": 37.562127
                 },
-                "pickup_hexid": "877a40ba2ffffff"
+                "pickup_hexid": "897a40ba247ffff"
             },
             "destinations": [
                 {
@@ -411,7 +411,7 @@
                         "latitude": 1.540122,
                         "longitude": 36.569638
                     },
-                    "destination_hexid": "877a4324effffff"
+                    "destination_hexid": "897a4324e9bffff"
                 },
                 {
                     "destination": "Parklands",
@@ -419,7 +419,7 @@
                         "latitude": 1.540122,
                         "longitude": 36.569638
                     },
-                    "destination_hexid": "877a4324effffff"
+                    "destination_hexid": "897a4324e9bffff"
                 },
                 {
                     "destination": "Highridge",
@@ -427,7 +427,7 @@
                         "latitude": 1.540122,
                         "longitude": 36.569638
                     },
-                    "destination_hexid": "877a4324effffff"
+                    "destination_hexid": "897a4324e9bffff"
                 }
             ]
         },
@@ -439,7 +439,7 @@
                     "latitude": -1.354,
                     "longitude": 36.883
                 },
-                "pickup_hexid": "877a6e508ffffff"
+                "pickup_hexid": "897a6e508bbffff"
             },
             "destinations": [
                 {
@@ -448,7 +448,7 @@
                         "latitude": -1.3789,
                         "longitude": 36.9365
                     },
-                    "destination_hexid": "877a6e500ffffff"
+                    "destination_hexid": "897a6e500b3ffff"
                 },
                 {
                     "destination": "mlonglo",
@@ -456,7 +456,7 @@
                         "latitude": -1.3789,
                         "longitude": 36.9365
                     },
-                    "destination_hexid": "877a6e500ffffff"
+                    "destination_hexid": "897a6e500b3ffff"
                 },
                 {
                     "destination": "Athisriver",
@@ -464,7 +464,7 @@
                         "latitude": -1.3789,
                         "longitude": 36.9365
                     },
-                    "destination_hexid": "877a6e500ffffff"
+                    "destination_hexid": "897a6e500b3ffff"
                 }
             ]
         },
@@ -476,7 +476,7 @@
                     "latitude": -1.2364,
                     "longitude": 36.787
                 },
-                "pickup_hexid": "877a6e476ffffff"
+                "pickup_hexid": "897a6e4764fffff"
             },
             "destinations": [
                 {
@@ -485,7 +485,7 @@
                         "latitude": -1.2578,
                         "longitude": 36.7478
                     },
-                    "destination_hexid": "877a6e475ffffff"
+                    "destination_hexid": "897a6e47573ffff"
                 },
                 {
                     "destination": "Ngongroad",
@@ -493,7 +493,7 @@
                         "latitude": -1.2578,
                         "longitude": 36.7478
                     },
-                    "destination_hexid": "877a6e475ffffff"
+                    "destination_hexid": "897a6e47573ffff"
                 },
                 {
                     "destination": "Dagaoretticorner(somtimeskiserian)",
@@ -501,7 +501,7 @@
                         "latitude": -1.2578,
                         "longitude": 36.7478
                     },
-                    "destination_hexid": "877a6e475ffffff"
+                    "destination_hexid": "897a6e47573ffff"
                 }
             ]
         },
@@ -513,7 +513,7 @@
                     "latitude": -1.91049,
                     "longitude": 37.074637
                 },
-                "pickup_hexid": "877a61683ffffff"
+                "pickup_hexid": "897a6168323ffff"
             },
             "destinations": [
                 {
@@ -522,7 +522,7 @@
                         "latitude": 1.613162,
                         "longitude": 37.393782
                     },
-                    "destination_hexid": "877a43472ffffff"
+                    "destination_hexid": "897a434728bffff"
                 },
                 {
                     "destination": "Gikambura",
@@ -530,7 +530,7 @@
                         "latitude": 1.613162,
                         "longitude": 37.393782
                     },
-                    "destination_hexid": "877a43472ffffff"
+                    "destination_hexid": "897a434728bffff"
                 }
             ]
         },
@@ -542,7 +542,7 @@
                     "latitude": -0.872151,
                     "longitude": 36.442741
                 },
-                "pickup_hexid": "877a6e6d2ffffff"
+                "pickup_hexid": "897a6e6d203ffff"
             },
             "destinations": [
                 {
@@ -551,7 +551,7 @@
                         "latitude": 1.531111,
                         "longitude": 37.243122
                     },
-                    "destination_hexid": "877a4309cffffff"
+                    "destination_hexid": "897a4309c03ffff"
                 },
                 {
                     "destination": "Limuru",
@@ -559,7 +559,7 @@
                         "latitude": 1.531111,
                         "longitude": 37.243122
                     },
-                    "destination_hexid": "877a4309cffffff"
+                    "destination_hexid": "897a4309c03ffff"
                 }
             ]
         },
@@ -571,7 +571,7 @@
                     "latitude": 0.959674,
                     "longitude": 36.349464
                 },
-                "pickup_hexid": "877a416e9ffffff"
+                "pickup_hexid": "897a416e923ffff"
             },
             "destinations": [
                 {
@@ -580,7 +580,7 @@
                         "latitude": -1.29304,
                         "longitude": 36.471938
                     },
-                    "destination_hexid": "877a6e0deffffff"
+                    "destination_hexid": "897a6e0de8bffff"
                 },
                 {
                     "destination": "Limuru",
@@ -588,7 +588,7 @@
                         "latitude": -1.29304,
                         "longitude": 36.471938
                     },
-                    "destination_hexid": "877a6e0deffffff"
+                    "destination_hexid": "897a6e0de8bffff"
                 }
             ]
         },
@@ -600,7 +600,7 @@
                     "latitude": -1.737459,
                     "longitude": 36.994096
                 },
-                "pickup_hexid": "877a6ed1dffffff"
+                "pickup_hexid": "897a6ed1d6bffff"
             },
             "destinations": [
                 {
@@ -609,7 +609,7 @@
                         "latitude": -0.997654,
                         "longitude": 36.345052
                     },
-                    "destination_hexid": "877a6e653ffffff"
+                    "destination_hexid": "897a6e6534bffff"
                 },
                 {
                     "destination": "Limuru",
@@ -617,7 +617,7 @@
                         "latitude": -0.997654,
                         "longitude": 36.345052
                     },
-                    "destination_hexid": "877a6e653ffffff"
+                    "destination_hexid": "897a6e6534bffff"
                 }
             ]
         },
@@ -629,7 +629,7 @@
                     "latitude": -0.928875,
                     "longitude": 36.0473
                 },
-                "pickup_hexid": "877a6a805ffffff"
+                "pickup_hexid": "897a6a8050bffff"
             },
             "destinations": [
                 {
@@ -638,7 +638,7 @@
                         "latitude": -0.851447,
                         "longitude": 36.58802
                     },
-                    "destination_hexid": "877a45a6cffffff"
+                    "destination_hexid": "897a45a6c67ffff"
                 },
                 {
                     "destination": "Katani Road",
@@ -646,7 +646,7 @@
                         "latitude": -0.851447,
                         "longitude": 36.58802
                     },
-                    "destination_hexid": "877a45a6cffffff"
+                    "destination_hexid": "897a45a6c67ffff"
                 }
             ]
         },
@@ -658,7 +658,7 @@
                     "latitude": 0.623659,
                     "longitude": 36.397516
                 },
-                "pickup_hexid": "877a41396ffffff"
+                "pickup_hexid": "897a4139637ffff"
             },
             "destinations": [
                 {
@@ -667,7 +667,7 @@
                         "latitude": -0.223445,
                         "longitude": 36.390374
                     },
-                    "destination_hexid": "877a6a589ffffff"
+                    "destination_hexid": "897a6a589a7ffff"
                 },
                 {
                     "destination": "Wangige",
@@ -675,7 +675,7 @@
                         "latitude": -0.223445,
                         "longitude": 36.390374
                     },
-                    "destination_hexid": "877a6a589ffffff"
+                    "destination_hexid": "897a6a589a7ffff"
                 }
             ]
         },
@@ -687,7 +687,7 @@
                     "latitude": 0.603985,
                     "longitude": 37.171417
                 },
-                "pickup_hexid": "877a40253ffffff"
+                "pickup_hexid": "897a4025333ffff"
             },
             "destinations": [
                 {
@@ -696,7 +696,7 @@
                         "latitude": 0.729844,
                         "longitude": 36.298324
                     },
-                    "destination_hexid": "877a412b3ffffff"
+                    "destination_hexid": "897a412b323ffff"
                 },
                 {
                     "destination": "Wangige",
@@ -704,7 +704,7 @@
                         "latitude": 0.729844,
                         "longitude": 36.298324
                     },
-                    "destination_hexid": "877a412b3ffffff"
+                    "destination_hexid": "897a412b323ffff"
                 }
             ]
         },
@@ -716,7 +716,7 @@
                     "latitude": -1.305,
                     "longitude": 36.805
                 },
-                "pickup_hexid": "877a6e553ffffff"
+                "pickup_hexid": "897a6e55337ffff"
             },
             "destinations": [
                 {
@@ -725,7 +725,7 @@
                         "latitude": -1.3007,
                         "longitude": 36.8018
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e53ffff"
                 },
                 {
                     "destination": "Balozi",
@@ -733,7 +733,7 @@
                         "latitude": -1.3007,
                         "longitude": 36.8018
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e53ffff"
                 },
                 {
                     "destination": "Hazina",
@@ -741,7 +741,7 @@
                         "latitude": -1.3007,
                         "longitude": 36.8018
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e53ffff"
                 },
                 {
                     "destination": "Bellevue",
@@ -749,7 +749,7 @@
                         "latitude": -1.3007,
                         "longitude": 36.8018
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e53ffff"
                 }
             ]
         },
@@ -761,7 +761,7 @@
                     "latitude": 1.447524,
                     "longitude": 37.987169
                 },
-                "pickup_hexid": "877a4238cffffff"
+                "pickup_hexid": "897a4238cafffff"
             },
             "destinations": [
                 {
@@ -770,7 +770,7 @@
                         "latitude": 1.111303,
                         "longitude": 37.587183
                     },
-                    "destination_hexid": "877a43d0affffff"
+                    "destination_hexid": "897a43d0a73ffff"
                 },
                 {
                     "destination": "Stima Plaza",
@@ -778,7 +778,7 @@
                         "latitude": 1.111303,
                         "longitude": 37.587183
                     },
-                    "destination_hexid": "877a43d0affffff"
+                    "destination_hexid": "897a43d0a73ffff"
                 }
             ]
         },
@@ -790,7 +790,7 @@
                     "latitude": -1.550274,
                     "longitude": 37.937632
                 },
-                "pickup_hexid": "877a63cccffffff"
+                "pickup_hexid": "897a63ccc2fffff"
             },
             "destinations": [
                 {
@@ -799,7 +799,7 @@
                         "latitude": -1.485723,
                         "longitude": 37.685344
                     },
-                    "destination_hexid": "877a6301effffff"
+                    "destination_hexid": "897a6301e1bffff"
                 },
                 {
                     "destination": "Pangani",
@@ -807,7 +807,7 @@
                         "latitude": -1.485723,
                         "longitude": 37.685344
                     },
-                    "destination_hexid": "877a6301effffff"
+                    "destination_hexid": "897a6301e1bffff"
                 }
             ]
         },
@@ -819,7 +819,7 @@
                     "latitude": -0.422561,
                     "longitude": 36.929647
                 },
-                "pickup_hexid": "877a453b0ffffff"
+                "pickup_hexid": "897a453b037ffff"
             },
             "destinations": [
                 {
@@ -828,7 +828,7 @@
                         "latitude": 0.440563,
                         "longitude": 36.153289
                     },
-                    "destination_hexid": "877a41370ffffff"
+                    "destination_hexid": "897a413701bffff"
                 },
                 {
                     "destination": "Githunguri",
@@ -836,7 +836,7 @@
                         "latitude": 0.440563,
                         "longitude": 36.153289
                     },
-                    "destination_hexid": "877a41370ffffff"
+                    "destination_hexid": "897a413701bffff"
                 }
             ]
         },
@@ -848,7 +848,7 @@
                     "latitude": 1.905833,
                     "longitude": 36.249672
                 },
-                "pickup_hexid": "877a5db75ffffff"
+                "pickup_hexid": "897a5db75bbffff"
             },
             "destinations": [
                 {
@@ -857,7 +857,7 @@
                         "latitude": -0.099866,
                         "longitude": 37.178448
                     },
-                    "destination_hexid": "877a4579dffffff"
+                    "destination_hexid": "897a4579d37ffff"
                 },
                 {
                     "destination": "Inagi",
@@ -865,7 +865,7 @@
                         "latitude": -0.099866,
                         "longitude": 37.178448
                     },
-                    "destination_hexid": "877a4579dffffff"
+                    "destination_hexid": "897a4579d37ffff"
                 }
             ]
         },
@@ -877,7 +877,7 @@
                     "latitude": -1.3551,
                     "longitude": 36.77
                 },
-                "pickup_hexid": "877a6e540ffffff"
+                "pickup_hexid": "897a6e5402fffff"
             },
             "destinations": [
                 {
@@ -886,7 +886,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Kiserian",
@@ -894,7 +894,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Bonasmsofkenya",
@@ -902,7 +902,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Nazareneuniversity",
@@ -910,7 +910,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Catholickuniversity",
@@ -918,7 +918,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Multimediuniversity",
@@ -926,7 +926,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Nairobinationalpark/orphanage",
@@ -934,7 +934,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Safariwalk",
@@ -942,7 +942,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Langatabarracks",
@@ -950,7 +950,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Galleriamall",
@@ -958,7 +958,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Brookhouseinternationalschool",
@@ -966,7 +966,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Langatapolice station",
@@ -974,7 +974,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 },
                 {
                     "destination": "Langatacementery",
@@ -982,7 +982,7 @@
                         "latitude": -1.3201,
                         "longitude": 36.7463
                     },
-                    "destination_hexid": "877a6e54affffff"
+                    "destination_hexid": "897a6e55d27ffff"
                 }
             ]
         },
@@ -994,7 +994,7 @@
                     "latitude": 0.295265,
                     "longitude": 37.819123
                 },
-                "pickup_hexid": "877a40113ffffff"
+                "pickup_hexid": "897a401131bffff"
             },
             "destinations": [
                 {
@@ -1003,7 +1003,7 @@
                         "latitude": 1.540344,
                         "longitude": 37.531188
                     },
-                    "destination_hexid": "877a43519ffffff"
+                    "destination_hexid": "897a4351947ffff"
                 },
                 {
                     "destination": "Ndenderu",
@@ -1011,7 +1011,7 @@
                         "latitude": 1.540344,
                         "longitude": 37.531188
                     },
-                    "destination_hexid": "877a43519ffffff"
+                    "destination_hexid": "897a4351947ffff"
                 }
             ]
         },
@@ -1023,7 +1023,7 @@
                     "latitude": -0.130594,
                     "longitude": 37.763115
                 },
-                "pickup_hexid": "877a40956ffffff"
+                "pickup_hexid": "897a4095603ffff"
             },
             "destinations": [
                 {
@@ -1032,7 +1032,7 @@
                         "latitude": 1.059468,
                         "longitude": 36.328968
                     },
-                    "destination_hexid": "877a4e992ffffff"
+                    "destination_hexid": "897a4e99257ffff"
                 },
                 {
                     "destination": "Mugoya",
@@ -1040,7 +1040,7 @@
                         "latitude": 1.059468,
                         "longitude": 36.328968
                     },
-                    "destination_hexid": "877a4e992ffffff"
+                    "destination_hexid": "897a4e99257ffff"
                 },
                 {
                     "destination": "Bellevue (Circular)",
@@ -1048,7 +1048,7 @@
                         "latitude": 1.059468,
                         "longitude": 36.328968
                     },
-                    "destination_hexid": "877a4e992ffffff"
+                    "destination_hexid": "897a4e99257ffff"
                 }
             ]
         },
@@ -1060,7 +1060,7 @@
                     "latitude": -0.431462,
                     "longitude": 36.031117
                 },
-                "pickup_hexid": "877a6a013ffffff"
+                "pickup_hexid": "897a6a01343ffff"
             },
             "destinations": [
                 {
@@ -1069,7 +1069,7 @@
                         "latitude": 1.929392,
                         "longitude": 36.231339
                     },
-                    "destination_hexid": "877a5db71ffffff"
+                    "destination_hexid": "897a5db44dbffff"
                 },
                 {
                     "destination": "Nextgen",
@@ -1077,7 +1077,7 @@
                         "latitude": 1.929392,
                         "longitude": 36.231339
                     },
-                    "destination_hexid": "877a5db71ffffff"
+                    "destination_hexid": "897a5db44dbffff"
                 },
                 {
                     "destination": "Highway Est.",
@@ -1085,7 +1085,7 @@
                         "latitude": 1.929392,
                         "longitude": 36.231339
                     },
-                    "destination_hexid": "877a5db71ffffff"
+                    "destination_hexid": "897a5db44dbffff"
                 },
                 {
                     "destination": "KPA",
@@ -1093,7 +1093,7 @@
                         "latitude": 1.929392,
                         "longitude": 36.231339
                     },
-                    "destination_hexid": "877a5db71ffffff"
+                    "destination_hexid": "897a5db44dbffff"
                 }
             ]
         },
@@ -1105,7 +1105,7 @@
                     "latitude": -0.573461,
                     "longitude": 36.673121
                 },
-                "pickup_hexid": "877a45375ffffff"
+                "pickup_hexid": "897a45375a3ffff"
             },
             "destinations": [
                 {
@@ -1114,7 +1114,7 @@
                         "latitude": -0.317377,
                         "longitude": 36.743262
                     },
-                    "destination_hexid": "877a452adffffff"
+                    "destination_hexid": "897a452ad17ffff"
                 },
                 {
                     "destination": "Nderi (KARI)",
@@ -1122,7 +1122,7 @@
                         "latitude": -0.317377,
                         "longitude": 36.743262
                     },
-                    "destination_hexid": "877a452adffffff"
+                    "destination_hexid": "897a452ad17ffff"
                 }
             ]
         },
@@ -1134,7 +1134,7 @@
                     "latitude": 0.258241,
                     "longitude": 37.191717
                 },
-                "pickup_hexid": "877a41db0ffffff"
+                "pickup_hexid": "897a41db063ffff"
             },
             "destinations": [
                 {
@@ -1143,7 +1143,7 @@
                         "latitude": -1.161976,
                         "longitude": 37.016656
                     },
-                    "destination_hexid": "877a6e59affffff"
+                    "destination_hexid": "897a6e59aa7ffff"
                 },
                 {
                     "destination": "Kikuyu",
@@ -1151,7 +1151,7 @@
                         "latitude": -1.161976,
                         "longitude": 37.016656
                     },
-                    "destination_hexid": "877a6e59affffff"
+                    "destination_hexid": "897a6e59aa7ffff"
                 }
             ]
         },
@@ -1163,7 +1163,7 @@
                     "latitude": 1.747034,
                     "longitude": 36.935427
                 },
-                "pickup_hexid": "877a43663ffffff"
+                "pickup_hexid": "897a436635bffff"
             },
             "destinations": [
                 {
@@ -1172,7 +1172,7 @@
                         "latitude": -1.105028,
                         "longitude": 36.658014
                     },
-                    "destination_hexid": "877a6e7b1ffffff"
+                    "destination_hexid": "897a6e7b18fffff"
                 },
                 {
                     "destination": "Mihango",
@@ -1180,7 +1180,7 @@
                         "latitude": -1.105028,
                         "longitude": 36.658014
                     },
-                    "destination_hexid": "877a6e7b1ffffff"
+                    "destination_hexid": "897a6e7b18fffff"
                 }
             ]
         },
@@ -1192,7 +1192,7 @@
                     "latitude": -0.115299,
                     "longitude": 37.579763
                 },
-                "pickup_hexid": "877a45490ffffff"
+                "pickup_hexid": "897a4549073ffff"
             },
             "destinations": [
                 {
@@ -1201,7 +1201,7 @@
                         "latitude": 1.974408,
                         "longitude": 37.752364
                     },
-                    "destination_hexid": "877a5c8e2ffffff"
+                    "destination_hexid": "897a5c8e26bffff"
                 },
                 {
                     "destination": "Namanga",
@@ -1209,7 +1209,7 @@
                         "latitude": 1.974408,
                         "longitude": 37.752364
                     },
-                    "destination_hexid": "877a5c8e2ffffff"
+                    "destination_hexid": "897a5c8e26bffff"
                 },
                 {
                     "destination": "Oloitoktok",
@@ -1217,7 +1217,7 @@
                         "latitude": 1.974408,
                         "longitude": 37.752364
                     },
-                    "destination_hexid": "877a5c8e2ffffff"
+                    "destination_hexid": "897a5c8e26bffff"
                 }
             ]
         },
@@ -1229,7 +1229,7 @@
                     "latitude": 0.872606,
                     "longitude": 36.3271
                 },
-                "pickup_hexid": "877a41643ffffff"
+                "pickup_hexid": "897a41643b3ffff"
             },
             "destinations": [
                 {
@@ -1238,7 +1238,7 @@
                         "latitude": 0.922183,
                         "longitude": 37.093277
                     },
-                    "destination_hexid": "877a43862ffffff"
+                    "destination_hexid": "897a438620bffff"
                 }
             ]
         },
@@ -1250,7 +1250,7 @@
                     "latitude": -1.2151,
                     "longitude": 36.8854
                 },
-                "pickup_hexid": "877a6e402ffffff"
+                "pickup_hexid": "897a6e402d3ffff"
             },
             "destinations": [
                 {
@@ -1259,7 +1259,7 @@
                         "latitude": -1.1925,
                         "longitude": 36.9338
                     },
-                    "destination_hexid": "877a6e416ffffff"
+                    "destination_hexid": "897a6e41603ffff"
                 },
                 {
                     "destination": "Thika Road",
@@ -1267,7 +1267,7 @@
                         "latitude": -1.1925,
                         "longitude": 36.9338
                     },
-                    "destination_hexid": "877a6e416ffffff"
+                    "destination_hexid": "897a6e41603ffff"
                 },
                 {
                     "destination": "Kahawayendani",
@@ -1275,7 +1275,7 @@
                         "latitude": -1.1925,
                         "longitude": 36.9338
                     },
-                    "destination_hexid": "877a6e416ffffff"
+                    "destination_hexid": "897a6e41603ffff"
                 },
                 {
                     "destination": "Kahawabarracks",
@@ -1283,7 +1283,7 @@
                         "latitude": -1.1925,
                         "longitude": 36.9338
                     },
-                    "destination_hexid": "877a6e416ffffff"
+                    "destination_hexid": "897a6e41603ffff"
                 },
                 {
                     "destination": "Kahawasukari",
@@ -1291,7 +1291,7 @@
                         "latitude": -1.1925,
                         "longitude": 36.9338
                     },
-                    "destination_hexid": "877a6e416ffffff"
+                    "destination_hexid": "897a6e41603ffff"
                 },
                 {
                     "destination": "Kenyattauiversity/ku",
@@ -1299,7 +1299,7 @@
                         "latitude": -1.1925,
                         "longitude": 36.9338
                     },
-                    "destination_hexid": "877a6e416ffffff"
+                    "destination_hexid": "897a6e41603ffff"
                 },
                 {
                     "destination": "Ruirubypass",
@@ -1307,7 +1307,7 @@
                         "latitude": -1.1925,
                         "longitude": 36.9338
                     },
-                    "destination_hexid": "877a6e416ffffff"
+                    "destination_hexid": "897a6e41603ffff"
                 }
             ]
         },
@@ -1319,7 +1319,7 @@
                     "latitude": -0.24069,
                     "longitude": 36.492774
                 },
-                "pickup_hexid": "877a6a586ffffff"
+                "pickup_hexid": "897a6a58627ffff"
             },
             "destinations": [
                 {
@@ -1328,7 +1328,7 @@
                         "latitude": -1.504132,
                         "longitude": 37.924429
                     },
-                    "destination_hexid": "877a63ccbffffff"
+                    "destination_hexid": "897a63ccb6bffff"
                 }
             ]
         },
@@ -1340,7 +1340,7 @@
                     "latitude": -1.2835,
                     "longitude": 36.8008
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42d07ffff"
             },
             "destinations": [
                 {
@@ -1349,7 +1349,7 @@
                         "latitude": -1.3012,
                         "longitude": 36.7701
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e55803ffff"
                 },
                 {
                     "destination": "Nairobi West",
@@ -1357,7 +1357,7 @@
                         "latitude": -1.3012,
                         "longitude": 36.7701
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e55803ffff"
                 },
                 {
                     "destination": "Moi Educational Center",
@@ -1365,7 +1365,7 @@
                         "latitude": -1.3012,
                         "longitude": 36.7701
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e55803ffff"
                 },
                 {
                     "destination": "TMall",
@@ -1373,7 +1373,7 @@
                         "latitude": -1.3012,
                         "longitude": 36.7701
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e55803ffff"
                 },
                 {
                     "destination": "StrathmoreUniversity",
@@ -1381,7 +1381,7 @@
                         "latitude": -1.3012,
                         "longitude": 36.7701
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e55803ffff"
                 },
                 {
                     "destination": "NairobiWest",
@@ -1389,7 +1389,7 @@
                         "latitude": -1.3012,
                         "longitude": 36.7701
                     },
-                    "destination_hexid": "877a6e558ffffff"
+                    "destination_hexid": "897a6e55803ffff"
                 }
             ]
         },
@@ -1401,7 +1401,7 @@
                     "latitude": -1.2835,
                     "longitude": 36.8008
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42d07ffff"
             },
             "destinations": [
                 {
@@ -1410,7 +1410,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Nairobi west & Madaraka (near the road)",
@@ -1418,7 +1418,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Tuskys T-mall",
@@ -1426,7 +1426,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Wilson Airport",
@@ -1434,7 +1434,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Carnivore Simba Saloon",
@@ -1442,7 +1442,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Uhuru Gardens",
@@ -1450,7 +1450,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Langata Shopping Centre",
@@ -1458,7 +1458,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Otiende",
@@ -1466,7 +1466,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Barracks",
@@ -1474,7 +1474,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Langata Cemetery (on the lower side)",
@@ -1482,7 +1482,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Nairobi Safari Walk and Nairobi National Park",
@@ -1490,7 +1490,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 },
                 {
                     "destination": "Nairobi Animal Orphanage",
@@ -1498,7 +1498,7 @@
                         "latitude": -1.2978,
                         "longitude": 36.7894
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e77ffff"
                 }
             ]
         },
@@ -1510,7 +1510,7 @@
                     "latitude": 0.488446,
                     "longitude": 37.537317
                 },
-                "pickup_hexid": "877a403b4ffffff"
+                "pickup_hexid": "897a403b457ffff"
             },
             "destinations": [
                 {
@@ -1519,7 +1519,7 @@
                         "latitude": 0.228158,
                         "longitude": 36.929124
                     },
-                    "destination_hexid": "877a41c2cffffff"
+                    "destination_hexid": "897a41c2c27ffff"
                 },
                 {
                     "destination": "Nyayo Highrise",
@@ -1527,7 +1527,7 @@
                         "latitude": 0.228158,
                         "longitude": 36.929124
                     },
-                    "destination_hexid": "877a41c2cffffff"
+                    "destination_hexid": "897a41c2c27ffff"
                 },
                 {
                     "destination": "Soweto",
@@ -1535,7 +1535,7 @@
                         "latitude": 0.228158,
                         "longitude": 36.929124
                     },
-                    "destination_hexid": "877a41c2cffffff"
+                    "destination_hexid": "897a41c2c27ffff"
                 }
             ]
         },
@@ -1547,7 +1547,7 @@
                     "latitude": -0.836539,
                     "longitude": 36.950135
                 },
-                "pickup_hexid": "877a45b85ffffff"
+                "pickup_hexid": "897a45b85cfffff"
             },
             "destinations": [
                 {
@@ -1556,7 +1556,7 @@
                         "latitude": 1.511657,
                         "longitude": 37.914618
                     },
-                    "destination_hexid": "877a42213ffffff"
+                    "destination_hexid": "897a4221303ffff"
                 }
             ]
         },
@@ -1568,7 +1568,7 @@
                     "latitude": -0.092713,
                     "longitude": 37.689343
                 },
-                "pickup_hexid": "877a4095affffff"
+                "pickup_hexid": "897a4095abbffff"
             },
             "destinations": [
                 {
@@ -1577,7 +1577,7 @@
                         "latitude": 1.639668,
                         "longitude": 36.063291
                     },
-                    "destination_hexid": "877a4e722ffffff"
+                    "destination_hexid": "897a4e72297ffff"
                 },
                 {
                     "destination": "Saika",
@@ -1585,7 +1585,7 @@
                         "latitude": 1.639668,
                         "longitude": 36.063291
                     },
-                    "destination_hexid": "877a4e722ffffff"
+                    "destination_hexid": "897a4e72297ffff"
                 },
                 {
                     "destination": "Kayole",
@@ -1593,7 +1593,7 @@
                         "latitude": 1.639668,
                         "longitude": 36.063291
                     },
-                    "destination_hexid": "877a4e722ffffff"
+                    "destination_hexid": "897a4e72297ffff"
                 }
             ]
         },
@@ -1605,7 +1605,7 @@
                     "latitude": -1.201,
                     "longitude": 36.8366
                 },
-                "pickup_hexid": "877a6e40effffff"
+                "pickup_hexid": "897a6e40e43ffff"
             },
             "destinations": [
                 {
@@ -1614,7 +1614,7 @@
                         "latitude": -1.2435,
                         "longitude": 36.9002
                     },
-                    "destination_hexid": "877a6e431ffffff"
+                    "destination_hexid": "897a6e43173ffff"
                 },
                 {
                     "destination": "Thika super highway",
@@ -1622,7 +1622,7 @@
                         "latitude": -1.2435,
                         "longitude": 36.9002
                     },
-                    "destination_hexid": "877a6e431ffffff"
+                    "destination_hexid": "897a6e43173ffff"
                 },
                 {
                     "destination": "Roysambu",
@@ -1630,7 +1630,7 @@
                         "latitude": -1.2435,
                         "longitude": 36.9002
                     },
-                    "destination_hexid": "877a6e431ffffff"
+                    "destination_hexid": "897a6e43173ffff"
                 },
                 {
                     "destination": "Kasarani",
@@ -1638,7 +1638,7 @@
                         "latitude": -1.2435,
                         "longitude": 36.9002
                     },
-                    "destination_hexid": "877a6e431ffffff"
+                    "destination_hexid": "897a6e43173ffff"
                 },
                 {
                     "destination": "Santon",
@@ -1646,7 +1646,7 @@
                         "latitude": -1.2435,
                         "longitude": 36.9002
                     },
-                    "destination_hexid": "877a6e431ffffff"
+                    "destination_hexid": "897a6e43173ffff"
                 },
                 {
                     "destination": "Mwiki",
@@ -1654,7 +1654,7 @@
                         "latitude": -1.2435,
                         "longitude": 36.9002
                     },
-                    "destination_hexid": "877a6e431ffffff"
+                    "destination_hexid": "897a6e43173ffff"
                 },
                 {
                     "destination": "St Francis Hospital",
@@ -1662,7 +1662,7 @@
                         "latitude": -1.2435,
                         "longitude": 36.9002
                     },
-                    "destination_hexid": "877a6e431ffffff"
+                    "destination_hexid": "897a6e43173ffff"
                 }
             ]
         },
@@ -1674,7 +1674,7 @@
                     "latitude": -1.613647,
                     "longitude": 37.9451
                 },
-                "pickup_hexid": "877a63cecffffff"
+                "pickup_hexid": "897a63cec27ffff"
             },
             "destinations": [
                 {
@@ -1683,7 +1683,7 @@
                         "latitude": 1.877245,
                         "longitude": 37.088502
                     },
-                    "destination_hexid": "877a436f6ffffff"
+                    "destination_hexid": "897a436f683ffff"
                 },
                 {
                     "destination": "Ruai",
@@ -1691,7 +1691,7 @@
                         "latitude": 1.877245,
                         "longitude": 37.088502
                     },
-                    "destination_hexid": "877a436f6ffffff"
+                    "destination_hexid": "897a436f683ffff"
                 },
                 {
                     "destination": "Joska",
@@ -1699,7 +1699,7 @@
                         "latitude": 1.877245,
                         "longitude": 37.088502
                     },
-                    "destination_hexid": "877a436f6ffffff"
+                    "destination_hexid": "897a436f683ffff"
                 }
             ]
         },
@@ -1711,7 +1711,7 @@
                     "latitude": -1.252571,
                     "longitude": 36.182925
                 },
-                "pickup_hexid": "877a6e2acffffff"
+                "pickup_hexid": "897a6e2ac57ffff"
             },
             "destinations": [
                 {
@@ -1720,7 +1720,7 @@
                         "latitude": -0.497699,
                         "longitude": 37.814792
                     },
-                    "destination_hexid": "877a4422cffffff"
+                    "destination_hexid": "897a4422c7bffff"
                 },
                 {
                     "destination": "Saika",
@@ -1728,7 +1728,7 @@
                         "latitude": -0.497699,
                         "longitude": 37.814792
                     },
-                    "destination_hexid": "877a4422cffffff"
+                    "destination_hexid": "897a4422c7bffff"
                 },
                 {
                     "destination": "Komarock",
@@ -1736,7 +1736,7 @@
                         "latitude": -0.497699,
                         "longitude": 37.814792
                     },
-                    "destination_hexid": "877a4422cffffff"
+                    "destination_hexid": "897a4422c7bffff"
                 }
             ]
         },
@@ -1748,7 +1748,7 @@
                     "latitude": 0.441973,
                     "longitude": 37.48828
                 },
-                "pickup_hexid": "877a403a4ffffff"
+                "pickup_hexid": "897a403a49bffff"
             },
             "destinations": [
                 {
@@ -1757,7 +1757,7 @@
                         "latitude": -1.03066,
                         "longitude": 37.637953
                     },
-                    "destination_hexid": "877a636a8ffffff"
+                    "destination_hexid": "897a636a8c7ffff"
                 },
                 {
                     "destination": "Kayole",
@@ -1765,7 +1765,7 @@
                         "latitude": -1.03066,
                         "longitude": 37.637953
                     },
-                    "destination_hexid": "877a636a8ffffff"
+                    "destination_hexid": "897a636a8c7ffff"
                 }
             ]
         },
@@ -1777,7 +1777,7 @@
                     "latitude": -0.309572,
                     "longitude": 36.555504
                 },
-                "pickup_hexid": "877a4525affffff"
+                "pickup_hexid": "897a4525aabffff"
             },
             "destinations": [
                 {
@@ -1786,7 +1786,7 @@
                         "latitude": 0.522214,
                         "longitude": 37.263677
                     },
-                    "destination_hexid": "877a4022affffff"
+                    "destination_hexid": "897a4022a3bffff"
                 },
                 {
                     "destination": "Komarock",
@@ -1794,7 +1794,7 @@
                         "latitude": 0.522214,
                         "longitude": 37.263677
                     },
-                    "destination_hexid": "877a4022affffff"
+                    "destination_hexid": "897a4022a3bffff"
                 }
             ]
         },
@@ -1806,7 +1806,7 @@
                     "latitude": -1.2865,
                     "longitude": 36.815
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42dcbffff"
             },
             "destinations": [
                 {
@@ -1815,7 +1815,7 @@
                         "latitude": -1.2881,
                         "longitude": 36.8034
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d17ffff"
                 },
                 {
                     "destination": "Citam/NPC Valley Rd",
@@ -1823,7 +1823,7 @@
                         "latitude": -1.2881,
                         "longitude": 36.8034
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d17ffff"
                 },
                 {
                     "destination": "The junction Mall",
@@ -1831,7 +1831,7 @@
                         "latitude": -1.2881,
                         "longitude": 36.8034
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d17ffff"
                 },
                 {
                     "destination": "Dagoretti",
@@ -1839,7 +1839,7 @@
                         "latitude": -1.2881,
                         "longitude": 36.8034
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d17ffff"
                 },
                 {
                     "destination": "Kikuyu",
@@ -1847,7 +1847,7 @@
                         "latitude": -1.2881,
                         "longitude": 36.8034
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d17ffff"
                 }
             ]
         },
@@ -1859,7 +1859,7 @@
                     "latitude": -1.312934,
                     "longitude": 37.545076
                 },
-                "pickup_hexid": "877a63766ffffff"
+                "pickup_hexid": "897a6376673ffff"
             },
             "destinations": [
                 {
@@ -1868,7 +1868,7 @@
                         "latitude": 0.807673,
                         "longitude": 36.942606
                     },
-                    "destination_hexid": "877a414aaffffff"
+                    "destination_hexid": "897a414aaafffff"
                 },
                 {
                     "destination": "Kayole Junction",
@@ -1876,7 +1876,7 @@
                         "latitude": 0.807673,
                         "longitude": 36.942606
                     },
-                    "destination_hexid": "877a414aaffffff"
+                    "destination_hexid": "897a414aaafffff"
                 },
                 {
                     "destination": "Mama Lucy Hospital",
@@ -1884,7 +1884,7 @@
                         "latitude": 0.807673,
                         "longitude": 36.942606
                     },
-                    "destination_hexid": "877a414aaffffff"
+                    "destination_hexid": "897a414aaafffff"
                 }
             ]
         },
@@ -1896,7 +1896,7 @@
                     "latitude": -1.7702,
                     "longitude": 37.410084
                 },
-                "pickup_hexid": "877a63a16ffffff"
+                "pickup_hexid": "897a63a1603ffff"
             },
             "destinations": [
                 {
@@ -1905,7 +1905,7 @@
                         "latitude": -1.369857,
                         "longitude": 36.725454
                     },
-                    "destination_hexid": "877a6e56bffffff"
+                    "destination_hexid": "897a6e54cb7ffff"
                 },
                 {
                     "destination": "Kangundo",
@@ -1913,7 +1913,7 @@
                         "latitude": -1.369857,
                         "longitude": 36.725454
                     },
-                    "destination_hexid": "877a6e56bffffff"
+                    "destination_hexid": "897a6e54cb7ffff"
                 }
             ]
         },
@@ -1925,7 +1925,7 @@
                     "latitude": 1.844829,
                     "longitude": 37.517022
                 },
-                "pickup_hexid": "877a5cb22ffffff"
+                "pickup_hexid": "897a5cb2253ffff"
             },
             "destinations": [
                 {
@@ -1934,7 +1934,7 @@
                         "latitude": 1.66642,
                         "longitude": 36.183527
                     },
-                    "destination_hexid": "877a4e445ffffff"
+                    "destination_hexid": "897a4e44533ffff"
                 },
                 {
                     "destination": "UoN Kabete",
@@ -1942,7 +1942,7 @@
                         "latitude": 1.66642,
                         "longitude": 36.183527
                     },
-                    "destination_hexid": "877a4e445ffffff"
+                    "destination_hexid": "897a4e44533ffff"
                 },
                 {
                     "destination": "Ndumbuini",
@@ -1950,7 +1950,7 @@
                         "latitude": 1.66642,
                         "longitude": 36.183527
                     },
-                    "destination_hexid": "877a4e445ffffff"
+                    "destination_hexid": "897a4e44533ffff"
                 }
             ]
         },
@@ -1962,7 +1962,7 @@
                     "latitude": 0.546315,
                     "longitude": 37.248021
                 },
-                "pickup_hexid": "877a4020cffffff"
+                "pickup_hexid": "897a4020c2fffff"
             },
             "destinations": [
                 {
@@ -1971,7 +1971,7 @@
                         "latitude": 1.679638,
                         "longitude": 36.234459
                     },
-                    "destination_hexid": "877a4e446ffffff"
+                    "destination_hexid": "897a4e446dbffff"
                 },
                 {
                     "destination": "Kangemi",
@@ -1979,7 +1979,7 @@
                         "latitude": 1.679638,
                         "longitude": 36.234459
                     },
-                    "destination_hexid": "877a4e446ffffff"
+                    "destination_hexid": "897a4e446dbffff"
                 }
             ]
         },
@@ -1991,7 +1991,7 @@
                     "latitude": 1.612586,
                     "longitude": 36.246783
                 },
-                "pickup_hexid": "877a4e559ffffff"
+                "pickup_hexid": "897a4e5597bffff"
             },
             "destinations": [
                 {
@@ -2000,7 +2000,7 @@
                         "latitude": 0.069387,
                         "longitude": 37.908538
                     },
-                    "destination_hexid": "877a408b0ffffff"
+                    "destination_hexid": "897a408b0b3ffff"
                 },
                 {
                     "destination": "Juja",
@@ -2008,7 +2008,7 @@
                         "latitude": 0.069387,
                         "longitude": 37.908538
                     },
-                    "destination_hexid": "877a408b0ffffff"
+                    "destination_hexid": "897a408b0b3ffff"
                 },
                 {
                     "destination": "JKUAT",
@@ -2016,19 +2016,19 @@
                         "latitude": 0.069387,
                         "longitude": 37.908538
                     },
-                    "destination_hexid": "877a408b0ffffff"
+                    "destination_hexid": "897a408b0b3ffff"
                 }
             ]
         },
         {
             "route_number": "237",
             "pickup_point": {
-                "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street, as well as on Race Course Road near the Tusky’s Building (formerly OTC).",
+                "pickup_point": "Munyu Road Junction, Ngara and Ronald Ngala Street, as well as on Race Course Road near the Tusky\u2019s Building (formerly OTC).",
                 "pickup_latlng": {
                     "latitude": -1.0281,
                     "longitude": 36.9805
                 },
-                "pickup_hexid": "877a6e493ffffff"
+                "pickup_hexid": "897a6e49367ffff"
             },
             "destinations": [
                 {
@@ -2037,7 +2037,7 @@
                         "latitude": -1.0473,
                         "longitude": 36.9274
                     },
-                    "destination_hexid": "877a6e49dffffff"
+                    "destination_hexid": "897a6e49d73ffff"
                 },
                 {
                     "destination": "allthikaroad",
@@ -2045,7 +2045,7 @@
                         "latitude": -1.0473,
                         "longitude": 36.9274
                     },
-                    "destination_hexid": "877a6e49dffffff"
+                    "destination_hexid": "897a6e49d73ffff"
                 },
                 {
                     "destination": "KahawaraWendani",
@@ -2053,7 +2053,7 @@
                         "latitude": -1.0473,
                         "longitude": 36.9274
                     },
-                    "destination_hexid": "877a6e49dffffff"
+                    "destination_hexid": "897a6e49d73ffff"
                 },
                 {
                     "destination": "KahawaSukari",
@@ -2061,7 +2061,7 @@
                         "latitude": -1.0473,
                         "longitude": 36.9274
                     },
-                    "destination_hexid": "877a6e49dffffff"
+                    "destination_hexid": "897a6e49d73ffff"
                 },
                 {
                     "destination": "Ruiru",
@@ -2069,7 +2069,7 @@
                         "latitude": -1.0473,
                         "longitude": 36.9274
                     },
-                    "destination_hexid": "877a6e49dffffff"
+                    "destination_hexid": "897a6e49d73ffff"
                 }
             ]
         },
@@ -2081,7 +2081,7 @@
                     "latitude": -0.626901,
                     "longitude": 36.476848
                 },
-                "pickup_hexid": "877a6ad89ffffff"
+                "pickup_hexid": "897a6ad894fffff"
             },
             "destinations": [
                 {
@@ -2090,7 +2090,7 @@
                         "latitude": -0.334728,
                         "longitude": 37.129452
                     },
-                    "destination_hexid": "877a45720ffffff"
+                    "destination_hexid": "897a4572033ffff"
                 },
                 {
                     "destination": "Posta",
@@ -2098,7 +2098,7 @@
                         "latitude": -0.334728,
                         "longitude": 37.129452
                     },
-                    "destination_hexid": "877a45720ffffff"
+                    "destination_hexid": "897a4572033ffff"
                 }
             ]
         },
@@ -2110,7 +2110,7 @@
                     "latitude": 1.577394,
                     "longitude": 37.359931
                 },
-                "pickup_hexid": "877a43475ffffff"
+                "pickup_hexid": "897a43475afffff"
             },
             "destinations": [
                 {
@@ -2119,7 +2119,7 @@
                         "latitude": 1.762089,
                         "longitude": 36.736749
                     },
-                    "destination_hexid": "877a5d92affffff"
+                    "destination_hexid": "897a5d92a9bffff"
                 },
                 {
                     "destination": "Harambee",
@@ -2127,7 +2127,7 @@
                         "latitude": 1.762089,
                         "longitude": 36.736749
                     },
-                    "destination_hexid": "877a5d92affffff"
+                    "destination_hexid": "897a5d92a9bffff"
                 },
                 {
                     "destination": "Kariobangi South",
@@ -2135,7 +2135,7 @@
                         "latitude": 1.762089,
                         "longitude": 36.736749
                     },
-                    "destination_hexid": "877a5d92affffff"
+                    "destination_hexid": "897a5d92a9bffff"
                 },
                 {
                     "destination": "Civil servant",
@@ -2143,7 +2143,7 @@
                         "latitude": 1.762089,
                         "longitude": 36.736749
                     },
-                    "destination_hexid": "877a5d92affffff"
+                    "destination_hexid": "897a5d92a9bffff"
                 }
             ]
         },
@@ -2155,7 +2155,7 @@
                     "latitude": -1.3121,
                     "longitude": 36.7949
                 },
-                "pickup_hexid": "877a6e55effffff"
+                "pickup_hexid": "897a6e55e83ffff"
             },
             "destinations": [
                 {
@@ -2164,7 +2164,7 @@
                         "latitude": -1.2924,
                         "longitude": 36.8249
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 },
                 {
                     "destination": "Westlands",
@@ -2172,7 +2172,7 @@
                         "latitude": -1.2924,
                         "longitude": 36.8249
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 },
                 {
                     "destination": "Uhuru Highway",
@@ -2180,7 +2180,7 @@
                         "latitude": -1.2924,
                         "longitude": 36.8249
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 },
                 {
                     "destination": "Kangemi",
@@ -2188,7 +2188,7 @@
                         "latitude": -1.2924,
                         "longitude": 36.8249
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 },
                 {
                     "destination": "ABC Place",
@@ -2196,7 +2196,7 @@
                         "latitude": -1.2924,
                         "longitude": 36.8249
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 },
                 {
                     "destination": "Safaricom House",
@@ -2204,7 +2204,7 @@
                         "latitude": -1.2924,
                         "longitude": 36.8249
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 },
                 {
                     "destination": "Uhuru highway.",
@@ -2212,7 +2212,7 @@
                         "latitude": -1.2924,
                         "longitude": 36.8249
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 }
             ]
         },
@@ -2224,7 +2224,7 @@
                     "latitude": 1.285533,
                     "longitude": 37.248461
                 },
-                "pickup_hexid": "877a4311effffff"
+                "pickup_hexid": "897a4311e73ffff"
             },
             "destinations": [
                 {
@@ -2233,7 +2233,7 @@
                         "latitude": -1.421594,
                         "longitude": 37.803531
                     },
-                    "destination_hexid": "877a630b0ffffff"
+                    "destination_hexid": "897a630b067ffff"
                 },
                 {
                     "destination": "Dagoretti",
@@ -2241,7 +2241,7 @@
                         "latitude": -1.421594,
                         "longitude": 37.803531
                     },
-                    "destination_hexid": "877a630b0ffffff"
+                    "destination_hexid": "897a630b067ffff"
                 }
             ]
         },
@@ -2253,7 +2253,7 @@
                     "latitude": -1.3454,
                     "longitude": 36.7833
                 },
-                "pickup_hexid": "877a6e542ffffff"
+                "pickup_hexid": "897a6e542afffff"
             },
             "destinations": [
                 {
@@ -2262,7 +2262,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "Hardy",
@@ -2270,7 +2270,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "allLangatardroutes",
@@ -2278,7 +2278,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "Bogani",
@@ -2286,7 +2286,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "BomasofKenya",
@@ -2294,7 +2294,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "GalleriaShoppingMall",
@@ -2302,7 +2302,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "CatholicUniversity",
@@ -2310,7 +2310,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "KenyaSchoolofLaw",
@@ -2318,7 +2318,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "NairobiAcademy",
@@ -2326,7 +2326,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "HillcrestInternationalSchool",
@@ -2334,7 +2334,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "Animalprotection",
@@ -2342,7 +2342,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "Co-opbanktrainingcentre",
@@ -2350,7 +2350,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "Giraffecenter",
@@ -2358,7 +2358,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 },
                 {
                     "destination": "KarenCSchool.",
@@ -2366,7 +2366,7 @@
                         "latitude": -1.3582,
                         "longitude": 36.772
                     },
-                    "destination_hexid": "877a6e540ffffff"
+                    "destination_hexid": "897a6e54023ffff"
                 }
             ]
         },
@@ -2378,7 +2378,7 @@
                     "latitude": -1.2258,
                     "longitude": 36.8274
                 },
-                "pickup_hexid": "877a6e40cffffff"
+                "pickup_hexid": "897a6e40ccbffff"
             },
             "destinations": [
                 {
@@ -2387,7 +2387,7 @@
                         "latitude": -1.2123,
                         "longitude": 36.8146
                     },
-                    "destination_hexid": "877a6e408ffffff"
+                    "destination_hexid": "897a6e408d7ffff"
                 },
                 {
                     "destination": "Baba Dogo",
@@ -2395,7 +2395,7 @@
                         "latitude": -1.2123,
                         "longitude": 36.8146
                     },
-                    "destination_hexid": "877a6e408ffffff"
+                    "destination_hexid": "897a6e408d7ffff"
                 },
                 {
                     "destination": "Lucky Summer",
@@ -2403,7 +2403,7 @@
                         "latitude": -1.2123,
                         "longitude": 36.8146
                     },
-                    "destination_hexid": "877a6e408ffffff"
+                    "destination_hexid": "897a6e408d7ffff"
                 }
             ]
         },
@@ -2415,7 +2415,7 @@
                     "latitude": 1.350125,
                     "longitude": 37.733841
                 },
-                "pickup_hexid": "877a42348ffffff"
+                "pickup_hexid": "897a4234833ffff"
             },
             "destinations": [
                 {
@@ -2424,7 +2424,7 @@
                         "latitude": 1.249956,
                         "longitude": 36.73774
                     },
-                    "destination_hexid": "877a43ac1ffffff"
+                    "destination_hexid": "897a43ac157ffff"
                 },
                 {
                     "destination": "Jericho",
@@ -2432,7 +2432,7 @@
                         "latitude": 1.249956,
                         "longitude": 36.73774
                     },
-                    "destination_hexid": "877a43ac1ffffff"
+                    "destination_hexid": "897a43ac157ffff"
                 },
                 {
                     "destination": "Kariobangi Rounda",
@@ -2440,7 +2440,7 @@
                         "latitude": 1.249956,
                         "longitude": 36.73774
                     },
-                    "destination_hexid": "877a43ac1ffffff"
+                    "destination_hexid": "897a43ac157ffff"
                 }
             ]
         },
@@ -2452,7 +2452,7 @@
                     "latitude": 0.098705,
                     "longitude": 36.986892
                 },
-                "pickup_hexid": "877a41d29ffffff"
+                "pickup_hexid": "897a41d298bffff"
             },
             "destinations": [
                 {
@@ -2461,7 +2461,7 @@
                         "latitude": 1.594692,
                         "longitude": 37.531171
                     },
-                    "destination_hexid": "877a43430ffffff"
+                    "destination_hexid": "897a4343023ffff"
                 },
                 {
                     "destination": "Huruma",
@@ -2469,7 +2469,7 @@
                         "latitude": 1.594692,
                         "longitude": 37.531171
                     },
-                    "destination_hexid": "877a43430ffffff"
+                    "destination_hexid": "897a4343023ffff"
                 },
                 {
                     "destination": "Kariobangi North",
@@ -2477,7 +2477,7 @@
                         "latitude": 1.594692,
                         "longitude": 37.531171
                     },
-                    "destination_hexid": "877a43430ffffff"
+                    "destination_hexid": "897a4343023ffff"
                 }
             ]
         },
@@ -2489,7 +2489,7 @@
                     "latitude": -0.204646,
                     "longitude": 36.755314
                 },
-                "pickup_hexid": "877a41924ffffff"
+                "pickup_hexid": "897a4528a6fffff"
             },
             "destinations": [
                 {
@@ -2498,7 +2498,7 @@
                         "latitude": -0.346202,
                         "longitude": 37.604478
                     },
-                    "destination_hexid": "877a455a3ffffff"
+                    "destination_hexid": "897a455a3b3ffff"
                 },
                 {
                     "destination": "Mathare North",
@@ -2506,7 +2506,7 @@
                         "latitude": -0.346202,
                         "longitude": 37.604478
                     },
-                    "destination_hexid": "877a455a3ffffff"
+                    "destination_hexid": "897a455a3b3ffff"
                 }
             ]
         },
@@ -2518,7 +2518,7 @@
                     "latitude": 1.099134,
                     "longitude": 36.184548
                 },
-                "pickup_hexid": "877a4e8a3ffffff"
+                "pickup_hexid": "897a4e8a317ffff"
             },
             "destinations": [
                 {
@@ -2527,7 +2527,7 @@
                         "latitude": 1.462808,
                         "longitude": 37.590134
                     },
-                    "destination_hexid": "877a43531ffffff"
+                    "destination_hexid": "897a4353167ffff"
                 }
             ]
         },
@@ -2539,7 +2539,7 @@
                     "latitude": -0.789696,
                     "longitude": 36.575505
                 },
-                "pickup_hexid": "877a45a48ffffff"
+                "pickup_hexid": "897a45a4893ffff"
             },
             "destinations": [
                 {
@@ -2548,7 +2548,7 @@
                         "latitude": -0.179347,
                         "longitude": 36.634608
                     },
-                    "destination_hexid": "877a452daffffff"
+                    "destination_hexid": "897a452dab7ffff"
                 },
                 {
                     "destination": "Waithaka",
@@ -2556,7 +2556,7 @@
                         "latitude": -0.179347,
                         "longitude": 36.634608
                     },
-                    "destination_hexid": "877a452daffffff"
+                    "destination_hexid": "897a452dab7ffff"
                 },
                 {
                     "destination": "Muthama",
@@ -2564,7 +2564,7 @@
                         "latitude": -0.179347,
                         "longitude": 36.634608
                     },
-                    "destination_hexid": "877a452daffffff"
+                    "destination_hexid": "897a452dab7ffff"
                 }
             ]
         },
@@ -2576,7 +2576,7 @@
                     "latitude": -1.2865,
                     "longitude": 36.815
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42dcbffff"
             },
             "destinations": [
                 {
@@ -2585,7 +2585,7 @@
                         "latitude": -1.29,
                         "longitude": 36.7979
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42da3ffff"
                 },
                 {
                     "destination": "Adams Arcade",
@@ -2593,7 +2593,7 @@
                         "latitude": -1.29,
                         "longitude": 36.7979
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42da3ffff"
                 },
                 {
                     "destination": "Dagoretti corner",
@@ -2601,7 +2601,7 @@
                         "latitude": -1.29,
                         "longitude": 36.7979
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42da3ffff"
                 }
             ]
         },
@@ -2613,7 +2613,7 @@
                     "latitude": -0.300072,
                     "longitude": 36.568922
                 },
-                "pickup_hexid": "877a4525affffff"
+                "pickup_hexid": "897a4525a5bffff"
             },
             "destinations": [
                 {
@@ -2622,7 +2622,7 @@
                         "latitude": 0.679359,
                         "longitude": 37.203679
                     },
-                    "destination_hexid": "877a402c1ffffff"
+                    "destination_hexid": "897a402c103ffff"
                 },
                 {
                     "destination": "Kangemi",
@@ -2630,7 +2630,7 @@
                         "latitude": 0.679359,
                         "longitude": 37.203679
                     },
-                    "destination_hexid": "877a402c1ffffff"
+                    "destination_hexid": "897a402c103ffff"
                 },
                 {
                     "destination": "Regen",
@@ -2638,7 +2638,7 @@
                         "latitude": 0.679359,
                         "longitude": 37.203679
                     },
-                    "destination_hexid": "877a402c1ffffff"
+                    "destination_hexid": "897a402c103ffff"
                 }
             ]
         },
@@ -2650,7 +2650,7 @@
                     "latitude": 0.494541,
                     "longitude": 36.337189
                 },
-                "pickup_hexid": "877a4104bffffff"
+                "pickup_hexid": "897a4104b2fffff"
             },
             "destinations": [
                 {
@@ -2659,7 +2659,7 @@
                         "latitude": -0.736819,
                         "longitude": 37.278319
                     },
-                    "destination_hexid": "877a45134ffffff"
+                    "destination_hexid": "897a45134dbffff"
                 },
                 {
                     "destination": "Woodley",
@@ -2667,7 +2667,7 @@
                         "latitude": -0.736819,
                         "longitude": 37.278319
                     },
-                    "destination_hexid": "877a45134ffffff"
+                    "destination_hexid": "897a45134dbffff"
                 },
                 {
                     "destination": "Kibera",
@@ -2675,7 +2675,7 @@
                         "latitude": -0.736819,
                         "longitude": 37.278319
                     },
-                    "destination_hexid": "877a45134ffffff"
+                    "destination_hexid": "897a45134dbffff"
                 }
             ]
         },
@@ -2687,7 +2687,7 @@
                     "latitude": -0.879307,
                     "longitude": 36.371803
                 },
-                "pickup_hexid": "877a6e6d8ffffff"
+                "pickup_hexid": "897a6e6d897ffff"
             },
             "destinations": [
                 {
@@ -2696,19 +2696,19 @@
                         "latitude": -0.018488,
                         "longitude": 37.962691
                     },
-                    "destination_hexid": "877a40995ffffff"
+                    "destination_hexid": "897a409952bffff"
                 }
             ]
         },
         {
             "route_number": "33",
             "pickup_point": {
-                "pickup_point": "Board the matatu from opp St Peter Claver’s​​ Catholic church or near OTC /Salvation Army areas",
+                "pickup_point": "Board the matatu from opp St Peter Claver\u2019s\u200b\u200b Catholic church or near OTC /Salvation Army areas",
                 "pickup_latlng": {
                     "latitude": -1.2865,
                     "longitude": 36.815
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42dcbffff"
             },
             "destinations": [
                 {
@@ -2717,7 +2717,7 @@
                         "latitude": -1.3089,
                         "longitude": 36.7912
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55ebbffff"
                 },
                 {
                     "destination": "KNH",
@@ -2725,7 +2725,7 @@
                         "latitude": -1.3089,
                         "longitude": 36.7912
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55ebbffff"
                 },
                 {
                     "destination": "Mbagathi",
@@ -2733,7 +2733,7 @@
                         "latitude": -1.3089,
                         "longitude": 36.7912
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55ebbffff"
                 },
                 {
                     "destination": "Maasaimarket",
@@ -2741,7 +2741,7 @@
                         "latitude": -1.3089,
                         "longitude": 36.7912
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55ebbffff"
                 }
             ]
         },
@@ -2753,7 +2753,7 @@
                     "latitude": 0.33516,
                     "longitude": 36.282806
                 },
-                "pickup_hexid": "877a41a88ffffff"
+                "pickup_hexid": "897a41a88cbffff"
             },
             "destinations": [
                 {
@@ -2762,7 +2762,7 @@
                         "latitude": 0.322293,
                         "longitude": 37.797298
                     },
-                    "destination_hexid": "877a401adffffff"
+                    "destination_hexid": "897a401ad2bffff"
                 }
             ]
         },
@@ -2774,7 +2774,7 @@
                     "latitude": 1.373833,
                     "longitude": 37.470668
                 },
-                "pickup_hexid": "877a43cc3ffffff"
+                "pickup_hexid": "897a43cdcb7ffff"
             },
             "destinations": [
                 {
@@ -2783,7 +2783,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "Fedha Gate A",
@@ -2791,7 +2791,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "Fedha Gate B",
@@ -2799,7 +2799,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "Fedha Gate C",
@@ -2807,7 +2807,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "Fedha Gate D",
@@ -2815,7 +2815,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "donholm",
@@ -2823,7 +2823,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "City Stadium",
@@ -2831,7 +2831,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "Pipeline",
@@ -2839,7 +2839,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "Tumaini Estate",
@@ -2847,7 +2847,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 },
                 {
                     "destination": "Avenue Estate",
@@ -2855,7 +2855,7 @@
                         "latitude": 1.661447,
                         "longitude": 37.679166
                     },
-                    "destination_hexid": "877a43593ffffff"
+                    "destination_hexid": "897a4359303ffff"
                 }
             ]
         },
@@ -2867,7 +2867,7 @@
                     "latitude": -1.2505,
                     "longitude": 36.8555
                 },
-                "pickup_hexid": "877a6e405ffffff"
+                "pickup_hexid": "897a6e40513ffff"
             },
             "destinations": [
                 {
@@ -2876,7 +2876,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 },
                 {
                     "destination": "Jogooroad",
@@ -2884,7 +2884,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 },
                 {
                     "destination": "Embakasi",
@@ -2892,7 +2892,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 },
                 {
                     "destination": "Fedha",
@@ -2900,7 +2900,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 },
                 {
                     "destination": "Donholm",
@@ -2908,7 +2908,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 },
                 {
                     "destination": "Pipeline",
@@ -2916,7 +2916,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 },
                 {
                     "destination": "Utawala",
@@ -2924,7 +2924,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 },
                 {
                     "destination": "(SomethimesMombasaroad)",
@@ -2932,7 +2932,7 @@
                         "latitude": -1.3001,
                         "longitude": 36.9014
                     },
-                    "destination_hexid": "877a6e426ffffff"
+                    "destination_hexid": "897a6e42693ffff"
                 }
             ]
         },
@@ -2944,7 +2944,7 @@
                     "latitude": -1.2835,
                     "longitude": 36.8008
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42d07ffff"
             },
             "destinations": [
                 {
@@ -2953,7 +2953,7 @@
                         "latitude": -1.3137,
                         "longitude": 36.8101
                     },
-                    "destination_hexid": "877a6e553ffffff"
+                    "destination_hexid": "897a6e553b3ffff"
                 },
                 {
                     "destination": "KNH",
@@ -2961,7 +2961,7 @@
                         "latitude": -1.3137,
                         "longitude": 36.8101
                     },
-                    "destination_hexid": "877a6e553ffffff"
+                    "destination_hexid": "897a6e553b3ffff"
                 },
                 {
                     "destination": "TMall",
@@ -2969,7 +2969,7 @@
                         "latitude": -1.3137,
                         "longitude": 36.8101
                     },
-                    "destination_hexid": "877a6e553ffffff"
+                    "destination_hexid": "897a6e553b3ffff"
                 },
                 {
                     "destination": "WilsonAirport",
@@ -2977,7 +2977,7 @@
                         "latitude": -1.3137,
                         "longitude": 36.8101
                     },
-                    "destination_hexid": "877a6e553ffffff"
+                    "destination_hexid": "897a6e553b3ffff"
                 },
                 {
                     "destination": "Carnivore",
@@ -2985,7 +2985,7 @@
                         "latitude": -1.3137,
                         "longitude": 36.8101
                     },
-                    "destination_hexid": "877a6e553ffffff"
+                    "destination_hexid": "897a6e553b3ffff"
                 },
                 {
                     "destination": "LangatashoppingCentre",
@@ -2993,7 +2993,7 @@
                         "latitude": -1.3137,
                         "longitude": 36.8101
                     },
-                    "destination_hexid": "877a6e553ffffff"
+                    "destination_hexid": "897a6e553b3ffff"
                 }
             ]
         },
@@ -3005,7 +3005,7 @@
                     "latitude": 0.312214,
                     "longitude": 37.077187
                 },
-                "pickup_hexid": "877a41d8bffffff"
+                "pickup_hexid": "897a41d8bc3ffff"
             },
             "destinations": [
                 {
@@ -3014,7 +3014,7 @@
                         "latitude": -0.328437,
                         "longitude": 36.849691
                     },
-                    "destination_hexid": "877a45399ffffff"
+                    "destination_hexid": "897a453996bffff"
                 },
                 {
                     "destination": "Pipeline",
@@ -3022,7 +3022,7 @@
                         "latitude": -0.328437,
                         "longitude": 36.849691
                     },
-                    "destination_hexid": "877a45399ffffff"
+                    "destination_hexid": "897a453996bffff"
                 },
                 {
                     "destination": "JKIA",
@@ -3030,7 +3030,7 @@
                         "latitude": -0.328437,
                         "longitude": 36.849691
                     },
-                    "destination_hexid": "877a45399ffffff"
+                    "destination_hexid": "897a453996bffff"
                 }
             ]
         },
@@ -3042,7 +3042,7 @@
                     "latitude": -1.384152,
                     "longitude": 37.892242
                 },
-                "pickup_hexid": "877a6355dffffff"
+                "pickup_hexid": "897a6355d83ffff"
             },
             "destinations": [
                 {
@@ -3051,7 +3051,7 @@
                         "latitude": -1.010343,
                         "longitude": 37.996957
                     },
-                    "destination_hexid": "877a44b00ffffff"
+                    "destination_hexid": "897a44b00bbffff"
                 },
                 {
                     "destination": "Savannah",
@@ -3059,7 +3059,7 @@
                         "latitude": -1.010343,
                         "longitude": 37.996957
                     },
-                    "destination_hexid": "877a44b00ffffff"
+                    "destination_hexid": "897a44b00bbffff"
                 },
                 {
                     "destination": "Jacaranda",
@@ -3067,7 +3067,7 @@
                         "latitude": -1.010343,
                         "longitude": 37.996957
                     },
-                    "destination_hexid": "877a44b00ffffff"
+                    "destination_hexid": "897a44b00bbffff"
                 }
             ]
         },
@@ -3079,7 +3079,7 @@
                     "latitude": 1.89449,
                     "longitude": 37.051693
                 },
-                "pickup_hexid": "877a436f1ffffff"
+                "pickup_hexid": "897a436f15bffff"
             },
             "destinations": [
                 {
@@ -3088,7 +3088,7 @@
                         "latitude": -1.108607,
                         "longitude": 37.608645
                     },
-                    "destination_hexid": "877a63602ffffff"
+                    "destination_hexid": "897a6360213ffff"
                 },
                 {
                     "destination": "Greenfields",
@@ -3096,7 +3096,7 @@
                         "latitude": -1.108607,
                         "longitude": 37.608645
                     },
-                    "destination_hexid": "877a63602ffffff"
+                    "destination_hexid": "897a6360213ffff"
                 }
             ]
         },
@@ -3108,7 +3108,7 @@
                     "latitude": -1.3525,
                     "longitude": 36.8555
                 },
-                "pickup_hexid": "877a6e509ffffff"
+                "pickup_hexid": "897a6e509a3ffff"
             },
             "destinations": [
                 {
@@ -3117,7 +3117,7 @@
                         "latitude": -1.3163,
                         "longitude": 36.8802
                     },
-                    "destination_hexid": "877a6e424ffffff"
+                    "destination_hexid": "897a6e424b3ffff"
                 },
                 {
                     "destination": "UmojaI",
@@ -3125,7 +3125,7 @@
                         "latitude": -1.3163,
                         "longitude": 36.8802
                     },
-                    "destination_hexid": "877a6e424ffffff"
+                    "destination_hexid": "897a6e424b3ffff"
                 },
                 {
                     "destination": "UmojaII",
@@ -3133,7 +3133,7 @@
                         "latitude": -1.3163,
                         "longitude": 36.8802
                     },
-                    "destination_hexid": "877a6e424ffffff"
+                    "destination_hexid": "897a6e424b3ffff"
                 }
             ]
         },
@@ -3145,7 +3145,7 @@
                     "latitude": 1.561914,
                     "longitude": 37.214851
                 },
-                "pickup_hexid": "877a4309bffffff"
+                "pickup_hexid": "897a4309bb3ffff"
             },
             "destinations": [
                 {
@@ -3154,7 +3154,7 @@
                         "latitude": -1.137327,
                         "longitude": 37.551436
                     },
-                    "destination_hexid": "877a6362affffff"
+                    "destination_hexid": "897a6362a2fffff"
                 },
                 {
                     "destination": "Kariobangi South",
@@ -3162,7 +3162,7 @@
                         "latitude": -1.137327,
                         "longitude": 37.551436
                     },
-                    "destination_hexid": "877a6362affffff"
+                    "destination_hexid": "897a6362a2fffff"
                 },
                 {
                     "destination": "Dandora",
@@ -3170,7 +3170,7 @@
                         "latitude": -1.137327,
                         "longitude": 37.551436
                     },
-                    "destination_hexid": "877a6362affffff"
+                    "destination_hexid": "897a6362a2fffff"
                 }
             ]
         },
@@ -3182,7 +3182,7 @@
                     "latitude": 1.016213,
                     "longitude": 37.18602
                 },
-                "pickup_hexid": "877a43819ffffff"
+                "pickup_hexid": "897a438192fffff"
             },
             "destinations": [
                 {
@@ -3191,7 +3191,7 @@
                         "latitude": 1.805521,
                         "longitude": 37.752701
                     },
-                    "destination_hexid": "877a5c82dffffff"
+                    "destination_hexid": "897a5c82d8bffff"
                 },
                 {
                     "destination": "Saika",
@@ -3199,7 +3199,7 @@
                         "latitude": 1.805521,
                         "longitude": 37.752701
                     },
-                    "destination_hexid": "877a5c82dffffff"
+                    "destination_hexid": "897a5c82d8bffff"
                 },
                 {
                     "destination": "Njiru",
@@ -3207,7 +3207,7 @@
                         "latitude": 1.805521,
                         "longitude": 37.752701
                     },
-                    "destination_hexid": "877a5c82dffffff"
+                    "destination_hexid": "897a5c82d8bffff"
                 },
                 {
                     "destination": "Ruai",
@@ -3215,7 +3215,7 @@
                         "latitude": 1.805521,
                         "longitude": 37.752701
                     },
-                    "destination_hexid": "877a5c82dffffff"
+                    "destination_hexid": "897a5c82d8bffff"
                 }
             ]
         },
@@ -3227,7 +3227,7 @@
                     "latitude": -1.012347,
                     "longitude": 37.250666
                 },
-                "pickup_hexid": "877a45835ffffff"
+                "pickup_hexid": "897a45835dbffff"
             },
             "destinations": [
                 {
@@ -3236,7 +3236,7 @@
                         "latitude": 1.156107,
                         "longitude": 37.906992
                     },
-                    "destination_hexid": "877a42af1ffffff"
+                    "destination_hexid": "897a42af187ffff"
                 },
                 {
                     "destination": "Ruai",
@@ -3244,7 +3244,7 @@
                         "latitude": 1.156107,
                         "longitude": 37.906992
                     },
-                    "destination_hexid": "877a42af1ffffff"
+                    "destination_hexid": "897a42af187ffff"
                 },
                 {
                     "destination": "Kamulu",
@@ -3252,7 +3252,7 @@
                         "latitude": 1.156107,
                         "longitude": 37.906992
                     },
-                    "destination_hexid": "877a42af1ffffff"
+                    "destination_hexid": "897a42af187ffff"
                 },
                 {
                     "destination": "Joska",
@@ -3260,7 +3260,7 @@
                         "latitude": 1.156107,
                         "longitude": 37.906992
                     },
-                    "destination_hexid": "877a42af1ffffff"
+                    "destination_hexid": "897a42af187ffff"
                 },
                 {
                     "destination": "Malaa",
@@ -3268,7 +3268,7 @@
                         "latitude": 1.156107,
                         "longitude": 37.906992
                     },
-                    "destination_hexid": "877a42af1ffffff"
+                    "destination_hexid": "897a42af187ffff"
                 },
                 {
                     "destination": "Kantafu",
@@ -3276,7 +3276,7 @@
                         "latitude": 1.156107,
                         "longitude": 37.906992
                     },
-                    "destination_hexid": "877a42af1ffffff"
+                    "destination_hexid": "897a42af187ffff"
                 }
             ]
         },
@@ -3288,7 +3288,7 @@
                     "latitude": 1.64049,
                     "longitude": 37.92082
                 },
-                "pickup_hexid": "877a42299ffffff"
+                "pickup_hexid": "897a42299b7ffff"
             },
             "destinations": [
                 {
@@ -3297,7 +3297,7 @@
                         "latitude": 0.976014,
                         "longitude": 37.867094
                     },
-                    "destination_hexid": "877a42b58ffffff"
+                    "destination_hexid": "897a42b5857ffff"
                 },
                 {
                     "destination": "Adams",
@@ -3305,7 +3305,7 @@
                         "latitude": 0.976014,
                         "longitude": 37.867094
                     },
-                    "destination_hexid": "877a42b58ffffff"
+                    "destination_hexid": "897a42b5857ffff"
                 },
                 {
                     "destination": "Dagoretti",
@@ -3313,7 +3313,7 @@
                         "latitude": 0.976014,
                         "longitude": 37.867094
                     },
-                    "destination_hexid": "877a42b58ffffff"
+                    "destination_hexid": "897a42b5857ffff"
                 }
             ]
         },
@@ -3325,7 +3325,7 @@
                     "latitude": -0.223513,
                     "longitude": 36.386239
                 },
-                "pickup_hexid": "877a6a414ffffff"
+                "pickup_hexid": "897a6a414d3ffff"
             },
             "destinations": [
                 {
@@ -3334,7 +3334,7 @@
                         "latitude": -0.777385,
                         "longitude": 37.801046
                     },
-                    "destination_hexid": "877a44aecffffff"
+                    "destination_hexid": "897a44aec23ffff"
                 },
                 {
                     "destination": "Ngummo (yes ditto 33)",
@@ -3342,7 +3342,7 @@
                         "latitude": -0.777385,
                         "longitude": 37.801046
                     },
-                    "destination_hexid": "877a44aecffffff"
+                    "destination_hexid": "897a44aec23ffff"
                 }
             ]
         },
@@ -3354,7 +3354,7 @@
                     "latitude": 0.318845,
                     "longitude": 37.187164
                 },
-                "pickup_hexid": "877a41d90ffffff"
+                "pickup_hexid": "897a41d92b7ffff"
             },
             "destinations": [
                 {
@@ -3363,7 +3363,7 @@
                         "latitude": 0.575281,
                         "longitude": 37.746111
                     },
-                    "destination_hexid": "877a40099ffffff"
+                    "destination_hexid": "897a400993bffff"
                 }
             ]
         },
@@ -3375,7 +3375,7 @@
                     "latitude": -0.532485,
                     "longitude": 37.632114
                 },
-                "pickup_hexid": "877a45c91ffffff"
+                "pickup_hexid": "897a45c9157ffff"
             },
             "destinations": [
                 {
@@ -3384,7 +3384,7 @@
                         "latitude": 0.821889,
                         "longitude": 36.098742
                     },
-                    "destination_hexid": "877a412daffffff"
+                    "destination_hexid": "897a412da63ffff"
                 },
                 {
                     "destination": "EABL",
@@ -3392,7 +3392,7 @@
                         "latitude": 0.821889,
                         "longitude": 36.098742
                     },
-                    "destination_hexid": "877a412daffffff"
+                    "destination_hexid": "897a412da63ffff"
                 },
                 {
                     "destination": "Ngumba",
@@ -3400,7 +3400,7 @@
                         "latitude": 0.821889,
                         "longitude": 36.098742
                     },
-                    "destination_hexid": "877a412daffffff"
+                    "destination_hexid": "897a412da63ffff"
                 }
             ]
         },
@@ -3412,7 +3412,7 @@
                     "latitude": -1.1705,
                     "longitude": 36.8474
                 },
-                "pickup_hexid": "877a6e418ffffff"
+                "pickup_hexid": "897a6e418afffff"
             },
             "destinations": [
                 {
@@ -3421,7 +3421,7 @@
                         "latitude": -1.1996,
                         "longitude": 36.8865
                     },
-                    "destination_hexid": "877a6e411ffffff"
+                    "destination_hexid": "897a6e41187ffff"
                 },
                 {
                     "destination": "KamitiMaximumPrisons",
@@ -3429,7 +3429,7 @@
                         "latitude": -1.1996,
                         "longitude": 36.8865
                     },
-                    "destination_hexid": "877a6e411ffffff"
+                    "destination_hexid": "897a6e41187ffff"
                 },
                 {
                     "destination": "Zimmerman",
@@ -3437,7 +3437,7 @@
                         "latitude": -1.1996,
                         "longitude": 36.8865
                     },
-                    "destination_hexid": "877a6e411ffffff"
+                    "destination_hexid": "897a6e41187ffff"
                 },
                 {
                     "destination": "USIU",
@@ -3445,7 +3445,7 @@
                         "latitude": -1.1996,
                         "longitude": 36.8865
                     },
-                    "destination_hexid": "877a6e411ffffff"
+                    "destination_hexid": "897a6e41187ffff"
                 },
                 {
                     "destination": "FarmersChoice",
@@ -3453,7 +3453,7 @@
                         "latitude": -1.1996,
                         "longitude": 36.8865
                     },
-                    "destination_hexid": "877a6e411ffffff"
+                    "destination_hexid": "897a6e41187ffff"
                 },
                 {
                     "destination": "Nothernbypass",
@@ -3461,7 +3461,7 @@
                         "latitude": -1.1996,
                         "longitude": 36.8865
                     },
-                    "destination_hexid": "877a6e411ffffff"
+                    "destination_hexid": "897a6e41187ffff"
                 }
             ]
         },
@@ -3473,7 +3473,7 @@
                     "latitude": -1.0917,
                     "longitude": 36.8408
                 },
-                "pickup_hexid": "877a6e4f3ffffff"
+                "pickup_hexid": "897a6e4f3c3ffff"
             },
             "destinations": [
                 {
@@ -3482,7 +3482,7 @@
                         "latitude": -1.1452,
                         "longitude": 36.8653
                     },
-                    "destination_hexid": "877a6e41affffff"
+                    "destination_hexid": "897a6e41a0fffff"
                 },
                 {
                     "destination": "Thika Super highway",
@@ -3490,7 +3490,7 @@
                         "latitude": -1.1452,
                         "longitude": 36.8653
                     },
-                    "destination_hexid": "877a6e41affffff"
+                    "destination_hexid": "897a6e41a0fffff"
                 },
                 {
                     "destination": "Githurai 45",
@@ -3498,7 +3498,7 @@
                         "latitude": -1.1452,
                         "longitude": 36.8653
                     },
-                    "destination_hexid": "877a6e41affffff"
+                    "destination_hexid": "897a6e41a0fffff"
                 }
             ]
         },
@@ -3510,7 +3510,7 @@
                     "latitude": -1.39391,
                     "longitude": 36.35179
                 },
-                "pickup_hexid": "877a6e05bffffff"
+                "pickup_hexid": "897a6e05b7bffff"
             },
             "destinations": [
                 {
@@ -3519,7 +3519,7 @@
                         "latitude": -1.407689,
                         "longitude": 37.408312
                     },
-                    "destination_hexid": "877a63385ffffff"
+                    "destination_hexid": "897a633852fffff"
                 },
                 {
                     "destination": "Kahawa",
@@ -3527,7 +3527,7 @@
                         "latitude": -1.407689,
                         "longitude": 37.408312
                     },
-                    "destination_hexid": "877a63385ffffff"
+                    "destination_hexid": "897a633852fffff"
                 },
                 {
                     "destination": "KU",
@@ -3535,7 +3535,7 @@
                         "latitude": -1.407689,
                         "longitude": 37.408312
                     },
-                    "destination_hexid": "877a63385ffffff"
+                    "destination_hexid": "897a633852fffff"
                 }
             ]
         },
@@ -3547,7 +3547,7 @@
                     "latitude": -1.087817,
                     "longitude": 37.355142
                 },
-                "pickup_hexid": "877a63649ffffff"
+                "pickup_hexid": "897a6364947ffff"
             },
             "destinations": [
                 {
@@ -3556,7 +3556,7 @@
                         "latitude": -0.620995,
                         "longitude": 36.153165
                     },
-                    "destination_hexid": "877a6ac49ffffff"
+                    "destination_hexid": "897a6ac49cfffff"
                 },
                 {
                     "destination": "Huruma",
@@ -3564,7 +3564,7 @@
                         "latitude": -0.620995,
                         "longitude": 36.153165
                     },
-                    "destination_hexid": "877a6ac49ffffff"
+                    "destination_hexid": "897a6ac49cfffff"
                 }
             ]
         },
@@ -3576,7 +3576,7 @@
                     "latitude": -1.122365,
                     "longitude": 36.942878
                 },
-                "pickup_hexid": "877a6e485ffffff"
+                "pickup_hexid": "897a6e4a36fffff"
             },
             "destinations": [
                 {
@@ -3585,7 +3585,7 @@
                         "latitude": 0.784877,
                         "longitude": 37.935245
                     },
-                    "destination_hexid": "877a404c3ffffff"
+                    "destination_hexid": "897a404c14bffff"
                 },
                 {
                     "destination": "Lavington",
@@ -3593,7 +3593,7 @@
                         "latitude": 0.784877,
                         "longitude": 37.935245
                     },
-                    "destination_hexid": "877a404c3ffffff"
+                    "destination_hexid": "897a404c14bffff"
                 },
                 {
                     "destination": "Kawangware",
@@ -3601,7 +3601,7 @@
                         "latitude": 0.784877,
                         "longitude": 37.935245
                     },
-                    "destination_hexid": "877a404c3ffffff"
+                    "destination_hexid": "897a404c14bffff"
                 }
             ]
         },
@@ -3613,7 +3613,7 @@
                     "latitude": -1.179517,
                     "longitude": 36.896155
                 },
-                "pickup_hexid": "877a6e413ffffff"
+                "pickup_hexid": "897a6e413b3ffff"
             },
             "destinations": [
                 {
@@ -3622,7 +3622,7 @@
                         "latitude": 1.213616,
                         "longitude": 36.491542
                     },
-                    "destination_hexid": "877a4ed1bffffff"
+                    "destination_hexid": "897a4ec34b7ffff"
                 },
                 {
                     "destination": "Mwihoko",
@@ -3630,7 +3630,7 @@
                         "latitude": 1.213616,
                         "longitude": 36.491542
                     },
-                    "destination_hexid": "877a4ed1bffffff"
+                    "destination_hexid": "897a4ec34b7ffff"
                 }
             ]
         },
@@ -3642,7 +3642,7 @@
                     "latitude": -1.842877,
                     "longitude": 36.810364
                 },
-                "pickup_hexid": "877a6ed6cffffff"
+                "pickup_hexid": "897a6ed6cabffff"
             },
             "destinations": [
                 {
@@ -3651,7 +3651,7 @@
                         "latitude": 0.980419,
                         "longitude": 37.992753
                     },
-                    "destination_hexid": "877a42a26ffffff"
+                    "destination_hexid": "897a42a26d7ffff"
                 },
                 {
                     "destination": "Kileleshwa",
@@ -3659,7 +3659,7 @@
                         "latitude": 0.980419,
                         "longitude": 37.992753
                     },
-                    "destination_hexid": "877a42a26ffffff"
+                    "destination_hexid": "897a42a26d7ffff"
                 }
             ]
         },
@@ -3671,7 +3671,7 @@
                     "latitude": -0.56554,
                     "longitude": 37.44348
                 },
-                "pickup_hexid": "877a45cc0ffffff"
+                "pickup_hexid": "897a45cc003ffff"
             },
             "destinations": [
                 {
@@ -3680,7 +3680,7 @@
                         "latitude": -0.810392,
                         "longitude": 37.451116
                     },
-                    "destination_hexid": "877a45d42ffffff"
+                    "destination_hexid": "897a45d426bffff"
                 },
                 {
                     "destination": "Lavington Green",
@@ -3688,7 +3688,7 @@
                         "latitude": -0.810392,
                         "longitude": 37.451116
                     },
-                    "destination_hexid": "877a45d42ffffff"
+                    "destination_hexid": "897a45d426bffff"
                 }
             ]
         },
@@ -3700,7 +3700,7 @@
                     "latitude": 0.242133,
                     "longitude": 36.556433
                 },
-                "pickup_hexid": "877a418dbffffff"
+                "pickup_hexid": "897a418dbc3ffff"
             },
             "destinations": [
                 {
@@ -3709,7 +3709,7 @@
                         "latitude": -1.382512,
                         "longitude": 37.373207
                     },
-                    "destination_hexid": "877a63388ffffff"
+                    "destination_hexid": "897a6338893ffff"
                 },
                 {
                     "destination": "Kasarani",
@@ -3717,7 +3717,7 @@
                         "latitude": -1.382512,
                         "longitude": 37.373207
                     },
-                    "destination_hexid": "877a63388ffffff"
+                    "destination_hexid": "897a6338893ffff"
                 },
                 {
                     "destination": "Clay City (formerly route 45W)",
@@ -3725,7 +3725,7 @@
                         "latitude": -1.382512,
                         "longitude": 37.373207
                     },
-                    "destination_hexid": "877a63388ffffff"
+                    "destination_hexid": "897a6338893ffff"
                 }
             ]
         },
@@ -3737,7 +3737,7 @@
                     "latitude": -0.203731,
                     "longitude": 36.766135
                 },
-                "pickup_hexid": "877a45299ffffff"
+                "pickup_hexid": "897a45299bbffff"
             },
             "destinations": [
                 {
@@ -3746,7 +3746,7 @@
                         "latitude": -1.471898,
                         "longitude": 37.509538
                     },
-                    "destination_hexid": "877a6305effffff"
+                    "destination_hexid": "897a6305e2fffff"
                 },
                 {
                     "destination": "Madiwa",
@@ -3754,7 +3754,7 @@
                         "latitude": -1.471898,
                         "longitude": 37.509538
                     },
-                    "destination_hexid": "877a6305effffff"
+                    "destination_hexid": "897a6305e2fffff"
                 },
                 {
                     "destination": "Eastleigh Section III",
@@ -3762,7 +3762,7 @@
                         "latitude": -1.471898,
                         "longitude": 37.509538
                     },
-                    "destination_hexid": "877a6305effffff"
+                    "destination_hexid": "897a6305e2fffff"
                 }
             ]
         },
@@ -3774,7 +3774,7 @@
                     "latitude": -1.2865,
                     "longitude": 36.815
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42dcbffff"
             },
             "destinations": [
                 {
@@ -3783,7 +3783,7 @@
                         "latitude": -1.2944,
                         "longitude": 36.7892
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e67ffff"
                 },
                 {
                     "destination": "Adams",
@@ -3791,7 +3791,7 @@
                         "latitude": -1.2944,
                         "longitude": 36.7892
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e67ffff"
                 },
                 {
                     "destination": "Dagoretti",
@@ -3799,7 +3799,7 @@
                         "latitude": -1.2944,
                         "longitude": 36.7892
                     },
-                    "destination_hexid": "877a6e55effffff"
+                    "destination_hexid": "897a6e55e67ffff"
                 }
             ]
         },
@@ -3811,7 +3811,7 @@
                     "latitude": -1.567632,
                     "longitude": 37.490933
                 },
-                "pickup_hexid": "877a6306effffff"
+                "pickup_hexid": "897a6306e4bffff"
             },
             "destinations": [
                 {
@@ -3820,7 +3820,7 @@
                         "latitude": -0.917088,
                         "longitude": 37.046465
                     },
-                    "destination_hexid": "877a45851ffffff"
+                    "destination_hexid": "897a4585123ffff"
                 },
                 {
                     "destination": "Kinyanjui Road",
@@ -3828,7 +3828,7 @@
                         "latitude": -0.917088,
                         "longitude": 37.046465
                     },
-                    "destination_hexid": "877a45851ffffff"
+                    "destination_hexid": "897a4585123ffff"
                 },
                 {
                     "destination": "Kabiria",
@@ -3836,7 +3836,7 @@
                         "latitude": -0.917088,
                         "longitude": 37.046465
                     },
-                    "destination_hexid": "877a45851ffffff"
+                    "destination_hexid": "897a4585123ffff"
                 }
             ]
         },
@@ -3848,7 +3848,7 @@
                     "latitude": 0.509215,
                     "longitude": 37.495529
                 },
-                "pickup_hexid": "877a403b1ffffff"
+                "pickup_hexid": "897a403b10fffff"
             },
             "destinations": [
                 {
@@ -3857,7 +3857,7 @@
                         "latitude": 1.840667,
                         "longitude": 36.218862
                     },
-                    "destination_hexid": "877a4e4c8ffffff"
+                    "destination_hexid": "897a4e4c823ffff"
                 },
                 {
                     "destination": "Wanyee Road",
@@ -3865,7 +3865,7 @@
                         "latitude": 1.840667,
                         "longitude": 36.218862
                     },
-                    "destination_hexid": "877a4e4c8ffffff"
+                    "destination_hexid": "897a4e4c823ffff"
                 },
                 {
                     "destination": "Kabiria",
@@ -3873,7 +3873,7 @@
                         "latitude": 1.840667,
                         "longitude": 36.218862
                     },
-                    "destination_hexid": "877a4e4c8ffffff"
+                    "destination_hexid": "897a4e4c823ffff"
                 }
             ]
         },
@@ -3885,7 +3885,7 @@
                     "latitude": -0.359787,
                     "longitude": 36.098855
                 },
-                "pickup_hexid": "877a6a086ffffff"
+                "pickup_hexid": "897a6a0861bffff"
             },
             "destinations": [
                 {
@@ -3894,7 +3894,7 @@
                         "latitude": 0.76154,
                         "longitude": 36.305301
                     },
-                    "destination_hexid": "877a41290ffffff"
+                    "destination_hexid": "897a4129017ffff"
                 },
                 {
                     "destination": "Jamhuri",
@@ -3902,7 +3902,7 @@
                         "latitude": 0.76154,
                         "longitude": 36.305301
                     },
-                    "destination_hexid": "877a41290ffffff"
+                    "destination_hexid": "897a4129017ffff"
                 }
             ]
         },
@@ -3914,7 +3914,7 @@
                     "latitude": -0.419538,
                     "longitude": 37.489751
                 },
-                "pickup_hexid": "877a4550effffff"
+                "pickup_hexid": "897a4550e87ffff"
             },
             "destinations": [
                 {
@@ -3923,7 +3923,7 @@
                         "latitude": 0.302847,
                         "longitude": 37.092737
                     },
-                    "destination_hexid": "877a41d8affffff"
+                    "destination_hexid": "897a41d8a97ffff"
                 },
                 {
                     "destination": "Thome",
@@ -3931,7 +3931,7 @@
                         "latitude": 0.302847,
                         "longitude": 37.092737
                     },
-                    "destination_hexid": "877a41d8affffff"
+                    "destination_hexid": "897a41d8a97ffff"
                 },
                 {
                     "destination": "Marurui",
@@ -3939,7 +3939,7 @@
                         "latitude": 0.302847,
                         "longitude": 37.092737
                     },
-                    "destination_hexid": "877a41d8affffff"
+                    "destination_hexid": "897a41d8a97ffff"
                 }
             ]
         },
@@ -3951,7 +3951,7 @@
                     "latitude": 1.369638,
                     "longitude": 36.352408
                 },
-                "pickup_hexid": "877a4ece3ffffff"
+                "pickup_hexid": "897a4ece377ffff"
             },
             "destinations": [
                 {
@@ -3960,7 +3960,7 @@
                         "latitude": -0.066595,
                         "longitude": 36.510411
                     },
-                    "destination_hexid": "877a4194affffff"
+                    "destination_hexid": "897a4194a37ffff"
                 },
                 {
                     "destination": "Macharia Road",
@@ -3968,7 +3968,7 @@
                         "latitude": -0.066595,
                         "longitude": 36.510411
                     },
-                    "destination_hexid": "877a4194affffff"
+                    "destination_hexid": "897a4194a37ffff"
                 }
             ]
         },
@@ -3980,7 +3980,7 @@
                     "latitude": -1.3047,
                     "longitude": 36.8188
                 },
-                "pickup_hexid": "877a6e553ffffff"
+                "pickup_hexid": "897a6e5531bffff"
             },
             "destinations": [
                 {
@@ -3989,7 +3989,7 @@
                         "latitude": -1.2857,
                         "longitude": 36.8562
                     },
-                    "destination_hexid": "877a6e421ffffff"
+                    "destination_hexid": "897a6e42157ffff"
                 }
             ]
         },
@@ -4001,7 +4001,7 @@
                     "latitude": -1.2897,
                     "longitude": 36.8236
                 },
-                "pickup_hexid": "877a6e42cffffff"
+                "pickup_hexid": "897a6e42cabffff"
             },
             "destinations": [
                 {
@@ -4010,7 +4010,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8274
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42c03ffff"
                 },
                 {
                     "destination": "Pangani Girls",
@@ -4018,7 +4018,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8274
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42c03ffff"
                 },
                 {
                     "destination": "Pangani Shopping Centre",
@@ -4026,7 +4026,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8274
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42c03ffff"
                 },
                 {
                     "destination": "Kariokor Market",
@@ -4034,7 +4034,7 @@
                         "latitude": -1.2867,
                         "longitude": 36.8274
                     },
-                    "destination_hexid": "877a6e42cffffff"
+                    "destination_hexid": "897a6e42c03ffff"
                 }
             ]
         },
@@ -4046,7 +4046,7 @@
                     "latitude": -1.390699,
                     "longitude": 36.46508
                 },
-                "pickup_hexid": "877a6e0e3ffffff"
+                "pickup_hexid": "897a6e0e3dbffff"
             },
             "destinations": [
                 {
@@ -4055,7 +4055,7 @@
                         "latitude": 1.031751,
                         "longitude": 37.350402
                     },
-                    "destination_hexid": "877a438a6ffffff"
+                    "destination_hexid": "897a438b5b7ffff"
                 }
             ]
         },
@@ -4067,7 +4067,7 @@
                     "latitude": -0.96799,
                     "longitude": 36.950514
                 },
-                "pickup_hexid": "877a45b36ffffff"
+                "pickup_hexid": "897a45b3673ffff"
             },
             "destinations": [
                 {
@@ -4076,7 +4076,7 @@
                         "latitude": 0.385774,
                         "longitude": 37.38113
                     },
-                    "destination_hexid": "877a40300ffffff"
+                    "destination_hexid": "897a4030097ffff"
                 },
                 {
                     "destination": "GM",
@@ -4084,7 +4084,7 @@
                         "latitude": 0.385774,
                         "longitude": 37.38113
                     },
-                    "destination_hexid": "877a40300ffffff"
+                    "destination_hexid": "897a4030097ffff"
                 },
                 {
                     "destination": "Imara Daima",
@@ -4092,7 +4092,7 @@
                         "latitude": 0.385774,
                         "longitude": 37.38113
                     },
-                    "destination_hexid": "877a40300ffffff"
+                    "destination_hexid": "897a4030097ffff"
                 },
                 {
                     "destination": "Mukuru Kwa Njenga",
@@ -4100,7 +4100,7 @@
                         "latitude": 0.385774,
                         "longitude": 37.38113
                     },
-                    "destination_hexid": "877a40300ffffff"
+                    "destination_hexid": "897a4030097ffff"
                 }
             ]
         },
@@ -4112,7 +4112,7 @@
                     "latitude": -0.467695,
                     "longitude": 36.020391
                 },
-                "pickup_hexid": "877a6a015ffffff"
+                "pickup_hexid": "897a6a01563ffff"
             },
             "destinations": [
                 {
@@ -4121,7 +4121,7 @@
                         "latitude": 1.327984,
                         "longitude": 36.235881
                     },
-                    "destination_hexid": "877a4ec59ffffff"
+                    "destination_hexid": "897a4ec59bbffff"
                 },
                 {
                     "destination": "Gikomba",
@@ -4129,7 +4129,7 @@
                         "latitude": 1.327984,
                         "longitude": 36.235881
                     },
-                    "destination_hexid": "877a4ec59ffffff"
+                    "destination_hexid": "897a4ec59bbffff"
                 }
             ]
         },
@@ -4141,7 +4141,7 @@
                     "latitude": 0.832744,
                     "longitude": 36.452959
                 },
-                "pickup_hexid": "877a4162bffffff"
+                "pickup_hexid": "897a4162bc7ffff"
             },
             "destinations": [
                 {
@@ -4150,7 +4150,7 @@
                         "latitude": 0.87353,
                         "longitude": 36.741839
                     },
-                    "destination_hexid": "877a41796ffffff"
+                    "destination_hexid": "897a41796d7ffff"
                 },
                 {
                     "destination": "Sinai",
@@ -4158,7 +4158,7 @@
                         "latitude": 0.87353,
                         "longitude": 36.741839
                     },
-                    "destination_hexid": "877a41796ffffff"
+                    "destination_hexid": "897a41796d7ffff"
                 },
                 {
                     "destination": "Donholm",
@@ -4166,7 +4166,7 @@
                         "latitude": 0.87353,
                         "longitude": 36.741839
                     },
-                    "destination_hexid": "877a41796ffffff"
+                    "destination_hexid": "897a41796d7ffff"
                 }
             ]
         },
@@ -4178,7 +4178,7 @@
                     "latitude": -1.515007,
                     "longitude": 36.150482
                 },
-                "pickup_hexid": "877a6e328ffffff"
+                "pickup_hexid": "897a6e329dbffff"
             },
             "destinations": [
                 {
@@ -4187,7 +4187,7 @@
                         "latitude": -1.057989,
                         "longitude": 36.21761
                     },
-                    "destination_hexid": "877a6a932ffffff"
+                    "destination_hexid": "897a6a932cbffff"
                 },
                 {
                     "destination": "Upper Hill",
@@ -4195,7 +4195,7 @@
                         "latitude": -1.057989,
                         "longitude": 36.21761
                     },
-                    "destination_hexid": "877a6a932ffffff"
+                    "destination_hexid": "897a6a932cbffff"
                 },
                 {
                     "destination": "KNH",
@@ -4203,7 +4203,7 @@
                         "latitude": -1.057989,
                         "longitude": 36.21761
                     },
-                    "destination_hexid": "877a6a932ffffff"
+                    "destination_hexid": "897a6a932cbffff"
                 }
             ]
         },
@@ -4215,7 +4215,7 @@
                     "latitude": -1.2795,
                     "longitude": 36.8065
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42d73ffff"
             },
             "destinations": [
                 {
@@ -4224,7 +4224,7 @@
                         "latitude": -1.2801,
                         "longitude": 36.8021
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d77ffff"
                 },
                 {
                     "destination": "UpperhillArea",
@@ -4232,7 +4232,7 @@
                         "latitude": -1.2801,
                         "longitude": 36.8021
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d77ffff"
                 },
                 {
                     "destination": "KenyattaNationalHospital",
@@ -4240,7 +4240,7 @@
                         "latitude": -1.2801,
                         "longitude": 36.8021
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d77ffff"
                 },
                 {
                     "destination": "NairobiHospital",
@@ -4248,7 +4248,7 @@
                         "latitude": -1.2801,
                         "longitude": 36.8021
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d77ffff"
                 },
                 {
                     "destination": "DoctorsPlazaSilverSpringsHotel",
@@ -4256,7 +4256,7 @@
                         "latitude": -1.2801,
                         "longitude": 36.8021
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d77ffff"
                 }
             ]
         },
@@ -4268,7 +4268,7 @@
                     "latitude": -1.2865,
                     "longitude": 36.815
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e42dcbffff"
             },
             "destinations": [
                 {
@@ -4277,7 +4277,7 @@
                         "latitude": -1.2812,
                         "longitude": 36.8013
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d3bffff"
                 },
                 {
                     "destination": "KiberaSlums/Kibra",
@@ -4285,7 +4285,7 @@
                         "latitude": -1.2812,
                         "longitude": 36.8013
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d3bffff"
                 },
                 {
                     "destination": "AdamsArcade",
@@ -4293,7 +4293,7 @@
                         "latitude": -1.2812,
                         "longitude": 36.8013
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d3bffff"
                 },
                 {
                     "destination": "ToiMarket",
@@ -4301,7 +4301,7 @@
                         "latitude": -1.2812,
                         "longitude": 36.8013
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d3bffff"
                 }
             ]
         },
@@ -4313,7 +4313,7 @@
                     "latitude": 0.181573,
                     "longitude": 36.892986
                 },
-                "pickup_hexid": "877a41d5cffffff"
+                "pickup_hexid": "897a41d5c8fffff"
             },
             "destinations": [
                 {
@@ -4322,7 +4322,7 @@
                         "latitude": -0.156061,
                         "longitude": 36.842862
                     },
-                    "destination_hexid": "877a45668ffffff"
+                    "destination_hexid": "897a4566847ffff"
                 },
                 {
                     "destination": "Bahati",
@@ -4330,7 +4330,7 @@
                         "latitude": -0.156061,
                         "longitude": 36.842862
                     },
-                    "destination_hexid": "877a45668ffffff"
+                    "destination_hexid": "897a4566847ffff"
                 },
                 {
                     "destination": "Maringo",
@@ -4338,7 +4338,7 @@
                         "latitude": -0.156061,
                         "longitude": 36.842862
                     },
-                    "destination_hexid": "877a45668ffffff"
+                    "destination_hexid": "897a4566847ffff"
                 },
                 {
                     "destination": "Jericho",
@@ -4346,7 +4346,7 @@
                         "latitude": -0.156061,
                         "longitude": 36.842862
                     },
-                    "destination_hexid": "877a45668ffffff"
+                    "destination_hexid": "897a4566847ffff"
                 },
                 {
                     "destination": "Buru Ph. 1",
@@ -4354,7 +4354,7 @@
                         "latitude": -0.156061,
                         "longitude": 36.842862
                     },
-                    "destination_hexid": "877a45668ffffff"
+                    "destination_hexid": "897a4566847ffff"
                 }
             ]
         },
@@ -4366,7 +4366,7 @@
                     "latitude": -1.2932,
                     "longitude": 36.8128
                 },
-                "pickup_hexid": "877a6e42dffffff"
+                "pickup_hexid": "897a6e5536fffff"
             },
             "destinations": [
                 {
@@ -4375,7 +4375,7 @@
                         "latitude": -1.2918,
                         "longitude": 36.8097
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d9bffff"
                 },
                 {
                     "destination": "NgaracivilServantshousingscheme",
@@ -4383,7 +4383,7 @@
                         "latitude": -1.2918,
                         "longitude": 36.8097
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d9bffff"
                 },
                 {
                     "destination": "KIE",
@@ -4391,7 +4391,7 @@
                         "latitude": -1.2918,
                         "longitude": 36.8097
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d9bffff"
                 },
                 {
                     "destination": "Paganiroundabout",
@@ -4399,7 +4399,7 @@
                         "latitude": -1.2918,
                         "longitude": 36.8097
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d9bffff"
                 },
                 {
                     "destination": "FigtreetradeCenterNgara",
@@ -4407,7 +4407,7 @@
                         "latitude": -1.2918,
                         "longitude": 36.8097
                     },
-                    "destination_hexid": "877a6e42dffffff"
+                    "destination_hexid": "897a6e42d9bffff"
                 }
             ]
         },
@@ -4419,7 +4419,7 @@
                     "latitude": -1.28333,
                     "longitude": 36.81667
                 },
-                "pickup_hexid": "877a6e414ffffff"
+                "pickup_hexid": "897a6e42c27ffff"
             },
             "destinations": [
                 {
@@ -4428,7 +4428,7 @@
                         "latitude": -1.283,
                         "longitude": 36.823
                     },
-                    "destination_hexid": "877a6e414ffffff"
+                    "destination_hexid": "897a6e42c3bffff"
                 },
                 {
                     "destination": "Railways bus station",
@@ -4436,7 +4436,7 @@
                         "latitude": -1.2905,
                         "longitude": 36.826
                     },
-                    "destination_hexid": "877a6e415ffffff"
+                    "destination_hexid": "897a6e42cbbffff"
                 },
                 {
                     "destination": "General Post Office/ GPO",
@@ -4444,7 +4444,7 @@
                         "latitude": -1.286,
                         "longitude": 36.815
                     },
-                    "destination_hexid": "877a6e414ffffff"
+                    "destination_hexid": "897a6e42dcbffff"
                 }
             ]
         }
